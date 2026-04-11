@@ -229,7 +229,8 @@ const FILTERS = {
     { value: "agrarisch", label: "Agrarisch" },
     { value: "sloop", label: "Sloop" },
     { value: "wegenbouw", label: "Wegenbouw" },
-    { value: "manege", label: "Manege" }
+    { value: "manege", label: "Manege" },
+    { value: "specials", label: "Specials" }
   ]}
 };
 
