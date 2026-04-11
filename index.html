@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The IronCub Company — Officieel Rippa Dealer Nederland</title>
-  <meta name="description" content="Verkoop, Verhuur, Lease, Demodagen en Service van Skid Steer Loaders en compact equipment.">
+  <meta name="description" content="The IronCub Company is officieel Rippa dealer in Nederland. Skid Steer Loaders, compact equipment, verhuur, lease en service. Showroom in Middelharnis.">
+  <meta property="og:title" content="The IronCub Company — Officieel Rippa Dealer">
+  <meta property="og:description" content="Skid Steer Loaders & Compact Equipment. Verkoop, Verhuur, Lease & Service.">
+  <meta property="og:image" content="assets/showroom-1.jpg">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -12,223 +16,129 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="announce-bar"></div>
-  <div id="site-header"></div>
-
-  <section class="hero">
-    <div class="hero-bg"><img src="assets/showroom-1.jpg" alt="IronCub Showroom" class="hero-bg-img"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="hero-badge-row">
-          <img src="assets/rippa-logo.png" alt="Rippa" class="hero-rippa">
-          <span class="hero-dealer">Officieel Dealer NL</span>
-        </div>
-        <h1 class="hero-title">BUILT TO<br><span class="hero-accent">PERFORM</span></h1>
-        <p class="hero-sub">Skid Steer Loaders &amp; Compact Equipment voor professionals.<br>Verkoop &bull; Verhuur &bull; Lease &bull; Demodagen &bull; Service</p>
-        <div class="hero-ctas">
-          <a href="verkoop.html" class="btn btn-cta btn-lg">Bekijk Machines</a>
-          <a href="demodagen.html" class="btn btn-outline-light btn-lg">Plan een Demo</a>
-        </div>
-      </div>
-      <div class="hero-mascot"><img src="assets/mascot-hero.jpg" alt="The IronCub Bear"></div>
-    </div>
-    <div class="hero-scroll"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
-  </section>
-
-  <div class="stats-bar"><div class="container stats-inner">
-    <div class="stat"><span class="stat-num">7</span><span class="stat-label">Machines</span></div><div class="stat-div"></div>
-    <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Aanbouwdelen</span></div><div class="stat-div"></div>
-    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Diensten</span></div><div class="stat-div"></div>
-    <div class="stat"><span class="stat-num">CE</span><span class="stat-label">Gecertificeerd</span></div>
+  <!-- TOP BAR -->
+  <div class="top-bar"><div class="container top-bar-inner">
+    <div class="top-bar-links"><a href="#over-ons" data-nav="over-ons">Over ons</a><a href="#demodagen" data-nav="demodagen">Showroom</a><a href="https://myironcub.store" target="_blank" rel="noopener">Webshop</a><a href="#contact" data-nav="contact">Garantie</a><a href="#contact" data-nav="contact">Dealer worden</a><a href="#contact" data-nav="contact">Contact</a></div>
+    <div class="top-bar-right"><div class="lang-switcher"><a href="#" class="lang-active">NL</a><span class="lang-sep">|</span><a href="#">EN</a><span class="lang-sep">|</span><a href="#">DE</a><span class="lang-sep">|</span><a href="#">FR</a></div></div>
   </div></div>
 
-  <section class="featured-section"><div class="container">
-    <div class="section-head"><h2>POPULAIRE MACHINES</h2><p>Direct leverbaar vanuit onze showroom in Middelharnis</p></div>
-    <div class="featured-grid">
-      <a href="verkoop.html#vth360" class="featured-card"><div class="featured-img"><img src="assets/vth-360.jpg" alt="VTH 360" loading="lazy"><span class="featured-badge">Compact</span></div><div class="featured-body"><h3>VTH 360</h3><p>Skid Steer Loader</p><span class="featured-price">&euro;5.824 <small>ex BTW</small></span></div></a>
-      <a href="verkoop.html#vth480w" class="featured-card featured-card-lg"><div class="featured-img"><img src="assets/vth-480w.jpg" alt="VTH 480W" loading="lazy"><span class="featured-badge badge-pop">Populair</span></div><div class="featured-body"><h3>VTH 480W</h3><p>Skid Steer Loader (wielen)</p><span class="featured-price">&euro;7.063 <small>ex BTW</small></span></div></a>
-      <a href="verkoop.html#vth480wr" class="featured-card"><div class="featured-img"><img src="assets/vth-480w-crawler.jpg" alt="VTH 480W Rupsbanden" loading="lazy"><span class="featured-badge">Rupsbanden</span></div><div class="featured-body"><h3>VTH 480W</h3><p>Rupsbanden</p><span class="featured-price">&euro;7.063 <small>ex BTW</small></span></div></a>
-    </div>
-    <div class="section-cta"><a href="verkoop.html" class="btn btn-outline-dark">Alle 7 machines bekijken &rarr;</a></div>
-  </div></section>
+  <!-- HEADER -->
+  <header class="site-header" id="header"><div class="header-inner">
+    <a href="#hero" class="logo-link" data-nav="hero"><img src="assets/logo-full.jpg" alt="The IronCub Company" class="logo-img"></a>
+    <nav class="main-nav" id="mainNav">
+      <div class="nav-item has-dropdown"><a href="#machines" class="nav-link" data-nav="machines">MACHINES <svg class="dd-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu"><a href="#machines" class="dropdown-link" data-nav="machines">VTH 360</a><a href="#machines" class="dropdown-link" data-nav="machines">VTH 480W Wielen</a><a href="#machines" class="dropdown-link" data-nav="machines">VTH 480W Rupsbanden</a><a href="#machines" class="dropdown-link" data-nav="machines">VTH 480W Diesel</a><a href="#machines" class="dropdown-link" data-nav="machines">VTH 480 Kubota</a><a href="#machines" class="dropdown-link" data-nav="machines">VTH 140</a><a href="#machines" class="dropdown-link" data-nav="machines">VTH 200</a></div>
+      </div>
+      <div class="nav-item has-dropdown"><a href="#aanbouwdelen" class="nav-link" data-nav="aanbouwdelen">AANBOUWDELEN <svg class="dd-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown-menu"><a href="#aanbouwdelen" class="dropdown-link" data-nav="aanbouwdelen">Grondwerk</a><a href="#aanbouwdelen" class="dropdown-link" data-nav="aanbouwdelen">Groenonderhoud</a><a href="#aanbouwdelen" class="dropdown-link" data-nav="aanbouwdelen">Sloop</a><a href="#aanbouwdelen" class="dropdown-link" data-nav="aanbouwdelen">Transport</a><a href="#aanbouwdelen" class="dropdown-link" data-nav="aanbouwdelen">Reiniging</a><a href="#aanbouwdelen" class="dropdown-link" data-nav="aanbouwdelen">Overig</a></div>
+      </div>
+      <a href="#verhuur" class="nav-link" data-nav="verhuur">VERHUUR</a>
+      <a href="#lease" class="nav-link" data-nav="lease">LEASE</a>
+      <a href="#service" class="nav-link" data-nav="service">SERVICE</a>
+      <a href="#demodagen" class="nav-link" data-nav="demodagen">DEMODAGEN</a>
+      <a href="#over-ons" class="nav-link" data-nav="over-ons">OVER ONS</a>
+      <a href="#contact" class="nav-link" data-nav="contact">CONTACT</a>
+    </nav>
+    <div class="header-actions"><a href="#contact" class="btn btn-cta" data-nav="contact">OFFERTE AANVRAGEN</a><button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button></div>
+  </div></header>
 
-  <section class="pillars-section"><div class="container">
-    <div class="section-head"><h2>WAT WIJ DOEN</h2><p>Van verkoop tot service — alles onder &eacute;&eacute;n dak</p></div>
-    <div class="pillars-grid">
-      <a href="verkoop.html" class="pillar-card"><div class="pillar-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div><h3>Verkoop</h3><p>Machines &amp; aanbouwdelen. Premium of Regular levering.</p><span class="pillar-arrow">&rarr;</span></a>
-      <a href="verhuur.html" class="pillar-card"><div class="pillar-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><h3>Verhuur</h3><p>Flexibel huren per dag, week of maand.</p><span class="pillar-arrow">&rarr;</span></a>
-      <a href="lease.html" class="pillar-card"><div class="pillar-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Lease</h3><p>Financial &amp; operational lease. Vast maandbedrag.</p><span class="pillar-arrow">&rarr;</span></a>
-      <a href="demodagen.html" class="pillar-card pillar-highlight"><div class="pillar-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h3>Demodagen</h3><p>Elke vrijdag vrije inloop. Ervaar de machines zelf.</p><span class="pillar-arrow">&rarr;</span></a>
-      <a href="service.html" class="pillar-card"><div class="pillar-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><h3>Service</h3><p>Onderdelen, reparaties en periodiek onderhoud.</p><span class="pillar-arrow">&rarr;</span></a>
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav-overlay" id="mobileOverlay"><nav class="mobile-nav-inner">
+    <div class="mobile-nav-section"><button class="mobile-dd-trigger">MACHINES <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="mobile-dd-content"><a href="#machines" class="mob-link" data-nav="machines">VTH 360</a><a href="#machines" class="mob-link" data-nav="machines">VTH 480W Wielen</a><a href="#machines" class="mob-link" data-nav="machines">VTH 480W Rupsbanden</a><a href="#machines" class="mob-link" data-nav="machines">VTH 480W Diesel</a><a href="#machines" class="mob-link" data-nav="machines">VTH 480 Kubota</a><a href="#machines" class="mob-link" data-nav="machines">VTH 140</a><a href="#machines" class="mob-link" data-nav="machines">VTH 200</a></div>
     </div>
-  </div></section>
+    <div class="mobile-nav-section"><button class="mobile-dd-trigger">AANBOUWDELEN <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="mobile-dd-content"><a href="#aanbouwdelen" class="mob-link" data-nav="aanbouwdelen">Grondwerk</a><a href="#aanbouwdelen" class="mob-link" data-nav="aanbouwdelen">Groenonderhoud</a><a href="#aanbouwdelen" class="mob-link" data-nav="aanbouwdelen">Sloop</a><a href="#aanbouwdelen" class="mob-link" data-nav="aanbouwdelen">Transport</a><a href="#aanbouwdelen" class="mob-link" data-nav="aanbouwdelen">Reiniging</a><a href="#aanbouwdelen" class="mob-link" data-nav="aanbouwdelen">Overig</a></div>
+    </div>
+    <a href="#verhuur" class="mob-link mob-top" data-nav="verhuur">VERHUUR</a>
+    <a href="#lease" class="mob-link mob-top" data-nav="lease">LEASE</a>
+    <a href="#service" class="mob-link mob-top" data-nav="service">SERVICE</a>
+    <a href="#demodagen" class="mob-link mob-top" data-nav="demodagen">DEMODAGEN</a>
+    <a href="#over-ons" class="mob-link mob-top" data-nav="over-ons">OVER ONS</a>
+    <a href="#contact" class="mob-link mob-top" data-nav="contact">CONTACT</a>
+    <a href="#contact" class="btn btn-cta mobile-cta" data-nav="contact">OFFERTE AANVRAGEN</a>
+    <div class="mobile-lang"><a href="#" class="lang-active">NL</a><a href="#">EN</a><a href="#">DE</a><a href="#">FR</a></div>
+  </nav></div>
 
-  <section class="bear-section"><div class="container bear-inner">
-    <div class="bear-img"><img src="assets/mascot-army.jpg" alt="The IronCub Bear Army" loading="lazy"></div>
-    <div class="bear-text">
-      <span class="bear-tag">THE IRONCUB BEAR</span>
-      <h2>Klein maar sterk.<br>Net als onze machines.</h2>
-      <p>De IronCub Beer staat voor kracht, veelzijdigheid en een no-nonsense werkhouding. Volg onze avonturen op social media.</p>
-      <div class="bear-socials">
-        <a href="https://www.tiktok.com/@theironcubcompany" target="_blank" class="social-pill">TikTok</a>
-        <a href="https://www.youtube.com/@TheIronCubCompany" target="_blank" class="social-pill">YouTube</a>
-        <a href="https://www.instagram.com/theironcubcompany/" target="_blank" class="social-pill">Instagram</a>
+  <!-- VIDEO LIGHTBOX -->
+  <div class="video-lightbox" id="videoLightbox"><div class="video-lightbox-backdrop" onclick="closeVideoLightbox()"></div><div class="video-lightbox-content"><button class="video-lightbox-close" onclick="closeVideoLightbox()">&times;</button><div class="video-lightbox-player"><iframe id="videoIframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div></div>
+
+  <!-- ======================== HERO / HOME ======================== -->
+  <section class="page-section active" id="hero" data-section="hero">
+    <div class="hero">
+      <div class="hero-bg"><img src="assets/showroom-1.jpg" alt="IronCub Showroom"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="hero-pre">OFFICIEEL RIPPA DEALER NEDERLAND</p>
+          <h1 class="hero-title">BUILT TO<br>PERFORM</h1>
+          <p class="hero-subtitle">Skid Steer Loaders &amp; Compact Equipment voor professionals. Verkoop, verhuur, lease &amp; service.</p>
+          <div class="hero-ctas">
+            <a href="#machines" class="btn btn-cta btn-lg" data-nav="machines">Bekijk Machines</a>
+            <a href="#demodagen" class="btn btn-outline-light btn-lg" data-nav="demodagen">Plan een Demo</a>
+            <button class="btn btn-play" onclick="openVideoLightbox('qILSYnsioLQ')"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Bekijk Video</button>
+          </div>
+        </div>
+        <div class="hero-mascot"><img src="assets/mascot-army.jpg" alt="The IronCub Bear"></div>
+      </div>
+      <div class="hero-scroll-hint"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+      <div class="hero-social-strip">
+        <a href="https://www.tiktok.com/@theironcubcompany" target="_blank" rel="noopener" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.44V13.2a8.16 8.16 0 005.58 2.2V12a4.83 4.83 0 01-3.77-1.54V6.69h3.77z"/></svg></a>
+        <a href="https://www.youtube.com/@TheIronCubCompany" target="_blank" rel="noopener" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3.02 3.02 0 002.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
+        <a href="https://www.instagram.com/theironcubcompany/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85 0-3.2.01-3.58.07-4.85C2.38 3.86 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1018.16 12 6.16 6.16 0 0012 5.84zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61580721787793" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a>
       </div>
     </div>
-  </div></section>
+    <div class="stats-bar"><div class="container"><div class="stats-inner">
+      <div class="stat-item"><span class="stat-number">7</span><span class="stat-label">Machinemodellen</span></div><div class="stat-sep"></div>
+      <div class="stat-item"><span class="stat-number">20+</span><span class="stat-label">Aanbouwdelen</span></div><div class="stat-sep"></div>
+      <div class="stat-item"><span class="stat-number"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span class="stat-label">Officieel Rippa Dealer</span></div><div class="stat-sep"></div>
+      <div class="stat-item"><span class="stat-number"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="stat-label">Showroom Middelharnis</span></div>
+    </div></div></div>
 
-  <section class="cta-banner"><div class="container cta-inner">
-    <h2>Klaar om te beginnen?</h2>
-    <p>Vraag een offerte aan, plan een demo of neem contact op voor advies.</p>
-    <div class="cta-btns"><a href="contact.html" class="btn btn-cta btn-lg">Offerte aanvragen</a><a href="demodagen.html" class="btn btn-outline-light btn-lg">Plan een demo</a></div>
-  </div></section>
-
-  <div id="site-footer"></div>
-  <script src="components.js"></script>
-</body>
-</html>
-
-  <!-- ======================== MACHINES ======================== -->
-  <section class="page-section" id="machines" data-section="machines">
-    <div class="page-hero">
-      <div class="page-hero-bg"><img src="assets/showroom-1.jpg" alt="Showroom"></div>
-      <div class="page-hero-overlay"></div>
-      <div class="container page-hero-content">
-        <h1>MACHINES</h1>
-        <p>7 krachtige skid steer loaders — van compact elektrisch tot professioneel diesel. Allemaal leverbaar uit voorraad.</p>
+    <!-- Featured Machines -->
+    <div class="home-section"><div class="container">
+      <div class="section-header"><h2 class="section-title">ONZE MACHINES</h2><p class="section-sub">Krachtige skid steer loaders voor elke klus</p></div>
+      <div class="featured-grid">
+        <div class="featured-card" data-anim><div class="featured-img"><img src="assets/vth-360.jpg" alt="VTH 360" loading="lazy"><span class="featured-badge">Compact</span></div><div class="featured-info"><h3>VTH 360</h3><p>Skid Steer Loader</p><span class="featured-price">&euro;5.824 <small>ex BTW</small></span><a href="#machines" class="btn btn-dark btn-sm" data-nav="machines">Bekijk machine</a></div></div>
+        <div class="featured-card" data-anim><div class="featured-img"><img src="assets/vth-480w.jpg" alt="VTH 480W" loading="lazy"><span class="featured-badge badge-pop">Populair</span></div><div class="featured-info"><h3>VTH 480W</h3><p>Skid Steer Loader (wielen)</p><span class="featured-price">&euro;7.063 <small>ex BTW</small></span><a href="#machines" class="btn btn-dark btn-sm" data-nav="machines">Bekijk machine</a></div></div>
+        <div class="featured-card" data-anim><div class="featured-img"><img src="assets/vth-480w-crawler.jpg" alt="VTH 480W Rupsbanden" loading="lazy"><span class="featured-badge badge-track">Rupsbanden</span></div><div class="featured-info"><h3>VTH 480W</h3><p>Skid Steer Loader (rupsbanden)</p><span class="featured-price">&euro;7.063 <small>ex BTW</small></span><a href="#machines" class="btn btn-dark btn-sm" data-nav="machines">Bekijk machine</a></div></div>
       </div>
-    </div>
+      <div class="center-cta"><a href="#machines" class="btn btn-outline-dark" data-nav="machines">Alle 7 machines bekijken &rarr;</a></div>
+    </div></div>
 
-    <!-- Delivery Tiers -->
-    <div class="delivery-section"><div class="container">
-      <div class="section-header"><h2 class="section-title">LEVERING</h2><p class="section-sub">Kies het leveringspakket dat bij u past</p></div>
-      <div class="delivery-grid">
-        <div class="tier-card tier-premium-card" data-anim>
-          <span class="tier-badge tier-premium">PREMIUM DELIVERY</span>
-          <h3>All-inclusive levering</h3>
-          <p class="tier-price">&euro;495 ex BTW</p>
-          <ul>
-            <li>Transport door heel Nederland</li>
-            <li>Persoonlijke aflevering op locatie</li>
-            <li>Uitgebreide instructie (1 uur)</li>
-            <li>Machine gebruiksklaar afgeleverd</li>
-            <li>Technische check voor vertrek</li>
-          </ul>
-          <a href="#contact" class="btn btn-cta btn-full" data-nav="contact">Premium boeken</a>
-        </div>
-        <div class="tier-card" data-anim>
-          <span class="tier-badge tier-standard">STANDARD PICKUP</span>
-          <h3>Ophalen in showroom</h3>
-          <p class="tier-price">Gratis</p>
-          <ul>
-            <li>Ophalen in Middelharnis</li>
-            <li>Korte instructie (30 min)</li>
-            <li>Machine direct mee</li>
-            <li>Gratis koffie &amp; rondleiding</li>
-          </ul>
-          <a href="#demodagen" class="btn btn-outline-dark btn-full" data-nav="demodagen">Showroom bezoeken</a>
-        </div>
+    <!-- 5 Pillars -->
+    <div class="pillars-section"><div class="container">
+      <div class="section-header"><h2 class="section-title">WAT WIJ BIEDEN</h2><p class="section-sub">Meer dan alleen machines — een compleet pakket voor professionals</p></div>
+      <div class="pillars-grid">
+        <a href="#machines" class="pillar-card" data-nav="machines" data-anim><div class="pillar-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V5a2 2 0 012-2h8a2 2 0 012 2v2"/></svg></div><h3>Verkoop</h3><p>7 machines en 20+ aanbouwdelen</p></a>
+        <a href="#verhuur" class="pillar-card" data-nav="verhuur" data-anim><div class="pillar-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Verhuur</h3><p>Flexibel huren per dag, week of maand</p></a>
+        <a href="#lease" class="pillar-card" data-nav="lease" data-anim><div class="pillar-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8v8M12 11v5M8 14v2M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg></div><h3>Lease</h3><p>Voorspelbare maandelijkse kosten</p></a>
+        <a href="#service" class="pillar-card" data-nav="service" data-anim><div class="pillar-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><h3>Service</h3><p>Professionele werkplaats</p></a>
+        <a href="#demodagen" class="pillar-card" data-nav="demodagen" data-anim><div class="pillar-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h3>Demodagen</h3><p>Elke vrijdag vrije inloop</p></a>
       </div>
     </div></div>
 
-    <!-- All Machines Grid -->
-    <div class="machines-section"><div class="container">
-      <h2 class="section-title-left">ALLE MACHINES</h2>
-      <p class="section-sub-left">Van onze compacte VTH 140 tot de krachtige VTH 480 Kubota — voor elke klus de juiste machine.</p>
-      <div class="machines-grid">
-
-        <!-- VTH 360 -->
-        <div class="machine-card" id="machine-vth360" data-anim>
-          <div class="machine-img"><img src="assets/vth-360.jpg" alt="VTH 360" loading="lazy"><span class="m-badge">Compact</span></div>
-          <div class="machine-body">
-            <span class="m-type">Skid Steer Loader — Elektrisch</span>
-            <h3>VTH 360</h3>
-            <p class="m-price">&euro;5.824 <small>ex BTW</small></p>
-            <p class="m-desc">Compacte elektrische loader. Ideaal voor stalwerk, tuinaanleg en binnen­toepassingen. Zero emissie, minimaal geluid.</p>
-            <div class="m-specs"><span>Elektrisch</span><span>360 kg</span><span>23 pk</span><span>Wielen</span></div>
-            <div class="m-actions"><a href="#contact" class="btn btn-cta btn-sm" data-nav="contact">Offerte</a><a href="#contact" class="btn btn-outline-dark btn-sm" data-nav="contact">Meer info</a></div>
-          </div>
-        </div>
-
-        <!-- VTH 480W Wielen -->
-        <div class="machine-card" id="machine-vth480w" data-anim>
-          <div class="machine-img"><img src="assets/vth-480w.jpg" alt="VTH 480W Wielen" loading="lazy"><span class="m-badge badge-pop">Populair</span></div>
-          <div class="machine-body">
-            <span class="m-type">Skid Steer Loader — Elektrisch</span>
-            <h3>VTH 480W</h3>
-            <p class="m-price">&euro;7.063 <small>ex BTW</small></p>
-            <p class="m-desc">Onze bestverkochte loader. Krachtig, wendbaar en veelzijdig. Perfect voor grondwerk, hoveniers en bouw.</p>
-            <div class="m-specs"><span>Elektrisch</span><span>480 kg</span><span>23 pk</span><span>Wielen</span></div>
-            <div class="m-actions"><a href="#contact" class="btn btn-cta btn-sm" data-nav="contact">Offerte</a><a href="#contact" class="btn btn-outline-dark btn-sm" data-nav="contact">Meer info</a></div>
-          </div>
-        </div>
-
-        <!-- VTH 480W Rupsbanden -->
-        <div class="machine-card" id="machine-vth480wr" data-anim>
-          <div class="machine-img"><img src="assets/vth-480w-crawler.jpg" alt="VTH 480W Rupsbanden" loading="lazy"><span class="m-badge" style="background:#3a7d44">Rupsbanden</span></div>
-          <div class="machine-body">
-            <span class="m-type">Skid Steer Loader — Elektrisch</span>
-            <h3>VTH 480W Rupsbanden</h3>
-            <p class="m-price">&euro;7.063 <small>ex BTW</small></p>
-            <p class="m-desc">Dezelfde kracht als de VTH 480W, maar dan op rupsbanden. Maximale grip op zachte en oneffen ondergrond.</p>
-            <div class="m-specs"><span>Elektrisch</span><span>480 kg</span><span>23 pk</span><span>Rupsbanden</span></div>
-            <div class="m-actions"><a href="#contact" class="btn btn-cta btn-sm" data-nav="contact">Offerte</a><a href="#contact" class="btn btn-outline-dark btn-sm" data-nav="contact">Meer info</a></div>
-          </div>
-        </div>
-
-        <!-- VTH 480W Diesel -->
-        <div class="machine-card" id="machine-vth480wd" data-anim>
-          <div class="machine-img"><img src="assets/rippa-rs07-wheeled.webp" alt="VTH 480W Diesel" loading="lazy"><span class="m-badge badge-diesel">Diesel</span></div>
-          <div class="machine-body">
-            <span class="m-type">Skid Steer Loader — Diesel</span>
-            <h3>VTH 480W Diesel</h3>
-            <p class="m-price">&euro;10.750 <small>ex BTW</small></p>
-            <p class="m-desc">Dieselvariant voor langere werkdagen en zwaardere klussen. Onbeperkt bereik, betrouwbaar Changchai-motorblok.</p>
-            <div class="m-specs"><span>Diesel</span><span>480 kg</span><span>25 pk</span><span>Wielen</span></div>
-            <div class="m-actions"><a href="#contact" class="btn btn-cta btn-sm" data-nav="contact">Offerte</a><a href="#contact" class="btn btn-outline-dark btn-sm" data-nav="contact">Meer info</a></div>
-          </div>
-        </div>
-
-        <!-- VTH 480 Kubota -->
-        <div class="machine-card" id="machine-vth480k" data-anim>
-          <div class="machine-img"><img src="assets/rippa-rs20.webp" alt="VTH 480 Kubota" loading="lazy"><span class="m-badge badge-pop">Premium</span></div>
-          <div class="machine-body">
-            <span class="m-type">Skid Steer Loader — Diesel (Kubota)</span>
-            <h3>VTH 480 Kubota</h3>
-            <p class="m-price m-poa">Prijs op aanvraag</p>
-            <p class="m-desc">Top-of-the-line model met Japans Kubota dieselmotor. Maximale betrouwbaarheid voor professionele inzet.</p>
-            <div class="m-specs"><span>Kubota Diesel</span><span>480 kg</span><span>25 pk</span><span>Wielen</span></div>
-            <div class="m-actions"><a href="#contact" class="btn btn-cta btn-sm" data-nav="contact">Offerte</a><a href="#contact" class="btn btn-outline-dark btn-sm" data-nav="contact">Meer info</a></div>
-          </div>
-        </div>
-
-        <!-- VTH 140 -->
-        <div class="machine-card" id="machine-vth140" data-anim>
-          <div class="machine-img"><img src="assets/rippa-rs06.webp" alt="VTH 140" loading="lazy"><span class="m-badge badge-new">Nieuw</span></div>
-          <div class="machine-body">
-            <span class="m-type">Mini Skid Steer — Benzine</span>
-            <h3>VTH 140</h3>
-            <p class="m-price">&euro;3.499 <small>ex BTW</small></p>
-            <p class="m-desc">Ultra-compacte mini loader. Past door elke deur en poort. Ideaal voor particulieren, kleine tuinen en stallen.</p>
-            <div class="m-specs"><span>Benzine</span><span>140 kg</span><span>15 pk</span><span>Wielen</span></div>
-            <div class="m-actions"><a href="#contact" class="btn btn-cta btn-sm" data-nav="contact">Offerte</a><a href="#contact" class="btn btn-outline-dark btn-sm" data-nav="contact">Meer info</a></div>
-          </div>
-        </div>
-
-        <!-- VTH 200 -->
-        <div class="machine-card" id="machine-vth200" data-anim>
-          <div class="machine-img"><img src="assets/rippa-rs10.webp" alt="VTH 200" loading="lazy"><span class="m-badge badge-new">Nieuw</span></div>
-          <div class="machine-body">
-            <span class="m-type">Mini Skid Steer — Benzine</span>
-            <h3>VTH 200</h3>
-            <p class="m-price">&euro;4.199 <small>ex BTW</small></p>
-            <p class="m-desc">Stap op van de VTH 140. Meer vermogen en hefcapaciteit, maar nog altijd ultra-compact en wendbaar.</p>
-            <div class="m-specs"><span>Benzine</span><span>200 kg</span><span>15 pk</span><span>Wielen</span></div>
-            <div class="m-actions"><a href="#contact" class="btn btn-cta btn-sm" data-nav="contact">Offerte</a><a href="#contact" class="btn btn-outline-dark btn-sm" data-nav="contact">Meer info</a></div>
-          </div>
-        </div>
-
+    <!-- Mascot Section -->
+    <div class="mascot-home-section"><div class="container">
+      <div class="section-header"><h2 class="section-title">THE IRONCUB BEAR</h2><p class="section-sub">Onze mascotte staat voor kracht, karakter en plezier in het werk</p></div>
+      <div class="mascot-grid">
+        <div class="mascot-card" data-anim><img src="assets/mascot-army.jpg" alt="The Iron Army" loading="lazy"><p class="mascot-label">The Iron Army</p></div>
+        <div class="mascot-card" data-anim><img src="assets/mascot-mower.jpg" alt="Mowing Day" loading="lazy"><p class="mascot-label">Mowing Day</p></div>
+        <div class="mascot-card" data-anim><img src="assets/mascot-garden.jpg" alt="Garden Goals" loading="lazy"><p class="mascot-label">Garden Goals</p></div>
+        <div class="mascot-card" data-anim><img src="assets/mascot-training.jpg" alt="Iron Training Day" loading="lazy"><p class="mascot-label">Iron Training Day</p></div>
+      </div>
+      <div class="social-row">
+        <a href="https://www.tiktok.com/@theironcubcompany" target="_blank" class="social-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.44V13.2a8.16 8.16 0 005.58 2.2V12a4.83 4.83 0 01-3.77-1.54V6.69h3.77z"/></svg><span>TikTok</span></a>
+        <a href="https://www.youtube.com/@TheIronCubCompany" target="_blank" class="social-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3.02 3.02 0 002.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg><span>YouTube</span></a>
+        <a href="https://www.instagram.com/theironcubcompany/" target="_blank" class="social-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85 0-3.2.01-3.58.07-4.85C2.38 3.86 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16z"/></svg><span>Instagram</span></a>
+        <a href="https://www.facebook.com/profile.php?id=61580721787793" target="_blank" class="social-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg><span>Facebook</span></a>
       </div>
     </div></div>
+
+    <!-- Newsletter -->
+    <div class="newsletter-bar"><div class="container"><div class="newsletter-inner">
+      <div class="nl-text"><h3>Blijf op de hoogte</h3><p>Ontvang nieuws over machines, aanbouwdelen en acties.</p></div>
+      <form class="nl-form" onsubmit="event.preventDefault();this.querySelector('.nl-ok').style.display='block';this.querySelector('button').textContent='Aangemeld!';"><input type="email" placeholder="Uw e-mailadres" required><button type="submit" class="btn btn-cta">Aanmelden</button><p class="nl-ok" style="display:none">Bedankt!</p></form>
+    </div></div></div>
   </section>
