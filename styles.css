@@ -67,7 +67,7 @@ ul{list-style:none}
 .mobile-toggle.active span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg)}
 .mobile-toggle.active span:nth-child(2){opacity:0}
 .mobile-toggle.active span:nth-child(3){bottom:50%;transform:translateY(50%) rotate(-45deg)}
-.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--white);z-index:999;padding:100px 32px 32px;overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--white);z-index:999;padding:120px 32px 32px;overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
 .mobile-nav.open{transform:translateX(0)}
 .mobile-nav-link{display:block;font-family:var(--font-head);font-size:1.8rem;font-weight:700;letter-spacing:.02em;text-transform:uppercase;padding:12px 0;color:var(--dark);border-bottom:1px solid var(--gray-200)}
 .mobile-nav-link.nav-active{color:var(--gold)}
@@ -513,12 +513,11 @@ ul{list-style:none}
 @keyframes swingBear{0%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}100%{transform:rotate(-12deg)}}
 @media(max-width:768px){.bear-swing-wrap img{width:180px}}
 
-/* RACING BEAR LOGO */
-.logo-racing{height:52px;width:auto;animation:bearRace 3s ease-in-out infinite;transition:transform .3s}
-.logo-racing:hover{animation-play-state:paused;transform:scale(1.1)}
-@keyframes bearRace{0%{transform:translateX(0) rotate(0deg)}25%{transform:translateX(3px) rotate(1deg)}50%{transform:translateX(0) rotate(0deg)}75%{transform:translateX(-3px) rotate(-1deg)}100%{transform:translateX(0) rotate(0deg)}}
-.site-header.scrolled .logo-racing{height:44px}
-@media(max-width:768px){.logo-racing{height:40px}}
+/* PEEK BEAR LOGO */
+.logo-peek{height:56px;width:auto;margin-bottom:-8px;transition:transform .3s;filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}
+.logo-peek:hover{transform:scale(1.08) translateY(-2px)}
+.site-header.scrolled .logo-peek{height:46px;margin-bottom:-6px}
+@media(max-width:768px){.logo-peek{height:44px;margin-bottom:-6px}}
 
 /* QUOTE BAR */
 .quote-bar{background:var(--dark);padding:32px 0;text-align:center}
