@@ -597,17 +597,28 @@
       '<span id="ic-cart-badge"></span>'
     ].join('');
 
-    // Insert elements: BTW | Wishlist | Cart | Afspraak(beer)
-    // The AFSPRAAK button was already replaced above with a bear
+    // Account trigger — bear with ID card and cloud tooltip
+    var accountTrigger = document.createElement('a');
+    accountTrigger.href = 'account.html';
+    accountTrigger.className = 'ic-bear-btn';
+    accountTrigger.id = 'ic-account-trigger';
+    accountTrigger.innerHTML = [
+      '<img src="assets/bear-account.png" alt="Mijn Account" class="ic-bear-icon">',
+      '<span class="ic-bear-cloud">Mijn Account</span>'
+    ].join('');
+
+    // Insert elements: BTW | Wishlist | Cart | Account | Afspraak
     var afspraakBear = headerRight.querySelector('.ic-bear-btn');
     if (afspraakBear) {
-      headerRight.insertBefore(cartTrigger, afspraakBear);
+      headerRight.insertBefore(accountTrigger, afspraakBear);
+      headerRight.insertBefore(cartTrigger, accountTrigger);
       headerRight.insertBefore(wishlistTrigger, cartTrigger);
       headerRight.insertBefore(btwEl, wishlistTrigger);
     } else {
       headerRight.appendChild(btwEl);
       headerRight.appendChild(wishlistTrigger);
       headerRight.appendChild(cartTrigger);
+      headerRight.appendChild(accountTrigger);
     }
 
     cartTrigger.addEventListener('click', openCartPanel);

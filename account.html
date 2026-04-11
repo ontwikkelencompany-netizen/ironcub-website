@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Mijn Account | The IronCub Company</title><meta name="description" content="Beheer uw IronCub account. Bekijk bestellingen, verlanglijst en persoonlijke gegevens."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg"><link rel="stylesheet" href="styles.css">
+<style>
+.account-container{max-width:900px;margin:0 auto;padding:40px 20px}
+.auth-card{max-width:440px;margin:40px auto;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden}
+.auth-header{background:var(--dark);padding:24px 32px;text-align:center}
+.auth-header img{height:80px;margin-bottom:8px}
+.auth-header h2{font-family:var(--font-head);color:#fff;font-size:1.4rem;font-weight:800;margin:0}
+.auth-header p{color:rgba(255,255,255,.6);font-size:.85rem;margin:4px 0 0}
+.auth-body{padding:32px}
+.auth-tabs{display:flex;border-bottom:2px solid var(--gray-200);margin-bottom:24px}
+.auth-tab{flex:1;text-align:center;padding:10px;font-family:var(--font-head);font-weight:700;font-size:.9rem;cursor:pointer;color:var(--gray-500);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.auth-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.auth-form .form-group{margin-bottom:16px}
+.auth-form label{display:block;font-family:var(--font-head);font-size:.8rem;font-weight:700;letter-spacing:.02em;margin-bottom:4px;color:var(--dark)}
+.auth-form input{width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:var(--radius);font-family:var(--font-body);font-size:.9rem}
+.auth-form input:focus{outline:none;border-color:var(--gold)}
+.auth-form .btn{width:100%;margin-top:8px}
+.auth-divider{text-align:center;color:var(--gray-400);font-size:.8rem;margin:16px 0;position:relative}
+.auth-divider::before,.auth-divider::after{content:'';position:absolute;top:50%;width:40%;height:1px;background:var(--gray-200)}
+.auth-divider::before{left:0}
+.auth-divider::after{right:0}
+/* Dashboard */
+.dash-header{display:flex;align-items:center;gap:16px;margin-bottom:32px;padding-bottom:16px;border-bottom:2px solid var(--gray-100)}
+.dash-avatar{width:64px;height:64px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.dash-avatar img{width:100%;height:100%;object-fit:cover}
+.dash-name{font-family:var(--font-head);font-size:1.4rem;font-weight:800}
+.dash-email{font-size:.85rem;color:var(--gray-500)}
+.dash-tabs{display:flex;gap:4px;margin-bottom:24px;flex-wrap:wrap}
+.dash-tab{padding:8px 16px;border-radius:var(--radius);font-family:var(--font-head);font-size:.85rem;font-weight:700;cursor:pointer;background:var(--gray-100);color:var(--gray-600);transition:all .2s}
+.dash-tab.active{background:var(--gold);color:#fff}
+.dash-panel{display:none}
+.dash-panel.active{display:block}
+.order-card{border:1px solid var(--gray-200);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.order-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.order-number{font-family:var(--font-head);font-weight:800;font-size:1rem}
+.order-status{padding:4px 10px;border-radius:12px;font-size:.75rem;font-weight:600}
+.order-status.paid{background:#dcfce7;color:#166534}
+.order-status.processing{background:#dbeafe;color:#1e40af}
+.order-status.shipped{background:#e0e7ff;color:#3730a3}
+.order-status.completed{background:#dcfce7;color:#166534}
+.order-items{font-size:.85rem;color:var(--gray-600)}
+.order-total{font-family:var(--font-head);font-weight:800;color:var(--dark);margin-top:8px}
+.empty-state{text-align:center;padding:48px 24px;color:var(--gray-400)}
+.empty-state img{height:80px;margin-bottom:12px;opacity:.5}
+.empty-state p{font-size:.9rem}
+.profile-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.profile-form .form-group{margin-bottom:16px}
+.profile-form label{display:block;font-family:var(--font-head);font-size:.8rem;font-weight:700;margin-bottom:4px}
+.profile-form input{width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:var(--radius);font-size:.9rem}
+@media(max-width:768px){.profile-form .form-row{grid-template-columns:1fr}.dash-header{flex-direction:column;text-align:center}}
+</style>
+</head><body>
+<div id="announce-bar"></div><div id="site-header"></div>
+
+<div class="account-container">
+  <!-- AUTH: Login/Register (shown when not logged in) -->
+  <div id="authSection">
+    <div class="auth-card">
+      <div class="auth-header">
+        <img src="assets/bear-account.png" alt="IronCub Account">
+        <h2>Mijn IronCub</h2>
+        <p>Beheer uw bestellingen en verlanglijst</p>
+      </div>
+      <div class="auth-body">
+        <div class="auth-tabs">
+          <div class="auth-tab active" onclick="switchAuthTab('login')">INLOGGEN</div>
+          <div class="auth-tab" onclick="switchAuthTab('register')">REGISTREREN</div>
+        </div>
+
+        <!-- Login -->
+        <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+          <div class="form-group"><label>E-mail</label><input type="email" name="email" required placeholder="uw@email.nl"></div>
+          <div class="form-group"><label>Wachtwoord</label><input type="password" name="password" required placeholder="Minimaal 8 tekens"></div>
+          <button type="submit" class="btn btn-cta">Inloggen</button>
+        </form>
+
+        <!-- Register -->
+        <form id="registerForm" class="auth-form" style="display:none" onsubmit="handleRegister(event)">
+          <div class="form-group"><label>Naam *</label><input type="text" name="name" required placeholder="Uw volledige naam"></div>
+          <div class="form-group"><label>E-mail *</label><input type="email" name="email" required placeholder="uw@email.nl"></div>
+          <div class="form-group"><label>Wachtwoord *</label><input type="password" name="password" required placeholder="Minimaal 8 tekens" minlength="8"></div>
+          <div class="form-group"><label>Telefoon</label><input type="tel" name="phone" placeholder="+31 6 ..."></div>
+          <div class="auth-divider">Zakelijk? (optioneel)</div>
+          <div class="form-group"><label>Bedrijfsnaam</label><input type="text" name="company" placeholder="Uw bedrijf"></div>
+          <div class="form-group"><label>KvK-nummer</label><input type="text" name="kvk" placeholder="12345678"></div>
+          <div class="form-group"><label>BTW-nummer</label><input type="text" name="btwNummer" placeholder="NL123456789B01"></div>
+          <button type="submit" class="btn btn-cta">Account aanmaken</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD: Shown when logged in -->
+  <div id="dashSection" style="display:none">
+    <div class="dash-header">
+      <div class="dash-avatar"><img src="assets/bear-account.png" alt=""></div>
+      <div>
+        <div class="dash-name" id="dashName">—</div>
+        <div class="dash-email" id="dashEmail">—</div>
+      </div>
+      <button class="btn btn-outline-dark btn-sm" style="margin-left:auto" onclick="handleLogout()">Uitloggen</button>
+    </div>
+
+    <div class="dash-tabs">
+      <div class="dash-tab active" onclick="switchDashTab('orders')">Bestellingen</div>
+      <div class="dash-tab" onclick="switchDashTab('wishlist')">Verlanglijst</div>
+      <div class="dash-tab" onclick="switchDashTab('profile')">Mijn gegevens</div>
+    </div>
+
+    <!-- Orders -->
+    <div class="dash-panel active" id="panel-orders">
+      <div id="ordersList" class="empty-state">
+        <img src="assets/bear-account.png" alt="">
+        <p>Nog geen bestellingen. Tijd om te shoppen!</p>
+        <a href="verkoop.html" class="btn btn-cta btn-sm" style="margin-top:12px">Bekijk producten</a>
+      </div>
+    </div>
+
+    <!-- Wishlist -->
+    <div class="dash-panel" id="panel-wishlist">
+      <div id="wishlistItems" class="empty-state">
+        <img src="assets/bear-heart-wishlist.png" alt="" style="height:80px">
+        <p>Je verlanglijst is leeg. Klik op het beertje met het hartje bij een product!</p>
+        <a href="verkoop.html" class="btn btn-cta btn-sm" style="margin-top:12px">Bekijk producten</a>
+      </div>
+    </div>
+
+    <!-- Profile -->
+    <div class="dash-panel" id="panel-profile">
+      <form class="profile-form" id="profileForm" onsubmit="handleProfileUpdate(event)">
+        <div class="form-row">
+          <div class="form-group"><label>Naam</label><input type="text" name="name" id="profName"></div>
+          <div class="form-group"><label>E-mail</label><input type="email" name="email" id="profEmail" disabled></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Telefoon</label><input type="tel" name="phone" id="profPhone"></div>
+          <div class="form-group"><label>Bedrijf</label><input type="text" name="company" id="profCompany"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>KvK-nummer</label><input type="text" name="kvk" id="profKvk"></div>
+          <div class="form-group"><label>BTW-nummer</label><input type="text" name="btwNummer" id="profBtw"></div>
+        </div>
+        <button type="submit" class="btn btn-cta">Opslaan</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="components.js"></script>
+<script src="main.js"></script>
+<script src="winkel.js"></script>
+<script>
+var API = 'https://ironcub-shop-production.up.railway.app';
+var token = null;
+var customer = null;
+
+// Check stored token
+try { token = document.cookie.split(';').find(c => c.trim().startsWith('ic_token=')); if(token) token = token.split('=')[1]; } catch(e){}
+
+if (token) loadDashboard();
+
+function switchAuthTab(tab) {
+  document.querySelectorAll('.auth-tab').forEach(function(t,i){ t.classList.toggle('active', (tab==='login'?i===0:i===1)); });
+  document.getElementById('loginForm').style.display = tab==='login'?'block':'none';
+  document.getElementById('registerForm').style.display = tab==='register'?'block':'none';
+}
+
+function switchDashTab(tab) {
+  document.querySelectorAll('.dash-tab').forEach(function(t){ t.classList.toggle('active', t.textContent.toLowerCase().includes(tab.substring(0,4))); });
+  document.querySelectorAll('.dash-panel').forEach(function(p){ p.classList.toggle('active', p.id === 'panel-'+tab); });
+}
+
+function handleLogin(e) {
+  e.preventDefault();
+  var d = new FormData(e.target);
+  fetch(API+'/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email:d.get('email'),password:d.get('password')}) })
+    .then(function(r){ if(!r.ok) throw new Error('Login mislukt'); return r.json(); })
+    .then(function(data){ token=data.token; document.cookie='ic_token='+token+';path=/;max-age=86400'; loadDashboard(); })
+    .catch(function(err){ alert(err.message); });
+}
+
+function handleRegister(e) {
+  e.preventDefault();
+  var d = new FormData(e.target);
+  var body = {name:d.get('name'),email:d.get('email'),password:d.get('password')};
+  if(d.get('phone')) body.phone=d.get('phone');
+  if(d.get('company')) body.company=d.get('company');
+  if(d.get('kvk')) body.kvk=d.get('kvk');
+  if(d.get('btwNummer')) body.btwNummer=d.get('btwNummer');
+  fetch(API+'/api/auth/register', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })
+    .then(function(r){ if(!r.ok) throw new Error('Registratie mislukt'); return r.json(); })
+    .then(function(data){ token=data.token; document.cookie='ic_token='+token+';path=/;max-age=86400'; loadDashboard(); })
+    .catch(function(err){ alert(err.message); });
+}
+
+function loadDashboard() {
+  fetch(API+'/api/auth/me', { headers:{'Authorization':'Bearer '+token} })
+    .then(function(r){ if(!r.ok) throw new Error('Sessie verlopen'); return r.json(); })
+    .then(function(data){
+      customer = data;
+      document.getElementById('authSection').style.display='none';
+      document.getElementById('dashSection').style.display='block';
+      document.getElementById('dashName').textContent=data.name;
+      document.getElementById('dashEmail').textContent=data.email;
+      document.getElementById('profName').value=data.name||'';
+      document.getElementById('profEmail').value=data.email||'';
+      document.getElementById('profPhone').value=data.phone||'';
+      document.getElementById('profCompany').value=data.company||'';
+      document.getElementById('profKvk').value=data.kvk||'';
+      document.getElementById('profBtw').value=data.btwNummer||'';
+    })
+    .catch(function(){ token=null; document.cookie='ic_token=;path=/;max-age=0'; });
+}
+
+function handleLogout() {
+  token=null; customer=null;
+  document.cookie='ic_token=;path=/;max-age=0';
+  document.getElementById('authSection').style.display='block';
+  document.getElementById('dashSection').style.display='none';
+}
+
+function handleProfileUpdate(e) {
+  e.preventDefault();
+  var d = new FormData(e.target);
+  fetch(API+'/api/auth/me', { method:'PUT', headers:{'Content-Type':'application/json','Authorization':'Bearer '+token}, body:JSON.stringify({name:d.get('name'),phone:d.get('phone'),company:d.get('company'),kvk:d.get('kvk'),btwNummer:d.get('btwNummer')}) })
+    .then(function(r){ if(!r.ok) throw new Error('Opslaan mislukt'); return r.json(); })
+    .then(function(){ alert('Gegevens opgeslagen!'); })
+    .catch(function(err){ alert(err.message); });
+}
+</script>
+</body></html>
