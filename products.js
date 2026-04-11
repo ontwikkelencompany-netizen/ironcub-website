@@ -195,6 +195,34 @@ const MACHINES = [
     branches: ["bouw", "agrarisch", "sloop", "wegenbouw"],
     specs: ["Kubota D1105", "Zwaar", "ROPS/TOPS"],
     desc: "Meer vermogen voor zwaardere taken. Ideaal voor bouw en agrarisch."
+  },
+  {
+    id: "htv1000",
+    detailUrl: "machines/htv1000.html",
+    name: "HTV 1000",
+    subtitle: "Skid Steer Loader (Kubota)",
+    price: 16612,
+    priceDisplay: "\u20ac16.612",
+    poa: false,
+    img: "assets/htv1000-product.jpg",
+    badge: "NIEUW",
+    badgeClass: "badge-pop",
+    fuel: "diesel",
+    steering: "schrank",
+    powerKw: 17.1,
+    powerHp: 23,
+    speedKmh: 4.5,
+    pushPullKg: 780,
+    breakoutKg: 900,
+    weightKg: 1538,
+    ratedLoadKg: 400,
+    maxLoadKg: 780,
+    bucketM3: 0.2,
+    widthMm: 980,
+    engine: "Kubota D1105-E4",
+    branches: ["bouw", "agrarisch", "sloop", "wegenbouw", "hoveniers"],
+    specs: ["Kubota D1105-E4", "Rupsbanden", "Euro 5", "CE"],
+    desc: "Onze krachtigste loader. Kubota D1105 motor, 1538 kg, verticale hefstructuur. De rode krachtpatser."
   }
 ];
 
