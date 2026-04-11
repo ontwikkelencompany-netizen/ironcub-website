@@ -92,7 +92,7 @@ const MACHINES = [
     price: null,
     priceDisplay: "Prijs op aanvraag",
     poa: true,
-    img: "assets/product-white.jpg",
+    img: "assets/vth-480w.jpg",
     badge: "Diesel",
     badgeClass: "badge-diesel",
     fuel: "diesel",
@@ -107,7 +107,7 @@ const MACHINES = [
     maxLoadKg: 480,
     bucketM3: 0.15,
     widthMm: 1050,
-    engine: "Diesel (China)",
+    engine: "Diesel",
     branches: ["bouw", "agrarisch", "sloop", "wegenbouw"],
     specs: ["Diesel", "Wielen", "ROPS/TOPS"],
     desc: "Diesel variant voor langdurig en intensief gebruik zonder stroomaansluiting."
