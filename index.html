@@ -1,9 +1,35 @@
 <!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>The IronCub Company — Officieel Rippa Dealer Nederland</title><meta name="description" content="Verkoop, Verhuur, Lease, Demodagen en Service van Skid Steer Loaders."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg"><link rel="stylesheet" href="styles.css"></head><body>
 <div id="announce-bar"></div><div id="site-header"></div>
-<section class="hero"><div class="hero-bg"><img src="assets/showroom-1.jpg" alt="IronCub Showroom" class="hero-bg-img"></div><div class="hero-overlay"></div>
-<div class="hero-content"><div class="hero-text"><div class="hero-badge-row"><img src="assets/rippa-logo.png" alt="Rippa" class="hero-rippa"><span class="hero-dealer">Officieel Dealer NL</span></div><h1 class="hero-title">BUILT TO<br><span class="hero-accent">PERFORM</span></h1><p class="hero-sub">Skid Steer Loaders &amp; Compact Equipment voor professionals.<br>Verkoop &bull; Verhuur &bull; Lease &bull; Demodagen &bull; Service</p><div class="hero-ctas"><a href="verkoop.html" class="btn btn-cta btn-lg">Bekijk Machines</a><a href="demodagen.html" class="btn btn-outline-light btn-lg">Plan een Demo</a></div></div>
-<div class="hero-mascot"><img src="assets/mascot-hero.jpg" alt="The IronCub Bear"></div></div>
-<div class="hero-scroll"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+<section class="hero">
+<div class="hero-bg">
+<video id="heroVideo" autoplay muted loop playsinline poster="assets/hero-poster.jpg" class="hero-bg-video">
+<source src="assets/hero-video.mp4" type="video/mp4">
+</video>
+</div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<div class="hero-text">
+<div class="hero-badge-row"><img src="assets/rippa-logo.png" alt="Rippa" class="hero-rippa"><span class="hero-dealer">Officieel Dealer NL</span></div>
+<h1 class="hero-title">BUILT TO<br><span class="hero-accent">PERFORM</span></h1>
+<p class="hero-sub">Skid Steer Loaders &amp; Compact Equipment voor professionals.<br>Verkoop &bull; Verhuur &bull; Lease &bull; Demodagen &bull; Service</p>
+<div class="hero-ctas"><a href="verkoop.html" class="btn btn-cta btn-lg">Bekijk Machines</a><a href="demodagen.html" class="btn btn-outline-light btn-lg">Plan een Demo</a></div>
+</div>
+<div class="hero-mascot"><img src="assets/mascot-hero.jpg" alt="The IronCub Bear"></div>
+</div>
+<button class="hero-sound-toggle" id="heroSoundToggle" aria-label="Geluid aan/uit">
+<svg class="sound-off-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+<svg class="sound-on-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+</button>
+<div class="hero-scroll"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+</section>
+<script>
+document.getElementById('heroSoundToggle').addEventListener('click', function() {
+  var v = document.getElementById('heroVideo');
+  v.muted = !v.muted;
+  this.querySelector('.sound-off-icon').style.display = v.muted ? 'block' : 'none';
+  this.querySelector('.sound-on-icon').style.display = v.muted ? 'none' : 'block';
+});
+</script>
 <div class="stats-bar"><div class="container stats-inner"><div class="stat"><span class="stat-num">7</span><span class="stat-label">Machines</span></div><div class="stat-div"></div><div class="stat"><span class="stat-num">20+</span><span class="stat-label">Aanbouwdelen</span></div><div class="stat-div"></div><div class="stat"><span class="stat-num">5</span><span class="stat-label">Diensten</span></div><div class="stat-div"></div><div class="stat"><span class="stat-num">CE</span><span class="stat-label">Gecertificeerd</span></div></div></div>
 <section class="featured-section"><div class="container"><div class="section-head"><h2>POPULAIRE MACHINES</h2><p>Direct leverbaar vanuit onze showroom in Middelharnis</p></div>
 <div class="featured-grid"><a href="verkoop.html#vth360" class="featured-card"><div class="featured-img"><img src="assets/vth-360.jpg" alt="VTH 360" loading="lazy"><span class="featured-badge">Compact</span></div><div class="featured-body"><h3>VTH 360</h3><p>Skid Steer Loader</p><span class="featured-price">&euro;5.824 <small>ex BTW</small></span></div></a>
