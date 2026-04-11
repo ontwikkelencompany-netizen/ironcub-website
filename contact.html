@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact | The IronCub Company</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg"><link rel="stylesheet" href="styles.css"></head><body>
+<div id="announce-bar"></div><div id="site-header"></div>
+<section class="page-hero"><div class="page-hero-bg"><img src="assets/showroom-3.jpg" alt="Contact"></div><div class="page-hero-overlay"></div><div class="container page-hero-content"><h1>CONTACT</h1><p>Interesse? Neem contact op voor advies, een offerte of een demo.</p></div></section>
+<section class="content-section"><div class="container">
+<div class="contact-layout">
+<div class="contact-info-col">
+<div class="contact-block"><h3>Verkoop &amp; Offertes</h3><a href="mailto:verkoop@ironcub.company" class="contact-email">verkoop@ironcub.company</a><p>Prijsopgaven, productadvies, aankopen</p></div>
+<div class="contact-block"><h3>Service &amp; Ondersteuning</h3><a href="mailto:service@ironcub.company" class="contact-email">service@ironcub.company</a><p>Onderhoud, reparaties, onderdelen</p></div>
+<div class="contact-block"><h3>Algemeen</h3><a href="mailto:info@ironcub.company" class="contact-email">info@ironcub.company</a><p>Overige vragen, samenwerking</p></div>
+<div class="contact-block"><h3>Showroom</h3><p><strong>De Hofjes 44</strong><br>Middelharnis<br>Zuid-Holland</p></div>
+</div>
+<form class="contact-form" id="contactForm"><h2>Stuur ons een bericht</h2><p class="form-sub">Wij nemen zo snel mogelijk contact met u op.</p>
+<div class="form-row"><div class="form-group"><label for="naam">Naam *</label><input type="text" id="naam" required placeholder="Uw naam"></div><div class="form-group"><label for="bedrijf">Bedrijf</label><input type="text" id="bedrijf" placeholder="Bedrijfsnaam"></div></div>
+<div class="form-row"><div class="form-group"><label for="email">E-mail *</label><input type="email" id="email" required placeholder="uw@email.nl"></div><div class="form-group"><label for="telefoon">Telefoon</label><input type="tel" id="telefoon" placeholder="06-12345678"></div></div>
+<div class="form-group"><label for="interesse">Interesse</label><select id="interesse"><option value="">Selecteer...</option><optgroup label="Verkoop"><option>Machine kopen</option><option>Aanbouwdeel kopen</option><option>Premium levering</option></optgroup><optgroup label="Diensten"><option>Verhuur</option><option>Lease</option><option>Demo afspraak</option><option>Service / Onderhoud</option><option>Onderdelen</option></optgroup><optgroup label="Overig"><option>Dealer worden</option><option>Anders</option></optgroup></select></div>
+<div class="form-group"><label for="bericht">Bericht</label><textarea id="bericht" rows="5" placeholder="Uw vraag of opmerking..."></textarea></div>
+<button type="submit" class="btn btn-cta btn-lg btn-full">Verstuur Bericht</button></form>
+</div></div></section>
+<div id="site-footer"></div><script src="components.js"></script>
+<script>document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();var b=this.querySelector('button[type="submit"]');b.textContent='Verzonden!';b.disabled=true;setTimeout(function(){b.textContent='Verstuur Bericht';b.disabled=false},3000)})</script>
+</body></html>
