@@ -515,10 +515,19 @@ ul{list-style:none}
 @media(max-width:768px){.bear-swing-wrap img{width:180px}}
 
 /* PEEK BEAR LOGO */
+.logo-link{position:relative;display:flex;align-items:flex-end}
 .logo-peek{height:56px;width:auto;margin-bottom:-8px;transition:transform .3s;filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}
 .logo-peek:hover{transform:scale(1.08) translateY(-2px)}
 .site-header.scrolled .logo-peek{height:46px;margin-bottom:-6px}
-@media(max-width:768px){.logo-peek{height:44px;margin-bottom:-6px}}
+
+/* Thought bubble */
+.thought-bubble{position:absolute;top:-6px;left:52px;background:#fff;color:#1a1a1a;font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:.04em;padding:4px 10px;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.12);white-space:nowrap;pointer-events:none;opacity:0;transform:translateY(4px) scale(.9);transition:opacity .25s,transform .25s}
+.thought-bubble::before{content:'';position:absolute;bottom:-6px;left:8px;width:7px;height:7px;background:#fff;border-radius:50%;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.thought-bubble::after{content:'';position:absolute;bottom:-11px;left:4px;width:5px;height:5px;background:#fff;border-radius:50%;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.logo-link:hover .thought-bubble{opacity:1;transform:translateY(0) scale(1)}
+.site-header.scrolled .thought-bubble{top:-4px;left:44px;font-size:10px;padding:3px 8px}
+@media(max-width:768px){.thought-bubble{top:-4px;left:40px;font-size:10px;padding:3px 8px}
+.logo-peek{height:44px;margin-bottom:-6px}}
 
 /* QUOTE BAR */
 .quote-bar{background:var(--dark);padding:32px 0;text-align:center}
