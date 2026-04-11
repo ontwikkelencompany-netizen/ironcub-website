@@ -227,27 +227,33 @@
       '.ic-cart-empty p{font-family:Inter,sans-serif;font-size:14px;line-height:1.5;margin:0 0 8px}',
       '.ic-cart-empty strong{font-family:"Barlow Condensed",sans-serif;font-size:20px;color:' + DARK + ';display:block;margin-bottom:8px}',
 
-      /* ---- Cart Icon in Header ---- */
-      '#ic-cart-trigger{display:flex;align-items:center;gap:6px;cursor:pointer;background:none;border:none;',
-      'padding:6px 10px;border-radius:6px;position:relative;transition:background .15s;margin-right:8px}',
-      '#ic-cart-trigger:hover{background:rgba(232,131,26,.1)}',
-      '#ic-cart-badge{position:absolute;top:0;right:0;background:' + ORANGE + ';color:#fff;border-radius:50%;',
-      'width:18px;height:18px;font-size:10px;font-family:Inter,sans-serif;font-weight:700;',
-      'display:flex;align-items:center;justify-content:center;line-height:1;pointer-events:none;',
-      'transform:translate(4px,-4px);display:none}',
+      /* ---- Bear buttons in Header ---- */
+      '.ic-bear-btn{position:relative;display:flex;align-items:flex-end;cursor:pointer;background:none;border:none;padding:0;margin:0 2px}',
+      '.ic-bear-icon{height:56px;width:auto;margin-bottom:-8px;transition:transform .3s;filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}',
+      '.ic-bear-btn:hover .ic-bear-icon{transform:scale(1.08) translateY(-2px)}',
+      '.ic-bear-cloud{position:absolute;top:-18px;left:50%;transform:translateX(-50%) translateY(6px) scale(.8);',
+      'background:#fff;color:#1a1a1a;font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:800;',
+      'letter-spacing:.05em;padding:5px 12px;white-space:nowrap;pointer-events:none;opacity:0;',
+      'border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;box-shadow:0 2px 8px rgba(0,0,0,.12);',
+      'transition:opacity .3s,transform .3s;z-index:10}',
+      '.ic-bear-cloud::before{content:"";position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);',
+      'width:8px;height:8px;background:#fff;border-radius:50%;box-shadow:0 1px 2px rgba(0,0,0,.08)}',
+      '.ic-bear-cloud::after{content:"";position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);',
+      'width:5px;height:5px;background:#fff;border-radius:50%;box-shadow:0 1px 2px rgba(0,0,0,.06)}',
+      '.ic-bear-btn:hover .ic-bear-cloud{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}',
+
+      '#ic-cart-badge{position:absolute;top:2px;right:-2px;background:' + ORANGE + ';color:#fff;border-radius:50%;',
+      'width:20px;height:20px;font-size:10px;font-family:Inter,sans-serif;font-weight:700;',
+      'display:flex;align-items:center;justify-content:center;line-height:1;pointer-events:none;display:none;z-index:11}',
       '#ic-cart-badge.has-items{display:flex}',
 
-      '#ic-wishlist-badge{background:' + BLUE + ';color:#fff;border-radius:50%;',
-      'width:18px;height:18px;font-size:10px;font-family:Inter,sans-serif;font-weight:700;',
-      'display:none;align-items:center;justify-content:center;line-height:1;pointer-events:none;}',
+      '#ic-wishlist-badge{position:absolute;top:2px;right:-2px;background:' + BLUE + ';color:#fff;border-radius:50%;',
+      'width:20px;height:20px;font-size:10px;font-family:Inter,sans-serif;font-weight:700;',
+      'display:none;align-items:center;justify-content:center;line-height:1;pointer-events:none;z-index:11}',
       '#ic-wishlist-badge.has-items{display:flex}',
-      '#ic-wishlist-trigger{display:flex;align-items:center;gap:4px;cursor:pointer;background:none;border:none;',
-      'padding:6px 8px;border-radius:6px;position:relative;transition:background .15s;margin-right:4px}',
-      '#ic-wishlist-trigger:hover{background:rgba(27,107,154,.1)}',
 
       /* ---- BTW toggle in header ---- */
       '#ic-header-btw{display:flex;align-items:center;gap:6px;margin-right:8px}',
-      '#ic-header-btw span{font-size:11px;font-family:Inter,sans-serif;color:#888;font-weight:500;white-space:nowrap}',
 
       /* ---- Recommendation Panel ---- */
       '#ic-rec-panel{position:fixed;top:0;right:0;height:100%;width:min(420px,100vw);background:#fff;z-index:9999;',
@@ -298,10 +304,15 @@
       '.ic-delivery-banner svg{flex-shrink:0;opacity:.9}',
 
       /* ---- Mobile responsive ---- */
+      '@media(max-width:768px){',
+      '.ic-bear-icon{height:40px;margin-bottom:-6px}',
+      '.ic-bear-cloud{font-size:9px;padding:3px 8px;top:-12px}',
+      '}',
       '@media(max-width:480px){',
       '#ic-cart-panel,#ic-rec-panel{width:100vw}',
       '.ic-rec-grid{grid-template-columns:1fr 1fr}',
       '#ic-header-btw{display:none}',
+      '.ic-bear-icon{height:32px;margin-bottom:-4px}',
       '}'
     ].join('');
 
@@ -364,7 +375,6 @@
         '<button id="ic-cart-close" aria-label="Sluit winkelwagen">&times;</button>',
       '</div>',
       '<div id="ic-btw-bar">',
-        '<span>Prijs:</span>',
         '<div class="ic-toggle" id="ic-panel-btw-toggle">',
           '<span class="ic-toggle-btn ' + (btwMode === 'excl' ? 'active' : '') + '" data-val="excl">Excl. BTW</span>',
           '<span class="ic-toggle-btn ' + (btwMode === 'incl' ? 'active' : '') + '" data-val="incl">Incl. BTW</span>',
@@ -538,40 +548,54 @@
     var headerRight = document.querySelector('.header-right');
     if (!headerRight) return;
 
-    // BTW toggle for header
+    // Hide Rippa badge in header (already shown elsewhere)
+    var rippaBadge = headerRight.querySelector('.rippa-badge');
+    if (rippaBadge) rippaBadge.style.display = 'none';
+
+    // BTW toggle for header (no "Prijs:" label)
     var btwEl = document.createElement('div');
     btwEl.id = 'ic-header-btw';
     btwEl.innerHTML = [
-      '<span>Prijs:</span>',
       '<div class="ic-toggle" id="ic-header-btw-toggle">',
         '<span class="ic-toggle-btn ' + (btwMode === 'excl' ? 'active' : '') + '" data-val="excl">Excl. BTW</span>',
         '<span class="ic-toggle-btn ' + (btwMode === 'incl' ? 'active' : '') + '" data-val="incl">Incl. BTW</span>',
       '</div>'
     ].join('');
 
-    // Wishlist trigger
+    // Wishlist trigger — bear holding heart with cloud tooltip
     var wishlistTrigger = document.createElement('button');
     wishlistTrigger.id = 'ic-wishlist-trigger';
+    wishlistTrigger.className = 'ic-bear-btn';
     wishlistTrigger.setAttribute('aria-label', 'Verlanglijst');
     wishlistTrigger.innerHTML = [
-      pawSVG(20, false),
+      '<img src="assets/bear-heart-wishlist.png" alt="Verlanglijst" class="ic-bear-icon">',
+      '<span class="ic-bear-cloud">Verlanglijstje</span>',
       '<span id="ic-wishlist-badge"></span>'
     ].join('');
 
-    // Cart trigger
+    // Cart trigger — bear with shopping cart and cloud tooltip
     var cartTrigger = document.createElement('button');
     cartTrigger.id = 'ic-cart-trigger';
+    cartTrigger.className = 'ic-bear-btn';
     cartTrigger.setAttribute('aria-label', 'Winkelwagen openen');
     cartTrigger.innerHTML = [
-      cartSVG(22),
+      '<img src="assets/bear-cart-shop.png" alt="Winkelwagen" class="ic-bear-icon">',
+      '<span class="ic-bear-cloud">Winkelwagen</span>',
       '<span id="ic-cart-badge"></span>'
     ].join('');
 
-    // Insert before the first child (AFSPRAAK button)
-    var firstChild = headerRight.firstChild;
-    headerRight.insertBefore(btwEl, firstChild);
-    headerRight.insertBefore(wishlistTrigger, firstChild);
-    headerRight.insertBefore(cartTrigger, firstChild);
+    // Insert before the AFSPRAAK button
+    var afspraakBtn = headerRight.querySelector('.header-cta');
+    if (afspraakBtn) {
+      headerRight.insertBefore(cartTrigger, afspraakBtn);
+      headerRight.insertBefore(wishlistTrigger, cartTrigger);
+      headerRight.insertBefore(btwEl, wishlistTrigger);
+    } else {
+      var firstChild = headerRight.firstChild;
+      headerRight.insertBefore(btwEl, firstChild);
+      headerRight.insertBefore(wishlistTrigger, firstChild);
+      headerRight.insertBefore(cartTrigger, firstChild);
+    }
 
     cartTrigger.addEventListener('click', openCartPanel);
     wishlistTrigger.addEventListener('click', function () {
