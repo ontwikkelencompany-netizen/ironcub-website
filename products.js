@@ -120,7 +120,7 @@ const MACHINES = [
     price: null,
     priceDisplay: "Prijs op aanvraag",
     poa: true,
-    img: "assets/rippa-compact-track.webp",
+    img: "assets/vth-480w-crawler.jpg",
     badge: "Kubota",
     badgeClass: "badge-diesel",
     fuel: "diesel",
