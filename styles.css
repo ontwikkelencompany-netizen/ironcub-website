@@ -541,3 +541,9 @@ ul{list-style:none}
 .pillar-bear{width:80px;height:80px;object-fit:contain;transition:transform .3s}
 .pillar-card:hover .pillar-bear{transform:scale(1.15) rotate(-5deg)}
 .pillar-icon{width:auto;height:auto;background:none;border-radius:0;margin-bottom:12px}
+
+/* BEAR WALL-BREAK LEFT (white section) */
+.bear-wallbreak-left{position:absolute;left:-60px;top:50%;transform:translateY(-50%);width:240px;z-index:5;filter:drop-shadow(4px 4px 20px rgba(0,0,0,.2));transition:transform .3s;pointer-events:none}
+.bear-wallbreak-left:hover{transform:translateY(-50%) scale(1.05)}
+@media(max-width:1024px){.bear-wallbreak-left{width:180px;left:-30px}}
+@media(max-width:768px){.bear-wallbreak-left{display:none}}
