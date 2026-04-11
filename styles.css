@@ -548,3 +548,11 @@ ul{list-style:none}
 .bear-wallbreak-left:hover{transform:translateY(-50%) scale(1.05)}
 @media(max-width:1024px){.bear-wallbreak-left{width:180px;left:-30px}}
 @media(max-width:768px){.bear-wallbreak-left{display:none}}
+
+/* SPARKLE TEXT EFFECT */
+.sparkle-text{position:relative;display:inline-block;color:var(--gold);font-weight:800;letter-spacing:.04em}
+.sparkle-text.sparkle-active{animation:sparkleGlow .8s ease-in-out}
+@keyframes sparkleGlow{0%{text-shadow:0 0 0 transparent;transform:scale(1)}25%{text-shadow:0 0 8px rgba(200,164,78,.6),0 0 16px rgba(200,164,78,.3);transform:scale(1.05)}50%{text-shadow:0 0 12px rgba(200,164,78,.8),0 0 24px rgba(200,164,78,.4),0 0 40px rgba(200,164,78,.2);transform:scale(1.08)}75%{text-shadow:0 0 8px rgba(200,164,78,.6),0 0 16px rgba(200,164,78,.3);transform:scale(1.05)}100%{text-shadow:0 0 0 transparent;transform:scale(1)}}
+.sparkle-text::after{content:'';position:absolute;top:-2px;left:-4px;right:-4px;bottom:-2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);background-size:200% 100%;opacity:0;border-radius:2px}
+.sparkle-text.sparkle-active::after{opacity:1;animation:sparkleShine .8s ease-in-out}
+@keyframes sparkleShine{0%{background-position:200% 0}100%{background-position:-200% 0}}
