@@ -572,3 +572,30 @@ ul{list-style:none}
 .sparkle-text::after{content:'';position:absolute;top:-2px;left:-4px;right:-4px;bottom:-2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);background-size:200% 100%;opacity:0;border-radius:2px}
 .sparkle-text.sparkle-active::after{opacity:1;animation:sparkleShine .8s ease-in-out}
 @keyframes sparkleShine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* AFSPRAAK PAGE */
+.afspraak-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+.afspraak-form .form-group{margin-bottom:20px}
+.afspraak-form label{display:block;font-family:var(--font-head);font-size:.85rem;font-weight:700;letter-spacing:.02em;margin-bottom:6px;color:var(--dark)}
+.afspraak-form input,.afspraak-form select,.afspraak-form textarea{width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:var(--radius);font-family:var(--font-body);font-size:.9rem;transition:border-color .2s}
+.afspraak-form input:focus,.afspraak-form select:focus,.afspraak-form textarea:focus{outline:none;border-color:var(--gold)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.radio-group{display:flex;flex-wrap:wrap;gap:8px}
+.radio-option{display:flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid var(--gray-300);border-radius:var(--radius);cursor:pointer;font-size:.85rem;transition:all .2s}
+.radio-option:has(input:checked){border-color:var(--gold);background:rgba(232,131,26,.06)}
+.radio-option input{accent-color:var(--gold)}
+.btn-full{width:100%;text-align:center;padding:14px;font-size:1rem}
+.afspraak-success{text-align:center;padding:48px 24px}
+.afspraak-success h3{font-family:var(--font-head);font-size:1.5rem;font-weight:900;margin:16px 0 8px}
+.afspraak-success p{color:var(--gray-600)}
+.info-card{padding:20px;border:1px solid var(--gray-200);border-radius:var(--radius);margin-bottom:16px}
+.info-card h3{font-family:var(--font-head);font-size:1.1rem;font-weight:800;margin-bottom:8px}
+.info-card p{font-size:.9rem;color:var(--gray-600);line-height:1.6}
+.info-card a{color:var(--gold);text-decoration:none}
+.info-card a:hover{text-decoration:underline}
+.hours-table{width:100%;font-size:.85rem}
+.hours-table td{padding:6px 0;border-bottom:1px solid var(--gray-100)}
+.hours-table td:last-child{text-align:right;color:var(--gray-500)}
+.hours-table .open td:last-child{color:var(--gold);font-weight:600}
+.hours-table .demo td:last-child{color:var(--gold);font-weight:700}
+@media(max-width:768px){.afspraak-layout{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
