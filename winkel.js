@@ -83,12 +83,14 @@
     return null;
   }
 
-  function addToCart(productId, name, price, imageUrl) {
+  function addToCart(productId, name, price, imageUrl, originalPrice) {
     var item = findCartItem(productId);
     if (item) {
       item.quantity++;
     } else {
-      cart.push({ productId: productId, name: name, price: price, quantity: 1, imageUrl: imageUrl || '' });
+      var entry = { productId: productId, name: name, price: price, quantity: 1, imageUrl: imageUrl || '' };
+      if (originalPrice && originalPrice > price) entry.originalPrice = originalPrice;
+      cart.push(entry);
     }
     persistCartEvent('cart_add', productId, name);
     updateCartBadge();
@@ -728,7 +730,7 @@
             img,
             '<div class="ic-rec-card-body">',
               '<p class="ic-rec-card-name">' + (p.name || 'Product') + '</p>',
-              '<p class="ic-rec-card-price">' + fmtPrice(p.priceExBtw || 0) + ' ex BTW</p>',
+              '<p class="ic-rec-card-price">' + (p.originalPrice ? '<span style="text-decoration:line-through;color:#999;font-weight:400;margin-right:4px">' + fmtPrice(p.originalPrice) + '</span>' : '') + fmtPrice(p.priceExBtw || 0) + ' ex BTW</p>',
               '<button class="ic-rec-card-add">+ In winkelwagen</button>',
             '</div>',
           '</div>'

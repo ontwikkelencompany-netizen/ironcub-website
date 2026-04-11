@@ -50,7 +50,7 @@
   <div class="checkout-header">
     <img src="assets/bear-cart-shop.png" alt="Afrekenen">
     <h1>AFREKENEN</h1>
-    <p>Rond uw bestelling veilig af via Stripe (iDEAL, Bancontact of creditcard)</p>
+    <p>Rond uw bestelling veilig af. Online betalen via iDEAL, Bancontact en creditcard is binnenkort mogelijk.</p>
   </div>
 
   <div class="checkout-grid" id="checkoutGrid">
@@ -70,6 +70,12 @@
           <div class="form-row">
             <div class="form-group"><label>KvK-nummer</label><input type="text" id="coKvk" placeholder="Optioneel"></div>
             <div class="form-group"><label>BTW-nummer</label><input type="text" id="coBtw" placeholder="Optioneel"></div>
+          </div>
+          <div class="form-group" style="margin-top:12px;padding:12px;background:#f9f5f0;border-radius:var(--radius);border:1px solid #e8d5b8">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;margin:0"><input type="checkbox" id="coCreateAccount" style="width:auto;accent-color:#C5941A"> <span style="font-size:.85rem">Account aanmaken (bestelgeschiedenis, verlanglijst, sneller afrekenen)</span></label>
+            <div id="coPasswordField" style="display:none;margin-top:10px">
+              <label>Wachtwoord *</label><input type="password" id="coPassword" placeholder="Minimaal 8 tekens" minlength="8">
+            </div>
           </div>
         </form>
       </div>
@@ -113,10 +119,10 @@
         <p style="color:var(--gray-400);font-size:.85rem">Je winkelwagen is leeg</p>
       </div>
       <div id="summaryTotals"></div>
-      <button class="btn btn-cta checkout-pay" id="payBtn" onclick="handleCheckout()">Betalen via Stripe</button>
+      <button class="btn btn-cta checkout-pay" id="payBtn" onclick="handleCheckout()">Bestelling plaatsen</button>
       <div class="checkout-secure">
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Veilige betaling via Stripe (iDEAL, Bancontact, creditcard)
+        Online betalen (iDEAL, Bancontact, creditcard) binnenkort beschikbaar
       </div>
     </div>
   </div>
@@ -171,7 +177,12 @@ function renderSummary() {
   itemsEl.innerHTML = cart.map(function(item) {
     var lineTotal = item.price * item.quantity;
     subtotal += lineTotal;
-    return '<div class="summary-item"><span class="summary-item-name">' + item.name + '</span><span class="summary-item-qty">' + item.quantity + 'x</span><span class="summary-item-price">' + formatEur(item.price) + '</span></div>';
+    var priceHtml = '';
+    if (item.originalPrice && item.originalPrice > item.price) {
+      priceHtml = '<span style="text-decoration:line-through;color:#999;font-size:.8rem;margin-right:4px">' + formatEur(item.originalPrice) + '</span>';
+    }
+    priceHtml += formatEur(item.price);
+    return '<div class="summary-item"><span class="summary-item-name">' + item.name + '</span><span class="summary-item-qty">' + item.quantity + 'x</span><span class="summary-item-price">' + priceHtml + '</span></div>';
   }).join('');
 
   var totalExBtw = subtotal + deliveryCost;
@@ -253,6 +264,11 @@ function handleCheckout() {
     btn.disabled = false;
   });
 }
+
+// Account checkbox toggle
+document.getElementById('coCreateAccount').addEventListener('change', function() {
+  document.getElementById('coPasswordField').style.display = this.checked ? 'block' : 'none';
+});
 
 // Render on load
 renderSummary();
