@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Bear ears (on head within magnifier circle) -->
+  <circle cx="6.5" cy="4.5" r="1.8"/>
+  <circle cx="13.5" cy="4.5" r="1.8"/>
+  <!-- Bear head / magnifier lens -->
+  <circle cx="10" cy="10.5" r="6.5"/>
+  <!-- Bear eyes inside magnifier -->
+  <circle cx="8.2" cy="9.5" r="0.6" fill="currentColor" stroke="none"/>
+  <circle cx="11.8" cy="9.5" r="0.6" fill="currentColor" stroke="none"/>
+  <!-- Snout -->
+  <ellipse cx="10" cy="12" rx="1.8" ry="1.1"/>
+  <!-- Nose dot -->
+  <circle cx="10" cy="11.2" r="0.4" fill="currentColor" stroke="none"/>
+  <!-- Magnifying glass handle -->
+  <line x1="15" y1="15" x2="21" y2="21" stroke-width="2" stroke-linecap="round"/>
+</svg>

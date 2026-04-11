@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+  <!-- IronCub Bear Icon Sprite Sheet -->
+  <!-- Usage: <svg><use href="bear-icons.svg#bear-cart"/></svg> -->
+
+  <symbol id="bear-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bear ears on cart -->
+    <circle cx="8" cy="4" r="2"/>
+    <circle cx="16" cy="4" r="2"/>
+    <!-- Shopping cart body -->
+    <path d="M4 8h16l-1.5 7H5.5L4 8z"/>
+    <!-- Cart legs -->
+    <line x1="8.5" y1="15" x2="8" y2="18"/>
+    <line x1="15.5" y1="15" x2="16" y2="18"/>
+    <!-- Wheels -->
+    <circle cx="8" cy="19.5" r="1"/>
+    <circle cx="16" cy="19.5" r="1"/>
+    <!-- Cart handle -->
+    <path d="M2 5h1.5l.5 3"/>
+  </symbol>
+
+  <symbol id="bear-paw-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main paw pad -->
+    <ellipse cx="12" cy="14" rx="6" ry="5.5"/>
+    <!-- Toe pads -->
+    <ellipse cx="7" cy="8.5" rx="2" ry="1.8"/>
+    <ellipse cx="12" cy="7" rx="2" ry="1.8"/>
+    <ellipse cx="17" cy="8.5" rx="2" ry="1.8"/>
+    <!-- Heart in center of paw -->
+    <path d="M12 16.5c0 0-2.5-1.8-2.5-3.2a1.5 1.5 0 0 1 2.5-1.1 1.5 1.5 0 0 1 2.5 1.1C14.5 14.7 12 16.5 12 16.5z" stroke-width="1" fill="currentColor" stroke="none"/>
+  </symbol>
+
+  <symbol id="bear-account" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bear ears -->
+    <circle cx="7" cy="5" r="2.5"/>
+    <circle cx="17" cy="5" r="2.5"/>
+    <!-- Bear head -->
+    <circle cx="12" cy="13" r="7"/>
+    <!-- Snout -->
+    <ellipse cx="12" cy="16" rx="2.5" ry="1.5"/>
+    <!-- Eyes -->
+    <circle cx="9.5" cy="11.5" r="0.8" fill="currentColor" stroke="none"/>
+    <circle cx="14.5" cy="11.5" r="0.8" fill="currentColor" stroke="none"/>
+    <!-- Nose -->
+    <circle cx="12" cy="14.5" r="0.5" fill="currentColor" stroke="none"/>
+  </symbol>
+
+  <symbol id="bear-thumbsup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Small bear head top-right -->
+    <circle cx="17.5" cy="5" r="2"/>
+    <circle cx="14.5" cy="3.5" r="1.5"/>
+    <!-- Bear eye -->
+    <circle cx="16.8" cy="4.5" r="0.4" fill="currentColor" stroke="none"/>
+    <!-- Thumb -->
+    <path d="M9 10c.5-2 2-3.5 3-3.5a1 1 0 0 1 1 1l-.5 2.5"/>
+    <!-- Fist body -->
+    <rect x="4.5" y="10" width="7" height="6" rx="1.5"/>
+    <!-- Arm -->
+    <line x1="5.5" y1="16" x2="5" y2="20"/>
+  </symbol>
+
+  <symbol id="bear-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bear ears (on head within magnifier circle) -->
+    <circle cx="6.5" cy="4.5" r="1.8"/>
+    <circle cx="13.5" cy="4.5" r="1.8"/>
+    <!-- Bear head / magnifier lens -->
+    <circle cx="10" cy="10.5" r="6.5"/>
+    <!-- Bear eyes inside magnifier -->
+    <circle cx="8.2" cy="9.5" r="0.6" fill="currentColor" stroke="none"/>
+    <circle cx="11.8" cy="9.5" r="0.6" fill="currentColor" stroke="none"/>
+    <!-- Snout -->
+    <ellipse cx="10" cy="12" rx="1.8" ry="1.1"/>
+    <!-- Nose dot -->
+    <circle cx="10" cy="11.2" r="0.4" fill="currentColor" stroke="none"/>
+    <!-- Magnifying glass handle -->
+    <line x1="15" y1="15" x2="21" y2="21" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="bear-sad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bear ears -->
+    <circle cx="7" cy="5" r="2.5"/>
+    <circle cx="17" cy="5" r="2.5"/>
+    <!-- Bear head -->
+    <circle cx="12" cy="13" r="7"/>
+    <!-- Snout -->
+    <ellipse cx="12" cy="16" rx="2.5" ry="1.5"/>
+    <!-- Sad eyes (droopy) -->
+    <path d="M8.5 10.5c.5-.8 1.5-.8 2-.3"/>
+    <path d="M13.5 10.5c.5-.8 1.5-.8 2-.3"/>
+    <!-- Sad mouth (downward arc) -->
+    <path d="M9.5 17.5c.8-1.5 4.5-1.5 5 0"/>
+    <!-- Tear drop -->
+    <path d="M9 13c0 0-.5 1-.5 1.5a.8.8 0 0 0 1.6 0C10.1 14 9 13 9 13z" fill="currentColor" stroke="none"/>
+    <!-- Nose -->
+    <circle cx="12" cy="14.8" r="0.5" fill="currentColor" stroke="none"/>
+  </symbol>
+
+  <symbol id="bear-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 5-pointed star -->
+    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+    <!-- Tiny bear paw print inside star -->
+    <ellipse cx="12" cy="13.5" rx="1.8" ry="1.5" stroke-width="1"/>
+    <circle cx="10.2" cy="11.8" r="0.5" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="11.2" r="0.5" fill="currentColor" stroke="none"/>
+    <circle cx="13.8" cy="11.8" r="0.5" fill="currentColor" stroke="none"/>
+  </symbol>
+
+  <symbol id="bear-compare" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left bear silhouette -->
+    <circle cx="4" cy="5" r="1.8"/>
+    <circle cx="9" cy="5" r="1.8"/>
+    <circle cx="6.5" cy="11" r="4.5"/>
+    <circle cx="5.2" cy="10" r="0.5" fill="currentColor" stroke="none"/>
+    <circle cx="7.8" cy="10" r="0.5" fill="currentColor" stroke="none"/>
+    <ellipse cx="6.5" cy="12.5" rx="1.5" ry="1"/>
+    <!-- Right bear silhouette -->
+    <circle cx="15" cy="5" r="1.8"/>
+    <circle cx="20" cy="5" r="1.8"/>
+    <circle cx="17.5" cy="11" r="4.5"/>
+    <circle cx="16.2" cy="10" r="0.5" fill="currentColor" stroke="none"/>
+    <circle cx="18.8" cy="10" r="0.5" fill="currentColor" stroke="none"/>
+    <ellipse cx="17.5" cy="12.5" rx="1.5" ry="1"/>
+    <!-- VS indicator arrows -->
+    <path d="M11.5 11l1 1-1 1" stroke-width="1"/>
+    <path d="M12.5 11l-1 1 1 1" stroke-width="1"/>
+  </symbol>
+
+</svg>

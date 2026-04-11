@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Bear ears -->
+  <circle cx="7" cy="5" r="2.5"/>
+  <circle cx="17" cy="5" r="2.5"/>
+  <!-- Bear head -->
+  <circle cx="12" cy="13" r="7"/>
+  <!-- Snout -->
+  <ellipse cx="12" cy="16" rx="2.5" ry="1.5"/>
+  <!-- Sad eyes (droopy — angled lines) -->
+  <path d="M8.5 10.5c.5-.8 1.5-.8 2-.3"/>
+  <path d="M13.5 10.5c.5-.8 1.5-.8 2-.3"/>
+  <!-- Sad mouth (downward arc) -->
+  <path d="M9.5 17.5c.8-1.5 4.5-1.5 5 0"/>
+  <!-- Tear drop -->
+  <path d="M9 13c0 0-.5 1-.5 1.5a.8.8 0 0 0 1.6 0C10.1 14 9 13 9 13z" fill="currentColor" stroke="none"/>
+  <!-- Nose -->
+  <circle cx="12" cy="14.8" r="0.5" fill="currentColor" stroke="none"/>
+</svg>
