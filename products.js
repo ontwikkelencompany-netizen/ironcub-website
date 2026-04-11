@@ -2,6 +2,7 @@
 const MACHINES = [
   {
     id: "vth360",
+    detailUrl: "machines/vth360.html",
     name: "VTH 360",
     subtitle: "Mini Skid Steer Loader",
     price: 5824,
@@ -29,6 +30,7 @@ const MACHINES = [
   },
   {
     id: "vth480w",
+    detailUrl: "machines/vth480w.html",
     name: "VTH 480W",
     subtitle: "Skid Steer Loader (wielen)",
     price: 7063,
@@ -56,6 +58,7 @@ const MACHINES = [
   },
   {
     id: "vth480wr",
+    detailUrl: "machines/vth480wr.html",
     name: "VTH 480W",
     subtitle: "Skid Steer Loader (rupsbanden)",
     price: 7063,
@@ -83,6 +86,7 @@ const MACHINES = [
   },
   {
     id: "vth480wd",
+    detailUrl: "machines/vth480wd.html",
     name: "VTH 480W KOOP",
     subtitle: "Diesel (wielen)",
     price: null,
@@ -110,6 +114,7 @@ const MACHINES = [
   },
   {
     id: "vth480k",
+    detailUrl: "machines/vth480k.html",
     name: "VTH 480 Kubota",
     subtitle: "Diesel (rupsbanden)",
     price: null,
@@ -137,6 +142,7 @@ const MACHINES = [
   },
   {
     id: "vth140",
+    detailUrl: "machines/vth140.html",
     name: "VTH 140",
     subtitle: "LOADER (Loncin benzine)",
     price: null,
@@ -164,6 +170,7 @@ const MACHINES = [
   },
   {
     id: "vth200",
+    detailUrl: "machines/vth200.html",
     name: "VTH 200",
     subtitle: "LOADER (Kubota diesel)",
     price: null,
@@ -253,7 +260,7 @@ function renderMachineCard(m) {
         <div class="spec-row"><span class="spec-label">Breedte</span><span class="spec-val">${m.widthMm} mm</span></div>
       </div>
       <div class="m-specs">${m.specs.map(s => `<span>${s}</span>`).join('')}</div>
-      <div class="m-actions"><a href="contact.html" class="btn btn-cta btn-sm">Offerte</a><a href="demodagen.html" class="btn btn-outline-dark btn-sm">Demo</a></div>
+      <div class="m-actions"><a href="contact.html" class="btn btn-cta btn-sm">Offerte</a><a href="demodagen.html" class="btn btn-outline-dark btn-sm">Demo</a>${m.detailUrl ? `<a href="${m.detailUrl}" class="btn btn-outline-dark btn-sm">Bekijk</a>` : ''}</div>
     </div>
   </div>`;
 }
