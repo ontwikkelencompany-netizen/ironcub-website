@@ -504,3 +504,11 @@ ul{list-style:none}
 .bear-side-float{position:absolute;right:-30px;top:20px;width:140px;z-index:5;filter:drop-shadow(0 4px 16px rgba(0,0,0,.3));animation:bearBob 3s ease-in-out infinite}
 @keyframes bearBob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(3deg)}}
 @media(max-width:768px){.bear-peek-fixed{width:80px;right:10px}.bear-wallbreak-img{width:140px;right:-20px}.bear-cta-img{width:100px}.bear-side-float{display:none}}
+
+/* BEAR SWING */
+.bear-swing-section{padding:40px 0;overflow:hidden;position:relative}
+.bear-swing-wrap{display:flex;justify-content:center;transform-origin:top center;animation:swingBear 4s ease-in-out infinite}
+.bear-swing-wrap img{width:280px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.2));transition:transform .3s}
+.bear-swing-wrap:hover img{transform:scale(1.05)}
+@keyframes swingBear{0%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}100%{transform:rotate(-12deg)}}
+@media(max-width:768px){.bear-swing-wrap img{width:180px}}
