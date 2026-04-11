@@ -192,7 +192,7 @@
       '.ic-toggle{position:relative;display:inline-flex;background:#e0e0e0;border-radius:20px;padding:2px;cursor:pointer;transition:background .2s}',
       '.ic-toggle input{display:none}',
       '.ic-toggle-btn{padding:4px 12px;border-radius:16px;font-size:11px;font-family:Inter,sans-serif;font-weight:600;transition:all .2s;color:#555}',
-      '.ic-toggle-btn.active{background:' + ORANGE + ';color:#fff;box-shadow:0 1px 4px rgba(232,131,26,.4)}',
+      '.ic-toggle-btn.active{background:#C5941A;color:#fff;box-shadow:0 1px 4px rgba(197,148,26,.5)}',
 
       '#ic-cart-items{flex:1;overflow-y:auto;padding:0;margin:0}',
       '.ic-cart-item{display:flex;gap:12px;padding:14px 20px;border-bottom:1px solid #f0f0f0;align-items:flex-start}',
@@ -252,8 +252,10 @@
       'display:none;align-items:center;justify-content:center;line-height:1;pointer-events:none;z-index:11}',
       '#ic-wishlist-badge.has-items{display:flex}',
 
-      /* ---- BTW toggle in header ---- */
-      '#ic-header-btw{display:flex;align-items:center;gap:6px;margin-right:8px}',
+      /* ---- BTW toggle in header with pushing bear ---- */
+      '#ic-header-btw{display:flex;align-items:center;gap:0;margin-right:8px}',
+      '.ic-btw-bear{height:36px;width:auto;margin-right:-4px;margin-bottom:-4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.1));transition:transform .3s}',
+      '#ic-header-btw:hover .ic-btw-bear{transform:translateX(3px)}',
 
       /* ---- Recommendation Panel ---- */
       '#ic-rec-panel{position:fixed;top:0;right:0;height:100%;width:min(420px,100vw);background:#fff;z-index:9999;',
@@ -552,15 +554,26 @@
     var rippaBadge = headerRight.querySelector('.rippa-badge');
     if (rippaBadge) rippaBadge.style.display = 'none';
 
-    // BTW toggle for header (no "Prijs:" label)
+    // BTW toggle with pushing bear
     var btwEl = document.createElement('div');
     btwEl.id = 'ic-header-btw';
     btwEl.innerHTML = [
+      '<img src="assets/bear-btw-push.png" alt="" class="ic-btw-bear">',
       '<div class="ic-toggle" id="ic-header-btw-toggle">',
         '<span class="ic-toggle-btn ' + (btwMode === 'excl' ? 'active' : '') + '" data-val="excl">Excl. BTW</span>',
         '<span class="ic-toggle-btn ' + (btwMode === 'incl' ? 'active' : '') + '" data-val="incl">Incl. BTW</span>',
       '</div>'
     ].join('');
+
+    // Replace AFSPRAAK button with bear + cloud tooltip
+    var afspraakBtn = headerRight.querySelector('.header-cta');
+    if (afspraakBtn) {
+      var afspraakWrap = document.createElement('a');
+      afspraakWrap.href = 'afspraak.html';
+      afspraakWrap.className = 'ic-bear-btn';
+      afspraakWrap.innerHTML = '<img src="assets/bear-afspraak.png" alt="Afspraak" class="ic-bear-icon"><span class="ic-bear-cloud">Afspraak</span>';
+      afspraakBtn.parentNode.replaceChild(afspraakWrap, afspraakBtn);
+    }
 
     // Wishlist trigger — bear holding heart with cloud tooltip
     var wishlistTrigger = document.createElement('button');
@@ -584,17 +597,17 @@
       '<span id="ic-cart-badge"></span>'
     ].join('');
 
-    // Insert before the AFSPRAAK button
-    var afspraakBtn = headerRight.querySelector('.header-cta');
-    if (afspraakBtn) {
-      headerRight.insertBefore(cartTrigger, afspraakBtn);
+    // Insert elements: BTW | Wishlist | Cart | Afspraak(beer)
+    // The AFSPRAAK button was already replaced above with a bear
+    var afspraakBear = headerRight.querySelector('.ic-bear-btn');
+    if (afspraakBear) {
+      headerRight.insertBefore(cartTrigger, afspraakBear);
       headerRight.insertBefore(wishlistTrigger, cartTrigger);
       headerRight.insertBefore(btwEl, wishlistTrigger);
     } else {
-      var firstChild = headerRight.firstChild;
-      headerRight.insertBefore(btwEl, firstChild);
-      headerRight.insertBefore(wishlistTrigger, firstChild);
-      headerRight.insertBefore(cartTrigger, firstChild);
+      headerRight.appendChild(btwEl);
+      headerRight.appendChild(wishlistTrigger);
+      headerRight.appendChild(cartTrigger);
     }
 
     cartTrigger.addEventListener('click', openCartPanel);
