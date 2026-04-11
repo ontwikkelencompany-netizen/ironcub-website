@@ -254,7 +254,7 @@
 
       /* ---- BTW toggle in header with pushing bear ---- */
       '#ic-header-btw{display:flex;align-items:center;gap:0;margin-right:8px}',
-      '.ic-btw-bear{height:36px;width:auto;margin-right:-4px;margin-bottom:-4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.1));transition:transform .3s}',
+      '.ic-btw-bear{height:56px;width:auto;margin-right:-6px;margin-bottom:-8px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.15));transition:transform .3s}',
       '#ic-header-btw:hover .ic-btw-bear{transform:translateX(3px)}',
 
       /* ---- Recommendation Panel ---- */
