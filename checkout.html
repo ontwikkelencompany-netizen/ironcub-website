@@ -47,7 +47,7 @@
 <div id="announce-bar"></div><div id="site-header"></div>
 
 <div class="checkout-container">
-  <div class="checkout-header">
+  <div class="checkout-header" id="checkoutHeader">
     <img src="assets/bear-cart-shop.png" alt="Afrekenen">
     <h1>AFREKENEN</h1>
     <p>Rond uw bestelling veilig af. Online betalen via iDEAL, Bancontact en creditcard is binnenkort mogelijk.</p>
@@ -254,6 +254,7 @@ function handleCheckout() {
     } else {
       // Show success
       document.getElementById('checkoutGrid').style.display = 'none';
+      document.getElementById('checkoutHeader').style.display = 'none';
       document.getElementById('checkoutSuccess').style.display = 'block';
       document.getElementById('successMsg').textContent = 'Bestelnummer: ' + data.orderNumber;
     }
@@ -277,6 +278,7 @@ renderSummary();
 var urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get('success') === 'true' || urlParams.get('order')) {
   document.getElementById('checkoutGrid').style.display = 'none';
+  document.getElementById('checkoutHeader').style.display = 'none';
   document.getElementById('checkoutSuccess').style.display = 'block';
   if (urlParams.get('order')) {
     document.getElementById('successMsg').textContent = 'Bestelnummer: ' + urlParams.get('order') + '. U ontvangt een bevestiging per e-mail.';
