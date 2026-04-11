@@ -526,3 +526,14 @@ ul{list-style:none}
 .site-quote::before,.site-quote::after{content:'"';color:var(--gold);font-size:1.5em;position:absolute;top:-5px}
 .site-quote::before{left:0}
 .site-quote::after{right:0}
+
+/* BEKIJK - DE MAGISCHE KNOP */
+.btn-bekijk{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;padding:12px 24px;font-family:var(--font-head);font-weight:800;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--white);background:linear-gradient(135deg,var(--gold),#e0b866,var(--gold));background-size:200% 200%;border-radius:var(--radius);position:relative;overflow:hidden;transition:all .3s;animation:shimmer 3s ease-in-out infinite}
+.btn-bekijk::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .5s}
+.btn-bekijk:hover::before{left:100%}
+.btn-bekijk:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,164,78,.4)}
+.btn-bekijk svg{transition:transform .3s}
+.btn-bekijk:hover svg{transform:translateX(4px)}
+@keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.m-actions{display:flex;gap:6px;flex-wrap:wrap}
+.m-actions .btn-sm{font-size:.78rem;padding:6px 14px}

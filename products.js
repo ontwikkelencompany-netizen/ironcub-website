@@ -260,7 +260,8 @@ function renderMachineCard(m) {
         <div class="spec-row"><span class="spec-label">Breedte</span><span class="spec-val">${m.widthMm} mm</span></div>
       </div>
       <div class="m-specs">${m.specs.map(s => `<span>${s}</span>`).join('')}</div>
-      <div class="m-actions"><a href="contact.html" class="btn btn-cta btn-sm">Offerte</a><a href="demodagen.html" class="btn btn-outline-dark btn-sm">Demo</a>${m.detailUrl ? `<a href="${m.detailUrl}" class="btn btn-outline-dark btn-sm">Bekijk</a>` : ''}</div>
+      <div class="m-actions"><a href="contact.html" class="btn btn-cta btn-sm">Kopen</a><a href="afspraak.html" class="btn btn-outline-dark btn-sm">Huren</a><a href="lease.html" class="btn btn-outline-dark btn-sm">Leasen</a><a href="demodagen.html" class="btn btn-outline-dark btn-sm">Demo</a></div>
+      ${m.detailUrl ? `<a href="${m.detailUrl}" class="btn-bekijk">Bekijk deze machine <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>` : ''}
     </div>
   </div>`;
 }
