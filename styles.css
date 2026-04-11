@@ -512,3 +512,10 @@ ul{list-style:none}
 .bear-swing-wrap:hover img{transform:scale(1.05)}
 @keyframes swingBear{0%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}100%{transform:rotate(-12deg)}}
 @media(max-width:768px){.bear-swing-wrap img{width:180px}}
+
+/* RACING BEAR LOGO */
+.logo-racing{height:52px;width:auto;animation:bearRace 3s ease-in-out infinite;transition:transform .3s}
+.logo-racing:hover{animation-play-state:paused;transform:scale(1.1)}
+@keyframes bearRace{0%{transform:translateX(0) rotate(0deg)}25%{transform:translateX(3px) rotate(1deg)}50%{transform:translateX(0) rotate(0deg)}75%{transform:translateX(-3px) rotate(-1deg)}100%{transform:translateX(0) rotate(0deg)}}
+.site-header.scrolled .logo-racing{height:44px}
+@media(max-width:768px){.logo-racing{height:40px}}
