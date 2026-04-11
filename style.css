@@ -119,6 +119,7 @@
   max-width: var(--content-wide);
   margin-inline: auto;
   padding-inline: var(--space-6);
+  overflow-wrap: break-word;
 }
 
 @media (min-width: 768px) {
@@ -137,8 +138,8 @@ section {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  z-index: 100;
+  width: 100%;
+  z-index: 110;
   background: rgba(26, 26, 26, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -237,6 +238,8 @@ section {
   gap: 5px;
   padding: var(--space-2);
   color: #fff;
+  position: relative;
+  z-index: 101;
 }
 
 @media (min-width: 768px) {
@@ -264,30 +267,21 @@ section {
 /* Mobile nav overlay */
 .nav-mobile {
   position: fixed;
-  top: 4rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(26, 26, 26, 0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  inset: 0;
+  background: #1A1A1A;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--space-8);
   list-style: none;
-  transform: translateY(-100%);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 99;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
 }
 
 .nav-mobile.is-open {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
+  clip-path: inset(0 0 0 0);
 }
 
 .nav-mobile a {
@@ -310,7 +304,7 @@ section {
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -343,7 +337,7 @@ section {
   z-index: 1;
   max-width: var(--content-wide);
   margin-inline: auto;
-  padding-inline: var(--space-6);
+  padding-inline: var(--space-8);
   padding-block: var(--space-16);
 }
 
@@ -378,12 +372,16 @@ section {
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: var(--text-3xl);
+  font-size: var(--text-2xl);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: #fff;
   margin-bottom: var(--space-4);
   max-width: 14ch;
+}
+
+@media (min-width: 768px) {
+  .hero h1 { font-size: var(--text-3xl); }
 }
 
 .hero-tagline {
@@ -524,6 +522,7 @@ section {
 .section-dark {
   background: var(--color-dark);
   color: #fff;
+  overflow: hidden;
 }
 
 .section-dark .section-title {
@@ -749,6 +748,11 @@ section {
 .about-content {
   display: grid;
   gap: var(--space-8);
+  overflow: hidden;
+}
+
+.about-content > * {
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
@@ -762,6 +766,9 @@ section {
   color: rgba(255,255,255,0.8);
   margin-bottom: var(--space-4);
   line-height: 1.7;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .about-text strong {
@@ -833,10 +840,14 @@ section {
 .stat-value {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
   color: var(--color-accent);
   line-height: 1;
   margin-bottom: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .stat-value { font-size: var(--text-2xl); }
 }
 
 .stat-label {
@@ -854,6 +865,11 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
+  min-width: 0;
+}
+
+.social-grid > * {
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
