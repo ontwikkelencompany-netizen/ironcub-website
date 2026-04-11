@@ -537,3 +537,8 @@ ul{list-style:none}
 @keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .m-actions{display:flex;gap:6px;flex-wrap:wrap}
 .m-actions .btn-sm{font-size:.78rem;padding:6px 14px}
+
+/* PILLAR BEAR IMAGES */
+.pillar-bear{width:80px;height:80px;object-fit:contain;transition:transform .3s}
+.pillar-card:hover .pillar-bear{transform:scale(1.15) rotate(-5deg)}
+.pillar-icon{width:auto;height:auto;background:none;border-radius:0;margin-bottom:12px}
