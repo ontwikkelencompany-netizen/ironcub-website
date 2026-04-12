@@ -1138,6 +1138,16 @@
         }
       }
     }
+
+    /* --- Update BTW mode labels ("alle prijzen excl/incl. BTW") --- */
+    document.querySelectorAll('.btw-mode-label').forEach(function(el) {
+      var text = el.textContent;
+      if (btwMode === 'incl') {
+        el.textContent = text.replace(/excl\. BTW/i, 'incl. BTW');
+      } else {
+        el.textContent = text.replace(/incl\. BTW/i, 'excl. BTW');
+      }
+    });
   }
 
   /* =====================================================================
