@@ -2,7 +2,7 @@
    Replace GA_MEASUREMENT_ID with your actual GA4 ID (format: G-XXXXXXXXXX)
    Get it from: https://analytics.google.com → Admin → Data Streams → Web */
 (function() {
-  var GA_ID = 'G-XXXXXXXXXX'; // TODO: Replace with real GA4 measurement ID
+  var GA_ID = 'G-14EX5RF75G';
   
   if (GA_ID === 'G-XXXXXXXXXX') {
     console.log('[GA4] Analytics not configured — replace GA_ID in analytics.js');
