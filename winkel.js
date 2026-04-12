@@ -1296,6 +1296,15 @@
     injectPawIcons();
   }
 
+  // Expose key functions globally for use in verkoop.html merch handlers
+  window.addToCart = addToCart;
+  window.showToast = showToast;
+  window.updateCartBadge = updateCartBadge;
+  window.removeFromCart = removeFromCart;
+  window.toggleWishlist = toggleWishlist;
+  window.applyBtwToPage = applyBtwToPage;
+  window.upgradeShopButtons = upgradeShopButtons;
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
