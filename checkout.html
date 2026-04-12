@@ -17,7 +17,7 @@
 .delivery-option{border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px;cursor:pointer;transition:all .2s;margin-bottom:8px}
 .delivery-option:hover{border-color:var(--gold)}
 .delivery-option.selected{border:2px solid var(--gold);background:rgba(232,131,26,.04)}
-.delivery-option input{display:none}
+.delivery-option input{margin-right:10px;accent-color:var(--gold);width:18px;height:18px;vertical-align:middle}
 .delivery-option-head{display:flex;justify-content:space-between;align-items:center}
 .delivery-option-name{font-family:var(--font-head);font-weight:700;font-size:.95rem}
 .delivery-option-price{font-family:var(--font-head);font-weight:800;color:var(--gold)}
@@ -276,50 +276,44 @@ document.getElementById('coCreateAccount').addEventListener('change', function()
 // Handle ?product= parameter — add product to cart automatically
 var urlParams = new URLSearchParams(window.location.search);
 var productParam = urlParams.get('product');
-if (productParam && cart.length === 0) {
-  // Try to find in local products.js data first, then API
-  var found = false;
-  // Check MACHINES
-  if (typeof MACHINES !== 'undefined') {
-    MACHINES.forEach(function(m) {
-      if (m.id === productParam && !found) {
-        cart.push({ productId: m.id, name: m.name + ' ' + m.subtitle, price: m.price * 100, quantity: 1, imageUrl: m.img });
-        found = true;
-      }
-    });
-  }
-  // Check GRASMAAIERS
-  if (!found && typeof GRASMAAIERS !== 'undefined') {
-    GRASMAAIERS.forEach(function(g) {
-      if (g.id === productParam && !found) {
-        cart.push({ productId: g.id, name: g.name, price: g.price * 100, quantity: 1, imageUrl: g.img });
-        found = true;
-      }
-    });
-  }
-  // Check RIPPA
-  if (!found && typeof RIPPA !== 'undefined') {
-    RIPPA.forEach(function(r) {
-      if (r.id === productParam && !found) {
-        cart.push({ productId: r.id, name: 'Rippa ' + r.model, price: r.price * 100, quantity: 1, imageUrl: r.img });
-        found = true;
-      }
-    });
-  }
-  if (found) {
-    try { localStorage.setItem('ic_cart', JSON.stringify(cart)); } catch(e) {}
-  }
-  // If not found locally, fetch from API
-  if (!found) {
-    fetch(API + '/api/products/' + encodeURIComponent(productParam))
-      .then(function(r) { return r.ok ? r.json() : null; })
-      .then(function(p) {
-        if (p) {
-          cart.push({ productId: p.id, name: p.name, price: p.priceExBtw, quantity: 1, imageUrl: p.imageUrl || '' });
-          try { localStorage.setItem('ic_cart', JSON.stringify(cart)); } catch(e) {}
-          renderSummary();
+if (productParam) {
+  var currentCart = getCart();
+  // Only add if cart is empty or doesn't already contain this product
+  var alreadyInCart = currentCart.some(function(item) { return item.productId === productParam; });
+  if (!alreadyInCart) {
+    var found = false;
+    var newItem = null;
+    // Check MACHINES
+    if (typeof MACHINES !== 'undefined') {
+      MACHINES.forEach(function(m) {
+        if (m.id === productParam && !found) {
+          newItem = { productId: m.id, name: m.name + ' ' + m.subtitle, price: m.price * 100, quantity: 1, imageUrl: m.img };
+          found = true;
         }
-      }).catch(function() {});
+      });
+    }
+    // Check GRASMAAIERS
+    if (!found && typeof GRASMAAIERS !== 'undefined') {
+      GRASMAAIERS.forEach(function(g) {
+        if (g.id === productParam && !found) {
+          newItem = { productId: g.id, name: g.name, price: g.price * 100, quantity: 1, imageUrl: g.img };
+          found = true;
+        }
+      });
+    }
+    // Check RIPPA
+    if (!found && typeof RIPPA !== 'undefined') {
+      RIPPA.forEach(function(r) {
+        if (r.id === productParam && !found) {
+          newItem = { productId: r.id, name: 'Rippa ' + r.model, price: r.price * 100, quantity: 1, imageUrl: r.img };
+          found = true;
+        }
+      });
+    }
+    if (found && newItem) {
+      currentCart.push(newItem);
+      try { localStorage.setItem('ic_cart', JSON.stringify(currentCart)); } catch(e) {}
+    }
   }
 }
 
