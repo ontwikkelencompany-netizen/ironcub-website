@@ -1085,3 +1085,11 @@ ul{list-style:none}
 .rippa-detail-link:hover{color:#E8831A}
 .rippa-detail-link svg{vertical-align:middle;margin-left:4px;transition:transform .2s}
 .rippa-detail-link:hover svg{transform:translateX(4px)}
+
+/* MERCH SIZE SELECTOR */
+.merch-size-row{margin:12px 0}
+.merch-size-btns{display:flex;flex-wrap:wrap;gap:6px}
+.merch-size-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);padding:5px 12px;border-radius:4px;font-size:.78rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;cursor:pointer;transition:all .2s}
+.merch-size-btn:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4);color:#fff}
+.merch-size-btn.selected{background:#C5941A;border-color:#C5941A;color:#1a1a1a}
+.merch-orig{text-decoration:line-through;color:rgba(255,255,255,.35);font-weight:400;margin-right:4px}

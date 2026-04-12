@@ -289,24 +289,36 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderMerchCard(m) {
     var priceHtml;
     if (m.originalPrice) {
-      priceHtml = '<p class="merch-price">' + formatMerchPrice(m.price_incl) +
-        ' <small class="merch-orig">' + formatMerchPrice(m.originalPrice) + '</small>' +
+      priceHtml = '<p class="merch-price"><small class="merch-orig">' + formatMerchPrice(m.originalPrice) + '</small> ' + formatMerchPrice(m.price_incl) +
         ' <span class="merch-btw-label">incl. BTW</span></p>';
     } else {
       priceHtml = '<p class="merch-price">' + formatMerchPrice(m.price_incl) +
         ' <span class="merch-btw-label">incl. BTW</span></p>';
     }
-    var sizesHtml = m.sizes ? '<span class="merch-sizes">' + m.sizes + '</span>' : '';
+
+    // Size selector for clothing items
+    var sizeHtml = '';
+    if (m.sizes && m.sizes !== 'One Size' && m.type !== 'bundle') {
+      var sizes = ['XS','S','M','L','XL','XXL','3XL'];
+      sizeHtml = '<div class="merch-size-row"><label style="color:rgba(255,255,255,.5);font-size:12px;margin-bottom:4px;display:block">Maat</label><div class="merch-size-btns" data-product="' + m.id + '">';
+      sizes.forEach(function(s) {
+        sizeHtml += '<button class="merch-size-btn" data-size="' + s + '">' + s + '</button>';
+      });
+      sizeHtml += '</div></div>';
+    } else if (m.sizes === 'One Size') {
+      sizeHtml = '<div class="merch-size-row"><span style="color:rgba(255,255,255,.5);font-size:12px">One Size</span></div>';
+    }
+
     var bundleBorder = m.type === 'bundle' ? ' merch-card-bundle' : '';
     return '<div class="merch-card' + bundleBorder + '" id="' + m.id + '" data-type="' + m.type + '">' +
       '<div class="merch-img"><img src="' + m.img + '" alt="' + m.name + '" loading="lazy"></div>' +
       '<div class="merch-body">' +
         '<h3 class="merch-name">' + m.name + '</h3>' +
         '<span class="merch-subtitle">' + m.subtitle + '</span>' +
-        sizesHtml +
         '<p class="merch-desc">' + m.desc + '</p>' +
+        sizeHtml +
         priceHtml +
-        '<a href="afspraak.html?onderwerp=merch-' + m.id + '" class="btn btn-cta btn-sm merch-btn">Bestellen</a>' +
+        '<button class="btn btn-cta btn-sm merch-btn merch-add-cart" data-id="' + m.id + '" data-name="' + m.name + '" data-price="' + m.price_incl + '" data-img="' + m.img + '" data-needs-size="' + (m.sizes && m.sizes !== 'One Size' && m.type !== 'bundle' ? '1' : '0') + '">In winkelwagen</button>' +
       '</div>' +
     '</div>';
   }
@@ -364,6 +376,40 @@ document.addEventListener('DOMContentLoaded', function () {
   var mGrid = document.getElementById('merchGrid');
   if (mGrid) mGrid.innerHTML = MERCH.map(renderMerchCard).join('');
   initMerchFilters();
+
+  // Merch: size buttons toggle + add to cart
+  document.querySelectorAll('.merch-size-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      // Deselect siblings
+      this.parentElement.querySelectorAll('.merch-size-btn').forEach(function(b) { b.classList.remove('selected'); });
+      this.classList.add('selected');
+    });
+  });
+
+  document.querySelectorAll('.merch-add-cart').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var needsSize = this.dataset.needsSize === '1';
+      var selectedSize = '';
+      if (needsSize) {
+        var card = this.closest('.merch-card');
+        var sel = card ? card.querySelector('.merch-size-btn.selected') : null;
+        if (!sel) {
+          if (typeof showToast === 'function') showToast('Kies eerst een maat');
+          return;
+        }
+        selectedSize = ' (' + sel.dataset.size + ')';
+      }
+      var pid = this.dataset.id + (selectedSize ? '-' + selectedSize.replace(/[^a-zA-Z0-9]/g,'').toLowerCase() : '');
+      var name = this.dataset.name + selectedSize;
+      var price = parseInt(this.dataset.price);
+      var img = this.dataset.img;
+      if (typeof addToCart === 'function') {
+        addToCart(pid, name, price, img);
+        if (typeof updateCartBadge === 'function') updateCartBadge();
+        if (typeof showToast === 'function') showToast(name + ' toegevoegd aan winkelwagen');
+      }
+    });
+  });
 
   /* =====================================================================
      AANBOUWDELEN TAB — existing att-tabs logic
