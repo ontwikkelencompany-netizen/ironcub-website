@@ -1054,3 +1054,24 @@ ul{list-style:none}
    ============================================================ */
 .btn-orange{background:#E8831A;color:var(--white);border-color:#E8831A}
 .btn-orange:hover{background:#c96e0f;border-color:#c96e0f;transform:translateY(-1px);box-shadow:0 4px 14px rgba(232,131,26,.35)}
+
+/* RIPPA PRODUCT CARDS */
+.rippa-card{background:#111;border:1px solid #222;border-radius:12px;overflow:hidden;transition:border-color .3s,transform .3s}
+.rippa-card:hover{border-color:#E8831A;transform:translateY(-4px)}
+.rippa-card-img{position:relative;background:#0a0a0a;overflow:hidden;aspect-ratio:4/3}
+.rippa-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.rippa-card:hover .rippa-card-img img{transform:scale(1.05)}
+.rippa-card-badge{position:absolute;top:12px;right:12px;background:#E8831A;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;padding:4px 12px;border-radius:4px;letter-spacing:.04em}
+.rippa-card-body{padding:20px}
+.rippa-card-title{color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:800;margin:0 0 2px}
+.rippa-card-sub{color:rgba(255,255,255,.5);font-size:.82rem;margin:0 0 16px}
+.rippa-specs-table{width:100%;border-collapse:collapse;margin-bottom:12px}
+.rippa-specs-table td{padding:5px 0;font-size:.82rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.rippa-specs-table td:first-child{color:rgba(255,255,255,.4);width:40%}
+.rippa-specs-table td:last-child{color:#fff;font-weight:500}
+.rippa-card-desc{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.5;margin:0 0 16px}
+.rippa-card-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.rippa-card-price{color:#C5941A;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem}
+#rippaGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:1024px){#rippaGrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){#rippaGrid{grid-template-columns:1fr}}

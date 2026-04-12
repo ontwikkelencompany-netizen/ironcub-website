@@ -431,22 +431,21 @@ document.addEventListener('DOMContentLoaded', function () {
   var rippaGrid = document.getElementById('rippaGrid');
   if (rippaGrid && typeof RIPPA !== 'undefined') {
     rippaGrid.innerHTML = RIPPA.map(function(r) {
-      return '<div class="gm-card" id="' + r.id + '" data-weight="' + r.weight_kg + '" data-engine="' + r.engine_key + '" style="background:#111;border-color:#222">' +
-        '<div class="gm-img"><img src="' + r.img + '" alt="Rippa ' + r.model + '" loading="lazy"></div>' +
-        '<div class="gm-body">' +
-        '<h4 style="color:#fff">' + r.model + '</h4>' +
-        '<p class="gm-sub" style="color:rgba(255,255,255,.5)">' + r.subtitle + '</p>' +
-        '<div class="gm-specs">' +
-        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Motor</span><span class="gm-spec-val" style="color:#fff">' + r.engine + '</span></div>' +
-        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Vermogen</span><span class="gm-spec-val" style="color:#fff">' + r.power_kw + ' kW (' + r.power_hp + ' hp)</span></div>' +
-        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Gewicht</span><span class="gm-spec-val" style="color:#fff">' + r.weight_ton + '</span></div>' +
-        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Graafdiepte</span><span class="gm-spec-val" style="color:#fff">' + (r.dig_depth_mm/1000).toFixed(1) + ' m</span></div>' +
-        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Bereik</span><span class="gm-spec-val" style="color:#fff">' + (r.max_reach_mm/1000).toFixed(1) + ' m</span></div>' +
-        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Bak</span><span class="gm-spec-val" style="color:#fff">' + r.bucket_m3 + ' m&sup3;</span></div>' +
-        '</div>' +
-        '<p style="color:rgba(255,255,255,.5);font-size:13px;margin:12px 0">' + r.desc + '</p>' +
-        '<p style="color:var(--gold);font-weight:700;font-size:1.1rem;margin:8px 0">Prijs op aanvraag</p>' +
-        '<div class="gm-actions"><a href="afspraak.html?machine=' + r.model + '" class="btn btn-cta btn-sm">Offerte aanvragen</a></div>' +
+      return '<div class="rippa-card" id="' + r.id + '" data-weight="' + r.weight_kg + '" data-engine="' + r.engine_key + '">' +
+        '<div class="rippa-card-img"><img src="' + r.img + '" alt="Rippa ' + r.model + '" loading="lazy"><span class="rippa-card-badge">' + r.weight_ton + '</span></div>' +
+        '<div class="rippa-card-body">' +
+        '<h4 class="rippa-card-title">' + r.model + '</h4>' +
+        '<p class="rippa-card-sub">' + r.subtitle + '</p>' +
+        '<table class="rippa-specs-table">' +
+        '<tr><td>Motor</td><td>' + r.engine + '</td></tr>' +
+        '<tr><td>Vermogen</td><td>' + r.power_kw + ' kW / ' + r.power_hp + ' hp</td></tr>' +
+        '<tr><td>Graafdiepte</td><td>' + (r.dig_depth_mm/1000).toFixed(1) + ' m</td></tr>' +
+        '<tr><td>Bereik</td><td>' + (r.max_reach_mm/1000).toFixed(1) + ' m</td></tr>' +
+        '<tr><td>Bak</td><td>' + r.bucket_m3 + ' m&sup3;</td></tr>' +
+        '<tr><td>Breedte</td><td>' + r.width_mm + ' mm</td></tr>' +
+        '</table>' +
+        '<p class="rippa-card-desc">' + r.desc + '</p>' +
+        '<div class="rippa-card-footer"><span class="rippa-card-price">Prijs op aanvraag</span><a href="afspraak.html?machine=' + r.model + '" class="btn btn-cta btn-sm">Offerte</a></div>' +
         '</div></div>';
     }).join('');
   }
