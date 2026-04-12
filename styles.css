@@ -602,3 +602,449 @@ ul{list-style:none}
 
 @media(max-width:1024px){.mow-grid{grid-template-columns:repeat(2,1fr)!important}}
 @media(max-width:768px){.mow-grid{grid-template-columns:1fr!important}}
+
+/* ============================================================
+   TABBED SHOP — product-tabs + shop-layout
+   ============================================================ */
+
+/* Shop section wrapper */
+.shop-section { padding: 48px 0 64px; }
+
+/* Tab nav */
+.product-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--gray-200);
+  margin-bottom: 32px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.product-tabs::-webkit-scrollbar { display: none; }
+
+.product-tab {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border: none;
+  background: none;
+  color: #999;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  position: relative;
+}
+.product-tab:hover { color: var(--dark); }
+.product-tab.active {
+  color: var(--dark);
+  border-bottom-color: #E8831A;
+}
+
+/* Tab panels */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* Shop layout: sidebar + grid */
+.shop-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .shop-layout { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   GRASMAAIER CARDS
+   ============================================================ */
+.mow-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1200px) {
+  .mow-product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .mow-product-grid { grid-template-columns: 1fr; }
+}
+
+.mow-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.mow-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: #E8831A;
+  transform: translateY(-2px);
+}
+.mow-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--gray-100);
+}
+.mow-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.mow-card:hover .mow-img img { transform: scale(1.04); }
+
+.mow-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.mow-name {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 2px;
+  color: var(--dark);
+}
+.mow-subtitle {
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--gray-600);
+  margin-bottom: 10px;
+}
+.mow-specs {
+  margin-bottom: 10px;
+  border-top: 1px solid var(--gray-200);
+  padding-top: 10px;
+}
+.mow-spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: .78rem;
+  padding: 2px 0;
+}
+.mow-spec-label { color: var(--gray-600); }
+.mow-spec-val { font-weight: 600; color: var(--gray-800); }
+
+.mow-price {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--gold);
+  margin: 8px 0 4px;
+}
+.mow-price small {
+  font-size: .72rem;
+  font-weight: 400;
+  color: var(--gray-600);
+}
+.mow-desc {
+  font-size: .82rem;
+  color: var(--gray-600);
+  margin-bottom: 12px;
+  flex: 1;
+  line-height: 1.5;
+}
+.mow-btn { width: 100%; margin-top: auto; }
+
+/* ============================================================
+   MERCH TAB — dark background panel
+   ============================================================ */
+.merch-panel {
+  background: #1a1a1a;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.merch-panel .shop-layout { align-items: start; }
+
+/* Merch filter panel — dark style */
+.merch-panel .filter-panel {
+  background: #111;
+  border-color: #333;
+  color: rgba(255,255,255,.75);
+}
+.merch-panel .filter-header h3 { color: var(--white); }
+.merch-panel .filter-group { border-bottom-color: #333; }
+.merch-panel .filter-group h4 { color: rgba(255,255,255,.5); }
+.merch-panel .filter-option { color: rgba(255,255,255,.75); }
+.merch-panel .filter-option:hover { color: #C5941A; }
+.merch-panel .filter-reset { color: #C5941A; }
+
+/* Merch grid */
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1200px) {
+  .merch-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .merch-grid { grid-template-columns: 1fr; }
+}
+
+.merch-card {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.merch-card:hover {
+  border-color: #C5941A;
+  box-shadow: 0 8px 32px rgba(0,0,0,.4);
+  transform: translateY(-2px);
+}
+.merch-card-bundle {
+  border-color: #333;
+}
+.merch-card-bundle:hover {
+  border-color: #C5941A;
+}
+
+.merch-img {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #0d0d0d;
+}
+.merch-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 8px;
+  transition: transform 0.4s;
+}
+.merch-card:hover .merch-img img { transform: scale(1.04); }
+
+.merch-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.merch-name {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+.merch-subtitle {
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 6px;
+}
+.merch-sizes {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin-bottom: 8px;
+}
+.merch-desc {
+  font-size: .8rem;
+  color: rgba(255,255,255,.45);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  flex: 1;
+}
+.merch-price {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #C5941A;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.merch-orig {
+  font-size: .8rem;
+  font-weight: 400;
+  color: rgba(255,255,255,.3);
+  text-decoration: line-through;
+}
+.merch-btw-label {
+  font-family: var(--font-body);
+  font-size: .7rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  color: rgba(255,255,255,.35);
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 3px;
+  padding: 1px 6px;
+}
+.merch-btn {
+  width: 100%;
+  margin-top: auto;
+  background: #C5941A;
+  border-color: #C5941A;
+  color: var(--black);
+}
+.merch-btn:hover {
+  background: #d4a520;
+  border-color: #d4a520;
+}
+
+.merch-levertijd {
+  text-align: center;
+  margin-top: 24px;
+  color: rgba(255,255,255,.35);
+  font-size: .82rem;
+}
+
+/* ============================================================
+   RIPPA TAB — coming soon
+   ============================================================ */
+.rippa-panel {
+  background: var(--dark);
+  border-radius: var(--radius-lg);
+  padding: 48px 32px;
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.rippa-coming-soon { max-width: 900px; margin: 0 auto; }
+
+.rippa-cs-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.rippa-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255,255,255,.92);
+  border-radius: 8px;
+  padding: 8px 16px;
+  flex-shrink: 0;
+}
+.rippa-cs-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: .02em;
+  margin: 0;
+}
+
+.rippa-cs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 768px) {
+  .rippa-cs-grid { grid-template-columns: 1fr; }
+  .rippa-cs-logo { flex-wrap: wrap; }
+}
+
+.rippa-cs-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+.rippa-cs-badge {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background: #E8831A;
+  color: var(--black);
+  padding: 4px 14px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+.rippa-cs-heading {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.rippa-cs-text {
+  color: rgba(255,255,255,.6);
+  font-size: .92rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.rippa-cs-cta { margin-top: 4px; }
+
+.rippa-cs-usps-title {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #C5941A;
+  margin-bottom: 16px;
+}
+.rippa-usp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.rippa-usp-list li {
+  color: rgba(255,255,255,.65);
+  font-size: .9rem;
+  line-height: 2;
+  padding-left: 20px;
+  position: relative;
+}
+.rippa-usp-list li::before {
+  content: '\2714';
+  position: absolute;
+  left: 0;
+  color: #E8831A;
+  font-weight: 700;
+}
+
+/* ============================================================
+   AANBOUWDELEN inside tab panel — no extra padding needed
+   ============================================================ */
+#panel-aanbouwdelen .att-tabs { margin-top: 8px; }
+
+/* ============================================================
+   RESPONSIVE fixes for shop section
+   ============================================================ */
+@media (max-width: 768px) {
+  .product-tab { padding: 10px 16px; font-size: .88rem; }
+  .merch-panel { margin: 0; border-radius: var(--radius); }
+  .rippa-panel { margin: 0; border-radius: var(--radius); padding: 24px 16px; }
+}
+@media (max-width: 480px) {
+  .product-tab { padding: 8px 12px; font-size: .82rem; letter-spacing: .04em; }
+  .shop-section { padding: 32px 0 48px; }
+}

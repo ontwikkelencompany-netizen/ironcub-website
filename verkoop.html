@@ -1,153 +1,446 @@
-<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Verkoop — Machines &amp; Aanbouwdelen | The IronCub Company</title><meta name="description" content="Bekijk ons complete assortiment loaders en aanbouwdelen. Alle prijzen in euro, excl. BTW."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg"><link rel="stylesheet" href="styles.css"></head><body>
+<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Verkoop — Machines, Grasmaaiers, Merch & Aanbouwdelen | The IronCub Company</title><meta name="description" content="Het complete IronCub assortiment: loaders, remote control grasmaaiers, aanbouwdelen en merch. Alle prijzen in euro, excl. BTW (merch incl. BTW)."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg"><link rel="stylesheet" href="styles.css"></head><body>
 <div id="announce-bar"></div><div id="site-header"></div>
 
-<section class="page-hero"><div class="page-hero-bg"><img src="assets/htv1000-hero.jpg" alt="IronCub HTV1000 Skid Steer Loader"></div><div class="page-hero-overlay"></div><div class="container page-hero-content"><h1>VERKOOP</h1><p>Machines en aanbouwdelen, direct leverbaar. Kies uw leveringsoptie.</p></div></section>
+<section class="page-hero"><div class="page-hero-bg"><img src="assets/htv1000-hero.jpg" alt="IronCub HTV1000 Skid Steer Loader"></div><div class="page-hero-overlay"></div><div class="container page-hero-content"><h1>VERKOOP</h1><p>Machines, grasmaaiers, aanbouwdelen en merch — direct leverbaar. Kies uw leveringsoptie.</p></div></section>
 
-<section class="delivery-section"><div class="container"><div class="delivery-grid">
-<div class="tier-card tier-premium-card"><span class="tier-badge tier-premium">Premium Levering</span><ul><li>Bezorging op locatie</li><li>Installatie &amp; opstart door specialist</li><li>Persoonlijke instructie (1 uur)</li><li>Eerste servicebeurt inclusief</li></ul><a href="contact.html" class="btn btn-cta">Offerte Premium</a></div>
-<div class="tier-card tier-regular-card"><span class="tier-badge tier-regular">Regular Levering</span><ul><li>Afhalen in showroom Middelharnis</li><li>Of standaard transport (meerprijs)</li><li>Handleiding &amp; quickstart guide</li><li>Telefonische support</li></ul><a href="contact.html" class="btn btn-outline-dark">Offerte Regular</a></div>
-</div></div></section>
-
-<section class="machines-section"><div class="container">
-  <div class="machines-header">
-    <h2 class="section-title-left">MACHINES</h2>
-    <div class="machines-header-right">
-      <span id="machineCount" class="machine-count">8 machines</span>
-      <button class="btn btn-outline-dark btn-sm" id="filterToggle">Filters</button>
+<!-- LEVERING TIERS — boven de tabs -->
+<section class="delivery-section">
+  <div class="container">
+    <div class="delivery-grid">
+      <div class="tier-card tier-premium-card"><span class="tier-badge tier-premium">Premium Levering</span><ul><li>Bezorging op locatie</li><li>Installatie &amp; opstart door specialist</li><li>Persoonlijke instructie (1 uur)</li><li>Eerste servicebeurt inclusief</li></ul><a href="contact.html" class="btn btn-cta">Offerte Premium</a></div>
+      <div class="tier-card tier-regular-card"><span class="tier-badge tier-regular">Regular Levering</span><ul><li>Afhalen in showroom Middelharnis</li><li>Of standaard transport (meerprijs)</li><li>Handleiding &amp; quickstart guide</li><li>Telefonische support</li></ul><a href="contact.html" class="btn btn-outline-dark">Offerte Regular</a></div>
     </div>
   </div>
-  <div class="machines-layout">
-    <div id="filterContainer"></div>
-    <div class="machines-grid" id="machinesGrid"></div>
-  </div>
-</div></section>
-
-<section class="att-section" id="aanbouwdelen"><div class="container"><h2 class="section-title-left">AANBOUWDELEN</h2><p class="section-sub-left">Alle prijzen excl. BTW</p>
-<div class="att-tabs"><button class="att-tab active" data-cat="all">Alle (20+)</button><button class="att-tab" data-cat="grondwerk">Grondwerk</button><button class="att-tab" data-cat="groenonderhoud">Groenonderhoud</button><button class="att-tab" data-cat="sloop">Sloop</button><button class="att-tab" data-cat="transport">Transport</button><button class="att-tab" data-cat="reiniging">Reiniging</button><button class="att-tab" data-cat="overig">Overig</button></div>
-<div class="att-grid" id="attGrid">
-<div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-kleine-graafarm.jpg" alt="Slimme graafarm" loading="lazy"></div><h4>Slimme graafarm</h4><p class="att-price">&euro;2.594</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-rechte-graafarm.jpg" alt="Graafarm recht" loading="lazy"></div><h4>Graafarm recht</h4><p class="att-price">&euro;950</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-wortelfrezer.jpg" alt="Grondboor" loading="lazy"></div><h4>Grondboor</h4><p class="att-price">&euro;1.345</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-ripper.jpg" alt="Ripper" loading="lazy"></div><h4>Ripper</h4><p class="att-price">&euro;342</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-roterende-ploeg.jpg" alt="Roterende ploeg" loading="lazy"></div><h4>Roterende ploeg</h4><p class="att-price">&euro;1.281</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-grote-waterpas.jpg" alt="Leveler" loading="lazy"></div><h4>Leveler</h4><p class="att-price">&euro;374</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-bulldozer.jpg" alt="Bulldozer" loading="lazy"></div><h4>Bulldozer</h4><p class="att-price">&euro;854</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="groenonderhoud"><div class="att-img"><img src="assets/att-grasmaaier.jpg" alt="Grasmaaier" loading="lazy"></div><h4>Grasmaaier</h4><p class="att-price">&euro;1.633</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="groenonderhoud"><div class="att-img"><img src="assets/att-stronkenbreker.jpg" alt="Stronkenbreker" loading="lazy"></div><h4>Stronkenbreker</h4><p class="att-price">&euro;1.836</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="groenonderhoud"><div class="att-img"><img src="assets/att-takkenversnipperaar.jpg" alt="Takkenversnipperaar" loading="lazy"></div><h4>Takkenversnipperaar</h4><p class="att-price">&euro;1.697</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="groenonderhoud"><div class="att-img"><img src="assets/att-verticuteermachine.jpg" alt="Verticuteermachine" loading="lazy"></div><h4>Verticuteermachine</h4><p class="att-price">&euro;961</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="groenonderhoud"><div class="att-img"><img src="assets/att-houtgrijper.jpg" alt="Houtgrijper" loading="lazy"></div><h4>Houtgrijper</h4><p class="att-price">&euro;1.035</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="sloop"><div class="att-img"><img src="assets/att-breekhamer.jpg" alt="Breekhamer" loading="lazy"></div><h4>Breekhamer</h4><p class="att-price">&euro;1.217</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="sloop"><div class="att-img"><img src="assets/att-sleuvenfrees.jpg" alt="Sleuvenfrees" loading="lazy"></div><h4>Sleuvenfrees</h4><p class="att-price">&euro;1.836</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="transport"><div class="att-img"><img src="assets/att-pallet-forklift.jpg" alt="Pallet forklift" loading="lazy"></div><h4>Pallet forklift</h4><p class="att-price">&euro;544</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="reiniging"><div class="att-img"><img src="assets/att-veegborstel.jpg" alt="Veegborstel open" loading="lazy"></div><h4>Veegborstel open</h4><p class="att-price">&euro;1.377</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="reiniging"><div class="att-img"><img src="assets/att-gesloten-reiniger.jpg" alt="Gesloten veegborstel" loading="lazy"></div><h4>Gesloten veegborstel</h4><p class="att-price">&euro;1.889</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="reiniging"><div class="att-img"><img src="assets/att-sneeuwfrees.jpg" alt="Sneeuwblazer" loading="lazy"></div><h4>Sneeuwblazer</h4><p class="att-price">&euro;1.590</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="overig"><div class="att-img"><img src="assets/att-mixer.jpg" alt="Mixer" loading="lazy"></div><h4>Mixer</h4><p class="att-price">&euro;1.526</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-<div class="att-card" data-category="overig"><div class="att-img"><img src="assets/att-vuller-vuller.jpg" alt="Vuller" loading="lazy"></div><h4>Vuller</h4><p class="att-price">&euro;1.217</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
-</div></div></section>
-
-<!-- MERCH SECTIE -->
-<section class="att-section" id="merch" style="background:var(--dark);color:var(--white)">
-<div class="container">
-  <h2 class="section-title-left" style="color:var(--white)">MERCH</h2>
-  <p class="section-sub-left" style="color:rgba(255,255,255,.6)">IronCub Swing Collection — alle prijzen incl. BTW</p>
-  <div class="att-grid">
-    <div class="att-card" style="background:#111;border-color:#222"><div class="att-img"><img src="assets/merch-tshirt.jpg" alt="IronCub T-shirt" loading="lazy"></div><h4 style="color:#fff">IronCub T-shirt</h4><p class="att-sub" style="color:rgba(255,255,255,.5);font-size:12px;margin:-6px 0 8px">100% katoen, 220 gsm, DTG print — XS t/m 3XL</p><p class="att-price" style="color:var(--gold)">&euro;49,95</p></div>
-    <div class="att-card" style="background:#111;border-color:#222"><div class="att-img"><img src="assets/merch-hoodie.jpg" alt="IronCub Hoodie" loading="lazy"></div><h4 style="color:#fff">IronCub Hoodie</h4><p class="att-sub" style="color:rgba(255,255,255,.5);font-size:12px;margin:-6px 0 8px">350 gsm heavyweight fleece, DTG print — XS t/m 3XL</p><p class="att-price" style="color:var(--gold)">&euro;89,95</p></div>
-    <div class="att-card" style="background:#111;border-color:#222"><div class="att-img"><img src="assets/merch-trui.jpg" alt="IronCub Crewneck Trui" loading="lazy"></div><h4 style="color:#fff">IronCub Crewneck Trui</h4><p class="att-sub" style="color:rgba(255,255,255,.5);font-size:12px;margin:-6px 0 8px">320 gsm fleece, geribbelde crew-hals — XS t/m 3XL</p><p class="att-price" style="color:var(--gold)">&euro;79,95</p></div>
-    <div class="att-card" style="background:#111;border-color:#222"><div class="att-img"><img src="assets/merch-cap.jpg" alt="IronCub Snapback Cap" loading="lazy"></div><h4 style="color:#fff">IronCub Snapback Cap</h4><p class="att-sub" style="color:rgba(255,255,255,.5);font-size:12px;margin:-6px 0 8px">Geborduurd face patch, flat brim — One Size</p><p class="att-price" style="color:var(--gold)">&euro;34,95</p></div>
-    <div class="att-card" style="background:#111;border-color:#222"><div class="att-img"><img src="assets/merch-mok.jpg" alt="IronCub Mok" loading="lazy"></div><h4 style="color:#fff">IronCub Mok</h4><p class="att-sub" style="color:rgba(255,255,255,.5);font-size:12px;margin:-6px 0 8px">Mat zwart keramiek, 330 ml, sublimatie print</p><p class="att-price" style="color:var(--gold)">&euro;19,95</p></div>
-  </div>
-  <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
-    <div style="background:#1a1a1a;border:1px solid #333;border-radius:12px;padding:24px;text-align:center">
-      <h4 style="color:var(--gold);font-family:var(--font-head);font-size:1.1rem;margin-bottom:4px">The Cub Pack</h4>
-      <p style="color:rgba(255,255,255,.5);font-size:13px;margin-bottom:12px">T-shirt + Cap</p>
-      <p style="color:#fff;font-size:1.3rem;font-weight:700">&euro;74,95 <small style="color:rgba(255,255,255,.4);text-decoration:line-through;font-weight:400;font-size:.85rem">&euro;84,90</small></p>
-      <a href="afspraak.html?onderwerp=merch-cub-pack" class="btn btn-cta" style="margin-top:16px;display:inline-block;font-size:.85rem;padding:8px 24px">Bestellen</a>
-    </div>
-    <div style="background:#1a1a1a;border:1px solid #333;border-radius:12px;padding:24px;text-align:center">
-      <h4 style="color:var(--gold);font-family:var(--font-head);font-size:1.1rem;margin-bottom:4px">The Full Cub</h4>
-      <p style="color:rgba(255,255,255,.5);font-size:13px;margin-bottom:12px">Hoodie + T-shirt + Cap</p>
-      <p style="color:#fff;font-size:1.3rem;font-weight:700">&euro;149,95 <small style="color:rgba(255,255,255,.4);text-decoration:line-through;font-weight:400;font-size:.85rem">&euro;174,85</small></p>
-      <a href="afspraak.html?onderwerp=merch-full-cub" class="btn btn-cta" style="margin-top:16px;display:inline-block;font-size:.85rem;padding:8px 24px">Bestellen</a>
-    </div>
-    <div style="background:#1a1a1a;border:1px solid var(--gold);border-radius:12px;padding:24px;text-align:center">
-      <h4 style="color:var(--gold);font-family:var(--font-head);font-size:1.1rem;margin-bottom:4px">The Iron Set</h4>
-      <p style="color:rgba(255,255,255,.5);font-size:13px;margin-bottom:12px">Complete collectie (5 items)</p>
-      <p style="color:#fff;font-size:1.3rem;font-weight:700">&euro;249,95 <small style="color:rgba(255,255,255,.4);text-decoration:line-through;font-weight:400;font-size:.85rem">&euro;274,75</small></p>
-      <a href="afspraak.html?onderwerp=merch-iron-set" class="btn btn-cta" style="margin-top:16px;display:inline-block;font-size:.85rem;padding:8px 24px">Bestellen</a>
-    </div>
-  </div>
-  <p style="text-align:center;margin-top:20px;color:rgba(255,255,255,.4);font-size:13px">Levertijd: 6-8 weken — Print-on-demand, geen retour mogelijk</p>
-</div>
 </section>
 
-<!-- GRASMAAIERS SECTIE -->
-<section class="att-section" id="grasmaaiers">
-<div class="container">
-  <h2 class="section-title-left">REMOTE CONTROL GRASMAAIERS</h2>
-  <p class="section-sub-left">Afstandsbediende grasmaaiers voor professionals — alle prijzen excl. BTW</p>
-  <div class="mow-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
-    <div class="att-card"><div class="att-img"><img src="assets/mow-196-55l.jpg" alt="IronCub 196-55L" loading="lazy"></div><h4>IronCub 196-55L</h4><p class="att-sub" style="color:#666;font-size:12px;margin:-6px 0 8px">Instapmodel — 196cc — 55cm — rupsbanden</p><p class="att-price">&euro;2.050</p></div>
-    <div class="att-card"><div class="att-img"><img src="assets/mow-224-55l.jpg" alt="IronCub 224-55L" loading="lazy"></div><h4>IronCub 224-55L</h4><p class="att-sub" style="color:#666;font-size:12px;margin:-6px 0 8px">Compact — 224cc 9HP — 55cm — rupsbanden</p><p class="att-price">&euro;2.400</p></div>
-    <div class="att-card"><div class="att-img"><img src="assets/mow-4wd-196.jpg" alt="IronCub 4WD 196" loading="lazy"></div><h4>IronCub 4WD 196</h4><p class="att-sub" style="color:#666;font-size:12px;margin:-6px 0 8px">Vierwielaandrijving — 196cc 7.5HP — 55cm</p><p class="att-price">&euro;2.050</p></div>
-    <div class="att-card"><div class="att-img"><img src="assets/mow-344-60a.jpg" alt="IronCub 344-60A" loading="lazy"></div><h4>IronCub 344-60A</h4><p class="att-sub" style="color:#666;font-size:12px;margin:-6px 0 8px">Middenklasse — 344cc — 60cm — rupsbanden</p><p class="att-price">&euro;5.225</p></div>
-    <div class="att-card"><div class="att-img"><img src="assets/mow-452-80a.jpg" alt="IronCub 452-80A" loading="lazy"></div><h4>IronCub 452-80A</h4><p class="att-sub" style="color:#666;font-size:12px;margin:-6px 0 8px">Off-Road Tank — 452cc 16HP — 80cm — 45°</p><p class="att-price">&euro;6.125</p></div>
-    <div class="att-card"><div class="att-img"><img src="assets/mow-608-90a.jpg" alt="IronCub 608-90A" loading="lazy"></div><h4>IronCub 608-90A</h4><p class="att-sub" style="color:#666;font-size:12px;margin:-6px 0 8px">Professioneel — 608cc 22HP — 90cm — 55°</p><p class="att-price">&euro;8.750</p></div>
-    <div class="att-card"><div class="att-img"><img src="assets/mow-764-90a.jpg" alt="IronCub 764-90A" loading="lazy"></div><h4>IronCub 764-90A</h4><p class="att-sub" style="color:#666;font-size:12px;margin:-6px 0 8px">Topmodel — 764cc 25HP tweecilinder — 90cm — 55°</p><p class="att-price">&euro;10.250</p></div>
-    <div class="att-card"><div class="att-img"><img src="assets/mow-1102-70.jpg" alt="IronCub 1102-70 Multi" loading="lazy"></div><h4>IronCub 1102-70 Multi</h4><p class="att-sub" style="color:#666;font-size:12px;margin:-6px 0 8px">3-in-1: maaien, frezen, sleuven — 22HP</p><p class="att-price">&euro;8.000</p></div>
-  </div>
-</div>
+<!-- TABBED SHOP INTERFACE -->
+<section class="shop-section">
+  <div class="container">
+
+    <!-- Tab navigatie -->
+    <div class="product-tabs" role="tablist" aria-label="Productcategorieën">
+      <button class="product-tab active" data-group="loaders" role="tab" aria-selected="true" aria-controls="panel-loaders">LOADERS</button>
+      <button class="product-tab" data-group="grasmaaiers" role="tab" aria-selected="false" aria-controls="panel-grasmaaiers">GRASMAAIERS</button>
+      <button class="product-tab" data-group="merch" role="tab" aria-selected="false" aria-controls="panel-merch">MERCH</button>
+      <button class="product-tab" data-group="aanbouwdelen" role="tab" aria-selected="false" aria-controls="panel-aanbouwdelen">AANBOUWDELEN</button>
+      <button class="product-tab" data-group="rippa" role="tab" aria-selected="false" aria-controls="panel-rippa">RIPPA</button>
+    </div>
+
+    <!-- ======== TAB: LOADERS ======== -->
+    <div class="tab-panel active" id="panel-loaders" role="tabpanel">
+      <div class="machines-header">
+        <h2 class="section-title-left">LOADERS</h2>
+        <div class="machines-header-right">
+          <span id="machineCount" class="machine-count">8 machines</span>
+          <button class="btn btn-outline-dark btn-sm" id="filterToggle">Filters</button>
+        </div>
+      </div>
+      <div class="shop-layout">
+        <aside class="filter-sidebar" id="filterContainer"></aside>
+        <div class="machines-grid" id="machinesGrid"></div>
+      </div>
+    </div>
+
+    <!-- ======== TAB: GRASMAAIERS ======== -->
+    <div class="tab-panel" id="panel-grasmaaiers" role="tabpanel">
+      <div class="machines-header">
+        <div>
+          <h2 class="section-title-left">GRASMAAIERS</h2>
+          <p class="section-sub-left">Remote Control Grasmaaiers — alle prijzen excl. BTW</p>
+        </div>
+        <div class="machines-header-right">
+          <span id="mowCount" class="machine-count">8 grasmaaiers</span>
+          <button class="btn btn-outline-dark btn-sm" id="mowFilterToggle">Filters</button>
+        </div>
+      </div>
+      <div class="shop-layout">
+        <aside class="filter-sidebar" id="mowFilterContainer"></aside>
+        <div class="product-grid mow-product-grid" id="mowGrid"></div>
+      </div>
+    </div>
+
+    <!-- ======== TAB: MERCH ======== -->
+    <div class="tab-panel merch-panel" id="panel-merch" role="tabpanel">
+      <div class="machines-header">
+        <div>
+          <h2 class="section-title-left" style="color:var(--white)">MERCH</h2>
+          <p class="section-sub-left" style="color:rgba(255,255,255,.55)">IronCub Swing Collection — alle prijzen incl. BTW</p>
+        </div>
+        <div class="machines-header-right">
+          <span id="merchCount" class="machine-count" style="color:rgba(255,255,255,.5)">8 producten</span>
+        </div>
+      </div>
+      <div class="shop-layout">
+        <aside class="filter-sidebar" id="merchFilterContainer"></aside>
+        <div class="product-grid merch-grid" id="merchGrid"></div>
+      </div>
+      <p class="merch-levertijd">Levertijd: 6-8 weken &mdash; Print-on-demand, geen retour mogelijk</p>
+    </div>
+
+    <!-- ======== TAB: AANBOUWDELEN ======== -->
+    <div class="tab-panel" id="panel-aanbouwdelen" role="tabpanel">
+      <h2 class="section-title-left">AANBOUWDELEN</h2>
+      <p class="section-sub-left">Alle prijzen excl. BTW</p>
+      <div class="att-tabs"><button class="att-tab active" data-cat="all">Alle (20+)</button><button class="att-tab" data-cat="grondwerk">Grondwerk</button><button class="att-tab" data-cat="groenonderhoud">Groenonderhoud</button><button class="att-tab" data-cat="sloop">Sloop</button><button class="att-tab" data-cat="transport">Transport</button><button class="att-tab" data-cat="reiniging">Reiniging</button><button class="att-tab" data-cat="overig">Overig</button></div>
+      <div class="att-grid" id="attGrid">
+        <div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-kleine-graafarm.jpg" alt="Slimme graafarm" loading="lazy"></div><h4>Slimme graafarm</h4><p class="att-price">&euro;2.594</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-rechte-graafarm.jpg" alt="Graafarm recht" loading="lazy"></div><h4>Graafarm recht</h4><p class="att-price">&euro;950</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-wortelfrezer.jpg" alt="Grondboor" loading="lazy"></div><h4>Grondboor</h4><p class="att-price">&euro;1.345</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-ripper.jpg" alt="Ripper" loading="lazy"></div><h4>Ripper</h4><p class="att-price">&euro;342</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-roterende-ploeg.jpg" alt="Roterende ploeg" loading="lazy"></div><h4>Roterende ploeg</h4><p class="att-price">&euro;1.281</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-grote-waterpas.jpg" alt="Leveler" loading="lazy"></div><h4>Leveler</h4><p class="att-price">&euro;374</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="grondwerk"><div class="att-img"><img src="assets/att-bulldozer.jpg" alt="Bulldozer" loading="lazy"></div><h4>Bulldozer</h4><p class="att-price">&euro;854</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="groenonderhoud"><div class="att-img"><img src="assets/att-grasmaaier.jpg" alt="Grasmaaier" loading="lazy"></div><h4>Grasmaaier</h4><p class="att-price">&euro;1.633</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="groenonderhoud"><div class="att-img"><img src="assets/att-stronkenbreker.jpg" alt="Stronkenbreker" loading="lazy"></div><h4>Stronkenbreker</h4><p class="att-price">&euro;1.836</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="groenonderhoud"><div class="att-img"><img src="assets/att-takkenversnipperaar.jpg" alt="Takkenversnipperaar" loading="lazy"></div><h4>Takkenversnipperaar</h4><p class="att-price">&euro;1.697</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="groenonderhoud"><div class="att-img"><img src="assets/att-verticuteermachine.jpg" alt="Verticuteermachine" loading="lazy"></div><h4>Verticuteermachine</h4><p class="att-price">&euro;961</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="groenonderhoud"><div class="att-img"><img src="assets/att-houtgrijper.jpg" alt="Houtgrijper" loading="lazy"></div><h4>Houtgrijper</h4><p class="att-price">&euro;1.035</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="sloop"><div class="att-img"><img src="assets/att-breekhamer.jpg" alt="Breekhamer" loading="lazy"></div><h4>Breekhamer</h4><p class="att-price">&euro;1.217</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="sloop"><div class="att-img"><img src="assets/att-sleuvenfrees.jpg" alt="Sleuvenfrees" loading="lazy"></div><h4>Sleuvenfrees</h4><p class="att-price">&euro;1.836</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="transport"><div class="att-img"><img src="assets/att-pallet-forklift.jpg" alt="Pallet forklift" loading="lazy"></div><h4>Pallet forklift</h4><p class="att-price">&euro;544</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="reiniging"><div class="att-img"><img src="assets/att-veegborstel.jpg" alt="Veegborstel open" loading="lazy"></div><h4>Veegborstel open</h4><p class="att-price">&euro;1.377</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="reiniging"><div class="att-img"><img src="assets/att-gesloten-reiniger.jpg" alt="Gesloten veegborstel" loading="lazy"></div><h4>Gesloten veegborstel</h4><p class="att-price">&euro;1.889</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="reiniging"><div class="att-img"><img src="assets/att-sneeuwfrees.jpg" alt="Sneeuwblazer" loading="lazy"></div><h4>Sneeuwblazer</h4><p class="att-price">&euro;1.590</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="overig"><div class="att-img"><img src="assets/att-mixer.jpg" alt="Mixer" loading="lazy"></div><h4>Mixer</h4><p class="att-price">&euro;1.526</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+        <div class="att-card" data-category="overig"><div class="att-img"><img src="assets/att-vuller-vuller.jpg" alt="Vuller" loading="lazy"></div><h4>Vuller</h4><p class="att-price">&euro;1.217</p><a href="https://myironcub.store" class="att-link" target="_blank">Kopen &rarr;</a></div>
+      </div>
+    </div>
+
+    <!-- ======== TAB: RIPPA ======== -->
+    <div class="tab-panel rippa-panel" id="panel-rippa" role="tabpanel">
+      <div class="rippa-coming-soon">
+        <div class="rippa-cs-logo">
+          <span class="rippa-logo-pill"><img src="assets/rippa-logo.png" alt="Rippa" style="height:32px;width:auto"></span>
+          <h2 class="rippa-cs-title">RIPPA MINIGRAVERS</h2>
+        </div>
+        <div class="rippa-cs-grid">
+          <div class="rippa-cs-card rippa-cs-main">
+            <div class="rippa-cs-badge">Binnenkort Beschikbaar</div>
+            <h3 class="rippa-cs-heading">Official Rippa Dealer Europe</h3>
+            <p class="rippa-cs-text">Wij zijn het Rippa assortiment aan het samenstellen voor de Europese markt. Minigravers van 0,8 tot 3,5 ton, CE-gecertificeerd voor Nederland en Belgi&euml;.</p>
+            <a href="contact.html" class="btn btn-cta rippa-cs-cta">Houd mij op de hoogte</a>
+          </div>
+          <div class="rippa-cs-card">
+            <h4 class="rippa-cs-usps-title">Waarom Rippa?</h4>
+            <ul class="rippa-usp-list">
+              <li>Kubota &amp; Yanmar motoren</li>
+              <li>CE-gecertificeerd voor Europa</li>
+              <li>0,8 &mdash; 3,5 ton werkgewicht</li>
+              <li>Compleet met hydraulisch snelwissel</li>
+              <li>Onderdelen direct leverbaar</li>
+              <li>Service via The IronCub Company</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
 </section>
 
-<!-- RIPPA GRAAFMACHINES SECTIE -->
-<section class="att-section" id="rippa" style="background:var(--dark);color:var(--white)">
-<div class="container">
-  <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px">
-    <span style="display:inline-flex;align-items:center;background:rgba(255,255,255,.92);border-radius:8px;padding:6px 14px"><img src="assets/rippa-logo.png" alt="Rippa" style="height:28px;width:auto"></span>
-    <h2 class="section-title-left" style="color:var(--white);margin:0">RIPPA GRAAFMACHINES</h2>
-  </div>
-  <p class="section-sub-left" style="color:rgba(255,255,255,.6)">Official Rippa Dealer Europe — minigravers van 0,8 tot 3,5 ton</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:32px">
-    <div style="background:#1a1a1a;border:1px solid #333;border-radius:12px;padding:32px;text-align:center">
-      <p style="font-size:3rem;margin-bottom:8px">&#x1F6A7;</p>
-      <h3 style="color:var(--gold);font-family:var(--font-head);font-size:1.3rem;margin-bottom:12px">BINNENKORT BESCHIKBAAR</h3>
-      <p style="color:rgba(255,255,255,.6);font-size:14px;line-height:1.6">Wij zijn het Rippa assortiment aan het samenstellen voor de Europese markt. Minigravers van 0,8 tot 3,5 ton, CE-gecertificeerd.</p>
-      <a href="contact.html" class="btn btn-cta" style="margin-top:20px">Houd mij op de hoogte</a>
-    </div>
-    <div style="background:#1a1a1a;border:1px solid #333;border-radius:12px;padding:32px">
-      <h4 style="color:var(--gold);font-family:var(--font-head);margin-bottom:16px">Waarom Rippa?</h4>
-      <ul style="color:rgba(255,255,255,.6);font-size:14px;line-height:2;list-style:none;padding:0">
-        <li>&#x2714; Kubota &amp; Yanmar motoren</li>
-        <li>&#x2714; CE-gecertificeerd voor Europa</li>
-        <li>&#x2714; 0,8 — 3,5 ton werkgewicht</li>
-        <li>&#x2714; Compleet met hydraulisch snelwissel</li>
-        <li>&#x2714; Onderdelen direct leverbaar</li>
-        <li>&#x2714; Service via The IronCub Company</li>
-      </ul>
-    </div>
-  </div>
-</div>
-</section>
-
-<section class="content-section" style="padding:48px 0"><div class="container"><div class="cta-block"><img src="assets/hero-verkoop.jpg" alt="IronCub Beer showroom" loading="lazy" class="cta-block-img"><div class="cta-block-text"><h3>Niet gevonden wat je zoekt?</h3><p>Neem contact op voor persoonlijk advies. Wij helpen je de juiste machine te kiezen.</p><a href="contact.html" class="btn btn-cta">Advies aanvragen</a></div></div></div></section>
+<!-- NIET GEVONDEN CTA -->
+<section class="content-section" style="padding:48px 0"><div class="container"><div class="cta-block"><img src="assets/hero-verkoop.jpg" alt="IronCub showroom" loading="lazy" class="cta-block-img"><div class="cta-block-text"><h3>Niet gevonden wat je zoekt?</h3><p>Neem contact op voor persoonlijk advies. Wij helpen je de juiste machine te kiezen.</p><a href="contact.html" class="btn btn-cta">Advies aanvragen</a></div></div></div></section>
 
 <div id="site-footer"></div>
 <script src="components.js"></script>
 <script src="products.js"></script>
 <script src="main.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Render filters
+/* ===================================================================
+   VERKOOP — Tabbed shop logic
+   =================================================================== */
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ---------- helpers ---------- */
+  function formatPrice(cents) {
+    // prices stored as integers representing euro cents × 100 (e.g. 4995 = €49,95)
+    // but our data uses float euros directly — format accordingly
+    return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(cents).replace(',00','');
+  }
+  function formatMerchPrice(val) {
+    // merch prices stored as integer cents (4995 = €49,95)
+    var euros = val / 100;
+    return '€' + euros.toFixed(2).replace('.', ',');
+  }
+
+  /* =====================================================================
+     TAB SWITCHING
+     ===================================================================== */
+  var tabs = document.querySelectorAll('.product-tab');
+  var panels = document.querySelectorAll('.tab-panel');
+
+  function activateTab(groupId) {
+    tabs.forEach(function(t) {
+      var isActive = t.dataset.group === groupId;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    panels.forEach(function(p) {
+      p.classList.toggle('active', p.id === 'panel-' + groupId);
+    });
+    // update hash
+    history.replaceState(null, '', '#' + groupId);
+    // re-init filter toggle for the active panel
+    initMobileFilterForPanel(groupId);
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      activateTab(tab.dataset.group);
+    });
+  });
+
+  /* =====================================================================
+     LOADERS TAB — existing logic
+     ===================================================================== */
   var fc = document.getElementById('filterContainer');
   if (fc) fc.innerHTML = renderFilters();
-  // Render machine cards
   var grid = document.getElementById('machinesGrid');
   if (grid) grid.innerHTML = MACHINES.map(renderMachineCard).join('');
-  // Init filter logic
   initFilters();
-  initMobileFilter();
+
+  /* =====================================================================
+     GRASMAAIERS TAB
+     ===================================================================== */
+  function renderGrasmaaierCard(m) {
+    return '<div class="mow-card" id="' + m.id + '"' +
+      ' data-motor="' + m.engine_cc + '"' +
+      ' data-maaibreedte="' + m.mowing_width_cm + '"' +
+      ' data-aandrijving="' + (m.drive === '4WD wielen' ? '4wd' : 'rupsbanden') + '"' +
+      ' data-klimbereik="' + m.climb_angle + '">' +
+      '<div class="mow-img"><img src="' + m.img + '" alt="' + m.name + '" loading="lazy"></div>' +
+      '<div class="mow-body">' +
+        '<h3 class="mow-name">' + m.name + '</h3>' +
+        '<span class="mow-subtitle">' + m.subtitle + '</span>' +
+        '<div class="mow-specs">' +
+          '<div class="mow-spec-row"><span class="mow-spec-label">Motor</span><span class="mow-spec-val">' + m.engine_cc + 'cc &mdash; ' + m.hp + ' HP</span></div>' +
+          '<div class="mow-spec-row"><span class="mow-spec-label">Maaibreedte</span><span class="mow-spec-val">' + m.mowing_width_cm + ' cm</span></div>' +
+          '<div class="mow-spec-row"><span class="mow-spec-label">Aandrijving</span><span class="mow-spec-val">' + m.drive + '</span></div>' +
+          '<div class="mow-spec-row"><span class="mow-spec-label">Klimbereik</span><span class="mow-spec-val">' + m.climb_angle + '&deg;</span></div>' +
+        '</div>' +
+        '<p class="mow-price">' + formatPrice(m.price) + ' <small>ex BTW</small></p>' +
+        '<p class="mow-desc">' + m.desc + '</p>' +
+        '<a href="afspraak.html?onderwerp=grasmaaier-' + m.id + '" class="btn btn-cta btn-sm mow-btn">Offerte aanvragen</a>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderGrasmaaierFilters() {
+    var html = '<div class="filter-panel" id="mowFilterPanel">' +
+      '<div class="filter-header"><h3>Filters</h3><button class="filter-reset" id="mowFilterReset">Reset filters</button></div>';
+    for (var key in GRASMAAIERS_FILTERS) {
+      var filter = GRASMAAIERS_FILTERS[key];
+      html += '<div class="filter-group"><h4>' + filter.label + '</h4><div class="filter-options">';
+      filter.options.forEach(function(opt) {
+        html += '<label class="filter-option"><input type="checkbox" name="' + key + '" value="' + opt.value + '"><span>' + opt.label + '</span></label>';
+      });
+      html += '</div></div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function initGrasmaaierFilters() {
+    var panel = document.getElementById('mowFilterPanel');
+    var mowGrid = document.getElementById('mowGrid');
+    var countEl = document.getElementById('mowCount');
+    if (!panel || !mowGrid) return;
+
+    function applyMowFilters() {
+      var active = {};
+      panel.querySelectorAll('input[type="checkbox"]:checked').forEach(function(cb) {
+        if (!active[cb.name]) active[cb.name] = [];
+        active[cb.name].push(cb.value);
+      });
+
+      var visible = 0;
+      GRASMAAIERS.forEach(function(m) {
+        var card = document.getElementById(m.id);
+        if (!card) return;
+        var show = true;
+
+        if (active.motor) {
+          var opts = GRASMAAIERS_FILTERS.motor.options.filter(function(o) { return active.motor.indexOf(o.value) !== -1; });
+          if (!opts.some(function(o) { return o.match(m); })) show = false;
+        }
+        if (active.maaibreedte) {
+          var opts2 = GRASMAAIERS_FILTERS.maaibreedte.options.filter(function(o) { return active.maaibreedte.indexOf(o.value) !== -1; });
+          if (!opts2.some(function(o) { return o.match(m); })) show = false;
+        }
+        if (active.aandrijving) {
+          var driveVal = m.drive === '4WD wielen' ? '4wd' : 'rupsbanden';
+          if (active.aandrijving.indexOf(driveVal) === -1) show = false;
+        }
+        if (active.klimbereik) {
+          var opts3 = GRASMAAIERS_FILTERS.klimbereik.options.filter(function(o) { return active.klimbereik.indexOf(o.value) !== -1; });
+          if (!opts3.some(function(o) { return o.match(m); })) show = false;
+        }
+
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (countEl) countEl.textContent = visible + ' grasmaaier' + (visible !== 1 ? 's' : '');
+    }
+
+    panel.querySelectorAll('input[type="checkbox"]').forEach(function(cb) {
+      cb.addEventListener('change', applyMowFilters);
+    });
+    document.getElementById('mowFilterReset').addEventListener('click', function() {
+      panel.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
+      applyMowFilters();
+    });
+  }
+
+  var mowFC = document.getElementById('mowFilterContainer');
+  if (mowFC) mowFC.innerHTML = renderGrasmaaierFilters();
+  var mowGrid = document.getElementById('mowGrid');
+  if (mowGrid) mowGrid.innerHTML = GRASMAAIERS.map(renderGrasmaaierCard).join('');
+  initGrasmaaierFilters();
+
+  /* =====================================================================
+     MERCH TAB
+     ===================================================================== */
+  function renderMerchCard(m) {
+    var priceHtml;
+    if (m.originalPrice) {
+      priceHtml = '<p class="merch-price">' + formatMerchPrice(m.price_incl) +
+        ' <small class="merch-orig">' + formatMerchPrice(m.originalPrice) + '</small>' +
+        ' <span class="merch-btw-label">incl. BTW</span></p>';
+    } else {
+      priceHtml = '<p class="merch-price">' + formatMerchPrice(m.price_incl) +
+        ' <span class="merch-btw-label">incl. BTW</span></p>';
+    }
+    var sizesHtml = m.sizes ? '<span class="merch-sizes">' + m.sizes + '</span>' : '';
+    var bundleBorder = m.type === 'bundle' ? ' merch-card-bundle' : '';
+    return '<div class="merch-card' + bundleBorder + '" id="' + m.id + '" data-type="' + m.type + '">' +
+      '<div class="merch-img"><img src="' + m.img + '" alt="' + m.name + '" loading="lazy"></div>' +
+      '<div class="merch-body">' +
+        '<h3 class="merch-name">' + m.name + '</h3>' +
+        '<span class="merch-subtitle">' + m.subtitle + '</span>' +
+        sizesHtml +
+        '<p class="merch-desc">' + m.desc + '</p>' +
+        priceHtml +
+        '<a href="afspraak.html?onderwerp=merch-' + m.id + '" class="btn btn-cta btn-sm merch-btn">Bestellen</a>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderMerchFilters() {
+    var html = '<div class="filter-panel" id="merchFilterPanel">' +
+      '<div class="filter-header"><h3>Filters</h3><button class="filter-reset" id="merchFilterReset">Reset filters</button></div>';
+    for (var key in MERCH_FILTERS) {
+      var filter = MERCH_FILTERS[key];
+      html += '<div class="filter-group"><h4>' + filter.label + '</h4><div class="filter-options">';
+      filter.options.forEach(function(opt) {
+        html += '<label class="filter-option" style="color:rgba(255,255,255,.75)"><input type="checkbox" name="' + key + '" value="' + opt.value + '" style="accent-color:#C5941A"><span>' + opt.label + '</span></label>';
+      });
+      html += '</div></div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function initMerchFilters() {
+    var panel = document.getElementById('merchFilterPanel');
+    var mGrid = document.getElementById('merchGrid');
+    var countEl = document.getElementById('merchCount');
+    if (!panel || !mGrid) return;
+
+    function applyMerchFilters() {
+      var active = {};
+      panel.querySelectorAll('input[type="checkbox"]:checked').forEach(function(cb) {
+        if (!active[cb.name]) active[cb.name] = [];
+        active[cb.name].push(cb.value);
+      });
+      var visible = 0;
+      MERCH.forEach(function(m) {
+        var card = document.getElementById(m.id);
+        if (!card) return;
+        var show = true;
+        if (active.type && active.type.indexOf(m.type) === -1) show = false;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (countEl) countEl.textContent = visible + ' product' + (visible !== 1 ? 'en' : '');
+    }
+
+    panel.querySelectorAll('input[type="checkbox"]').forEach(function(cb) {
+      cb.addEventListener('change', applyMerchFilters);
+    });
+    document.getElementById('merchFilterReset').addEventListener('click', function() {
+      panel.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
+      applyMerchFilters();
+    });
+  }
+
+  var merchFC = document.getElementById('merchFilterContainer');
+  if (merchFC) merchFC.innerHTML = renderMerchFilters();
+  var mGrid = document.getElementById('merchGrid');
+  if (mGrid) mGrid.innerHTML = MERCH.map(renderMerchCard).join('');
+  initMerchFilters();
+
+  /* =====================================================================
+     AANBOUWDELEN TAB — existing att-tabs logic
+     ===================================================================== */
+  function initAttTabs() {
+    var attTabs = document.querySelectorAll('.att-tab');
+    var attCards = document.querySelectorAll('#attGrid .att-card');
+    attTabs.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        attTabs.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var cat = btn.dataset.cat;
+        attCards.forEach(function(card) {
+          if (cat === 'all' || card.dataset.category === cat) {
+            card.classList.remove('att-hidden');
+          } else {
+            card.classList.add('att-hidden');
+          }
+        });
+      });
+    });
+  }
+  initAttTabs();
+
+  /* =====================================================================
+     MOBILE FILTER TOGGLE — per panel
+     ===================================================================== */
+  function initMobileFilterForPanel(groupId) {
+    if (groupId === 'loaders') {
+      initMobileFilter(); // existing function from products.js
+    } else if (groupId === 'grasmaaiers') {
+      var toggle = document.getElementById('mowFilterToggle');
+      var panel = document.getElementById('mowFilterPanel');
+      if (toggle && panel) {
+        toggle.onclick = function() {
+          panel.classList.toggle('filter-open');
+          toggle.textContent = panel.classList.contains('filter-open') ? 'Sluit filters' : 'Filters';
+        };
+      }
+    }
+  }
+
+  /* =====================================================================
+     HASH ROUTING — activate tab on page load from URL hash
+     ===================================================================== */
+  var validGroups = ['loaders', 'grasmaaiers', 'merch', 'aanbouwdelen', 'rippa'];
+  var hash = window.location.hash.replace('#', '');
+
+  // Check if hash is a product ID (loader machine)
+  var isMachineId = MACHINES.some(function(m) { return m.id === hash; });
+  if (isMachineId) {
+    activateTab('loaders');
+    setTimeout(function() {
+      var el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300);
+  } else if (validGroups.indexOf(hash) !== -1) {
+    activateTab(hash);
+  } else {
+    // default: loaders
+    activateTab('loaders');
+  }
+
 });
 </script>
 <script src="winkel.js"></script>

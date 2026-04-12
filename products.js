@@ -378,3 +378,278 @@ function initMobileFilter() {
     });
   }
 }
+
+/* =====================================================================
+   GRASMAAIERS — Remote Control Grasmaaiers
+   ===================================================================== */
+const GRASMAAIERS = [
+  {
+    id: "mow-196-55l",
+    name: "IronCub 196-55L",
+    subtitle: "Remote Control Grasmaaier",
+    price: 2050,
+    img: "assets/mow-196-55l.jpg",
+    engine_cc: 196,
+    hp: 7.5,
+    mowing_width_cm: 55,
+    drive: "rupsbanden",
+    climb_angle: 40,
+    start: "handstart/elektrisch",
+    desc: "Instapmodel afstandsbediende grasmaaier. Loncin 196cc benzine."
+  },
+  {
+    id: "mow-224-55l",
+    name: "IronCub 224-55L",
+    subtitle: "Remote Control Grasmaaier",
+    price: 2400,
+    img: "assets/mow-224-55l.jpg",
+    engine_cc: 224,
+    hp: 9,
+    mowing_width_cm: 55,
+    drive: "rupsbanden",
+    climb_angle: 40,
+    start: "handstart/elektrisch",
+    desc: "Compact model. Loncin 224cc 9HP, 55cm maaibreedte, rupsbanden."
+  },
+  {
+    id: "mow-4wd-196",
+    name: "IronCub 4WD 196",
+    subtitle: "Vierwiel Grasmaaier",
+    price: 2050,
+    img: "assets/mow-4wd-196.jpg",
+    engine_cc: 196,
+    hp: 7.5,
+    mowing_width_cm: 55,
+    drive: "4WD wielen",
+    climb_angle: 30,
+    start: "handstart/elektrisch",
+    desc: "Vierwiel met afstandsbediening. Loncin 196cc, 55cm maaibreedte."
+  },
+  {
+    id: "mow-344-60a",
+    name: "IronCub 344-60A",
+    subtitle: "Remote Control Grasmaaier",
+    price: 5225,
+    img: "assets/mow-344-60a.jpg",
+    engine_cc: 344,
+    hp: 12,
+    mowing_width_cm: 60,
+    drive: "rupsbanden",
+    climb_angle: 45,
+    start: "elektrisch",
+    desc: "Middenklasse. 344cc benzine, 60cm maaibreedte, 45 graden klimbereik."
+  },
+  {
+    id: "mow-452-80a",
+    name: "IronCub 452-80A",
+    subtitle: "Off-Road Tank Grasmaaier",
+    price: 6125,
+    img: "assets/mow-452-80a.jpg",
+    engine_cc: 452,
+    hp: 16,
+    mowing_width_cm: 80,
+    drive: "rupsbanden",
+    climb_angle: 45,
+    start: "elektrisch",
+    desc: "Krachtig off-road model. 452cc 16HP, 80cm maaibreedte, 45 graden."
+  },
+  {
+    id: "mow-608-90a",
+    name: "IronCub 608-90A",
+    subtitle: "Off-Road Tank Grasmaaier",
+    price: 8750,
+    img: "assets/mow-608-90a.jpg",
+    engine_cc: 608,
+    hp: 22,
+    mowing_width_cm: 90,
+    drive: "rupsbanden",
+    climb_angle: 55,
+    start: "remote start",
+    desc: "Professioneel. 608cc 22HP, 90cm maaibreedte, 55 graden klimbereik."
+  },
+  {
+    id: "mow-764-90a",
+    name: "IronCub 764-90A",
+    subtitle: "Off-Road Tank Grasmaaier",
+    price: 10250,
+    img: "assets/mow-764-90a.jpg",
+    engine_cc: 764,
+    hp: 25,
+    mowing_width_cm: 90,
+    drive: "rupsbanden",
+    climb_angle: 55,
+    start: "remote start",
+    desc: "Topmodel tweecilinder. 764cc 25HP, 90cm, industriele afstandsbediening."
+  },
+  {
+    id: "mow-1102-70",
+    name: "IronCub 1102-70 Multi",
+    subtitle: "Multifunctioneel",
+    price: 8000,
+    img: "assets/mow-1102-70.jpg",
+    engine_cc: 1102,
+    hp: 22,
+    mowing_width_cm: 70,
+    drive: "rupsbanden",
+    climb_angle: 45,
+    start: "elektrisch",
+    desc: "3-in-1: maaien, frezen en sleuven graven. 22HP tweecilinder."
+  }
+];
+
+const GRASMAAIERS_FILTERS = {
+  motor: { label: "Motor", options: [
+    { value: "196-300", label: "196 - 300 cc", match: m => m.engine_cc >= 196 && m.engine_cc < 300 },
+    { value: "300-500", label: "300 - 500 cc", match: m => m.engine_cc >= 300 && m.engine_cc < 500 },
+    { value: "500-800", label: "500 - 800 cc", match: m => m.engine_cc >= 500 && m.engine_cc < 800 },
+    { value: "800+",    label: "800+ cc",      match: m => m.engine_cc >= 800 }
+  ]},
+  maaibreedte: { label: "Maaibreedte", options: [
+    { value: "55", label: "55 cm", match: m => m.mowing_width_cm === 55 },
+    { value: "60", label: "60 cm", match: m => m.mowing_width_cm === 60 },
+    { value: "80", label: "80 cm", match: m => m.mowing_width_cm === 80 },
+    { value: "90", label: "90 cm", match: m => m.mowing_width_cm === 90 }
+  ]},
+  aandrijving: { label: "Aandrijving", options: [
+    { value: "rupsbanden", label: "Rupsbanden" },
+    { value: "4wd",        label: "4WD wielen" }
+  ]},
+  klimbereik: { label: "Klimbereik", options: [
+    { value: "30-40", label: "30 - 40 graden", match: m => m.climb_angle >= 30 && m.climb_angle <= 40 },
+    { value: "45",    label: "45 graden",      match: m => m.climb_angle === 45 },
+    { value: "55",    label: "55 graden",      match: m => m.climb_angle === 55 }
+  ]}
+};
+
+/* =====================================================================
+   MERCH — IronCub Swing Collection (prijzen INCL BTW)
+   ===================================================================== */
+const MERCH = [
+  {
+    id: "merch-tshirt",
+    name: "IronCub T-shirt",
+    subtitle: "IronCub Swing Design",
+    price_incl: 4995,
+    img: "assets/merch-tshirt.jpg",
+    type: "kleding",
+    sizes: "XS-3XL",
+    desc: "100% ringgesponnen katoen, 220 gsm heavyweight. DTG full-color print."
+  },
+  {
+    id: "merch-hoodie",
+    name: "IronCub Hoodie",
+    subtitle: "IronCub Swing Design",
+    price_incl: 8995,
+    img: "assets/merch-hoodie.jpg",
+    type: "kleding",
+    sizes: "XS-3XL",
+    desc: "80% katoen, 20% polyester, 350 gsm heavyweight fleece. DTG print."
+  },
+  {
+    id: "merch-trui",
+    name: "IronCub Crewneck Trui",
+    subtitle: "IronCub Swing Design",
+    price_incl: 7995,
+    img: "assets/merch-trui.jpg",
+    type: "kleding",
+    sizes: "XS-3XL",
+    desc: "80% katoen, 20% polyester, 320 gsm fleece. Geribbelde crew-hals."
+  },
+  {
+    id: "merch-cap",
+    name: "IronCub Snapback Cap",
+    subtitle: "IronCub Face Patch",
+    price_incl: 3495,
+    img: "assets/merch-cap.jpg",
+    type: "accessoire",
+    sizes: "One Size",
+    desc: "Geborduurd IronCub face patch, flat brim, plastic snapback sluiting."
+  },
+  {
+    id: "merch-mok",
+    name: "IronCub Mok",
+    subtitle: "Keramiek 330ml",
+    price_incl: 1995,
+    img: "assets/merch-mok.jpg",
+    type: "accessoire",
+    sizes: "One Size",
+    desc: "Mat zwart keramiek, 330 ml. Full-color sublimatie print."
+  },
+  {
+    id: "merch-bundle-cub",
+    name: "The Cub Pack",
+    subtitle: "T-shirt + Cap",
+    price_incl: 7495,
+    originalPrice: 8490,
+    img: "assets/merch-cap.jpg",
+    type: "bundle",
+    sizes: null,
+    desc: "Bundel: T-shirt + Snapback Cap. Bespaar!"
+  },
+  {
+    id: "merch-bundle-full",
+    name: "The Full Cub",
+    subtitle: "Hoodie + T-shirt + Cap",
+    price_incl: 14995,
+    originalPrice: 17485,
+    img: "assets/merch-hoodie.jpg",
+    type: "bundle",
+    sizes: null,
+    desc: "Bundel: Hoodie + T-shirt + Snapback Cap."
+  },
+  {
+    id: "merch-bundle-iron",
+    name: "The Iron Set",
+    subtitle: "Complete collectie",
+    price_incl: 24995,
+    originalPrice: 27475,
+    img: "assets/merch-hoodie.jpg",
+    type: "bundle",
+    sizes: null,
+    desc: "Bundel: Hoodie + Trui + T-shirt + Cap + Mok. De complete collectie."
+  }
+];
+
+const MERCH_FILTERS = {
+  type: { label: "Type", options: [
+    { value: "kleding",    label: "Kleding" },
+    { value: "accessoire", label: "Accessoire" },
+    { value: "bundle",     label: "Bundle" }
+  ]}
+};
+
+/* =====================================================================
+   PRODUCT_GROUPS — unified product group registry
+   ===================================================================== */
+const PRODUCT_GROUPS = [
+  {
+    id: "loaders",
+    name: "LOADERS",
+    subtitle: "Skid Steer & Knikladers",
+    filters: ["fuel", "steering", "power", "speed", "pushpull", "breakout", "branch"]
+  },
+  {
+    id: "grasmaaiers",
+    name: "GRASMAAIERS",
+    subtitle: "Remote Control Grasmaaiers",
+    filters: ["motor", "maaibreedte", "aandrijving", "klimbereik"]
+  },
+  {
+    id: "merch",
+    name: "MERCH",
+    subtitle: "IronCub Swing Collection",
+    filters: ["type"]
+  },
+  {
+    id: "aanbouwdelen",
+    name: "AANBOUWDELEN",
+    subtitle: "Aanbouwdelen voor loaders",
+    filters: []
+  },
+  {
+    id: "rippa",
+    name: "RIPPA",
+    subtitle: "Minigravers — Binnenkort Beschikbaar",
+    filters: []
+  }
+];
