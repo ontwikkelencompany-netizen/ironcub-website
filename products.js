@@ -272,11 +272,25 @@ const FILTERS = {
 
 function renderMachineCard(m) {
   const fmtPrice = function(v) { return new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',minimumFractionDigits:0,maximumFractionDigits:0}).format(v); };
+  // FIX 3: use t() for all UI text so language switching works on dynamic content
+  const _t = (typeof t === 'function') ? t : function(k) { return k; };
+  const exBtwLabel = _t('common.exBtw');
+  const poaLabel = _t('common.prijsOpAanvraag');
+  const kopenLabel = _t('common.kopen');
+  const leasenLabel = _t('common.leasen');
+  const hurenLabel = _t('common.huren');
+  const demoLabel = _t('common.demo');
+  const bekijkLabel = _t('verkoop.bekijkMachine');
+  const specVermogen = _t('verkoop.specVermogen');
+  const specSnelheid = _t('verkoop.specSnelheid');
+  const specGewicht = _t('verkoop.specGewicht');
+  const specLaadvermogen = _t('verkoop.specLaadvermogen');
+  const specBreedte = _t('verkoop.specBreedte');
   const priceHtml = m.poa
-    ? '<p class="m-price m-poa">Prijs op aanvraag</p>'
+    ? '<p class="m-price m-poa">' + poaLabel + '</p>'
     : (m.originalPrice
-      ? `<p class="m-price"><span class="m-price-old">${fmtPrice(m.originalPrice)}</span> ${m.priceDisplay} <small>ex BTW</small></p>`
-      : `<p class="m-price">${m.priceDisplay} <small>ex BTW</small></p>`);
+      ? `<p class="m-price"><span class="m-price-old">${fmtPrice(m.originalPrice)}</span> ${m.priceDisplay} <small>${exBtwLabel}</small></p>`
+      : `<p class="m-price">${m.priceDisplay} <small>${exBtwLabel}</small></p>`);
   return `<div class="machine-card" id="${m.id}" data-fuel="${m.fuel}" data-steering="${m.steering}" data-power="${m.powerKw}" data-speed="${m.speedKmh}" data-pushpull="${m.pushPullKg}" data-breakout="${m.breakoutKg}" data-branches="${m.branches.join(',')}">
     <div class="machine-img"><img src="${m.img}" alt="${m.name}" loading="lazy"><span class="m-badge ${m.badgeClass}">${m.badge}</span></div>
     <div class="machine-body">
@@ -285,15 +299,15 @@ function renderMachineCard(m) {
       ${priceHtml}
       <p>${m.desc}</p>
       <div class="m-specs-detail">
-        <div class="spec-row"><span class="spec-label">Vermogen</span><span class="spec-val">${m.powerKw} kW (${m.powerHp} hp)</span></div>
-        <div class="spec-row"><span class="spec-label">Max. snelheid</span><span class="spec-val">${m.speedKmh} km/h</span></div>
-        <div class="spec-row"><span class="spec-label">Gewicht</span><span class="spec-val">${m.weightKg} kg</span></div>
-        <div class="spec-row"><span class="spec-label">Max. laadvermogen</span><span class="spec-val">${m.maxLoadKg} kg</span></div>
-        <div class="spec-row"><span class="spec-label">Breedte</span><span class="spec-val">${m.widthMm} mm</span></div>
+        <div class="spec-row"><span class="spec-label">${specVermogen}</span><span class="spec-val">${m.powerKw} kW (${m.powerHp} hp)</span></div>
+        <div class="spec-row"><span class="spec-label">${specSnelheid}</span><span class="spec-val">${m.speedKmh} km/h</span></div>
+        <div class="spec-row"><span class="spec-label">${specGewicht}</span><span class="spec-val">${m.weightKg} kg</span></div>
+        <div class="spec-row"><span class="spec-label">${specLaadvermogen}</span><span class="spec-val">${m.maxLoadKg} kg</span></div>
+        <div class="spec-row"><span class="spec-label">${specBreedte}</span><span class="spec-val">${m.widthMm} mm</span></div>
       </div>
       <div class="m-specs">${m.specs.map(s => `<span>${s}</span>`).join('')}</div>
-      <div class="m-actions"><a href="checkout.html?product=${m.id}" class="btn btn-cta btn-sm">Kopen</a><a href="lease.html" class="btn btn-outline-dark btn-sm">Leasen</a><a href="afspraak.html" class="btn btn-outline-dark btn-sm">Huren</a><a href="demodagen.html" class="btn btn-outline-dark btn-sm">Demo</a></div>
-      ${m.detailUrl ? `<a href="${m.detailUrl}" class="btn-bekijk">Bekijk deze machine <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>` : ''}
+      <div class="m-actions"><a href="checkout.html?product=${m.id}" class="btn btn-cta btn-sm">${kopenLabel}</a><a href="lease.html" class="btn btn-outline-dark btn-sm">${leasenLabel}</a><a href="afspraak.html" class="btn btn-outline-dark btn-sm">${hurenLabel}</a><a href="demodagen.html" class="btn btn-outline-dark btn-sm">${demoLabel}</a></div>
+      ${m.detailUrl ? `<a href="${m.detailUrl}" class="btn-bekijk">${bekijkLabel} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>` : ''}
     </div>
   </div>`;
 }

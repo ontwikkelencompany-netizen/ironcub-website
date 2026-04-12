@@ -206,12 +206,12 @@ document.addEventListener('DOMContentLoaded', function () {
           '<div class="mow-spec-row"><span class="mow-spec-label" data-i18n="verkoop.specKlimbereik">Klimbereik</span><span class="mow-spec-val">' + m.climb_angle + '&deg;</span></div>' +
           '<div class="mow-spec-row"><span class="mow-spec-label" data-i18n="verkoop.specStart">Start</span><span class="mow-spec-val">' + m.start + '</span></div>' +
         '</div>' +
-        '<p class="mow-price">' + (m.originalPrice ? '<span class="gm-price-old">' + formatPrice(m.originalPrice) + '</span> ' : '') + formatPrice(m.price) + ' <small>ex BTW</small></p>' +
+        '<p class="mow-price">' + (m.originalPrice ? '<span class="gm-price-old">' + formatPrice(m.originalPrice) + '</span> ' : '') + formatPrice(m.price) + ' <small>' + (typeof t === 'function' ? t('common.exBtw') : 'ex BTW') + '</small></p>' +
         '<p class="mow-desc">' + m.desc + '</p>' +
         '<div class="mow-actions">' +
-        '<a href="checkout.html?product=' + m.id + '" class="btn btn-cta btn-sm">Kopen</a>' +
-        '<a href="lease.html" class="btn btn-outline-dark btn-sm">Leasen</a>' +
-        '<a href="afspraak.html?onderwerp=grasmaaier-' + m.id + '" class="btn btn-outline-dark btn-sm">Meer info</a>' +
+        '<a href="checkout.html?product=' + m.id + '" class="btn btn-cta btn-sm">' + (typeof t==="function"?t("common.kopen"):"Kopen") + '</a>' +
+        '<a href="lease.html" class="btn btn-outline-dark btn-sm">' + (typeof t==="function"?t("common.leasen"):"Leasen") + '</a>' +
+        '<a href="afspraak.html?onderwerp=grasmaaier-' + m.id + '" class="btn btn-outline-dark btn-sm">' + (typeof t==="function"?t("common.meerInfo"):"Meer info") + '</a>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -296,10 +296,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var priceHtml;
     if (m.originalPrice) {
       priceHtml = '<p class="merch-price"><small class="merch-orig">' + formatMerchPrice(m.originalPrice) + '</small> ' + formatMerchPrice(m.price_incl) +
-        ' <span class="merch-btw-label">incl. BTW</span></p>';
+        ' <span class="merch-btw-label">' + (typeof t==="function"?t("common.inclBtw"):"incl. BTW") + '</span></p>';
     } else {
       priceHtml = '<p class="merch-price">' + formatMerchPrice(m.price_incl) +
-        ' <span class="merch-btw-label">incl. BTW</span></p>';
+        ' <span class="merch-btw-label">' + (typeof t==="function"?t("common.inclBtw"):"incl. BTW") + '</span></p>';
     }
 
     // Size selector for clothing items
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '<p class="merch-desc">' + m.desc + '</p>' +
         sizeHtml +
         priceHtml +
-        '<button class="btn btn-cta btn-sm merch-btn merch-add-cart" data-id="' + m.id + '" data-name="' + m.name + '" data-price="' + m.price_incl + '" data-img="' + m.img + '" data-needs-size="' + (m.sizes && m.sizes !== 'One Size' && m.type !== 'bundle' ? '1' : '0') + '">In winkelwagen</button>' +
+        '<button class="btn btn-cta btn-sm merch-btn merch-add-cart" data-id="' + m.id + '" data-name="' + m.name + '" data-price="' + m.price_incl + '" data-img="' + m.img + '" data-needs-size="' + (m.sizes && m.sizes !== 'One Size' && m.type !== 'bundle' ? '1' : '0') + '">' + (typeof t==="function"?t("common.inWinkelwagen"):"In winkelwagen") + '</button>' +
       '</div>' +
     '</div>';
   }
@@ -516,8 +516,8 @@ document.addEventListener('DOMContentLoaded', function () {
         '<tr><td data-i18n='verkoop.specBreedte'>Breedte</td><td>' + r.width_mm + ' mm</td></tr>' +
         '</table>' +
         '<p class="rippa-card-desc">' + r.desc + '</p>' +
-        '<div class="rippa-card-footer">' + (r.poa ? '<span class="rippa-card-price">Prijs op aanvraag</span>' : '<span class="rippa-card-price">' + (r.originalPrice ? '<span style="text-decoration:line-through;color:rgba(255,255,255,.35);font-weight:400;font-size:.85em;margin-right:6px">' + fmtEur(r.originalPrice) + '</span>' : '') + fmtEur(r.price) + ' <small style="color:rgba(255,255,255,.4);font-weight:400">ex BTW</small></span>') + '<a href="checkout.html?product=' + r.id + '" class="btn btn-cta btn-sm">Kopen</a><a href="lease.html" class="btn btn-outline-dark btn-sm" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7)">Leasen</a></div>' +
-        '<a href="afspraak.html?onderwerp=Rippa+' + encodeURIComponent(r.model) + '" class="rippa-detail-link">Meer info aanvragen <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>' +
+        '<div class="rippa-card-footer">' + (r.poa ? '<span class="rippa-card-price">' + (typeof t==="function"?t("common.prijsOpAanvraag"):"Prijs op aanvraag") + '</span>' : '<span class="rippa-card-price">' + (r.originalPrice ? '<span style="text-decoration:line-through;color:rgba(255,255,255,.35);font-weight:400;font-size:.85em;margin-right:6px">' + fmtEur(r.originalPrice) + '</span>' : '') + fmtEur(r.price) + ' <small style="color:rgba(255,255,255,.4);font-weight:400">' + (typeof t==="function"?t("common.exBtw"):"ex BTW") + '</small></span>') + '<a href="checkout.html?product=' + r.id + '" class="btn btn-cta btn-sm">' + (typeof t==="function"?t("common.kopen"):"Kopen") + '</a><a href="lease.html" class="btn btn-outline-dark btn-sm" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7)">' + (typeof t==="function"?t("common.leasen"):"Leasen") + '</a></div>' +
+        '<a href="afspraak.html?onderwerp=Rippa+' + encodeURIComponent(r.model) + '" class="rippa-detail-link">' + (typeof t==="function"?t("verkoop.meerInfoAanvragen"):"Meer info aanvragen") + ' <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>' +
         '</div></div>';
     }).join('');
   }
@@ -559,6 +559,29 @@ document.addEventListener('DOMContentLoaded', function () {
     if (mowGrid) mowGrid.innerHTML = GRASMAAIERS.map(renderGrasmaaierCard).join('');
     var mGrid = document.getElementById('merchGrid');
     if (mGrid) mGrid.innerHTML = MERCH.map(renderMerchCard).join('');
+    // FIX 3: Re-render Rippa grid
+    var rGrid = document.getElementById('rippaGrid');
+    if (rGrid && typeof RIPPA !== 'undefined') {
+      rGrid.innerHTML = RIPPA.map(function(r) {
+        return '<div class="rippa-card" id="' + r.id + '" data-weight="' + r.weight_kg + '" data-engine="' + r.engine_key + '">' +
+          '<div class="rippa-card-img"><img src="' + r.img + '" alt="Rippa ' + r.model + '" loading="lazy"><span class="rippa-card-badge">' + r.weight_ton + '</span></div>' +
+          '<div class="rippa-card-body">' +
+          '<h4 class="rippa-card-title">' + r.model + '</h4>' +
+          '<p class="rippa-card-sub">' + r.subtitle + '</p>' +
+          '<table class="rippa-specs-table">' +
+          '<tr><td>' + (typeof t==="function"?t("verkoop.specMotor"):"Motor") + '</td><td>' + r.engine + '</td></tr>' +
+          '<tr><td>' + (typeof t==="function"?t("verkoop.specVermogen"):"Vermogen") + '</td><td>' + r.power_kw + ' kW / ' + r.power_hp + ' hp</td></tr>' +
+          '<tr><td>' + (typeof t==="function"?t("verkoop.specGraafdiepte"):"Graafdiepte") + '</td><td>' + (r.dig_depth_mm/1000).toFixed(1) + ' m</td></tr>' +
+          '<tr><td>' + (typeof t==="function"?t("verkoop.specBereik"):"Bereik") + '</td><td>' + (r.max_reach_mm/1000).toFixed(1) + ' m</td></tr>' +
+          '<tr><td>' + (typeof t==="function"?t("verkoop.specBak"):"Bak") + '</td><td>' + r.bucket_m3 + ' m³</td></tr>' +
+          '<tr><td>' + (typeof t==="function"?t("verkoop.specBreedte"):"Breedte") + '</td><td>' + r.width_mm + ' mm</td></tr>' +
+          '</table>' +
+          '<p class="rippa-card-desc">' + r.desc + '</p>' +
+          '<div class="rippa-card-footer">' + (r.poa ? '<span class="rippa-card-price">' + (typeof t==="function"?t("common.prijsOpAanvraag"):"Prijs op aanvraag") + '</span>' : '<span class="rippa-card-price">' + (r.originalPrice ? '<span style="text-decoration:line-through;color:rgba(255,255,255,.35);font-weight:400;font-size:.85em;margin-right:6px">' + fmtEur(r.originalPrice) + '</span>' : '') + fmtEur(r.price) + ' <small style="color:rgba(255,255,255,.4);font-weight:400">' + (typeof t==="function"?t("common.exBtw"):"ex BTW") + '</small></span>') + '<a href="checkout.html?product=' + r.id + '" class="btn btn-cta btn-sm">' + (typeof t==="function"?t("common.kopen"):"Kopen") + '</a><a href="lease.html" class="btn btn-outline-dark btn-sm" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7)">' + (typeof t==="function"?t("common.leasen"):"Leasen") + '</a></div>' +
+          '<a href="afspraak.html?onderwerp=Rippa+' + encodeURIComponent(r.model) + '" class="rippa-detail-link">' + (typeof t==="function"?t("verkoop.meerInfoAanvragen"):"Meer info aanvragen") + ' <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>' +
+          '</div></div>';
+      }).join('');
+    }
     // Re-attach merch size buttons
     document.querySelectorAll('.merch-size-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
@@ -566,8 +589,9 @@ document.addEventListener('DOMContentLoaded', function () {
         this.classList.add('selected');
       });
     });
-    // Re-apply all data-i18n translations
-    if (typeof applyLanguage === 'function') applyLanguage();
+    // Re-apply all data-i18n translations (static elements)
+    // Note: applyLanguage already called by i18n.js before this handler fires
+    // Just ensure dynamic content reflects new lang (already done above via t())
   });
 
 

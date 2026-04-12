@@ -539,7 +539,12 @@
     if (items.length === 0) {
       wishlistPanel.innerHTML = '<div style="padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee"><h3 style="font-family:Barlow Condensed,sans-serif;font-size:1.2rem;font-weight:700;margin:0">Verlanglijst</h3><button id="ic-wl-close" style="background:none;border:none;font-size:24px;cursor:pointer;padding:4px 8px">&times;</button></div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center"><p style="color:#888;font-size:14px">Je verlanglijst is leeg.</p><p style="color:#aaa;font-size:13px;margin-top:8px">Klik op het hartje bij een product om het toe te voegen.</p></div>';
     } else {
-      var html = '<div style="padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee"><h3 style="font-family:Barlow Condensed,sans-serif;font-size:1.2rem;font-weight:700;margin:0">Verlanglijst (' + items.length + ')</h3><button id="ic-wl-close" style="background:none;border:none;font-size:24px;cursor:pointer;padding:4px 8px">&times;</button></div><div style="flex:1;overflow-y:auto;padding:16px">';
+      var html = '<div style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee">' +
+        '<h3 style="font-family:Barlow Condensed,sans-serif;font-size:1.2rem;font-weight:700;margin:0">Verlanglijst (' + items.length + ')</h3>' +
+        '<div style="display:flex;align-items:center;gap:8px">' +
+        '<button id="ic-wl-clear-all" style="background:none;border:1px solid #e44;border-radius:4px;color:#e44;font-size:11px;cursor:pointer;padding:4px 8px;font-family:Inter,sans-serif;line-height:1">Alles verwijderen</button>' +
+        '<button id="ic-wl-close" style="background:none;border:none;font-size:24px;cursor:pointer;padding:4px 8px;color:#333">&times;</button>' +
+        '</div></div><div style="flex:1;overflow-y:auto;padding:16px">';
       items.forEach(function(id) {
         html += '<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f0f0f0" data-wl-id="' + id + '">' +
           '<div style="flex:1"><p style="font-weight:600;font-size:14px;margin:0">' + id + '</p></div>' +
@@ -554,11 +559,23 @@
       btn.addEventListener('click', function() {
         var id = this.getAttribute('data-id');
         wishlist.delete(id);
+        saveLocalCart(); // FIX 2: persist immediately after every delete
         updateWishlistBadge();
         renderWishlistItems();
         showToast('Verwijderd uit verlanglijst');
       });
     });
+    // FIX 2: "Alles verwijderen" clear all button
+    var clearAllBtn = wishlistPanel.querySelector('#ic-wl-clear-all');
+    if (clearAllBtn) {
+      clearAllBtn.addEventListener('click', function() {
+        wishlist.clear();
+        saveLocalCart();
+        updateWishlistBadge();
+        renderWishlistItems();
+        showToast('Verlanglijst leeggemaakt');
+      });
+    }
   }
 
   function openWishlistPanel() {
@@ -1016,6 +1033,7 @@
       persistCartEvent('wishlist_add', productId, '');
     }
     updateWishlistBadge();
+    saveLocalCart();
   }
 
   /* =====================================================================
@@ -1175,6 +1193,18 @@
   });
 
   /* =====================================================================
+     HEADER RE-ATTACH (after ic:langchange re-renders header)
+     ===================================================================== */
+  document.addEventListener('ic:winkelReattach', function() {
+    var headerRight = document.querySelector('.header-right');
+    if (headerRight && !document.getElementById('ic-cart-trigger')) {
+      injectCartIcon();
+      updateCartBadge();
+      updateWishlistBadge();
+    }
+  });
+
+  /* =====================================================================
      INIT
      ===================================================================== */
   function init() {
@@ -1217,6 +1247,32 @@
     init();
   }
 
+})();
+
+/* ======================================================================
+   FIX 3: Global re-attach function for header re-render after language change
+   Called by components.js ic:langchange handler
+   ====================================================================== */
+window._icWinkelReattach = (function() {
+  'use strict';
+  return function() {
+    // Re-inject BTW toggle and bear buttons into the re-rendered header
+    var headerRight = document.querySelector('.header-right');
+    if (!headerRight) return;
+    // Remove any previously injected bear buttons / BTW toggle to avoid duplicates
+    var oldBtw = document.getElementById('ic-header-btw');
+    if (oldBtw) oldBtw.parentNode.removeChild(oldBtw);
+    var oldWish = document.getElementById('ic-wishlist-trigger');
+    if (oldWish) oldWish.parentNode.removeChild(oldWish);
+    var oldCart = document.getElementById('ic-cart-trigger');
+    if (oldCart) oldCart.parentNode.removeChild(oldCart);
+    var oldAcc = document.getElementById('ic-account-trigger');
+    if (oldAcc) oldAcc.parentNode.removeChild(oldAcc);
+    // Re-run injection — references to inner IIFE functions not accessible here,
+    // but init() re-schedules tryInject which handles it
+    // Simpler: dispatch a custom event that the IIFE listens to
+    document.dispatchEvent(new CustomEvent('ic:winkelReattach'));
+  };
 })();
 
 /* ======================================================================
