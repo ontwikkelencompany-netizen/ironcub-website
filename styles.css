@@ -1145,3 +1145,11 @@ ul{list-style:none}
 .lang-select:hover{background:rgba(197,148,26,.1);color:var(--gold)}
 .scrolled .lang-select{color:var(--gold);border-color:var(--gold)}
 .lang-select option{background:#1a1a1a;color:#fff;padding:8px}
+
+/* GLOBAL FORM INPUT STYLING */
+.form-group input,.form-group select,.form-group textarea,
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=password],
+select,textarea{border:2px solid #d1d5db!important;border-radius:8px!important;padding:12px 14px!important;font-size:.9rem!important;background:#fff!important;box-shadow:inset 0 1px 2px rgba(0,0,0,.05)!important;transition:border-color .2s!important}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus,
+input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;outline:none!important}
+input::placeholder,textarea::placeholder{color:#9ca3af!important}
