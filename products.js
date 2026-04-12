@@ -630,7 +630,7 @@ const RIPPA = [
     id: "rippa-r06", model: "R06 ECO", subtitle: "Micro Graafmachine 0,75t",
     weight_kg: 747, weight_ton: "0,75t", engine: "Kubota Z482", engine_key: "z482", power_kw: 8.2, power_hp: 11,
     dig_depth_mm: 1001, max_reach_mm: 2565, bucket_m3: 0.014, width_mm: 747,
-    img: "assets/rippa-r06.jpg", poa: false, price: 3890, originalPrice: 4950,
+    img: "assets/rippa-r06.jpg?v=1775984976", poa: false, price: 3890, originalPrice: 4950,
     specs: ["Kubota Z482", "2-cilinder", "CE/Stage V"],
     desc: "Ultra-compact. Ideaal voor krappe toegang, tuinaanleg en leidingwerk. Slechts 747 mm breed."
   },
@@ -638,7 +638,7 @@ const RIPPA = [
     id: "rippa-r10", model: "R10 ECO", subtitle: "Mini Graafmachine 1,0t",
     weight_kg: 1115, weight_ton: "1,0t", engine: "Kubota Z482", engine_key: "z482", power_kw: 8.2, power_hp: 11,
     dig_depth_mm: 1833, max_reach_mm: 3233, bucket_m3: 0.014, width_mm: 912,
-    img: "assets/rippa-r10.jpg", poa: false, price: 5938, originalPrice: 7495,
+    img: "assets/rippa-r10.jpg?v=1775984976", poa: false, price: 5938, originalPrice: 7495,
     specs: ["Kubota Z482", "Verstelbaar onderstel", "CE/Stage V"],
     desc: "Compacte 1-tonner met verstelbaar onderstel (900-1200 mm). Graafdiepte 1,8 meter."
   },
@@ -646,7 +646,7 @@ const RIPPA = [
     id: "rippa-r13", model: "R13 PRO", subtitle: "Mini Graafmachine 1,3t",
     weight_kg: 1320, weight_ton: "1,3t", engine: "Kubota D722", engine_key: "d722", power_kw: 10.2, power_hp: 13.7,
     dig_depth_mm: 2044, max_reach_mm: 3456, bucket_m3: 0.014, width_mm: 990,
-    img: "assets/rippa-r13.jpg", poa: false, price: 10490, originalPrice: 13195,
+    img: "assets/rippa-r13.jpg?v=1775984976", poa: false, price: 10490, originalPrice: 13195,
     specs: ["Kubota D722", "3-cilinder", "CE/Stage V"],
     desc: "Veelzijdige 1,3-tonner. Kubota D722 driecilinder, 2 meter graafdiepte. PRO uitvoering."
   },
@@ -654,7 +654,7 @@ const RIPPA = [
     id: "rippa-r15", model: "R15 ECO", subtitle: "Mini Graafmachine 1,5t",
     weight_kg: 1445, weight_ton: "1,5t", engine: "Kubota D722", engine_key: "d722", power_kw: 10.2, power_hp: 13.7,
     dig_depth_mm: 1807, max_reach_mm: 3274, bucket_m3: 0.018, width_mm: 990,
-    img: "assets/rippa-r15.jpg", poa: false, price: 9999, originalPrice: 12495,
+    img: "assets/rippa-r15.jpg?v=1775984976", poa: false, price: 9999, originalPrice: 12495,
     specs: ["Kubota D722", "3-cilinder", "CE/Stage V"],
     desc: "Populaire 1,5-tonner voor hoveniers en aannemers. Kubota D722, grotere bak."
   },
@@ -662,7 +662,7 @@ const RIPPA = [
     id: "rippa-r18", model: "R18 PRO", subtitle: "Mini Graafmachine 1,8t",
     weight_kg: 1848, weight_ton: "1,8t", engine: "Kubota D902", engine_key: "d902", power_kw: 11.8, power_hp: 15.8,
     dig_depth_mm: 2420, max_reach_mm: 3975, bucket_m3: 0.045, width_mm: 1100,
-    img: "assets/rippa-r18.jpg", poa: false, price: 15400, originalPrice: 19495,
+    img: "assets/rippa-r18.jpg?v=1775984976", poa: false, price: 15400, originalPrice: 19495,
     specs: ["Kubota D902", "3-cilinder", "CE/Stage V"],
     desc: "Krachtige 1,8-tonner. Kubota D902, 2,4 meter graafdiepte, grote bak 0,045 m\u00b3."
   },
@@ -670,7 +670,7 @@ const RIPPA = [
     id: "rippa-r22", model: "R22 PRO", subtitle: "Mini Graafmachine 2,4t",
     weight_kg: 2439, weight_ton: "2,4t", engine: "Kubota D1105", engine_key: "d1105", power_kw: 17.1, power_hp: 23,
     dig_depth_mm: 2293, max_reach_mm: 4255, bucket_m3: 0.054, width_mm: 1300,
-    img: "assets/rippa-r22.jpg", poa: false, price: 19490, originalPrice: 24495,
+    img: "assets/rippa-r22.jpg?v=1775984976", poa: false, price: 19490, originalPrice: 24495,
     specs: ["Kubota D1105", "3-cilinder", "CE/Stage V"],
     desc: "Zware 2,4-tonner voor professioneel grondverzet. Kubota D1105, 17,1 kW."
   },
@@ -678,7 +678,7 @@ const RIPPA = [
     id: "rippa-r32", model: "R32 PRO", subtitle: "Mini Graafmachine 3,4t",
     weight_kg: 3371, weight_ton: "3,4t", engine: "Kubota V1505", engine_key: "v1505", power_kw: 17.1, power_hp: 22.9,
     dig_depth_mm: 2827, max_reach_mm: 4831, bucket_m3: 0.08, width_mm: 1550,
-    img: "assets/rippa-r32.jpg", poa: false, price: 24770, originalPrice: 31495,
+    img: "assets/rippa-r32.jpg?v=1775984976", poa: false, price: 24770, originalPrice: 31495,
     specs: ["Kubota V1505", "4-cilinder", "CE/Stage V"],
     desc: "Grootste in het assortiment. Kubota V1505 viercilinder, 2,8 meter graafdiepte, 0,08 m\u00b3 bak."
   }
