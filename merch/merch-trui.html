@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IronCub Crewneck Trui | IronCub Merch</title>
+<meta name="description" content="80% katoen, 20% polyester, 320 gsm fleece. Geribbelde crew-hals en manchetten.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="/assets/logo-icon.jpg">
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* Use the same PDP styles as the machine pages */
+.pdp{max-width:1100px;margin:0 auto;padding:120px 24px 60px}
+.pdp-back{display:inline-flex;align-items:center;gap:6px;color:#888;font-size:.85rem;text-decoration:none;margin-bottom:20px;transition:color .2s}
+.pdp-back:hover{color:#E8831A}
+.pdp-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:900px){.pdp-layout{grid-template-columns:1fr;gap:28px}}
+.pdp-gallery{position:sticky;top:100px;min-width:0;overflow:hidden}
+.pdp-info{padding:8px 0;min-width:0}
+.pdp-subtitle{color:#888;font-size:.9rem;margin:4px 0 16px}
+.pdp-price-block{margin:20px 0;padding:16px 20px;background:#f9f9f9;border-radius:10px;border:1px solid #eee}
+.pdp-price-current{font-size:1.8rem;font-weight:800;color:#1a1a1a;font-family:'Barlow Condensed',sans-serif}
+.pdp-price-btw{color:#999;font-size:.82rem;font-weight:400;margin-left:6px}
+.pdp-specs-title{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#888;margin:24px 0 12px}
+.pdp-specs table{width:100%;border-collapse:collapse}
+.pdp-specs td{padding:10px 16px 10px 0;font-size:.9rem;vertical-align:top}
+.pdp-specs td:first-child{color:#888;white-space:nowrap;width:40%}
+.pdp-specs td:last-child{color:#1a1a1a;font-weight:500}
+.pdp-specs tr{border-bottom:1px solid #f0f0f0}
+.pdp-delivery{display:flex;gap:16px;margin:20px 0;flex-wrap:wrap}
+.pdp-delivery-item{display:flex;align-items:center;gap:6px;font-size:.82rem;color:#555}
+.pdp-delivery-item svg{width:16px;height:16px;flex-shrink:0;color:#2ecc71}
+.pdp-actions{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.pdp-actions .btn{padding:12px 28px;font-size:.95rem}
+/* Size selector */
+.size-selector{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.size-btn{padding:8px 16px;border:2px solid #e5e7eb;border-radius:8px;background:#fff;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s}
+.size-btn:hover{border-color:#E8831A}
+.size-btn.selected{border-color:#E8831A;background:#FFF7ED;color:#E8831A}
+/* Gallery */
+.merch-gallery-wrap{position:relative;border-radius:12px;overflow:hidden;background:#f5f5f5}
+.merch-gallery-img{width:100%;height:auto;display:block;max-height:500px;object-fit:contain;border-radius:12px}
+.merch-thumbs{display:flex;gap:8px;margin-top:12px}
+.merch-thumb{width:80px;height:80px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s;flex-shrink:0}
+.merch-thumb.active{border-color:#E8831A}
+.merch-thumb img{width:100%;height:100%;object-fit:cover}
+/* Levertijd notice */
+.merch-notice{background:#FFF7ED;border:1px solid #E8831A;border-radius:8px;padding:12px 16px;margin:16px 0;font-size:.85rem;color:#333}
+.merch-notice strong{color:#E8831A}
+</style>
+</head>
+<body>
+<div id="announce-bar"></div>
+<div id="site-header"></div>
+
+<div class="pdp">
+  <a href="/verkoop.html#merch" class="pdp-back">&larr; Terug naar Merch</a>
+  <div class="pdp-layout">
+    <div class="pdp-gallery">
+      <div class="merch-gallery-wrap">
+        <img id="mainImg" src="/assets/merch-trui.jpg" alt="IronCub Crewneck Trui" class="merch-gallery-img">
+      </div>
+      <div class="merch-thumbs" id="thumbs"></div>
+    </div>
+    <div class="pdp-info">
+      <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;margin:0">IronCub Crewneck Trui</h1>
+      <p class="pdp-subtitle">IronCub Swing Design</p>
+
+      <div class="pdp-price-block">
+        <span class="pdp-price-current">€79,95<span class="pdp-price-btw">incl. BTW</span></span>
+      </div>
+
+      <div>
+        <p class="pdp-specs-title">Maat kiezen</p>
+        <div class="size-selector" id="sizeSelector"></div>
+      </div>
+
+      <div class="merch-notice">
+        <strong>Print-on-demand</strong> — Levertijd: 6-8 weken. Elke bestelling wordt speciaal voor jou gemaakt. Geen retour mogelijk.
+      </div>
+
+      <p style="color:#444;font-size:.9rem;line-height:1.6;margin:16px 0">80% katoen, 20% polyester, 320 gsm fleece. Geribbelde crew-hals en manchetten.</p>
+
+      <div class="pdp-specs-title">Details</div>
+      <div class="pdp-specs">
+        <table>
+          <tr><td>Materiaal</td><td>80% katoen, 20% polyester</td></tr>
+          <tr><td>Gewicht</td><td>320 gsm fleece</td></tr>
+          <tr><td>Print</td><td>DTG full-color</td></tr>
+          <tr><td>Details</td><td>Geribbelde crew-hals en manchetten</td></tr>
+          <tr><td>Pasvorm</td><td>Regular fit, unisex</td></tr>
+          <tr><td>Maten</td><td>XS - 3XL</td></tr>
+          <tr><td>Kleur</td><td>Zwart</td></tr>
+        </table>
+      </div>
+
+      <div class="pdp-actions">
+        <a href="/checkout.html?product=merch-trui" class="btn btn-cta" id="buyBtn">BESTELLEN</a>
+        <a href="/verkoop.html#merch" class="btn btn-outline-dark">MEER INFO</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="/i18n.js"></script>
+<script src="/components.js"></script>
+<script src="/winkel.js"></script>
+<script>
+// Gallery functionality
+var images = ['/assets/merch-trui.jpg', '/assets/merch-trui-side.png'];
+var mainImg = document.getElementById('mainImg');
+var thumbsContainer = document.getElementById('thumbs');
+
+images.forEach(function(src, i) {
+  var thumb = document.createElement('div');
+  thumb.className = 'merch-thumb' + (i === 0 ? ' active' : '');
+  thumb.innerHTML = '<img src="' + src + '" alt="Foto ' + (i + 1) + '">';
+  thumb.addEventListener('click', function() {
+    mainImg.src = src;
+    document.querySelectorAll('.merch-thumb').forEach(function(t) { t.classList.remove('active'); });
+    thumb.classList.add('active');
+  });
+  thumbsContainer.appendChild(thumb);
+});
+
+// Size selector
+var sizeSelector = document.getElementById('sizeSelector');
+var sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL'];
+var selectedSize = sizes[2];
+sizes.forEach(function(size) {
+  var btn = document.createElement('button');
+  btn.className = 'size-btn' + (size === selectedSize ? ' selected' : '');
+  btn.textContent = size;
+  btn.addEventListener('click', function() {
+    selectedSize = size;
+    document.querySelectorAll('.size-btn').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    var buyBtn = document.getElementById('buyBtn');
+    if (buyBtn) {
+      var base = buyBtn.href.split('&size=')[0];
+      buyBtn.href = base + '&size=' + encodeURIComponent(size);
+    }
+  });
+  sizeSelector.appendChild(btn);
+});
+
+// Set initial buy button URL with default size
+(function() {
+  var buyBtn = document.getElementById('buyBtn');
+  if (buyBtn) {
+    buyBtn.href = buyBtn.href + '&size=' + encodeURIComponent(selectedSize);
+  }
+})();
+</script>
+</body>
+</html>
