@@ -288,7 +288,7 @@
 
       /* ---- Wishlist paw on product cards ---- */
       '.ic-paw-btn{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.9);border:none;border-radius:50%;',
-      'width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;',
+      'width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;',
       'z-index:2;transition:all .2s;box-shadow:0 1px 4px rgba(0,0,0,.15)}',
       '.ic-paw-btn:hover{background:#fff;transform:scale(1.1)}',
       '.ic-paw-btn svg{fill:#cc0000;stroke:#cc0000}',
@@ -1008,7 +1008,7 @@
     paw.setAttribute('aria-label', 'Verlanglijst');
     paw.setAttribute('aria-pressed', wishlist.has(productId) ? 'true' : 'false');
     paw.setAttribute('data-product-id', productId);
-    paw.innerHTML = pawSVG(16, false);
+    paw.innerHTML = pawSVG(24, false);
     paw.title = 'Verlanglijst';
 
     paw.addEventListener('click', function (e) {
