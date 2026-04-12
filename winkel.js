@@ -232,6 +232,7 @@
       /* ---- Bear buttons in Header ---- */
       '.ic-bear-btn{position:relative;display:flex;align-items:flex-end;cursor:pointer;background:none;border:none;padding:0;margin:0 2px}',
       '.ic-bear-icon{height:56px;width:auto;margin-bottom:-8px;transition:transform .3s;filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}',
+      '#ic-wishlist-trigger .ic-bear-icon{filter:drop-shadow(0 0 3px rgba(220,38,38,.6)) drop-shadow(0 0 8px rgba(220,38,38,.3))}',
       '.ic-bear-btn:hover .ic-bear-icon{transform:scale(1.08) translateY(-2px)}',
       '.ic-bear-cloud{position:absolute;top:-18px;left:50%;transform:translateX(-50%) translateY(6px) scale(.8);',
       'background:#fff;color:#1a1a1a;font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:800;',
