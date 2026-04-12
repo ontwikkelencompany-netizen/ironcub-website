@@ -645,7 +645,7 @@
     var btwEl = document.createElement('div');
     btwEl.id = 'ic-header-btw';
     btwEl.innerHTML = [
-      '<img src="assets/bear-btw-push.png" alt="" class="ic-btw-bear">',
+      '<img src="/assets/bear-btw-push.png" alt="" class="ic-btw-bear">',
       '<div class="ic-toggle" id="ic-header-btw-toggle">',
         '<span class="ic-toggle-btn ' + (btwMode === 'excl' ? 'active' : '') + '" data-val="excl">Excl. BTW</span>',
         '<span class="ic-toggle-btn ' + (btwMode === 'incl' ? 'active' : '') + '" data-val="incl">Incl. BTW</span>',
@@ -658,7 +658,7 @@
       var afspraakWrap = document.createElement('a');
       afspraakWrap.href = 'afspraak.html';
       afspraakWrap.className = 'ic-bear-btn';
-      afspraakWrap.innerHTML = '<img src="assets/bear-afspraak.png" alt="Afspraak" class="ic-bear-icon"><span class="ic-bear-cloud">Afspraak</span>';
+      afspraakWrap.innerHTML = '<img src="/assets/bear-afspraak.png" alt="Afspraak" class="ic-bear-icon"><span class="ic-bear-cloud">Afspraak</span>';
       afspraakBtn.parentNode.replaceChild(afspraakWrap, afspraakBtn);
     }
 
@@ -668,7 +668,7 @@
     wishlistTrigger.className = 'ic-bear-btn';
     wishlistTrigger.setAttribute('aria-label', 'Verlanglijst');
     wishlistTrigger.innerHTML = [
-      '<img src="assets/bear-heart-wishlist.png" alt="Verlanglijst" class="ic-bear-icon">',
+      '<img src="/assets/bear-heart-wishlist.png" alt="Verlanglijst" class="ic-bear-icon">',
       '<span class="ic-bear-cloud">Verlanglijstje</span>',
       '<span id="ic-wishlist-badge"></span>'
     ].join('');
@@ -679,7 +679,7 @@
     cartTrigger.className = 'ic-bear-btn';
     cartTrigger.setAttribute('aria-label', 'Winkelwagen openen');
     cartTrigger.innerHTML = [
-      '<img src="assets/bear-cart-shop.png" alt="Winkelwagen" class="ic-bear-icon">',
+      '<img src="/assets/bear-cart-shop.png" alt="Winkelwagen" class="ic-bear-icon">',
       '<span class="ic-bear-cloud">Winkelwagen</span>',
       '<span id="ic-cart-badge"></span>'
     ].join('');
@@ -690,7 +690,7 @@
     accountTrigger.className = 'ic-bear-btn';
     accountTrigger.id = 'ic-account-trigger';
     accountTrigger.innerHTML = [
-      '<img src="assets/bear-account.png" alt="Mijn Account" class="ic-bear-icon">',
+      '<img src="/assets/bear-account.png" alt="Mijn Account" class="ic-bear-icon">',
       '<span class="ic-bear-cloud">Mijn Account</span>'
     ].join('');
 
