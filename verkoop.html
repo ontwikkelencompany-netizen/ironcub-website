@@ -484,6 +484,20 @@ document.addEventListener('DOMContentLoaded', function () {
     activateTab('loaders');
   }
 
+  // ─── HASH CHANGE LISTENER (for menu links while on verkoop page)
+  window.addEventListener('hashchange', function() {
+    var h = window.location.hash.replace('#', '');
+    if (!h) return;
+    var groups = ['loaders', 'grasmaaiers', 'merch', 'aanbouwdelen', 'rippa'];
+    var isMachine = MACHINES.some(function(m) { return m.id === h; });
+    var isGras = typeof GRASMAAIERS !== 'undefined' && GRASMAAIERS.some(function(g) { return g.id === h; });
+    var isRippa = typeof RIPPA !== 'undefined' && RIPPA.some(function(r) { return r.id === h; });
+    if (isMachine) { activateTab('loaders'); setTimeout(function() { var el = document.getElementById(h); if (el) el.scrollIntoView({behavior:'smooth',block:'center'}); }, 300); }
+    else if (isGras) { activateTab('grasmaaiers'); setTimeout(function() { var el = document.getElementById(h); if (el) el.scrollIntoView({behavior:'smooth',block:'center'}); }, 300); }
+    else if (isRippa) { activateTab('rippa'); setTimeout(function() { var el = document.getElementById(h); if (el) el.scrollIntoView({behavior:'smooth',block:'center'}); }, 300); }
+    else if (groups.indexOf(h) !== -1) { activateTab(h); }
+  });
+
   // ─── RIPPA PRODUCT CARDS ──────────────────────────────
   var rippaGrid = document.getElementById('rippaGrid');
   if (rippaGrid && typeof RIPPA !== 'undefined') {

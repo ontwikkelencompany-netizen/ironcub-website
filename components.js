@@ -12,13 +12,19 @@ function renderAnnounceBar(){
 function renderLangSwitcher(){
   var cur = 'nl';
   try { cur = localStorage.getItem('ic_lang') || 'nl'; } catch(e){}
-  var langs = ['NL','EN','DE','FR','PT'];
-  var html = '<div class="lang-switcher" role="navigation" aria-label="Language">';
-  langs.forEach(function(l){
-    var code = l.toLowerCase();
-    html += '<button class="lang-btn'+(code===cur?' lang-active':'')+'" data-lang="'+code+'" onclick="switchLanguage(\''+code+'\')" title="'+l+'">'+l+'</button>';
+  var langNames = { nl:'Nederlands', en:'English', de:'Deutsch', fr:'Français', pt:'Português' };
+  var html = '<div class="lang-dropdown" id="langDropdown" role="navigation" aria-label="Language">';
+  html += '<button class="lang-dropdown-btn" id="langDropdownBtn" onclick="(function(){var d=document.getElementById(\'langDropdown\');d.classList.toggle(\'open\');})()" aria-haspopup="listbox" aria-expanded="false">';
+  html += cur.toUpperCase();
+  html += '<svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="flex-shrink:0"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  html += '</button>';
+  html += '<div class="lang-dropdown-menu" role="listbox">';
+  Object.keys(langNames).forEach(function(code){
+    html += '<button class="lang-dropdown-item'+(code===cur?' active':'')+'" data-lang="'+code+'" onclick="switchLanguage(\''+code+'\');(function(){var d=document.getElementById(\'langDropdown\');d.classList.remove(\'open\');})()" role="option">';
+    html += '<span style="font-weight:700;margin-right:6px;font-family:\'Barlow Condensed\',sans-serif">'+code.toUpperCase()+'</span> '+langNames[code];
+    html += '</button>';
   });
-  html += '</div>';
+  html += '</div></div>';
   return html;
 }
 
@@ -36,7 +42,7 @@ function renderHeader(){
     +'<div class="mega-col"><h4 data-i18n="megamenu.rippa">Rippa Minigravers</h4><a href="verkoop.html#rippa-r06">R06 ECO (0,75t)</a><a href="verkoop.html#rippa-r10">R10 ECO (1,0t)</a><a href="verkoop.html#rippa-r13">R13 PRO (1,3t)</a><a href="verkoop.html#rippa-r15">R15 ECO (1,5t)</a><a href="verkoop.html#rippa-r18">R18 PRO (1,8t)</a><a href="verkoop.html#rippa-r22">R22 PRO (2,4t)</a><a href="verkoop.html#rippa-r32">R32 PRO (3,4t)</a></div>'
     +'<div class="mega-col"><h4 data-i18n="megamenu.aanbouwdelen">Aanbouwdelen</h4><a href="verkoop.html#aanbouwdelen">Grondwerk</a><a href="verkoop.html#aanbouwdelen">Groenonderhoud</a><a href="verkoop.html#aanbouwdelen">Sloop &amp; Transport</a></div>'
     +'<div class="mega-col"><h4 data-i18n="megamenu.merch">Merch</h4><a href="verkoop.html#merch">IronCub Swing Collectie</a><a href="verkoop.html#merch">T-shirts, Hoodies &amp; Caps</a></div>'
-    +'<div class="mega-col mega-levering"><h4 data-i18n="megamenu.levering">Levering</h4><div class="mega-tier"><span class="tier-label tier-premium-label">Premium</span><span data-i18n="megamenu.premiumDesc">Bezorging op locatie + installatie + instructie</span></div><div class="mega-tier"><span class="tier-label tier-regular-label">Regular</span><span data-i18n="megamenu.regularDesc">Afhalen in showroom of standaard transport</span></div></div>'
+    +''
     +'</div></div>'
     +'<a href="verhuur.html" class="nav-link '+a('verhuur')+'" data-i18n="nav.verhuur">VERHUUR</a>'
     +'<a href="lease.html" class="nav-link '+a('lease')+'" data-i18n="nav.lease">LEASE</a>'
@@ -115,63 +121,4 @@ function renderFooter(){
 document.addEventListener('DOMContentLoaded',function(){
   var ae=document.getElementById('announce-bar');
   var he=document.getElementById('site-header');
-  var fe=document.getElementById('site-footer');
-
-  if(ae) ae.innerHTML=renderAnnounceBar();
-  if(he) he.innerHTML=renderHeader();
-  if(fe) fe.innerHTML=renderFooter();
-
-  // Apply current language to freshly-rendered components
-  if(typeof applyLanguage === 'function'){
-    applyLanguage(typeof getCurrentLang === 'function' ? getCurrentLang() : (localStorage.getItem('ic_lang')||'nl'));
-  }
-
-  setTimeout(function(){
-    var t=document.getElementById('mobileToggle');
-    var n=document.getElementById('mobileNav');
-    if(t&&n){
-      t.addEventListener('click',function(){
-        n.classList.toggle('open');
-        t.classList.toggle('active');
-        document.body.classList.toggle('nav-open');
-      });
-      n.querySelectorAll('a').forEach(function(a){
-        a.addEventListener('click',function(){
-          n.classList.remove('open');
-          t.classList.remove('active');
-          document.body.classList.remove('nav-open');
-        });
-      });
-    }
-    var h=document.getElementById('header');
-    if(h){
-      var ls=0;
-      window.addEventListener('scroll',function(){
-        var s=window.scrollY;
-        h.classList.toggle('scrolled',s>60);
-        if(s>300) h.classList.toggle('header-hide',s>ls);
-        else h.classList.remove('header-hide');
-        ls=s;
-      });
-    }
-  },50);
-
-  if(window.location.hash){
-    setTimeout(function(){
-      var el=document.querySelector(window.location.hash);
-      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-    },200);
-  }
-
-  function triggerSparkle(){
-    var s=document.getElementById('demoSparkle');
-    if(s){s.classList.remove('sparkle-active');void s.offsetWidth;s.classList.add('sparkle-active');}
-  }
-  setTimeout(triggerSparkle,500);
-  setInterval(triggerSparkle,60000);
-  var lastScroll=window.scrollY;
-  window.addEventListener('scroll',function(){
-    if(window.scrollY<50&&lastScroll>100) triggerSparkle();
-    lastScroll=window.scrollY;
-  });
-});
+  var fe=document.getElementById('site-fo
