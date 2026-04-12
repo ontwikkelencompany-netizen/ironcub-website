@@ -88,11 +88,11 @@
           <input type="radio" name="delivery" value="ophalen" checked>
           <div class="delivery-option-content"><div class="delivery-option-head"><span class="delivery-option-name">Afhalen in showroom</span><span class="delivery-option-price">Gratis</span></div><div class="delivery-option-desc">De Hofjes 44, Middelharnis</div></div>
         </label>
-        <label class="delivery-option" onclick="selectDelivery('regular',14900,this)">
+        <label class="delivery-option" onclick="selectDelivery('regular',149,this)">
           <input type="radio" name="delivery" value="regular">
           <div class="delivery-option-content"><div class="delivery-option-head"><span class="delivery-option-name">Regular Levering</span><span class="delivery-option-price">&euro;149</span></div><div class="delivery-option-desc">Standaard transport naar uw adres</div></div>
         </label>
-        <label class="delivery-option" onclick="selectDelivery('premium',49900,this)">
+        <label class="delivery-option" onclick="selectDelivery('premium',499,this)">
           <input type="radio" name="delivery" value="premium">
           <div class="delivery-option-content"><div class="delivery-option-head"><span class="delivery-option-name">Premium Levering</span><span class="delivery-option-price">&euro;499</span></div><div class="delivery-option-desc">Bezorging + installatie + instructie (1 uur) + eerste servicebeurt</div></div>
         </label>
@@ -155,8 +155,8 @@ function selectDelivery(method, cost, el) {
   renderSummary();
 }
 
-function formatEur(cents) {
-  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100);
+function formatEur(euros) {
+  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(euros);
 }
 
 function getCart() {
@@ -175,15 +175,19 @@ function renderSummary() {
   }
 
   var subtotal = 0;
-  itemsEl.innerHTML = cart.map(function(item) {
+  itemsEl.innerHTML = cart.map(function(item, idx) {
     var lineTotal = item.price * item.quantity;
     subtotal += lineTotal;
-    var priceHtml = '';
-    if (item.originalPrice && item.originalPrice > item.price) {
-      priceHtml = '<span style="text-decoration:line-through;color:#999;font-size:.8rem;margin-right:4px">' + formatEur(item.originalPrice) + '</span>';
-    }
-    priceHtml += formatEur(item.price);
-    return '<div class="summary-item"><span class="summary-item-name">' + item.name + '</span><span class="summary-item-qty">' + item.quantity + 'x</span><span class="summary-item-price">' + priceHtml + '</span></div>';
+    return '<div class="summary-item" style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #eee">' +
+      '<div style="flex:1"><p style="font-weight:600;font-size:.9rem;margin:0">' + item.name + '</p><p style="color:#888;font-size:.82rem;margin:2px 0 0">' + formatEur(item.price) + ' per stuk</p></div>' +
+      '<div style="display:flex;align-items:center;gap:6px">' +
+        '<button onclick="changeQty(' + idx + ',-1)" style="width:28px;height:28px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center">-</button>' +
+        '<span style="font-weight:700;min-width:20px;text-align:center">' + item.quantity + '</span>' +
+        '<button onclick="changeQty(' + idx + ',1)" style="width:28px;height:28px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center">+</button>' +
+      '</div>' +
+      '<span style="font-weight:700;min-width:80px;text-align:right">' + formatEur(lineTotal) + '</span>' +
+      '<button onclick="removeItem(' + idx + ')" style="background:none;border:none;color:#c00;cursor:pointer;font-size:1.1rem;padding:4px" title="Verwijderen">&times;</button>' +
+    '</div>';
   }).join('');
 
   var totalExBtw = subtotal + deliveryCost;
@@ -198,6 +202,23 @@ function renderSummary() {
   lines += '<div class="summary-line"><span>'+(typeof t==='function'?t('checkout.btw'):'BTW (21%)')+'</span><span>' + formatEur(btw) + '</span></div>';
   lines += '<div class="summary-total"><span>'+(typeof t==='function'?t('checkout.totaal'):'Totaal')+'</span><span>' + formatEur(total) + '</span></div>';
   totalsEl.innerHTML = lines;
+}
+
+function changeQty(idx, delta) {
+  var cart = getCart();
+  if (idx < 0 || idx >= cart.length) return;
+  cart[idx].quantity += delta;
+  if (cart[idx].quantity < 1) cart[idx].quantity = 1;
+  try { localStorage.setItem('ic_cart', JSON.stringify(cart)); } catch(e) {}
+  renderSummary();
+}
+
+function removeItem(idx) {
+  var cart = getCart();
+  if (idx < 0 || idx >= cart.length) return;
+  cart.splice(idx, 1);
+  try { localStorage.setItem('ic_cart', JSON.stringify(cart)); } catch(e) {}
+  renderSummary();
 }
 
 function handleCheckout() {
@@ -286,7 +307,7 @@ if (productParam) {
     if (typeof MACHINES !== 'undefined') {
       MACHINES.forEach(function(m) {
         if (m.id === productParam && !found) {
-          newItem = { productId: m.id, name: m.name + ' ' + m.subtitle, price: m.price * 100, quantity: 1, imageUrl: m.img };
+          newItem = { productId: m.id, name: m.name + ' ' + m.subtitle, price: m.price, quantity: 1, imageUrl: m.img };
           found = true;
         }
       });
@@ -295,7 +316,7 @@ if (productParam) {
     if (!found && typeof GRASMAAIERS !== 'undefined') {
       GRASMAAIERS.forEach(function(g) {
         if (g.id === productParam && !found) {
-          newItem = { productId: g.id, name: g.name, price: g.price * 100, quantity: 1, imageUrl: g.img };
+          newItem = { productId: g.id, name: g.name, price: g.price, quantity: 1, imageUrl: g.img };
           found = true;
         }
       });
@@ -304,7 +325,7 @@ if (productParam) {
     if (!found && typeof RIPPA !== 'undefined') {
       RIPPA.forEach(function(r) {
         if (r.id === productParam && !found) {
-          newItem = { productId: r.id, name: 'Rippa ' + r.model, price: r.price * 100, quantity: 1, imageUrl: r.img };
+          newItem = { productId: r.id, name: 'Rippa ' + r.model, price: r.price, quantity: 1, imageUrl: r.img };
           found = true;
         }
       });
