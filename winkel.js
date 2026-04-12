@@ -339,6 +339,7 @@
       overlay.addEventListener('click', function () {
         closeCartPanel();
         closeRecPanel();
+        if (typeof closeWishlistPanel === 'function') closeWishlistPanel();
       });
       document.body.appendChild(overlay);
     }
@@ -509,6 +510,64 @@
   }
 
   /* =====================================================================
+     WISHLIST PANEL
+     ===================================================================== */
+  var wishlistPanel;
+
+  function createWishlistPanel() {
+    wishlistPanel = document.createElement('div');
+    wishlistPanel.id = 'ic-wishlist-panel';
+    wishlistPanel.setAttribute('role', 'dialog');
+    wishlistPanel.setAttribute('aria-label', 'Verlanglijst');
+    wishlistPanel.style.cssText = 'position:fixed;top:0;right:0;height:100%;width:min(400px,100vw);background:#fff;z-index:9999;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:-4px 0 24px rgba(0,0,0,.12);display:flex;flex-direction:column;overflow-y:auto';
+    document.body.appendChild(wishlistPanel);
+  }
+
+  function renderWishlistItems() {
+    if (!wishlistPanel) return;
+    var items = [];
+    wishlist.forEach(function(id) { items.push(id); });
+
+    if (items.length === 0) {
+      wishlistPanel.innerHTML = '<div style="padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee"><h3 style="font-family:Barlow Condensed,sans-serif;font-size:1.2rem;font-weight:700;margin:0">Verlanglijst</h3><button id="ic-wl-close" style="background:none;border:none;font-size:24px;cursor:pointer;padding:4px 8px">&times;</button></div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center"><p style="color:#888;font-size:14px">Je verlanglijst is leeg.</p><p style="color:#aaa;font-size:13px;margin-top:8px">Klik op het hartje bij een product om het toe te voegen.</p></div>';
+    } else {
+      var html = '<div style="padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee"><h3 style="font-family:Barlow Condensed,sans-serif;font-size:1.2rem;font-weight:700;margin:0">Verlanglijst (' + items.length + ')</h3><button id="ic-wl-close" style="background:none;border:none;font-size:24px;cursor:pointer;padding:4px 8px">&times;</button></div><div style="flex:1;overflow-y:auto;padding:16px">';
+      items.forEach(function(id) {
+        html += '<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f0f0f0" data-wl-id="' + id + '">' +
+          '<div style="flex:1"><p style="font-weight:600;font-size:14px;margin:0">' + id + '</p></div>' +
+          '<button class="ic-wl-remove" data-id="' + id + '" style="background:none;border:none;color:#c00;cursor:pointer;font-size:18px;padding:4px" title="Verwijderen">&times;</button></div>';
+      });
+      html += '</div>';
+      wishlistPanel.innerHTML = html;
+    }
+
+    wishlistPanel.querySelector('#ic-wl-close').addEventListener('click', closeWishlistPanel);
+    wishlistPanel.querySelectorAll('.ic-wl-remove').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = this.getAttribute('data-id');
+        wishlist.delete(id);
+        updateWishlistBadge();
+        renderWishlistItems();
+        showToast('Verwijderd uit verlanglijst');
+      });
+    });
+  }
+
+  function openWishlistPanel() {
+    if (!wishlistPanel) createWishlistPanel();
+    renderWishlistItems();
+    wishlistPanel.style.transform = 'translateX(0)';
+    openOverlay();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeWishlistPanel() {
+    if (wishlistPanel) wishlistPanel.style.transform = 'translateX(100%)';
+    closeOverlay();
+    document.body.style.overflow = '';
+  }
+
+  /* =====================================================================
      CART BADGE UPDATE
      ===================================================================== */
   function updateCartBadge() {
@@ -626,8 +685,7 @@
 
     cartTrigger.addEventListener('click', openCartPanel);
     wishlistTrigger.addEventListener('click', function () {
-      // Show wishlist (for now, open cart panel to tell them what's on the list)
-      showToast('Je verlanglijst: ' + wishlist.size + ' item(s)');
+      openWishlistPanel();
     });
 
     // BTW toggle in header
