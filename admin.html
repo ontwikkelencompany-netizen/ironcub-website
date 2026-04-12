@@ -2384,8 +2384,8 @@
     if (!product) return;
 
     try {
-      await apiFetch(`/api/admin/products/${id}`, {
-        method: 'PUT',
+      await apiFetch(`/api/admin/products/${id}/price`, {
+        method: 'PATCH',
         body: JSON.stringify({ priceExBtw: newPrice })
       });
 
