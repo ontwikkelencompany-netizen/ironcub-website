@@ -11,41 +11,42 @@
 <link rel="icon" type="image/jpeg" href="/assets/logo-icon.jpg">
 <link rel="stylesheet" href="/styles.css">
 <style>
-.pdp-container{max-width:1200px;margin:0 auto;padding:40px 20px}
-.pdp-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;margin-top:24px}
-@media(max-width:768px){.pdp-grid{grid-template-columns:1fr;gap:24px}}
-.pdp-gallery{position:relative}
-.pdp-main-img{width:100%;border-radius:12px;overflow:hidden;background:#f5f5f5}
-.pdp-main-img img{width:100%;height:auto;display:block}
-.pdp-thumbs{display:flex;gap:8px;margin-top:12px;overflow-x:auto}
-.pdp-thumb{width:72px;height:54px;border-radius:6px;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0}
-.pdp-thumb.active{border-color:#E8831A}
-.pdp-thumb img{width:100%;height:100%;object-fit:cover}
-.pdp-info h1{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;margin:0 0 4px}
-.pdp-subtitle{color:#666;font-size:1rem;margin:0 0 20px}
-.pdp-price{font-size:1.5rem;font-weight:700;color:#1a1a1a;margin:16px 0}
-.pdp-price-old{text-decoration:line-through;color:#999;font-weight:400;font-size:1.1rem;margin-right:8px}
-.pdp-btw{color:#888;font-size:.85rem;font-weight:400}
-.pdp-specs{margin:24px 0}
-.pdp-specs table{width:100%;border-collapse:collapse}
-.pdp-specs td{padding:10px 0;border-bottom:1px solid #eee;font-size:.9rem}
-.pdp-specs td:first-child{color:#888;width:35%;white-space:nowrap}
-.pdp-specs td:last-child{font-weight:500}
-.pdp-desc{color:#555;font-size:.95rem;line-height:1.7;margin:20px 0}
-.pdp-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
-.pdp-tags{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
-.pdp-tag{background:#f5f5f5;padding:4px 12px;border-radius:4px;font-size:.82rem;font-weight:500}
-.pdp-back{display:inline-flex;align-items:center;gap:6px;color:#888;font-size:.9rem;text-decoration:none;margin-bottom:16px}
+.pdp{max-width:1280px;margin:0 auto;padding:32px 24px 60px}
+.pdp-back{display:inline-flex;align-items:center;gap:6px;color:#888;font-size:.88rem;text-decoration:none;margin-bottom:20px;transition:color .2s}
 .pdp-back:hover{color:#E8831A}
+.pdp-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:900px){.pdp-layout{grid-template-columns:1fr;gap:28px}}
+.pdp-gallery{position:sticky;top:100px}
+.pdp-info{padding:8px 0}
+.pdp-info h1{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;letter-spacing:-.02em;margin:0 0 4px;color:#1a1a1a}
+.pdp-subtitle{color:#777;font-size:.95rem;margin:0 0 20px;font-weight:400}
+.pdp-price-block{margin:20px 0;padding:16px 20px;background:#f9f9f9;border-radius:10px;border:1px solid #eee}
+.pdp-price-old{text-decoration:line-through;color:#c0392b;font-size:1.1rem;font-weight:600;display:block;margin-bottom:2px}
+.pdp-price-current{font-size:1.8rem;font-weight:800;color:#1a1a1a;font-family:'Barlow Condensed',sans-serif}
+.pdp-price-btw{color:#999;font-size:.82rem;font-weight:400;margin-left:6px}
+.pdp-specs-title{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#888;margin:24px 0 12px}
+.pdp-specs table{width:100%;border-collapse:collapse}
+.pdp-specs td{padding:10px 16px 10px 0;font-size:.9rem;vertical-align:top}
+.pdp-specs tr{border-bottom:1px solid #f0f0f0}
+.pdp-specs td:first-child{color:#888;width:140px;font-weight:500}
+.pdp-specs td:last-child{color:#1a1a1a;font-weight:600}
+.pdp-desc{color:#555;font-size:.95rem;line-height:1.7;margin:20px 0}
+.pdp-tags{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 20px}
+.pdp-tag{background:#f0f0f0;color:#555;padding:5px 14px;border-radius:6px;font-size:.82rem;font-weight:600;font-family:'Barlow Condensed',sans-serif;letter-spacing:.03em}
+.pdp-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+.pdp-actions .btn{min-width:120px;text-align:center;padding:12px 24px;font-size:.9rem}
+.pdp-delivery{display:flex;gap:20px;margin:20px 0;padding:16px 0;border-top:1px solid #eee;flex-wrap:wrap}
+.pdp-delivery-item{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#666}
+.pdp-delivery-icon{width:20px;height:20px;color:#C5941A;flex-shrink:0}
 </style>
 </head>
 <body>
 <div id="announce-bar"></div>
 <div id="site-header"></div>
 
-<div class="pdp-container">
-  <a href="/verkoop.html#rippa" class="pdp-back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Terug naar Rippa Minigravers</a>
-  <div class="pdp-grid">
+<div class="pdp">
+  <a href="/verkoop.html#rippa" class="pdp-back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> <span data-i18n="pdp.terug">Terug naar Rippa Minigravers</span></a>
+  <div class="pdp-layout">
     <div class="pdp-gallery" data-gallery-id="rippa-r10">
       <div class="pdp-main-img" id="mainImg"></div>
       <div class="pdp-thumbs" id="thumbs"></div>
@@ -64,107 +65,96 @@
 <script src="/gallery.js"></script>
 <script src="/winkel.js"></script>
 <script>
-(function(){
-  var pid = "rippa-r10";
-  var type = "rippa";
-  var product = null;
+var _pdpPid = "rippa-r10";
+var _pdpType = "rippa";
+
+function renderProductInfo() {
+  var pid = _pdpPid, type = _pdpType, product = null;
+  var _t = typeof t === "function" ? t : function(k) { return k; };
   
-  if (type === "loader") {
-    product = MACHINES.find(function(m){ return m.id === pid; });
-  } else if (type === "grasmaaier") {
-    product = typeof GRASMAAIERS !== "undefined" ? GRASMAAIERS.find(function(g){ return g.id === pid; }) : null;
-  } else if (type === "rippa") {
-    product = typeof RIPPA !== "undefined" ? RIPPA.find(function(r){ return r.id === pid; }) : null;
-  }
+  if (type === "loader") product = MACHINES.find(function(m){ return m.id === pid; });
+  else if (type === "grasmaaier") product = typeof GRASMAAIERS !== "undefined" ? GRASMAAIERS.find(function(g){ return g.id === pid; }) : null;
+  else if (type === "rippa") product = typeof RIPPA !== "undefined" ? RIPPA.find(function(r){ return r.id === pid; }) : null;
   
-  if (!product) {
-    document.getElementById("productInfo").innerHTML = "<p>Product niet gevonden.</p>";
-    return;
-  }
+  if (!product) { document.getElementById("productInfo").innerHTML = "<p>Product niet gevonden.</p>"; return; }
   
-  // Set page title
   var name = product.name || product.model || pid;
   document.title = name + " | The IronCub Company";
   
-  // Main image
   var img = product.img || "";
-  if (img && !img.startsWith("http") && !img.startsWith("/")) img = "../" + img;
-  document.getElementById("mainImg").innerHTML = img ? '<img src="' + img + '" alt="' + name + '">' : '';
+  if (img && !img.startsWith("http") && !img.startsWith("/")) img = "/" + img;
+  document.getElementById("mainImg").innerHTML = img ? '<img src="' + img + '" alt="' + name + '" style="width:100%;height:auto;display:block;border-radius:12px">' : '';
   
-  // Gallery thumbs (check if gallery folder exists)
-  var galleryDir = "../assets/" + (type === "rippa" ? "rippa-" + pid.replace("rippa-","") : pid) + "-gallery/";
-  // We'll skip gallery for now since we can't dynamically list files
+  var fmt = function(v) { return new Intl.NumberFormat("nl-NL",{style:"currency",currency:"EUR",minimumFractionDigits:0,maximumFractionDigits:0}).format(v); };
   
-  // Build product info
-  var fmtPrice = function(v) { return new Intl.NumberFormat("nl-NL",{style:"currency",currency:"EUR",minimumFractionDigits:0,maximumFractionDigits:0}).format(v); };
+  var h = "";
+  h += "<h1>" + name + "</h1>";
+  h += '<p class="pdp-subtitle">' + (product.subtitle || "") + "</p>";
   
-  var html = "";
-  html += "<h1>" + name + "</h1>";
-  html += '<p class="pdp-subtitle">' + (product.subtitle || "") + "</p>";
-  
-  // Price
-  if (product.poa) {
-    html += '<p class="pdp-price">Prijs op aanvraag</p>';
-  } else {
-    var price = product.price || 0;
-    var orig = product.originalPrice || 0;
-    html += '<p class="pdp-price">';
-    if (orig) html += '<span class="pdp-price-old">' + fmtPrice(orig) + '</span> ';
-    html += fmtPrice(price) + ' <span class="pdp-btw">ex BTW</span></p>';
+  h += '<div class="pdp-price-block">';
+  if (product.poa) { h += '<span class="pdp-price-current">' + _t("common.prijsOpAanvraag") + '</span>'; }
+  else {
+    if (product.originalPrice) h += '<span class="pdp-price-old">' + fmt(product.originalPrice) + '</span>';
+    h += '<span class="pdp-price-current">' + fmt(product.price) + '<span class="pdp-price-btw">' + _t("common.exBtw") + '</span></span>';
   }
+  h += '</div>';
   
-  // Specs table
-  html += '<div class="pdp-specs"><table>';
+  h += '<div class="pdp-actions">';
+  h += '<a href="/checkout.html?product=' + pid + '" class="btn btn-cta">' + _t("common.kopen") + '</a>';
+  h += '<a href="/lease.html" class="btn btn-outline-dark">' + _t("common.leasen") + '</a>';
   if (type === "loader") {
-    if (product.engine) html += "<tr><td>Motor</td><td>" + product.engine + "</td></tr>";
-    if (product.powerKw) html += "<tr><td>Vermogen</td><td>" + product.powerKw + " kW</td></tr>";
-    if (product.speedKmh) html += "<tr><td>Max. snelheid</td><td>" + product.speedKmh + " km/h</td></tr>";
-    if (product.maxLoadKg) html += "<tr><td>Max. laadvermogen</td><td>" + product.maxLoadKg + " kg</td></tr>";
-    if (product.widthMm) html += "<tr><td>Breedte</td><td>" + product.widthMm + " mm</td></tr>";
-    if (product.fuel) html += "<tr><td>Brandstof</td><td>" + product.fuel + "</td></tr>";
-    if (product.steering) html += "<tr><td>Besturing</td><td>" + product.steering + "</td></tr>";
+    h += '<a href="/afspraak.html" class="btn btn-outline-dark">' + _t("common.huren") + '</a>';
+    h += '<a href="/demodagen.html" class="btn btn-outline-dark">Demo</a>';
+  }
+  h += '<a href="/afspraak.html?onderwerp=' + encodeURIComponent(name) + '" class="btn btn-outline-dark">' + _t("common.meerInfo") + '</a>';
+  h += "</div>";
+  
+  h += '<div class="pdp-delivery">';
+  h += '<div class="pdp-delivery-item"><svg class="pdp-delivery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>' + _t("pdp.gratisAfhalen") + '</div>';
+  h += '<div class="pdp-delivery-item"><svg class="pdp-delivery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 18H3a1 1 0 01-1-1V7a1 1 0 011-1h10a1 1 0 011 1v2m-8 9h12m-5-9h5l3 3v5a1 1 0 01-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>' + _t("pdp.bezorgingMogelijk") + '</div>';
+  h += '<div class="pdp-delivery-item"><svg class="pdp-delivery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>CE ' + _t("pdp.gecertificeerd") + '</div>';
+  h += '</div>';
+  
+  h += '<p class="pdp-specs-title">' + _t("pdp.specificaties") + '</p>';
+  h += '<div class="pdp-specs"><table>';
+  if (type === "loader") {
+    if (product.engine) h += "<tr><td>" + _t("pdp.motor") + "</td><td>" + product.engine + "</td></tr>";
+    if (product.powerKw) h += "<tr><td>" + _t("pdp.vermogen") + "</td><td>" + product.powerKw + " kW</td></tr>";
+    if (product.speedKmh) h += "<tr><td>" + _t("pdp.snelheid") + "</td><td>" + product.speedKmh + " km/h</td></tr>";
+    if (product.maxLoadKg) h += "<tr><td>" + _t("pdp.laadvermogen") + "</td><td>" + product.maxLoadKg + " kg</td></tr>";
+    if (product.widthMm) h += "<tr><td>" + _t("pdp.breedte") + "</td><td>" + product.widthMm + " mm</td></tr>";
+    if (product.fuel) h += "<tr><td>" + _t("pdp.brandstof") + "</td><td>" + product.fuel + "</td></tr>";
+    if (product.steering) h += "<tr><td>" + _t("pdp.besturing") + "</td><td>" + product.steering + "</td></tr>";
   } else if (type === "grasmaaier") {
-    if (product.engine_cc) html += "<tr><td>Motor</td><td>" + product.engine_cc + "cc &mdash; " + product.hp + " HP</td></tr>";
-    if (product.mowing_width_cm) html += "<tr><td>Maaibreedte</td><td>" + product.mowing_width_cm + " cm</td></tr>";
-    if (product.drive) html += "<tr><td>Aandrijving</td><td>" + product.drive + "</td></tr>";
-    if (product.climb_angle) html += "<tr><td>Klimbereik</td><td>" + product.climb_angle + "&deg;</td></tr>";
-    if (product.start) html += "<tr><td>Start</td><td>" + product.start + "</td></tr>";
+    if (product.engine_cc) h += "<tr><td>" + _t("pdp.motor") + "</td><td>" + product.engine_cc + "cc / " + product.hp + " HP</td></tr>";
+    if (product.mowing_width_cm) h += "<tr><td>" + _t("pdp.maaibreedte") + "</td><td>" + product.mowing_width_cm + " cm</td></tr>";
+    if (product.drive) h += "<tr><td>" + _t("pdp.aandrijving") + "</td><td>" + product.drive + "</td></tr>";
+    if (product.climb_angle) h += "<tr><td>" + _t("pdp.klimbereik") + "</td><td>" + product.climb_angle + "&deg;</td></tr>";
+    if (product.start) h += "<tr><td>Start</td><td>" + product.start + "</td></tr>";
   } else if (type === "rippa") {
-    if (product.engine) html += "<tr><td>Motor</td><td>" + product.engine + "</td></tr>";
-    if (product.power_kw) html += "<tr><td>Vermogen</td><td>" + product.power_kw + " kW / " + product.power_hp + " hp</td></tr>";
-    if (product.weight_ton) html += "<tr><td>Gewicht</td><td>" + product.weight_ton + "</td></tr>";
-    if (product.dig_depth_mm) html += "<tr><td>Graafdiepte</td><td>" + (product.dig_depth_mm/1000).toFixed(1) + " m</td></tr>";
-    if (product.max_reach_mm) html += "<tr><td>Bereik</td><td>" + (product.max_reach_mm/1000).toFixed(1) + " m</td></tr>";
-    if (product.bucket_m3) html += "<tr><td>Bak</td><td>" + product.bucket_m3 + " m&sup3;</td></tr>";
-    if (product.width_mm) html += "<tr><td>Breedte</td><td>" + product.width_mm + " mm</td></tr>";
+    if (product.engine) h += "<tr><td>" + _t("pdp.motor") + "</td><td>" + product.engine + "</td></tr>";
+    if (product.power_kw) h += "<tr><td>" + _t("pdp.vermogen") + "</td><td>" + product.power_kw + " kW / " + product.power_hp + " hp</td></tr>";
+    if (product.weight_ton) h += "<tr><td>" + _t("pdp.gewicht") + "</td><td>" + product.weight_ton + "</td></tr>";
+    if (product.dig_depth_mm) h += "<tr><td>" + _t("pdp.graafdiepte") + "</td><td>" + (product.dig_depth_mm/1000).toFixed(1) + " m</td></tr>";
+    if (product.max_reach_mm) h += "<tr><td>" + _t("pdp.bereik") + "</td><td>" + (product.max_reach_mm/1000).toFixed(1) + " m</td></tr>";
+    if (product.bucket_m3) h += "<tr><td>" + _t("pdp.bak") + "</td><td>" + product.bucket_m3 + " m&sup3;</td></tr>";
+    if (product.width_mm) h += "<tr><td>" + _t("pdp.breedte") + "</td><td>" + product.width_mm + " mm</td></tr>";
   }
-  html += "</table></div>";
+  h += "</table></div>";
   
-  // Description
-  if (product.desc) {
-    html += '<p class="pdp-desc">' + product.desc + "</p>";
-  }
+  if (product.desc) h += '<p class="pdp-desc">' + product.desc + "</p>";
   
-  // Tags
   if (product.specs && Array.isArray(product.specs)) {
-    html += '<div class="pdp-tags">';
-    product.specs.forEach(function(s){ html += '<span class="pdp-tag">' + s + "</span>"; });
-    html += "</div>";
+    h += '<div class="pdp-tags">';
+    product.specs.forEach(function(s){ h += '<span class="pdp-tag">' + s + "</span>"; });
+    h += "</div>";
   }
   
-  // Action buttons
-  html += '<div class="pdp-actions">';
-  html += '<a href="/checkout.html?product=' + pid + '" class="btn btn-cta">Kopen</a>';
-  html += '<a href="/lease.html" class="btn btn-outline-dark">Leasen</a>';
-  if (type === "loader") {
-    html += '<a href="/afspraak.html" class="btn btn-outline-dark">Huren</a>';
-    html += '<a href="/demodagen.html" class="btn btn-outline-dark">Demo</a>';
-  }
-  html += '<a href="/afspraak.html?onderwerp=' + encodeURIComponent(name) + '" class="btn btn-outline-dark">Meer info</a>';
-  html += "</div>";
-  
-  document.getElementById("productInfo").innerHTML = html;
-})();
+  document.getElementById("productInfo").innerHTML = h;
+}
+
+renderProductInfo();
+document.addEventListener("ic:langchange", function() { renderProductInfo(); if (typeof applyLanguage === "function") applyLanguage(); });
 </script>
 </body>
 </html>
