@@ -108,30 +108,17 @@
 
     <!-- ======== TAB: RIPPA ======== -->
     <div class="tab-panel rippa-panel" id="panel-rippa" role="tabpanel">
-      <div class="rippa-coming-soon">
-        <div class="rippa-cs-logo">
-          <span class="rippa-logo-pill"><img src="assets/rippa-logo.png" alt="Rippa" style="height:32px;width:auto"></span>
-          <h2 class="rippa-cs-title">RIPPA MINIGRAVERS</h2>
-        </div>
-        <div class="rippa-cs-grid">
-          <div class="rippa-cs-card rippa-cs-main">
-            <div class="rippa-cs-badge">Binnenkort Beschikbaar</div>
-            <h3 class="rippa-cs-heading">Official Rippa Dealer Europe</h3>
-            <p class="rippa-cs-text">Wij zijn het Rippa assortiment aan het samenstellen voor de Europese markt. Minigravers van 0,8 tot 3,5 ton, CE-gecertificeerd voor Nederland en Belgi&euml;.</p>
-            <a href="contact.html" class="btn btn-cta rippa-cs-cta">Houd mij op de hoogte</a>
-          </div>
-          <div class="rippa-cs-card">
-            <h4 class="rippa-cs-usps-title">Waarom Rippa?</h4>
-            <ul class="rippa-usp-list">
-              <li>Kubota &amp; Yanmar motoren</li>
-              <li>CE-gecertificeerd voor Europa</li>
-              <li>0,8 &mdash; 3,5 ton werkgewicht</li>
-              <li>Compleet met hydraulisch snelwissel</li>
-              <li>Onderdelen direct leverbaar</li>
-              <li>Service via The IronCub Company</li>
-            </ul>
-          </div>
-        </div>
+      <div class="rippa-header" style="display:flex;align-items:center;gap:16px;margin-bottom:24px">
+        <span style="display:inline-flex;align-items:center;background:rgba(255,255,255,.92);border-radius:8px;padding:6px 14px"><img src="assets/rippa-logo.png" alt="Rippa" style="height:28px;width:auto"></span>
+        <div><h2 style="color:#fff;font-family:var(--font-head);font-size:1.6rem;margin:0">RIPPA MINIGRAVERS</h2><p style="color:rgba(255,255,255,.5);font-size:13px;margin:4px 0 0">Official Rippa Dealer Europe &mdash; 7 modellen van 0,75 tot 3,4 ton &mdash; prijs op aanvraag</p></div>
+      </div>
+      <div class="shop-layout">
+        <aside class="filter-sidebar" id="rippaFilterPanel">
+          <h3 style="color:#fff;font-size:.95rem;margin-bottom:16px">Filters</h3>
+          <div class="filter-group" style="margin-bottom:20px"><h4 style="color:var(--gold);font-size:.82rem;margin-bottom:8px">Gewichtsklasse</h4><label class="filter-option" style="color:rgba(255,255,255,.7)"><input type="checkbox" name="rw" value="mini"><span>&lt; 1,5 ton</span></label><label class="filter-option" style="color:rgba(255,255,255,.7)"><input type="checkbox" name="rw" value="midi"><span>1,5 - 2,5 ton</span></label><label class="filter-option" style="color:rgba(255,255,255,.7)"><input type="checkbox" name="rw" value="heavy"><span>2,5+ ton</span></label></div>
+          <div class="filter-group"><h4 style="color:var(--gold);font-size:.82rem;margin-bottom:8px">Motor</h4><label class="filter-option" style="color:rgba(255,255,255,.7)"><input type="checkbox" name="re" value="z482"><span>Kubota Z482</span></label><label class="filter-option" style="color:rgba(255,255,255,.7)"><input type="checkbox" name="re" value="d722"><span>Kubota D722</span></label><label class="filter-option" style="color:rgba(255,255,255,.7)"><input type="checkbox" name="re" value="d902"><span>Kubota D902</span></label><label class="filter-option" style="color:rgba(255,255,255,.7)"><input type="checkbox" name="re" value="d1105"><span>Kubota D1105</span></label><label class="filter-option" style="color:rgba(255,255,255,.7)"><input type="checkbox" name="re" value="v1505"><span>Kubota V1505</span></label></div>
+        </aside>
+        <main class="product-grid" id="rippaGrid"></main>
       </div>
     </div>
 
@@ -437,8 +424,59 @@ document.addEventListener('DOMContentLoaded', function () {
   } else if (validGroups.indexOf(hash) !== -1) {
     activateTab(hash);
   } else {
-    // default: loaders
     activateTab('loaders');
+  }
+
+  // ─── RIPPA PRODUCT CARDS ──────────────────────────────
+  var rippaGrid = document.getElementById('rippaGrid');
+  if (rippaGrid && typeof RIPPA !== 'undefined') {
+    rippaGrid.innerHTML = RIPPA.map(function(r) {
+      return '<div class="gm-card" id="' + r.id + '" data-weight="' + r.weight_kg + '" data-engine="' + r.engine_key + '" style="background:#111;border-color:#222">' +
+        '<div class="gm-img"><img src="' + r.img + '" alt="Rippa ' + r.model + '" loading="lazy"></div>' +
+        '<div class="gm-body">' +
+        '<h4 style="color:#fff">' + r.model + '</h4>' +
+        '<p class="gm-sub" style="color:rgba(255,255,255,.5)">' + r.subtitle + '</p>' +
+        '<div class="gm-specs">' +
+        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Motor</span><span class="gm-spec-val" style="color:#fff">' + r.engine + '</span></div>' +
+        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Vermogen</span><span class="gm-spec-val" style="color:#fff">' + r.power_kw + ' kW (' + r.power_hp + ' hp)</span></div>' +
+        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Gewicht</span><span class="gm-spec-val" style="color:#fff">' + r.weight_ton + '</span></div>' +
+        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Graafdiepte</span><span class="gm-spec-val" style="color:#fff">' + (r.dig_depth_mm/1000).toFixed(1) + ' m</span></div>' +
+        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Bereik</span><span class="gm-spec-val" style="color:#fff">' + (r.max_reach_mm/1000).toFixed(1) + ' m</span></div>' +
+        '<div class="gm-spec"><span class="gm-spec-label" style="color:rgba(255,255,255,.4)">Bak</span><span class="gm-spec-val" style="color:#fff">' + r.bucket_m3 + ' m&sup3;</span></div>' +
+        '</div>' +
+        '<p style="color:rgba(255,255,255,.5);font-size:13px;margin:12px 0">' + r.desc + '</p>' +
+        '<p style="color:var(--gold);font-weight:700;font-size:1.1rem;margin:8px 0">Prijs op aanvraag</p>' +
+        '<div class="gm-actions"><a href="afspraak.html?machine=' + r.model + '" class="btn btn-cta btn-sm">Offerte aanvragen</a></div>' +
+        '</div></div>';
+    }).join('');
+  }
+
+  // ─── RIPPA FILTERS ──────────────────────────────────
+  var rippaPanel = document.getElementById('rippaFilterPanel');
+  if (rippaPanel) {
+    rippaPanel.querySelectorAll('input[type=checkbox]').forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        var wFilters = []; var eFilters = [];
+        rippaPanel.querySelectorAll('input[name=rw]:checked').forEach(function(c) { wFilters.push(c.value); });
+        rippaPanel.querySelectorAll('input[name=re]:checked').forEach(function(c) { eFilters.push(c.value); });
+        RIPPA.forEach(function(r) {
+          var card = document.getElementById(r.id);
+          if (!card) return;
+          var show = true;
+          if (wFilters.length) {
+            var wMatch = false;
+            wFilters.forEach(function(f) {
+              if (f === 'mini' && r.weight_kg < 1500) wMatch = true;
+              if (f === 'midi' && r.weight_kg >= 1500 && r.weight_kg < 2500) wMatch = true;
+              if (f === 'heavy' && r.weight_kg >= 2500) wMatch = true;
+            });
+            if (!wMatch) show = false;
+          }
+          if (eFilters.length && eFilters.indexOf(r.engine_key) === -1) show = false;
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
   }
 
 });

@@ -1,13 +1,892 @@
-<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Service | The IronCub Company</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg"><link rel="stylesheet" href="styles.css"></head><body>
-<div id="announce-bar"></div><div id="site-header"></div>
-<section class="page-hero"><div class="page-hero-bg"><img src="assets/vth-480w.jpg" alt="IronCub Machine"></div><div class="page-hero-overlay"></div><div class="container page-hero-content"><h1>ONDERHOUD &amp; SERVICE</h1><p>Uw machine in topconditie. Onderdelen, reparaties en onderhoud.</p></div></section>
-<section class="content-section"><div class="container">
-<div class="service-grid">
-<div class="service-card"><div class="service-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><h3>Reparaties</h3><p>Snelle diagnose en reparatie in werkplaats of op locatie.</p><a href="mailto:service@ironcub.company" class="btn btn-outline-dark btn-sm">service@ironcub.company</a></div>
-<div class="service-card"><div class="service-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><h3>Onderdelen</h3><p>Originele Rippa onderdelen op voorraad. Snelle levering.</p><a href="mailto:service@ironcub.company" class="btn btn-outline-dark btn-sm">Bestellen</a></div>
-<div class="service-card"><div class="service-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Periodiek Onderhoud</h3><p>Preventief onderhoudscontract. Voorkom stilstand.</p><a href="contact.html" class="btn btn-outline-dark btn-sm">Info aanvragen</a></div>
-</div>
-<div class="cta-block"><img src="assets/hero-service.jpg" alt="IronCub Beer monteur" loading="lazy" class="cta-block-img"><div class="cta-block-text"><h3>Garantie op elke machine</h3><p>Fabrieksgarantie, CE, ISO 9001, ROPS/TOPS, TUV gekeurd.</p><a href="contact.html" class="btn btn-cta">Garantie-informatie</a></div></div>
-</div></section>
-<div id="site-footer"></div><script src="components.js"></script><script src="winkel.js"></script>
-</body></html>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Werkplaats & Service | The IronCub Company</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ====================================================
+       SERVICE PAGE — LOCAL OVERRIDES & CAROUSEL STYLES
+       ==================================================== */
+
+    /* Huisstijl tokens */
+    :root {
+      --orange: #E8831A;
+      --orange-dark: #c96e0f;
+      --blue: #1B6B9A;
+      --gold: #C5941A;
+      --gold-light: #d4a83a;
+    }
+
+    /* --- HERO: taller, stronger overlay --- */
+    .page-hero {
+      min-height: 52vh;
+    }
+    .page-hero-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.3) 60%, rgba(0,0,0,.1) 100%);
+    }
+    .page-hero-content h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      letter-spacing: .04em;
+      text-shadow: 0 2px 16px rgba(0,0,0,.4);
+    }
+    .page-hero-eyebrow {
+      font-family: var(--font-head);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .page-hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    /* --- CAROUSEL --- */
+    .carousel-section {
+      background: var(--dark);
+      padding: 0;
+    }
+    .carousel-wrap {
+      position: relative;
+      width: 100%;
+      max-height: 520px;
+      overflow: hidden;
+      background: #000;
+    }
+    .carousel-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .7s ease;
+      pointer-events: none;
+    }
+    .carousel-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 520px;
+      max-height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+    .carousel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 24px;
+      background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
+      font-family: var(--font-head);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.75);
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(0,0,0,.45);
+      border: 2px solid var(--orange);
+      color: var(--white);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+      backdrop-filter: blur(4px);
+    }
+    .carousel-btn:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+    .carousel-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .carousel-btn-prev { left: 16px; }
+    .carousel-btn-next { right: 16px; }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 0;
+      background: var(--dark);
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.25);
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      padding: 0;
+    }
+    .carousel-dot.active {
+      background: var(--orange);
+      transform: scale(1.35);
+    }
+
+    /* --- SECTION HEADS with orange accent line --- */
+    .sh-accent {
+      display: inline-block;
+      width: 40px;
+      height: 3px;
+      background: var(--orange);
+      border-radius: 2px;
+      margin-bottom: 14px;
+    }
+    .section-head h2 {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+    }
+
+    /* --- SERVICE CARDS: upgrade with orange btn --- */
+    .service-card .btn-orange {
+      background: var(--orange);
+      color: var(--white);
+      border-color: var(--orange);
+    }
+    .service-card .btn-orange:hover {
+      background: var(--orange-dark);
+      border-color: var(--orange-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(232,131,26,.35);
+    }
+    .service-card:hover {
+      border-color: var(--orange);
+    }
+    .service-icon svg {
+      stroke: var(--gold);
+    }
+
+    /* --- PAKKETTEN SECTION --- */
+    .pakketten-section {
+      padding: 80px 0;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .pakketten-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--orange), transparent);
+    }
+    .pakketten-section .section-head h2 {
+      color: var(--white);
+    }
+    .pakketten-section .section-head p {
+      color: rgba(255,255,255,.6);
+    }
+    .pakketten-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .pakket-card {
+      background: #232323;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: border-color .25s, transform .25s;
+    }
+    .pakket-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-3px);
+    }
+    .pakket-card.is-popular {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, #2a2315 0%, #232323 100%);
+    }
+    .pakket-card.is-popular:hover {
+      border-color: var(--gold-light);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-head);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--dark);
+      padding: 4px 18px;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+    .pakket-name {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: .03em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .pakket-subtitle {
+      font-size: .82rem;
+      color: rgba(255,255,255,.45);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 24px;
+    }
+    .pakket-items {
+      list-style: none;
+      margin: 0 0 28px;
+      padding: 0;
+      flex: 1;
+    }
+    .pakket-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .9rem;
+      color: rgba(255,255,255,.75);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      line-height: 1.45;
+    }
+    .pakket-items li:last-child {
+      border-bottom: none;
+    }
+    .pakket-items li .check-ico {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--gold);
+    }
+    .pakket-price {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .pakket-price small {
+      font-size: .85rem;
+      font-weight: 400;
+      color: rgba(255,255,255,.4);
+    }
+    .pakket-pricelab {
+      font-size: .78rem;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .btn-pakket {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.25);
+    }
+    .btn-pakket:hover {
+      border-color: var(--orange);
+      background: var(--orange);
+      color: var(--white);
+    }
+    .pakket-card.is-popular .btn-pakket {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+    }
+    .pakket-card.is-popular .btn-pakket:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    /* --- WERKPLAATS INFO SECTION --- */
+    .werkplaats-section {
+      padding: 80px 0;
+      background: var(--gray-100);
+    }
+    .werkplaats-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .werkplaats-lead {
+      font-size: 1.05rem;
+      color: var(--gray-700);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+    .fact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .fact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: .95rem;
+      color: var(--gray-800);
+      font-weight: 500;
+    }
+    .fact-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      background: var(--dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+    }
+    .fact-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .werkplaats-photo {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,.18);
+    }
+    .werkplaats-photo img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .werkplaats-photo:hover img {
+      transform: scale(1.03);
+    }
+
+    /* --- CTA BLOCK tweaks --- */
+    .cta-block {
+      margin-top: 0;
+    }
+    .cta-block-text h3 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .cta-block .btn-cta {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--white);
+      font-size: 1rem;
+      padding: 13px 32px;
+    }
+    .cta-block .btn-cta:hover {
+      background: var(--orange-dark);
+      border-color: var(--orange-dark);
+      box-shadow: 0 4px 14px rgba(232,131,26,.35);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .pakketten-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .pakketten-grid .pakket-card:last-child {
+        grid-column: span 2;
+        max-width: 480px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+    @media (max-width: 768px) {
+      .pakketten-grid {
+        grid-template-columns: 1fr;
+      }
+      .pakketten-grid .pakket-card:last-child {
+        grid-column: span 1;
+        max-width: 100%;
+      }
+      .werkplaats-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .werkplaats-photo img {
+        height: 280px;
+      }
+      .carousel-slide img {
+        height: 280px;
+        max-height: 280px;
+      }
+      .carousel-wrap {
+        max-height: 280px;
+      }
+      .carousel-btn {
+        width: 38px;
+        height: 38px;
+      }
+      .cta-block {
+        grid-template-columns: 1fr;
+      }
+      .cta-block-img {
+        height: 240px;
+        width: 100%;
+      }
+    }
+    @media (max-width: 480px) {
+      .pakketten-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="announce-bar"></div>
+<div id="site-header"></div>
+
+<!-- ============================================================
+     1. HERO BANNER
+     ============================================================ -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="assets/service-werkplaats-1.jpg" alt="IronCub werkplaats Middelharnis">
+  </div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <div class="page-hero-eyebrow">The IronCub Company</div>
+    <h1>ONZE WERKPLAATS</h1>
+    <p>Eigen vakgarage met technisch personeel in Middelharnis</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     2. FOTO CAROUSEL
+     ============================================================ -->
+<section class="carousel-section">
+  <div class="carousel-wrap" id="carousel" aria-label="Fotogalerij werkplaats en showroom">
+
+    <!-- Slides -->
+    <div class="carousel-slide active" role="group" aria-label="Foto 1 van 9">
+      <img src="assets/service-werkplaats-1.jpg" alt="Werkplaats met machines en gereedschap" loading="lazy">
+      <div class="carousel-caption">Werkplaats — machines in onderhoud</div>
+    </div>
+    <div class="carousel-slide" role="group" aria-label="Foto 2 van 9">
+      <img src="assets/service-werkplaats-2.jpg" alt="Werkplaats met hydraulische hefbrug" loading="lazy">
+      <div class="carousel-caption">Werkplaats — hydraulische hefbrug en gereedschap</div>
+    </div>
+    <div class="carousel-slide" role="group" aria-label="Foto 3 van 9">
+      <img src="assets/service-showroom-1.jpg" alt="Rij IronCub loaders in glazen showroom" loading="lazy">
+      <div class="carousel-caption">Showroom — IronCub compact loaders</div>
+    </div>
+    <div class="carousel-slide" role="group" aria-label="Foto 4 van 9">
+      <img src="assets/service-showroom-2.jpg" alt="Overzicht showroom met machines" loading="lazy">
+      <div class="carousel-caption">Showroom — volledig machinepark</div>
+    </div>
+    <div class="carousel-slide" role="group" aria-label="Foto 5 van 9">
+      <img src="assets/service-showroom-3.jpg" alt="Showroom overzicht" loading="lazy">
+      <div class="carousel-caption">Showroom — ruim aanbod direct beschikbaar</div>
+    </div>
+    <div class="carousel-slide" role="group" aria-label="Foto 6 van 9">
+      <img src="assets/service-front.jpg" alt="Vooraanzicht IronCub loader met bak" loading="lazy">
+      <div class="carousel-caption">IronCub — frontlader met hydraulisch aanbouwdeel</div>
+    </div>
+    <div class="carousel-slide" role="group" aria-label="Foto 7 van 9">
+      <img src="assets/service-crawlers.jpg" alt="Rupsbandloaders met open motorkap" loading="lazy">
+      <div class="carousel-caption">Rupsbandloaders — klaar voor onderhoud</div>
+    </div>
+    <div class="carousel-slide" role="group" aria-label="Foto 8 van 9">
+      <img src="assets/service-detail.jpg" alt="Close-up IronCub beer badge, hydrauliek en LED verlichting" loading="lazy">
+      <div class="carousel-caption">IronCub — kenmerkend beer-embleem, hydrauliek en LED verlichting</div>
+    </div>
+    <div class="carousel-slide" role="group" aria-label="Foto 9 van 9">
+      <img src="assets/service-warehouse.jpg" alt="Magazijn met machines op transportrekken" loading="lazy">
+      <div class="carousel-caption">Magazijn — machines gereed voor levering</div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Vorige foto">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Volgende foto">
+      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
+  </div>
+
+  <!-- Dot indicators -->
+  <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Kies foto">
+    <button class="carousel-dot active" data-index="0" aria-label="Foto 1" role="tab" aria-selected="true"></button>
+    <button class="carousel-dot" data-index="1" aria-label="Foto 2" role="tab" aria-selected="false"></button>
+    <button class="carousel-dot" data-index="2" aria-label="Foto 3" role="tab" aria-selected="false"></button>
+    <button class="carousel-dot" data-index="3" aria-label="Foto 4" role="tab" aria-selected="false"></button>
+    <button class="carousel-dot" data-index="4" aria-label="Foto 5" role="tab" aria-selected="false"></button>
+    <button class="carousel-dot" data-index="5" aria-label="Foto 6" role="tab" aria-selected="false"></button>
+    <button class="carousel-dot" data-index="6" aria-label="Foto 7" role="tab" aria-selected="false"></button>
+    <button class="carousel-dot" data-index="7" aria-label="Foto 8" role="tab" aria-selected="false"></button>
+    <button class="carousel-dot" data-index="8" aria-label="Foto 9" role="tab" aria-selected="false"></button>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. DIENSTEN — WAT WIJ DOEN
+     ============================================================ -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="sh-accent"></div>
+      <h2>WAT WIJ DOEN</h2>
+      <p>Van snelle reparatie tot volledig ontzorgend onderhoudscontract — IronCub regelt het.</p>
+    </div>
+
+    <div class="service-grid">
+
+      <!-- Reparaties -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <h3>REPARATIES</h3>
+        <p>Snelle diagnose en professionele reparatie van al uw compact equipment. Van hydrauliek tot elektronica — onze monteurs lossen het op. In de werkplaats of op locatie.</p>
+        <a href="afspraak.html" class="btn btn-orange btn-sm">Reparatie aanvragen</a>
+      </div>
+
+      <!-- Onderhoudsbeurten -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </div>
+        <h3>ONDERHOUDSBEURTEN</h3>
+        <p>Preventief onderhoud verlengt de levensduur van uw machine. Wij bieden onderhoudscontracten op maat: kleine beurten, grote beurten, en volledige seizoenspreparatie.</p>
+        <a href="afspraak.html" class="btn btn-orange btn-sm">Onderhoud plannen</a>
+      </div>
+
+      <!-- Onderdelen -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3>ONDERDELEN</h3>
+        <p>Originele onderdelen direct uit voorraad of snel besteld. Filters, hydrauliekslangen, rupsbanden, bakken, elektronica — alles leverbaar.</p>
+        <a href="contact.html" class="btn btn-orange btn-sm">Onderdelen bestellen</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. ONDERHOUDSPAKKETTEN
+     ============================================================ -->
+<section class="pakketten-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="sh-accent"></div>
+      <h2>ONDERHOUDSPAKKETTEN</h2>
+      <p>Transparante vaste prijzen. Geen verrassingen achteraf.</p>
+    </div>
+
+    <div class="pakketten-grid">
+
+      <!-- Kleine Beurt -->
+      <div class="pakket-card">
+        <div class="pakket-name">Kleine Beurt</div>
+        <div class="pakket-subtitle">Basisonderhoud</div>
+        <ul class="pakket-items">
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Motorolie verversen
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Oliefilter vervangen
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Luchtfilter controleren
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Smeerpunten afsmeren
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Visuele inspectie
+          </li>
+        </ul>
+        <div class="pakket-price">Vanaf €149 <small>excl. BTW</small></div>
+        <div class="pakket-pricelab">per beurt</div>
+        <a href="afspraak.html" class="btn btn-pakket btn-full">Inplannen</a>
+      </div>
+
+      <!-- Grote Beurt — Populair -->
+      <div class="pakket-card is-popular">
+        <div class="popular-badge">POPULAIR</div>
+        <div class="pakket-name">Grote Beurt</div>
+        <div class="pakket-subtitle">Volledig onderhoud</div>
+        <ul class="pakket-items">
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Alles van de kleine beurt
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Hydrauliekolie controleren
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Hydrauliekfilters vervangen
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Koelvloeistof bijvullen
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Remmen controleren
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Accu testen
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Banden / rupsbanden check
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Proefrit + schriftelijk rapport
+          </li>
+        </ul>
+        <div class="pakket-price">Vanaf €349 <small>excl. BTW</small></div>
+        <div class="pakket-pricelab">per beurt</div>
+        <a href="afspraak.html" class="btn btn-pakket btn-full">Inplannen</a>
+      </div>
+
+      <!-- Seizoenspreparatie -->
+      <div class="pakket-card">
+        <div class="pakket-name">Seizoenspreparatie</div>
+        <div class="pakket-subtitle">Compleet ontzorgd</div>
+        <ul class="pakket-items">
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Alles van de grote beurt
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Winterklaar / zomerklaar maken
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Aanbouwdelen nalopen
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Complete schoonmaak
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Firmware updates
+          </li>
+          <li>
+            <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Aflevering met volledige checklist
+          </li>
+        </ul>
+        <div class="pakket-price">Vanaf €549 <small>excl. BTW</small></div>
+        <div class="pakket-pricelab">per beurt</div>
+        <a href="afspraak.html" class="btn btn-pakket btn-full">Inplannen</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. WERKPLAATS INFO
+     ============================================================ -->
+<section class="werkplaats-section">
+  <div class="container">
+    <div class="werkplaats-layout">
+
+      <!-- Left: text + feiten -->
+      <div>
+        <div class="sh-accent"></div>
+        <h2 class="section-title-left" style="font-size: clamp(1.9rem,4vw,2.6rem); margin-bottom: 16px;">ONZE WERKPLAATS IN MIDDELHARNIS</h2>
+        <p class="werkplaats-lead">Onze werkplaats in Middelharnis is volledig uitgerust voor het onderhoud en de reparatie van compact equipment. Met professioneel gereedschap, hydraulische hefbruggen en ervaren monteurs staat uw machine snel weer klaar.</p>
+
+        <ul class="fact-list">
+          <li class="fact-item">
+            <span class="fact-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </span>
+            Eigen werkplaats in Middelharnis
+          </li>
+          <li class="fact-item">
+            <span class="fact-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </span>
+            Gecertificeerde monteurs
+          </li>
+          <li class="fact-item">
+            <span class="fact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </span>
+            Originele onderdelen op voorraad
+          </li>
+          <li class="fact-item">
+            <span class="fact-icon">
+              <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </span>
+            Ophaal- en bezorgservice beschikbaar
+          </li>
+          <li class="fact-item">
+            <span class="fact-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Garantie op uitgevoerd werk
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: photo -->
+      <div class="werkplaats-photo">
+        <img src="assets/service-werkplaats-2.jpg" alt="IronCub werkplaats met hydraulische hefbrug" loading="lazy">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. CTA BLOCK
+     ============================================================ -->
+<section class="content-section" style="padding-top: 0; padding-bottom: 64px;">
+  <div class="container">
+    <div class="cta-block">
+      <img src="assets/service-detail.jpg" alt="IronCub machine close-up — beer badge en hydrauliek" loading="lazy" class="cta-block-img">
+      <div class="cta-block-text">
+        <h3>Machine aan de beurt?</h3>
+        <p>Plan direct uw onderhoudsbeurt of reparatie in. Wij nemen binnen 24 uur contact op.</p>
+        <a href="afspraak.html" class="btn btn-cta btn-lg">AFSPRAAK MAKEN</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="components.js"></script>
+<script src="winkel.js"></script>
+
+<!-- CAROUSEL SCRIPT -->
+<script>
+  (function () {
+    const slides = document.querySelectorAll('#carousel .carousel-slide');
+    const dots   = document.querySelectorAll('#carouselDots .carousel-dot');
+    const prev   = document.getElementById('carouselPrev');
+    const next   = document.getElementById('carouselNext');
+    let current  = 0;
+    let timer;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      dots[current].setAttribute('aria-selected', 'false');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      dots[current].setAttribute('aria-selected', 'true');
+    }
+
+    function startAuto() {
+      timer = setInterval(function () { goTo(current + 1); }, 4000);
+    }
+
+    function resetAuto() {
+      clearInterval(timer);
+      startAuto();
+    }
+
+    prev.addEventListener('click', function () { goTo(current - 1); resetAuto(); });
+    next.addEventListener('click', function () { goTo(current + 1); resetAuto(); });
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        goTo(parseInt(dot.dataset.index));
+        resetAuto();
+      });
+    });
+
+    // Pause on hover
+    document.getElementById('carousel').addEventListener('mouseenter', function () { clearInterval(timer); });
+    document.getElementById('carousel').addEventListener('mouseleave', startAuto);
+
+    // Touch / swipe support
+    let touchStartX = 0;
+    document.getElementById('carousel').addEventListener('touchstart', function (e) {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    document.getElementById('carousel').addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) {
+        goTo(dx < 0 ? current + 1 : current - 1);
+        resetAuto();
+      }
+    });
+
+    startAuto();
+  })();
+</script>
+
+</body>
+</html>

@@ -1048,3 +1048,9 @@ ul{list-style:none}
   .product-tab { padding: 8px 12px; font-size: .82rem; letter-spacing: .04em; }
   .shop-section { padding: 32px 0 48px; }
 }
+
+/* ============================================================
+   SERVICE PAGE — btn-orange (huisstijl oranje #E8831A)
+   ============================================================ */
+.btn-orange{background:#E8831A;color:var(--white);border-color:#E8831A}
+.btn-orange:hover{background:#c96e0f;border-color:#c96e0f;transform:translateY(-1px);box-shadow:0 4px 14px rgba(232,131,26,.35)}
