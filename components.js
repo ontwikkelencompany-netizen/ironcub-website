@@ -6,4 +6,4 @@ document.addEventListener('DOMContentLoaded',function(){var ae=document.getEleme
 function triggerSparkle(){var s=document.getElementById('demoSparkle');if(s){s.classList.remove('sparkle-active');void s.offsetWidth;s.classList.add('sparkle-active')}}
 setTimeout(triggerSparkle,500);
 setInterval(triggerSparkle,60000);
-var lastScroll=window.scrollY;window.addEventListener('scroll',function(){if(window.scrollY<50&&lastScroll>100)triggerSparkle();lastScroll=window.scrollY});var cbs=document.createElement('script');cbs.src='/chatbot.js';cbs.defer=true;document.body.appendChild(cbs)});
+var lastScroll=window.scrollY;window.addEventListener('scroll',function(){if(window.scrollY<50&&lastScroll>100)triggerSparkle();lastScroll=window.scrollY});var cbs=document.createElement('script');cbs.src='/chatbot.js';cbs.defer=true;document.body.appendChild(cbs);var gas=document.createElement('script');gas.src='/analytics.js';gas.defer=true;document.body.appendChild(gas)});
