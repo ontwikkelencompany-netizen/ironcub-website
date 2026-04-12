@@ -45,9 +45,9 @@ ul{list-style:none}
 
 /* MEGA MENU */
 .has-mega{position:relative}
-.mega-menu{display:none;position:absolute;top:100%;left:0;background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:28px 32px;min-width:640px;z-index:100}
-.has-mega:hover .mega-menu{display:flex;gap:32px}
-.mega-col{flex:1}
+.mega-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:28px 36px;min-width:820px;z-index:100}
+.has-mega:hover .mega-menu{display:flex;gap:36px}
+.mega-col{min-width:0;white-space:nowrap}
 .mega-col h4{font-family:var(--font-head);font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-600);margin-bottom:12px}
 .mega-col a{display:block;font-size:.88rem;color:var(--gray-800);padding:5px 0;transition:color .15s}
 .mega-col a:hover{color:var(--gold)}
