@@ -846,6 +846,218 @@
       background: #f1f5f9;
       color: #475569;
     }
+
+    /* ── Bear mascots ── */
+    @keyframes bear-wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-6deg) scale(1.05); }
+      75% { transform: rotate(6deg) scale(1.05); }
+    }
+
+    @keyframes bear-bounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-4px) scale(1.06); }
+    }
+
+    .bear-admin {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.3));
+      cursor: pointer;
+      margin: 10px auto 0;
+      display: block;
+      transition: transform 0.15s;
+    }
+
+    .bear-admin:hover {
+      animation: bear-wiggle 0.5s ease-in-out;
+    }
+
+    .bear-topbar {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.3));
+      transition: transform 0.2s, filter 0.2s;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .bear-topbar:hover {
+      transform: scale(1.15) rotate(-5deg);
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,.4));
+    }
+
+    .bear-empty {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.3));
+      margin-bottom: 12px;
+      transition: transform 0.3s;
+    }
+
+    .bear-empty:hover {
+      animation: bear-bounce 0.6s ease-in-out;
+    }
+
+    .state-box .bear-msg {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* ── Quick actions grid ── */
+    .quick-actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .quick-action-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 14px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: box-shadow 0.15s, border-color 0.15s, transform 0.1s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quick-action-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .quick-action-card .qa-icon {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    /* ── Analytics & Marketing pages ── */
+    .analytics-link-box {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .analytics-link-box h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .analytics-link-box p {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .analytics-link-box a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold);
+      color: #1a1a1a;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+      flex-shrink: 0;
+    }
+
+    .analytics-link-box a:hover { opacity: 0.85; }
+
+    .marketing-link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .marketing-link-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-decoration: none;
+      color: var(--text);
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .marketing-link-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+
+    .marketing-link-card .mlc-title {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .marketing-link-card .mlc-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .marketing-link-card .mlc-arrow {
+      font-size: 11px;
+      color: var(--orange);
+      margin-top: 4px;
+    }
+
+    /* ── Date/time topbar ── */
+    .topbar-datetime {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .topbar-website-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: none;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      border-radius: 6px;
+      padding: 5px 11px;
+      font-size: 12px;
+      font-family: var(--font);
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .topbar-website-btn:hover {
+      background: var(--gold);
+      color: #1a1a1a;
+    }
   </style>
 </head>
 <body>
@@ -865,6 +1077,7 @@
           <div class="brand-sub">Admin</div>
         </div>
       </div>
+      <img src="/assets/bear-account.png" alt="Admin beer" class="bear-admin" title="De admin beer!">
     </div>
 
     <nav class="sidebar-nav">
@@ -899,6 +1112,18 @@
           Live Bezoekers
           <span class="live-dot"></span>
         </div>
+        <div class="nav-item" data-page="analytics">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Analytics
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Marketing</div>
+        <div class="nav-item" data-page="marketing">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Marketing
+        </div>
       </div>
     </nav>
 
@@ -917,11 +1142,14 @@
         <span class="topbar-title" id="topbarTitle">Dashboard</span>
       </div>
       <div class="topbar-actions">
+        <span class="topbar-datetime" id="topbarClock"></span>
         <span class="last-updated" id="lastUpdated"></span>
+        <a href="https://myironcub.com" target="_blank" class="topbar-website-btn">Naar website →</a>
         <button class="topbar-refresh" id="refreshBtn">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
           Vernieuwen
         </button>
+        <img src="/assets/bear-logo-peek.png" alt="Beer" class="bear-topbar" title="Hallo! 🐻">
       </div>
     </div>
 
@@ -951,6 +1179,41 @@
           <div class="stat-label">Producten actief</div>
           <div class="stat-value" id="statProducts">—</div>
           <div class="stat-sub">in assortiment</div>
+        </div>
+      </div>
+
+      <!-- Snelle acties -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-header">
+          <span class="card-title">Snelle acties</span>
+        </div>
+        <div style="padding:16px">
+          <div class="quick-actions-grid">
+            <a href="/checkout.html" class="quick-action-card">
+              <span class="qa-icon">📦</span>
+              Nieuwe bestelling
+            </a>
+            <a href="#" class="quick-action-card" onclick="event.preventDefault();navigate('kortingscodes')">
+              <span class="qa-icon">🏷️</span>
+              Kortingscode maken
+            </a>
+            <a href="https://outlook.office.com" target="_blank" class="quick-action-card">
+              <span class="qa-icon">📧</span>
+              Outlook openen
+            </a>
+            <a href="https://monday.com" target="_blank" class="quick-action-card">
+              <span class="qa-icon">📋</span>
+              Monday.com
+            </a>
+            <a href="https://app.pipedrive.com" target="_blank" class="quick-action-card">
+              <span class="qa-icon">💼</span>
+              Pipedrive
+            </a>
+            <a href="https://www.dropbox.com" target="_blank" class="quick-action-card">
+              <span class="qa-icon">📁</span>
+              Dropbox
+            </a>
+          </div>
         </div>
       </div>
 
@@ -1097,6 +1360,135 @@
       </div>
     </div>
 
+    <!-- ANALYTICS -->
+    <div class="page" id="page-analytics">
+      <div class="section-header">
+        <h2 class="section-title">Analytics</h2>
+      </div>
+
+      <div class="analytics-link-box">
+        <div>
+          <h3>Google Analytics</h3>
+          <p>Bekijk realtime bezoekers, paginaweergaven en conversiepaden</p>
+        </div>
+        <a href="https://analytics.google.com/analytics/web/#/p/G-14EX5RF75G" target="_blank">Open Google Analytics →</a>
+      </div>
+
+      <div class="stat-grid" style="margin-bottom:24px">
+        <div class="stat-card">
+          <div class="stat-label">Bezoekers vandaag</div>
+          <div class="stat-value" style="color:var(--orange)">—</div>
+          <div class="stat-sub">Verbind Analytics voor live data</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-label">Paginaweergaven</div>
+          <div class="stat-value">—</div>
+          <div class="stat-sub">Vandaag</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Bounce rate</div>
+          <div class="stat-value" style="color:var(--gold)">—</div>
+          <div class="stat-sub">Gemiddelde vandaag</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Gem. sessieduur</div>
+          <div class="stat-value">—</div>
+          <div class="stat-sub">Minuten per bezoek</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Live data verbinden</span>
+        </div>
+        <div style="padding:20px">
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Verbind Google Analytics voor live statistieken in dit dashboard.</p>
+          <a href="https://analytics.google.com/analytics/web/#/p/G-14EX5RF75G" target="_blank" class="btn btn-primary">Open Google Analytics →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARKETING -->
+    <div class="page" id="page-marketing">
+      <div class="section-header">
+        <h2 class="section-title">Marketing</h2>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-header">
+          <span class="card-title">Adverteren &amp; Campagnes</span>
+        </div>
+        <div style="padding:16px">
+          <div class="marketing-link-grid">
+            <a href="https://ads.google.com" target="_blank" class="marketing-link-card">
+              <span class="mlc-title">Google Ads Dashboard</span>
+              <span class="mlc-desc">Beheer campagnes</span>
+              <span class="mlc-arrow">Openen →</span>
+            </a>
+            <a href="https://search.google.com/search-console" target="_blank" class="marketing-link-card">
+              <span class="mlc-title">Google Search Console</span>
+              <span class="mlc-desc">SEO &amp; indexering</span>
+              <span class="mlc-arrow">Openen →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-header">
+          <span class="card-title">Social Media</span>
+        </div>
+        <div style="padding:16px">
+          <div class="marketing-link-grid">
+            <a href="https://www.tiktok.com/@theironcubcompany" target="_blank" class="marketing-link-card">
+              <span class="mlc-title">TikTok Business</span>
+              <span class="mlc-desc">Social media</span>
+              <span class="mlc-arrow">Openen →</span>
+            </a>
+            <a href="https://www.instagram.com/theironcubcompany/" target="_blank" class="marketing-link-card">
+              <span class="mlc-title">Instagram</span>
+              <span class="mlc-desc">Social media</span>
+              <span class="mlc-arrow">Openen →</span>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61580721787793" target="_blank" class="marketing-link-card">
+              <span class="mlc-title">Facebook</span>
+              <span class="mlc-desc">Social media</span>
+              <span class="mlc-arrow">Openen →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">SEO Status</span>
+        </div>
+        <div style="padding:20px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f9fafb;border-radius:8px;border:1px solid var(--border)">
+            <div>
+              <div style="font-weight:600;font-size:13px">Sitemap</div>
+              <div style="font-size:11px;color:var(--text-muted)">Geeft zoekmachines de sitestructuur</div>
+            </div>
+            <a href="https://myironcub.com/sitemap.xml" target="_blank" class="btn btn-secondary btn-sm">Bekijken →</a>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f9fafb;border-radius:8px;border:1px solid var(--border)">
+            <div>
+              <div style="font-weight:600;font-size:13px">robots.txt</div>
+              <div style="font-size:11px;color:var(--text-muted)">Beheer crawlregels voor bots</div>
+            </div>
+            <a href="https://myironcub.com/robots.txt" target="_blank" class="btn btn-secondary btn-sm">Bekijken →</a>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f9fafb;border-radius:8px;border:1px solid var(--border)">
+            <div>
+              <div style="font-weight:600;font-size:13px">llms.txt</div>
+              <div style="font-size:11px;color:var(--text-muted)">AI vindbaarheid — geschikt voor ChatGPT, Perplexity e.d.</div>
+            </div>
+            <a href="https://myironcub.com/llms.txt" target="_blank" class="btn btn-secondary btn-sm">Bekijken →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- LIVE BEZOEKERS -->
     <div class="page" id="page-bezoekers">
       <div class="section-header">
@@ -1195,7 +1587,9 @@
     bestellingen: 'Bestellingen',
     producten: 'Producten',
     kortingscodes: 'Kortingscodes',
-    bezoekers: 'Live Bezoekers'
+    bezoekers: 'Live Bezoekers',
+    analytics: 'Analytics',
+    marketing: 'Marketing'
   };
 
   function navigate(page) {
@@ -1258,7 +1652,7 @@
     const tc = document.getElementById('toastContainer');
     const el = document.createElement('div');
     el.className = `toast ${type}`;
-    const icons = { success: '✓', error: '✕', info: 'ℹ' };
+    const icons = { success: '🐾', error: '✕', info: 'ℹ' };
     el.innerHTML = `<span style="font-size:14px">${icons[type] || ''}</span> ${msg}`;
     tc.appendChild(el);
     setTimeout(() => el.remove(), 3500);
@@ -1306,7 +1700,7 @@
     const tbody = document.getElementById('ordersTable');
 
     if (!orders.length) {
-      tbody.innerHTML = `<tr><td colspan="8"><div class="state-box"><div class="state-icon">📋</div><p>Geen bestellingen gevonden</p></div></td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="8"><div class="state-box"><img src="/assets/bear-cart-shop.png" alt="Beer" class="bear-empty"><p>Geen bestellingen gevonden</p><p class="bear-msg">Nog geen bestellingen... De beer wacht geduldig 🐻</p></div></td></tr>`;
       return;
     }
 
@@ -1452,7 +1846,7 @@
     const recentTbody = document.getElementById('recentOrdersTable');
 
     if (!recent.length) {
-      recentTbody.innerHTML = `<tr><td colspan="5"><div class="state-box"><p>Geen recente bestellingen</p></div></td></tr>`;
+      recentTbody.innerHTML = `<tr><td colspan="5"><div class="state-box"><img src="/assets/bear-cart-shop.png" alt="Beer" class="bear-empty"><p>Geen recente bestellingen</p><p class="bear-msg">Nog geen bestellingen... De beer wacht geduldig 🐻</p></div></td></tr>`;
       return;
     }
 
@@ -1641,7 +2035,7 @@
   function renderDiscounts() {
     const tbody = document.getElementById('discountsTable');
     if (!allDiscounts.length) {
-      tbody.innerHTML = `<tr><td colspan="7"><div class="state-box"><div class="state-icon">🏷️</div><p>Geen kortingscodes</p></div></td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="7"><div class="state-box"><img src="/assets/bear-thumbsup.jpg" alt="Beer" class="bear-empty"><p>Geen kortingscodes actief</p><p class="bear-msg">Geen kortingscodes actief. De beer vindt volle prijs ook prima!</p></div></td></tr>`;
       return;
     }
 
@@ -1732,7 +2126,7 @@
 
       const liveEl = document.getElementById('liveVisitors');
       if (!Array.isArray(visitors) || !visitors.length) {
-        liveEl.innerHTML = '<div class="state-box"><p>Geen actieve bezoekers op dit moment</p></div>';
+        liveEl.innerHTML = '<div class="state-box"><img src="/assets/bear-peek-bottom.jpg" alt="Beer" class="bear-empty"><p>Geen actieve bezoekers op dit moment</p><p class="bear-msg">Niemand online... De beer houdt de wacht!</p></div>';
       } else {
         liveEl.innerHTML = visitors.map(v => `
           <div class="visitor-row">
@@ -1789,6 +2183,19 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeDiscountModal();
   });
+
+  // ── Clock ──
+  function updateClock() {
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    document.getElementById('topbarClock').textContent = `${day}-${month}-${year} ${hours}:${minutes}`;
+  }
+  updateClock();
+  setInterval(updateClock, 10000);
 
   // ── Init ──
   loadAll();
