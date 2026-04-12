@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | The IronCub Company</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="/assets/logo-icon.jpg">
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:  #E8831A;
+      --blue:    #1B6B9A;
+      --gold:    #c8a44e;
+      --dark:    #1a1a1a;
+      --sidebar: #111111;
+      --sidebar-hover: #1f1f1f;
+      --sidebar-active: #252525;
+      --surface: #f5f5f5;
+      --card:    #ffffff;
+      --border:  #e0e0e0;
+      --text:    #1a1a1a;
+      --text-muted: #7a7a7a;
+      --font:    'DM Sans', sans-serif;
+      --sidebar-width: 240px;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: var(--font);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* ── Layout ── */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--sidebar);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh;
+      z-index: 100;
+    }
+
+    .sidebar-logo {
+      padding: 24px 20px 20px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .sidebar-logo .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-logo .logo-mark {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo .brand-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: 0.3px;
+    }
+
+    .sidebar-logo .brand-sub {
+      font-family: var(--font);
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 16px 0;
+      overflow-y: auto;
+    }
+
+    .nav-section {
+      margin-bottom: 4px;
+    }
+
+    .nav-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #555;
+      padding: 8px 20px 4px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      color: #aaa;
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+      border-left: 3px solid transparent;
+      user-select: none;
+    }
+
+    .nav-item:hover {
+      background: var(--sidebar-hover);
+      color: #fff;
+    }
+
+    .nav-item.active {
+      background: var(--sidebar-active);
+      color: #fff;
+      border-left-color: var(--gold);
+    }
+
+    .nav-item svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    .nav-item.active svg,
+    .nav-item:hover svg {
+      opacity: 1;
+    }
+
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    .sidebar-footer .version {
+      font-size: 11px;
+      color: #444;
+    }
+
+    /* Live indicator */
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-left: auto;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ── Main content ── */
+    .main {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .topbar-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topbar-refresh {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-family: var(--font);
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .topbar-refresh:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .last-updated {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ── Page ── */
+    .page {
+      display: none;
+      padding: 24px 28px 40px;
+      flex: 1;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ── Section header ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Stat cards ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      transition: box-shadow 0.15s;
+    }
+
+    .stat-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+
+    .stat-card .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .stat-card .stat-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .stat-card .stat-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .stat-card.orange .stat-value { color: var(--orange); }
+    .stat-card.blue .stat-value { color: var(--blue); }
+    .stat-card.gold .stat-value { color: var(--gold); }
+
+    /* ── Cards / panels ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ── Tables ── */
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.1s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody tr:hover { background: #fafafa; }
+
+    tbody td {
+      padding: 11px 16px;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-betaald    { background: #dbeafe; color: #1d4ed8; }
+    .badge-verwerkt   { background: #fef9c3; color: #a16207; }
+    .badge-verzonden  { background: #e0f2fe; color: #0369a1; }
+    .badge-afgeleverd { background: #dcfce7; color: #166534; }
+    .badge-geannuleerd { background: #fee2e2; color: #991b1b; }
+    .badge-nieuw      { background: #f3e8ff; color: #6b21a8; }
+    .badge-actief     { background: #dcfce7; color: #166534; }
+    .badge-inactief   { background: #f1f5f9; color: #64748b; }
+    .badge-korting    { background: #fff7ed; color: #c2410c; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: var(--font);
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+
+    .btn:active { transform: scale(0.97); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+    }
+
+    .btn-ghost:hover { color: var(--blue); background: #f0f8ff; border-color: #bfe0f5; }
+
+    .btn-danger {
+      background: #fff;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+
+    .btn-danger:hover { background: #fee2e2; }
+
+    .btn-sm { padding: 4px 10px; font-size: 11px; }
+
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btn-blue:hover { opacity: 0.88; }
+
+    /* ── Search / Filter ── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: var(--font);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .search-input:focus { border-color: var(--blue); }
+
+    .filter-select {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: var(--font);
+      font-size: 13px;
+      background: white;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* ── Order expand ── */
+    .order-row {
+      cursor: pointer;
+    }
+
+    .order-detail {
+      display: none;
+      background: #f9fafb;
+    }
+
+    .order-detail.open {
+      display: table-row;
+    }
+
+    .order-detail td {
+      padding: 16px 20px;
+    }
+
+    .order-detail-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .detail-block h4 {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .detail-block p {
+      font-size: 13px;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .detail-items table {
+      font-size: 12px;
+    }
+
+    .order-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Inline edit ── */
+    .inline-edit {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .inline-edit input {
+      width: 90px;
+      padding: 5px 8px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 13px;
+      font-family: var(--font);
+      outline: none;
+    }
+
+    .inline-edit input:focus { border-color: var(--blue); }
+
+    /* ── Toggle ── */
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 20px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .toggle input { opacity: 0; width: 0; height: 0; }
+
+    .toggle-slider {
+      position: absolute;
+      inset: 0;
+      background: #ccc;
+      border-radius: 20px;
+      transition: background 0.2s;
+    }
+
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      left: 3px;
+      top: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+
+    .toggle input:checked + .toggle-slider { background: #22c55e; }
+    .toggle input:checked + .toggle-slider::before { transform: translateX(16px); }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 28px;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .modal h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: var(--font);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus { border-color: var(--blue); }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    /* ── Live bezoekers ── */
+    .live-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .visitor-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .visitor-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 13px;
+    }
+
+    .visitor-row:last-child { border-bottom: none; }
+
+    /* ── Empty / loading / error states ── */
+    .state-box {
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .state-box .state-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+      opacity: 0.4;
+    }
+
+    .state-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .loading-row td {
+      padding: 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* Spinner */
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #e5e7eb;
+      border-top-color: var(--orange);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Toast ── */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 300;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toast {
+      background: var(--dark);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      animation: slide-in 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 320px;
+    }
+
+    .toast.success { border-left: 3px solid #22c55e; }
+    .toast.error   { border-left: 3px solid #ef4444; }
+    .toast.info    { border-left: 3px solid var(--blue); }
+
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Auth warning ── */
+    .auth-warning {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .auth-warning svg {
+      flex-shrink: 0;
+      color: var(--orange);
+      margin-top: 1px;
+    }
+
+    .auth-warning p {
+      font-size: 13px;
+      color: #7c3a00;
+    }
+
+    .auth-warning strong { display: block; margin-bottom: 2px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      :root { --sidebar-width: 0px; }
+
+      .sidebar {
+        transform: translateX(-240px);
+        transition: transform 0.25s ease;
+        width: 240px;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .topbar {
+        padding: 0 16px;
+      }
+
+      .page {
+        padding: 16px;
+      }
+
+      .stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .order-detail-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .live-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--text);
+    }
+
+    /* ── Price display ── */
+    .price {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .price-original {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    /* ── Category pill ── */
+    .cat-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      background: #f1f5f9;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="brand">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="6" fill="#E8831A"/>
+          <path d="M6 22L12 10L16 18L19 14L26 22H6Z" fill="white" opacity="0.9"/>
+          <circle cx="23" cy="11" r="3" fill="#c8a44e"/>
+        </svg>
+        <div>
+          <div class="brand-text">THE IRONCUB CO.</div>
+          <div class="brand-sub">Admin</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-label">Overzicht</div>
+        <div class="nav-item active" data-page="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Beheer</div>
+        <div class="nav-item" data-page="bestellingen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="12" y2="16"/></svg>
+          Bestellingen
+        </div>
+        <div class="nav-item" data-page="producten">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          Producten
+        </div>
+        <div class="nav-item" data-page="kortingscodes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Kortingscodes
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Analyse</div>
+        <div class="nav-item" data-page="bezoekers">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Live Bezoekers
+          <span class="live-dot"></span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="version">The IronCub Company &copy; 2025</div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu openen">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <span class="topbar-title" id="topbarTitle">Dashboard</span>
+      </div>
+      <div class="topbar-actions">
+        <span class="last-updated" id="lastUpdated"></span>
+        <button class="topbar-refresh" id="refreshBtn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Vernieuwen
+        </button>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="page active" id="page-dashboard">
+      <div class="section-header">
+        <h2 class="section-title">Dashboard</h2>
+      </div>
+
+      <div class="stat-grid" id="dashStats">
+        <div class="stat-card">
+          <div class="stat-label">Totaal bestellingen</div>
+          <div class="stat-value" id="statTotalOrders">—</div>
+          <div class="stat-sub" id="statOrdersSub"></div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-label">Totale omzet (excl. BTW)</div>
+          <div class="stat-value" id="statRevenue">—</div>
+          <div class="stat-sub">uit alle bestellingen</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-label">Openstaand (betaald)</div>
+          <div class="stat-value" id="statPending">—</div>
+          <div class="stat-sub">te verwerken</div>
+        </div>
+        <div class="stat-card gold">
+          <div class="stat-label">Producten actief</div>
+          <div class="stat-value" id="statProducts">—</div>
+          <div class="stat-sub">in assortiment</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Recente bestellingen</span>
+          <button class="btn btn-ghost btn-sm" onclick="navigate('bestellingen')">Alle bestellingen →</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Bestelnr.</th>
+                <th>Datum</th>
+                <th>Klant</th>
+                <th>Totaal</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="recentOrdersTable">
+              <tr class="loading-row"><td colspan="5"><span class="spinner"></span> Laden...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- BESTELLINGEN -->
+    <div class="page" id="page-bestellingen">
+      <div class="section-header">
+        <h2 class="section-title">Bestellingen</h2>
+      </div>
+
+      <div class="filter-bar">
+        <input type="text" class="search-input" id="orderSearch" placeholder="Zoeken op naam, e-mail, bestelnummer..." oninput="filterOrders()">
+        <select class="filter-select" id="orderStatus" onchange="filterOrders()">
+          <option value="">Alle statussen</option>
+          <option value="betaald">Betaald</option>
+          <option value="verwerkt">Verwerkt</option>
+          <option value="verzonden">Verzonden</option>
+          <option value="afgeleverd">Afgeleverd</option>
+          <option value="geannuleerd">Geannuleerd</option>
+        </select>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Bestelnr.</th>
+                <th>Datum</th>
+                <th>Klant</th>
+                <th>E-mail</th>
+                <th>Totaal</th>
+                <th>Status</th>
+                <th>Acties</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTable">
+              <tr class="loading-row"><td colspan="8"><span class="spinner"></span> Laden...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCTEN -->
+    <div class="page" id="page-producten">
+      <div class="section-header">
+        <h2 class="section-title">Producten</h2>
+      </div>
+
+      <div class="filter-bar">
+        <input type="text" class="search-input" id="productSearch" placeholder="Zoeken op naam of ID..." oninput="filterProducts()">
+        <select class="filter-select" id="productCategory" onchange="filterProducts()">
+          <option value="">Alle categorieën</option>
+          <option value="loader">Loaders</option>
+          <option value="aanbouwdeel">Aanbouwdelen</option>
+          <option value="grasmaaier">Grasmaaiers</option>
+          <option value="accessoire">Accessoires</option>
+          <option value="merch">Merchandise</option>
+        </select>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Categorie</th>
+                <th>Prijs (excl. BTW)</th>
+                <th>Oorspronkelijke prijs</th>
+                <th>Voorraad</th>
+                <th>Levertijd</th>
+                <th>Actief</th>
+                <th>Acties</th>
+              </tr>
+            </thead>
+            <tbody id="productsTable">
+              <tr class="loading-row"><td colspan="8"><span class="spinner"></span> Laden...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- KORTINGSCODES -->
+    <div class="page" id="page-kortingscodes">
+      <div class="section-header">
+        <h2 class="section-title">Kortingscodes</h2>
+        <button class="btn btn-primary" onclick="openDiscountModal()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nieuwe code
+        </button>
+      </div>
+
+      <div id="discountAuthWarn" class="auth-warning" style="display:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p><strong>Niet geauthenticeerd</strong>Dit endpoint vereist een API-sleutel. Controleer de backend configuratie.</p>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Type</th>
+                <th>Waarde</th>
+                <th>Min. bestelbedrag</th>
+                <th>Max. gebruik</th>
+                <th>Verloopdatum</th>
+                <th>Acties</th>
+              </tr>
+            </thead>
+            <tbody id="discountsTable">
+              <tr class="loading-row"><td colspan="7"><span class="spinner"></span> Laden...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVE BEZOEKERS -->
+    <div class="page" id="page-bezoekers">
+      <div class="section-header">
+        <h2 class="section-title">Live Bezoekers</h2>
+        <button class="btn btn-secondary" onclick="loadLiveData()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Vernieuwen
+        </button>
+      </div>
+
+      <div id="liveAuthWarn" class="auth-warning" style="display:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p><strong>Niet geauthenticeerd</strong>Dit endpoint vereist een API-sleutel. Controleer de backend configuratie.</p>
+      </div>
+
+      <div class="live-grid">
+        <div class="visitor-card">
+          <div class="card-header" style="padding:0 0 14px 0;border-bottom:1px solid var(--border);margin-bottom:12px">
+            <span class="card-title" style="display:flex;align-items:center;gap:8px">
+              <span class="live-dot" style="position:static;animation:none;background:#22c55e"></span>
+              Actieve bezoekers
+            </span>
+            <span id="liveCount" style="font-size:22px;font-weight:700;color:var(--orange);font-family:'Barlow Condensed',sans-serif">—</span>
+          </div>
+          <div id="liveVisitors">
+            <div class="state-box"><p>Geen data beschikbaar</p></div>
+          </div>
+        </div>
+
+        <div class="visitor-card">
+          <div class="card-header" style="padding:0 0 14px 0;border-bottom:1px solid var(--border);margin-bottom:12px">
+            <span class="card-title">Verlaten winkelwagens</span>
+            <span id="abandonedCount" style="font-size:22px;font-weight:700;color:var(--blue);font-family:'Barlow Condensed',sans-serif">—</span>
+          </div>
+          <div id="abandonedCarts">
+            <div class="state-box"><p>Geen data beschikbaar</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Kortingscode Modal -->
+<div class="modal-overlay" id="discountModal">
+  <div class="modal">
+    <h3>Nieuwe kortingscode</h3>
+    <div class="form-group">
+      <label>Code *</label>
+      <input type="text" id="dCode" placeholder="bijv. ZOMER25" style="text-transform:uppercase">
+    </div>
+    <div class="form-group">
+      <label>Type *</label>
+      <select id="dType">
+        <option value="percentage">Percentage (%)</option>
+        <option value="fixed">Vast bedrag (€)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Waarde *</label>
+      <input type="number" id="dValue" placeholder="bijv. 10" min="0" step="0.01">
+    </div>
+    <div class="form-group">
+      <label>Min. bestelbedrag (€, optioneel)</label>
+      <input type="number" id="dMinOrder" placeholder="bijv. 50" min="0" step="0.01">
+    </div>
+    <div class="form-group">
+      <label>Max. gebruik (optioneel)</label>
+      <input type="number" id="dMaxUses" placeholder="bijv. 100" min="1" step="1">
+    </div>
+    <div class="form-group">
+      <label>Verloopdatum (optioneel)</label>
+      <input type="date" id="dExpiresAt">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeDiscountModal()">Annuleren</button>
+      <button class="btn btn-primary" onclick="createDiscount()">Aanmaken</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+  const API = 'https://ironcub-shop-production.up.railway.app';
+
+  // ── State ──
+  let allOrders = [];
+  let allProducts = [];
+  let allDiscounts = [];
+
+  // ── Navigation ──
+  const pageNames = {
+    dashboard: 'Dashboard',
+    bestellingen: 'Bestellingen',
+    producten: 'Producten',
+    kortingscodes: 'Kortingscodes',
+    bezoekers: 'Live Bezoekers'
+  };
+
+  function navigate(page) {
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
+    document.querySelectorAll('.page').forEach(el => el.classList.toggle('active', el.id === 'page-' + page));
+    document.getElementById('topbarTitle').textContent = pageNames[page] || page;
+
+    if (page === 'bezoekers') loadLiveData();
+
+    // Close sidebar on mobile
+    if (window.innerWidth <= 768) {
+      document.getElementById('sidebar').classList.remove('open');
+    }
+  }
+
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.addEventListener('click', () => navigate(el.dataset.page));
+  });
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+
+  document.getElementById('refreshBtn').addEventListener('click', () => loadAll());
+
+  // ── Helpers ──
+  function formatPrice(cents) {
+    return '€\u202f' + (cents / 100).toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function formatDate(str) {
+    if (!str) return '—';
+    const d = new Date(str);
+    if (isNaN(d)) return str;
+    return d.toLocaleDateString('nl-NL', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  }
+
+  function formatDateTime(str) {
+    if (!str) return '—';
+    const d = new Date(str);
+    if (isNaN(d)) return str;
+    return d.toLocaleDateString('nl-NL', { day: '2-digit', month: '2-digit', year: 'numeric' })
+      + ' ' + d.toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function statusBadge(status) {
+    const s = (status || '').toLowerCase();
+    const map = {
+      betaald: 'badge-betaald',
+      verwerkt: 'badge-verwerkt',
+      verzonden: 'badge-verzonden',
+      afgeleverd: 'badge-afgeleverd',
+      geannuleerd: 'badge-geannuleerd',
+    };
+    const cls = map[s] || 'badge-nieuw';
+    return `<span class="badge ${cls}">${status || '—'}</span>`;
+  }
+
+  function toast(msg, type = 'info') {
+    const tc = document.getElementById('toastContainer');
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icons = { success: '✓', error: '✕', info: 'ℹ' };
+    el.innerHTML = `<span style="font-size:14px">${icons[type] || ''}</span> ${msg}`;
+    tc.appendChild(el);
+    setTimeout(() => el.remove(), 3500);
+  }
+
+  function setLastUpdated() {
+    const now = new Date();
+    document.getElementById('lastUpdated').textContent =
+      'Bijgewerkt om ' + now.toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  // ── Fetch wrapper ──
+  async function apiFetch(path, opts = {}) {
+    const res = await fetch(API + path, {
+      headers: { 'Content-Type': 'application/json', ...opts.headers },
+      ...opts
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      throw { status: res.status, message: body.error || res.statusText };
+    }
+    return res.json();
+  }
+
+  // ── Load all data ──
+  async function loadAll() {
+    setLastUpdated();
+    await Promise.allSettled([loadOrders(), loadProducts(), loadDiscounts()]);
+  }
+
+  // ── Orders ──
+  async function loadOrders() {
+    try {
+      allOrders = await apiFetch('/api/admin/orders');
+      renderOrders(allOrders);
+      renderDashboard();
+    } catch (e) {
+      console.error('Orders error:', e);
+      document.getElementById('ordersTable').innerHTML =
+        `<tr><td colspan="8" style="padding:24px;color:#ef4444;text-align:center">Fout bij laden bestellingen: ${e.message}</td></tr>`;
+    }
+  }
+
+  function renderOrders(orders) {
+    const tbody = document.getElementById('ordersTable');
+
+    if (!orders.length) {
+      tbody.innerHTML = `<tr><td colspan="8"><div class="state-box"><div class="state-icon">📋</div><p>Geen bestellingen gevonden</p></div></td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = orders.map(o => {
+      const id = o.id || o._id || o.orderId || '?';
+      const shortId = String(id).slice(-8).toUpperCase();
+      return `
+        <tr class="order-row" onclick="toggleOrder('${id}')">
+          <td style="width:28px;color:var(--text-muted);font-size:11px">▶</td>
+          <td style="font-weight:600;font-family:monospace">#${shortId}</td>
+          <td>${formatDate(o.createdAt || o.date)}</td>
+          <td>${o.customerName || o.name || (o.customer && o.customer.name) || '—'}</td>
+          <td style="color:var(--text-muted)">${o.email || (o.customer && o.customer.email) || '—'}</td>
+          <td class="price">${o.totalAmount !== undefined ? formatPrice(o.totalAmount) : (o.total ? formatPrice(o.total) : '—')}</td>
+          <td>${statusBadge(o.status)}</td>
+          <td>
+            <div style="display:flex;gap:4px">
+              <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();resendDoc('${id}','pakbon')" title="Pakbon opnieuw sturen">📦</button>
+              <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();resendDoc('${id}','factuur')" title="Factuur opnieuw sturen">🧾</button>
+            </div>
+          </td>
+        </tr>
+        <tr class="order-detail" id="detail-${id}">
+          <td colspan="8">
+            ${renderOrderDetail(o)}
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function renderOrderDetail(o) {
+    const id = o.id || o._id || o.orderId || '?';
+    const items = o.items || o.orderItems || o.products || [];
+    const addr = o.shippingAddress || o.address || o.deliveryAddress || {};
+    const notes = o.notes || o.remarks || '';
+
+    const itemsHtml = items.length ? `
+      <table style="width:100%">
+        <thead><tr><th>Product</th><th>Aantal</th><th>Stukprijs</th><th>Subtotaal</th></tr></thead>
+        <tbody>
+          ${items.map(it => `
+            <tr>
+              <td>${it.productName || it.name || it.title || it.productId || '—'}</td>
+              <td>${it.quantity || it.qty || 1}</td>
+              <td>${it.priceExBtw !== undefined ? formatPrice(it.priceExBtw) : (it.price !== undefined ? formatPrice(it.price) : '—')}</td>
+              <td>${it.subtotal !== undefined ? formatPrice(it.subtotal) : '—'}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>` : '<p>Geen artikeldetails beschikbaar</p>';
+
+    const addrStr = [addr.street, addr.houseNumber, addr.city, addr.postalCode, addr.country]
+      .filter(Boolean).join(', ') || JSON.stringify(addr) || '—';
+
+    return `
+      <div class="order-detail-inner">
+        <div>
+          <div class="detail-block">
+            <h4>Klantgegevens</h4>
+            <p><strong>${o.customerName || o.name || '—'}</strong></p>
+            <p>${o.email || '—'}</p>
+            <p>${o.phone || o.telefoon || '—'}</p>
+          </div>
+          <div class="detail-block" style="margin-top:12px">
+            <h4>Bezorgadres</h4>
+            <p>${addrStr}</p>
+          </div>
+          ${notes ? `<div class="detail-block" style="margin-top:12px"><h4>Opmerkingen</h4><p>${notes}</p></div>` : ''}
+        </div>
+        <div>
+          <div class="detail-block detail-items">
+            <h4>Artikelen</h4>
+            ${itemsHtml}
+          </div>
+          <div class="order-actions">
+            <button class="btn btn-secondary btn-sm" onclick="resendDoc('${id}','pakbon')">
+              📦 Pakbon opnieuw sturen
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="resendDoc('${id}','factuur')">
+              🧾 Factuur opnieuw sturen
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function toggleOrder(id) {
+    const row = document.getElementById('detail-' + id);
+    if (!row) return;
+    const isOpen = row.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.order-detail.open').forEach(r => r.classList.remove('open'));
+    // Update chevrons
+    document.querySelectorAll('.order-row td:first-child').forEach(td => td.textContent = '▶');
+    if (!isOpen) {
+      row.classList.add('open');
+      const triggerRow = row.previousElementSibling;
+      if (triggerRow) triggerRow.querySelector('td:first-child').textContent = '▼';
+    }
+  }
+
+  function filterOrders() {
+    const q = document.getElementById('orderSearch').value.toLowerCase();
+    const st = document.getElementById('orderStatus').value.toLowerCase();
+    const filtered = allOrders.filter(o => {
+      const matchQ = !q ||
+        (o.customerName || o.name || '').toLowerCase().includes(q) ||
+        (o.email || '').toLowerCase().includes(q) ||
+        String(o.id || o._id || '').toLowerCase().includes(q);
+      const matchSt = !st || (o.status || '').toLowerCase() === st;
+      return matchQ && matchSt;
+    });
+    renderOrders(filtered);
+  }
+
+  async function resendDoc(orderId, type) {
+    const label = type === 'pakbon' ? 'pakbon' : 'factuur';
+    try {
+      await apiFetch(`/api/admin/orders/${orderId}/resend-${type}`, { method: 'POST' });
+      toast(`${label.charAt(0).toUpperCase() + label.slice(1)} opnieuw verstuurd`, 'success');
+    } catch (e) {
+      toast(`Fout bij versturen ${label}: ${e.message}`, 'error');
+    }
+  }
+
+  // ── Dashboard ──
+  function renderDashboard() {
+    document.getElementById('statTotalOrders').textContent = allOrders.length;
+
+    const revenue = allOrders.reduce((sum, o) => sum + (o.totalAmount || o.total || 0), 0);
+    document.getElementById('statRevenue').textContent = formatPrice(revenue);
+
+    const pending = allOrders.filter(o => (o.status || '').toLowerCase() === 'betaald').length;
+    document.getElementById('statPending').textContent = pending;
+
+    const activeProducts = allProducts.filter(p => p.active === 1 || p.active === true).length;
+    document.getElementById('statProducts').textContent = activeProducts;
+
+    // Recent orders (last 8)
+    const recent = [...allOrders].sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0)).slice(0, 8);
+    const recentTbody = document.getElementById('recentOrdersTable');
+
+    if (!recent.length) {
+      recentTbody.innerHTML = `<tr><td colspan="5"><div class="state-box"><p>Geen recente bestellingen</p></div></td></tr>`;
+      return;
+    }
+
+    recentTbody.innerHTML = recent.map(o => {
+      const id = o.id || o._id || o.orderId || '?';
+      const shortId = String(id).slice(-8).toUpperCase();
+      return `
+        <tr style="cursor:pointer" onclick="navigate('bestellingen')">
+          <td style="font-weight:600;font-family:monospace">#${shortId}</td>
+          <td>${formatDate(o.createdAt || o.date)}</td>
+          <td>${o.customerName || o.name || '—'}</td>
+          <td class="price">${o.totalAmount !== undefined ? formatPrice(o.totalAmount) : '—'}</td>
+          <td>${statusBadge(o.status)}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  // ── Products ──
+  async function loadProducts() {
+    try {
+      allProducts = await apiFetch('/api/admin/products');
+      renderProducts(allProducts);
+      // Also update dashboard stat if already on dashboard
+      const activeProducts = allProducts.filter(p => p.active === 1 || p.active === true).length;
+      document.getElementById('statProducts').textContent = activeProducts;
+    } catch (e) {
+      console.error('Products error:', e);
+      document.getElementById('productsTable').innerHTML =
+        `<tr><td colspan="8" style="padding:24px;color:#ef4444;text-align:center">Fout bij laden producten: ${e.message}</td></tr>`;
+    }
+  }
+
+  function renderProducts(products) {
+    const tbody = document.getElementById('productsTable');
+    if (!products.length) {
+      tbody.innerHTML = `<tr><td colspan="8"><div class="state-box"><div class="state-icon">📦</div><p>Geen producten gevonden</p></div></td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = products.map(p => {
+      const stockLabel = p.stock === -1 ? 'Op bestelling' : (p.stock === 0 ? '<span style="color:#ef4444">Uitverkocht</span>' : `<span style="color:#16a34a">${p.stock} stuks</span>`);
+      return `
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:10px">
+              ${p.imageUrl ? `<img src="${p.imageUrl}" alt="${p.name}" style="width:36px;height:36px;object-fit:cover;border-radius:5px;flex-shrink:0" onerror="this.style.display='none'">` : ''}
+              <div>
+                <div style="font-weight:600">${p.name}</div>
+                ${p.subtitle ? `<div style="font-size:11px;color:var(--text-muted)">${p.subtitle}</div>` : ''}
+              </div>
+            </div>
+          </td>
+          <td><span class="cat-pill">${p.category || '—'}</span></td>
+          <td>
+            <div class="inline-edit" id="edit-${p.id}">
+              <span class="price" id="price-display-${p.id}">${formatPrice(p.priceExBtw)}</span>
+              <button class="btn btn-ghost btn-sm" onclick="startEditPrice('${p.id}', ${p.priceExBtw})" title="Prijs bewerken">✎</button>
+            </div>
+            <div id="edit-form-${p.id}" style="display:none">
+              <div class="inline-edit">
+                <input type="number" id="price-input-${p.id}" value="${(p.priceExBtw/100).toFixed(2)}" step="0.01" min="0" style="width:100px">
+                <button class="btn btn-primary btn-sm" onclick="savePrice('${p.id}')">✓</button>
+                <button class="btn btn-ghost btn-sm" onclick="cancelEditPrice('${p.id}')">✕</button>
+              </div>
+            </div>
+          </td>
+          <td>${p.originalPrice ? `<span class="price-original">${formatPrice(p.originalPrice)}</span>
+            <button class="btn btn-danger btn-sm" onclick="removeSale('${p.id}')" title="Actieprijs verwijderen" style="margin-left:4px">✕ Sale</button>` : '—'}</td>
+          <td>${stockLabel}</td>
+          <td style="color:var(--text-muted);font-size:12px">${p.levertijd || '—'}</td>
+          <td>
+            <label class="toggle">
+              <input type="checkbox" ${p.active ? 'checked' : ''} onchange="toggleProduct('${p.id}', this.checked, ${p.priceExBtw})">
+              <span class="toggle-slider"></span>
+            </label>
+          </td>
+          <td>
+            <span class="badge ${p.active ? 'badge-actief' : 'badge-inactief'}">${p.active ? 'Actief' : 'Inactief'}</span>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function filterProducts() {
+    const q = document.getElementById('productSearch').value.toLowerCase();
+    const cat = document.getElementById('productCategory').value;
+    const filtered = allProducts.filter(p => {
+      const matchQ = !q || p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q);
+      const matchCat = !cat || p.category === cat;
+      return matchQ && matchCat;
+    });
+    renderProducts(filtered);
+  }
+
+  function startEditPrice(id, currentCents) {
+    document.getElementById(`edit-${id}`).querySelector('span').style.display = 'none';
+    document.getElementById(`edit-${id}`).querySelector('button').style.display = 'none';
+    document.getElementById(`edit-form-${id}`).style.display = 'block';
+    document.getElementById(`price-input-${id}`).focus();
+  }
+
+  function cancelEditPrice(id) {
+    document.getElementById(`edit-${id}`).querySelector('span').style.display = '';
+    document.getElementById(`edit-${id}`).querySelector('button').style.display = '';
+    document.getElementById(`edit-form-${id}`).style.display = 'none';
+  }
+
+  async function savePrice(id) {
+    const input = document.getElementById(`price-input-${id}`);
+    const newPrice = Math.round(parseFloat(input.value) * 100);
+    if (isNaN(newPrice) || newPrice < 0) {
+      toast('Ongeldige prijs', 'error');
+      return;
+    }
+
+    const product = allProducts.find(p => p.id === id);
+    if (!product) return;
+
+    try {
+      await apiFetch(`/api/admin/products/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ priceExBtw: newPrice })
+      });
+
+      // Update local state
+      product.priceExBtw = newPrice;
+      document.getElementById(`price-display-${id}`).textContent = formatPrice(newPrice);
+      cancelEditPrice(id);
+      toast('Prijs bijgewerkt', 'success');
+    } catch (e) {
+      toast('Fout bij opslaan prijs: ' + e.message, 'error');
+    }
+  }
+
+  async function toggleProduct(id, active, currentPrice) {
+    const product = allProducts.find(p => p.id === id);
+    try {
+      await apiFetch(`/api/admin/products/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ active: active ? 1 : 0 })
+      });
+      if (product) product.active = active ? 1 : 0;
+      toast(`Product ${active ? 'geactiveerd' : 'gedeactiveerd'}`, 'success');
+      // Re-render to update badge
+      filterProducts();
+    } catch (e) {
+      toast('Fout: ' + e.message, 'error');
+      // Revert toggle
+      if (product) product.active = active ? 0 : 1;
+      filterProducts();
+    }
+  }
+
+  async function removeSale(id) {
+    if (!confirm('Actieprijs verwijderen?')) return;
+    try {
+      await apiFetch(`/api/admin/products/${id}/sale`, { method: 'DELETE' });
+      const product = allProducts.find(p => p.id === id);
+      if (product) product.originalPrice = null;
+      filterProducts();
+      toast('Actieprijs verwijderd', 'success');
+    } catch (e) {
+      toast('Fout: ' + e.message, 'error');
+    }
+  }
+
+  // ── Discounts ──
+  async function loadDiscounts() {
+    const tbody = document.getElementById('discountsTable');
+    try {
+      allDiscounts = await apiFetch('/api/admin/discounts');
+      document.getElementById('discountAuthWarn').style.display = 'none';
+      renderDiscounts();
+    } catch (e) {
+      if (e.status === 401 || e.status === 403) {
+        document.getElementById('discountAuthWarn').style.display = 'flex';
+        tbody.innerHTML = `<tr><td colspan="7"><div class="state-box"><p>Authenticatie vereist om kortingscodes te laden</p></div></td></tr>`;
+      } else {
+        tbody.innerHTML = `<tr><td colspan="7" style="padding:24px;color:#ef4444;text-align:center">Fout: ${e.message}</td></tr>`;
+      }
+    }
+  }
+
+  function renderDiscounts() {
+    const tbody = document.getElementById('discountsTable');
+    if (!allDiscounts.length) {
+      tbody.innerHTML = `<tr><td colspan="7"><div class="state-box"><div class="state-icon">🏷️</div><p>Geen kortingscodes</p></div></td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = allDiscounts.map(d => `
+      <tr>
+        <td><code style="font-size:13px;font-weight:700;color:var(--orange);background:#fff7ed;padding:3px 8px;border-radius:4px">${d.code}</code></td>
+        <td><span class="badge badge-korting">${d.type === 'percentage' ? 'Percentage' : 'Vast bedrag'}</span></td>
+        <td class="price">${d.type === 'percentage' ? d.value + '%' : formatPrice(d.value * 100)}</td>
+        <td>${d.minOrder ? formatPrice(d.minOrder * 100) : '—'}</td>
+        <td>${d.maxUses || '—'}</td>
+        <td>${d.expiresAt ? formatDate(d.expiresAt) : '—'}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" onclick="deleteDiscount('${d.id || d._id}', '${d.code}')">Verwijderen</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  function openDiscountModal() {
+    document.getElementById('discountModal').classList.add('open');
+    document.getElementById('dCode').value = '';
+    document.getElementById('dValue').value = '';
+    document.getElementById('dMinOrder').value = '';
+    document.getElementById('dMaxUses').value = '';
+    document.getElementById('dExpiresAt').value = '';
+  }
+
+  function closeDiscountModal() {
+    document.getElementById('discountModal').classList.remove('open');
+  }
+
+  async function createDiscount() {
+    const code = document.getElementById('dCode').value.trim().toUpperCase();
+    const type = document.getElementById('dType').value;
+    const value = parseFloat(document.getElementById('dValue').value);
+    const minOrder = document.getElementById('dMinOrder').value ? parseFloat(document.getElementById('dMinOrder').value) : undefined;
+    const maxUses = document.getElementById('dMaxUses').value ? parseInt(document.getElementById('dMaxUses').value) : undefined;
+    const expiresAt = document.getElementById('dExpiresAt').value || undefined;
+
+    if (!code || isNaN(value)) {
+      toast('Vul code en waarde in', 'error');
+      return;
+    }
+
+    const body = { code, type, value };
+    if (minOrder !== undefined) body.minOrder = minOrder;
+    if (maxUses !== undefined) body.maxUses = maxUses;
+    if (expiresAt) body.expiresAt = expiresAt;
+
+    try {
+      const result = await apiFetch('/api/admin/discounts', {
+        method: 'POST',
+        body: JSON.stringify(body)
+      });
+      allDiscounts.push(result);
+      renderDiscounts();
+      closeDiscountModal();
+      toast(`Kortingscode ${code} aangemaakt`, 'success');
+    } catch (e) {
+      if (e.status === 401) {
+        toast('Niet geauthenticeerd — API-sleutel vereist', 'error');
+      } else {
+        toast('Fout: ' + e.message, 'error');
+      }
+    }
+  }
+
+  async function deleteDiscount(id, code) {
+    if (!confirm(`Kortingscode "${code}" verwijderen?`)) return;
+    try {
+      await apiFetch(`/api/admin/discounts/${id}`, { method: 'DELETE' });
+      allDiscounts = allDiscounts.filter(d => (d.id || d._id) !== id);
+      renderDiscounts();
+      toast(`Code ${code} verwijderd`, 'success');
+    } catch (e) {
+      toast('Fout: ' + e.message, 'error');
+    }
+  }
+
+  // ── Live bezoekers ──
+  async function loadLiveData() {
+    document.getElementById('liveAuthWarn').style.display = 'none';
+
+    try {
+      const live = await apiFetch('/api/admin/tracking/live');
+      const visitors = live.visitors || live.active || live || [];
+      document.getElementById('liveCount').textContent = Array.isArray(visitors) ? visitors.length : (live.count || 0);
+
+      const liveEl = document.getElementById('liveVisitors');
+      if (!Array.isArray(visitors) || !visitors.length) {
+        liveEl.innerHTML = '<div class="state-box"><p>Geen actieve bezoekers op dit moment</p></div>';
+      } else {
+        liveEl.innerHTML = visitors.map(v => `
+          <div class="visitor-row">
+            <span>${v.page || v.url || v.path || '/'}</span>
+            <span style="color:var(--text-muted);font-size:12px">${formatDateTime(v.timestamp || v.lastSeen)}</span>
+          </div>
+        `).join('');
+      }
+    } catch (e) {
+      if (e.status === 401 || e.status === 403) {
+        document.getElementById('liveAuthWarn').style.display = 'flex';
+        document.getElementById('liveVisitors').innerHTML = '<div class="state-box"><p>Authenticatie vereist</p></div>';
+        document.getElementById('liveCount').textContent = '—';
+      } else {
+        document.getElementById('liveVisitors').innerHTML = `<div class="state-box"><p>Fout: ${e.message}</p></div>`;
+      }
+    }
+
+    try {
+      const abandoned = await apiFetch('/api/admin/tracking/abandoned');
+      const carts = abandoned.carts || abandoned || [];
+      document.getElementById('abandonedCount').textContent = Array.isArray(carts) ? carts.length : '0';
+
+      const abEl = document.getElementById('abandonedCarts');
+      if (!Array.isArray(carts) || !carts.length) {
+        abEl.innerHTML = '<div class="state-box"><p>Geen verlaten winkelwagens</p></div>';
+      } else {
+        abEl.innerHTML = carts.map(c => `
+          <div class="visitor-row">
+            <div>
+              <div style="font-weight:500">${c.email || c.customerEmail || 'Anoniem'}</div>
+              <div style="font-size:11px;color:var(--text-muted)">${c.items ? c.items.length + ' artikel(en)' : ''}</div>
+            </div>
+            <span class="price">${c.total ? formatPrice(c.total) : '—'}</span>
+          </div>
+        `).join('');
+      }
+    } catch (e) {
+      if (e.status !== 401 && e.status !== 403) {
+        document.getElementById('abandonedCarts').innerHTML = `<div class="state-box"><p>Fout: ${e.message}</p></div>`;
+      } else {
+        document.getElementById('abandonedCarts').innerHTML = '<div class="state-box"><p>Authenticatie vereist</p></div>';
+      }
+      document.getElementById('abandonedCount').textContent = '—';
+    }
+  }
+
+  // ── Close modal on overlay click ──
+  document.getElementById('discountModal').addEventListener('click', function(e) {
+    if (e.target === this) closeDiscountModal();
+  });
+
+  // ── Enter key in price input ──
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDiscountModal();
+  });
+
+  // ── Init ──
+  loadAll();
+</script>
+</body>
+</html>
