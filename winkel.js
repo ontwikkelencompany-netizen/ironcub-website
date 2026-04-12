@@ -1147,8 +1147,8 @@
     var path = window.location.pathname;
     if (path.indexOf('verkoop') === -1) return;
 
-    var deliverySection = document.querySelector('.delivery-section');
-    if (!deliverySection) return;
+    var shopSection = document.querySelector('.shop-section');
+    if (!shopSection) return;
 
     var banner = document.createElement('div');
     banner.className = 'ic-delivery-banner';
@@ -1157,8 +1157,8 @@
       '<span><strong>Levering in Nederland, Belgi&euml; &amp; Duitsland</strong> &mdash; Gratis afhalen in Middelharnis</span>'
     ].join('');
 
-    // Insert after delivery-section
-    deliverySection.parentNode.insertBefore(banner, deliverySection.nextSibling);
+    // Insert before shop section
+    shopSection.parentNode.insertBefore(banner, shopSection);
   }
 
   /* =====================================================================
