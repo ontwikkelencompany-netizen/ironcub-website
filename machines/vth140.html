@@ -83,7 +83,7 @@ function renderProductInfo() {
   
   var img = product.img || "";
   if (img && !img.startsWith("http") && !img.startsWith("/")) img = "/" + img;
-  document.getElementById("mainImg").innerHTML = img ? '<img src="' + img + '" alt="' + name + '" style="width:100%;height:auto;display:block;border-radius:12px">' : '';
+  document.getElementById("mainImg").innerHTML = img ? '<img src="' + img + '" alt="' + name + '" style="width:100%;height:auto;display:block;border-radius:12px;max-height:500px;object-fit:contain">' : '';
   
   var fmt = function(v) { return new Intl.NumberFormat("nl-NL",{style:"currency",currency:"EUR",minimumFractionDigits:0,maximumFractionDigits:0}).format(v); };
   
