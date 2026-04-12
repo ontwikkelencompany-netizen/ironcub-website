@@ -14,10 +14,11 @@
 .checkout-form input,.checkout-form select,.checkout-form textarea{width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:var(--radius);font-family:var(--font-body);font-size:.9rem}
 .checkout-form input:focus,.checkout-form select:focus{outline:none;border-color:var(--gold)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.delivery-option{border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px;cursor:pointer;transition:all .2s;margin-bottom:8px}
-.delivery-option:hover{border-color:var(--gold)}
-.delivery-option.selected{border:2px solid var(--gold);background:rgba(232,131,26,.04)}
-.delivery-option input{margin-right:10px;accent-color:var(--gold);width:18px;height:18px;vertical-align:middle}
+.delivery-option{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--gray-200);border-radius:var(--radius);padding:16px;cursor:pointer;transition:all .2s;margin-bottom:8px;background:#fff}
+.delivery-option:hover{border-color:var(--gold);background:rgba(232,131,26,.02)}
+.delivery-option.selected{border-color:var(--gold);background:rgba(232,131,26,.06)}
+.delivery-option input[type=radio]{flex-shrink:0;width:20px;height:20px;margin:2px 0 0 0;accent-color:var(--gold);cursor:pointer}
+.delivery-option-content{flex:1}
 .delivery-option-head{display:flex;justify-content:space-between;align-items:center}
 .delivery-option-name{font-family:var(--font-head);font-weight:700;font-size:.95rem}
 .delivery-option-price{font-family:var(--font-head);font-weight:800;color:var(--gold)}
@@ -84,18 +85,15 @@
         <h2><span class="step">2</span> Levering</h2>
         <label class="delivery-option selected" onclick="selectDelivery('ophalen',0,this)">
           <input type="radio" name="delivery" value="ophalen" checked>
-          <div class="delivery-option-head"><span class="delivery-option-name">Afhalen in showroom</span><span class="delivery-option-price">Gratis</span></div>
-          <div class="delivery-option-desc">De Hofjes 44, Middelharnis</div>
+          <div class="delivery-option-content"><div class="delivery-option-head"><span class="delivery-option-name">Afhalen in showroom</span><span class="delivery-option-price">Gratis</span></div><div class="delivery-option-desc">De Hofjes 44, Middelharnis</div></div>
         </label>
         <label class="delivery-option" onclick="selectDelivery('regular',14900,this)">
           <input type="radio" name="delivery" value="regular">
-          <div class="delivery-option-head"><span class="delivery-option-name">Regular Levering</span><span class="delivery-option-price">&euro;149</span></div>
-          <div class="delivery-option-desc">Standaard transport naar uw adres</div>
+          <div class="delivery-option-content"><div class="delivery-option-head"><span class="delivery-option-name">Regular Levering</span><span class="delivery-option-price">&euro;149</span></div><div class="delivery-option-desc">Standaard transport naar uw adres</div></div>
         </label>
         <label class="delivery-option" onclick="selectDelivery('premium',49900,this)">
           <input type="radio" name="delivery" value="premium">
-          <div class="delivery-option-head"><span class="delivery-option-name">Premium Levering</span><span class="delivery-option-price">&euro;499</span></div>
-          <div class="delivery-option-desc">Bezorging + installatie + instructie (1 uur) + eerste servicebeurt</div>
+          <div class="delivery-option-content"><div class="delivery-option-head"><span class="delivery-option-name">Premium Levering</span><span class="delivery-option-price">&euro;499</span></div><div class="delivery-option-desc">Bezorging + installatie + instructie (1 uur) + eerste servicebeurt</div></div>
         </label>
         <div class="address-fields" id="addressFields">
           <div class="form-row" style="margin-bottom:8px">
