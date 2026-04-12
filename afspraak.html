@@ -14,12 +14,12 @@
 <form id="afspraakForm" class="afspraak-form" onsubmit="handleAfspraak(event)">
   <div class="form-group">
     <label data-i18n="afspraak.waarvoor">Waarvoor wilt u langskomen? *</label>
-    <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="type" value="demo" checked><span data-i18n="afspraak.optDemo">DEMO Dag (vrijdag)</span></label>
-      <label class="radio-option"><input type="radio" name="type" value="bezichtiging"><span data-i18n="afspraak.optBezichtiging">Showroom bezichtiging</span></label>
-      <label class="radio-option"><input type="radio" name="type" value="advies"><span data-i18n="afspraak.optAdvies">Adviesgesprek</span></label>
-      <label class="radio-option"><input type="radio" name="type" value="ophalen"><span data-i18n="afspraak.optOphalen">Machine ophalen</span></label>
-      <label class="radio-option"><input type="radio" name="type" value="service"><span data-i18n="afspraak.optService">Service / reparatie</span></label>
+    <div class="radio-group" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <label class="radio-card"><input type="radio" name="type" value="demo" checked><span class="radio-card-inner"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg><strong data-i18n="afspraak.optDemo">DEMO Dag</strong><small>Elke vrijdag, vrij inlopen</small></span></label>
+      <label class="radio-card"><input type="radio" name="type" value="bezichtiging"><span class="radio-card-inner"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><strong data-i18n="afspraak.optBezichtiging">Showroom bezichtiging</strong><small>Machines bekijken</small></span></label>
+      <label class="radio-card"><input type="radio" name="type" value="advies"><span class="radio-card-inner"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><strong data-i18n="afspraak.optAdvies">Adviesgesprek</strong><small>Welke machine past bij u?</small></span></label>
+      <label class="radio-card"><input type="radio" name="type" value="ophalen"><span class="radio-card-inner"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><strong data-i18n="afspraak.optOphalen">Machine ophalen</strong><small>Bestelling afhalen</small></span></label>
+      <label class="radio-card" style="grid-column:span 2"><input type="radio" name="type" value="service"><span class="radio-card-inner"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg><strong data-i18n="afspraak.optService">Service / reparatie</strong><small>Onderhoud of storing</small></span></label>
     </div>
   </div>
 
@@ -103,7 +103,7 @@
   </div>
 
   <div class="info-card" style="background:var(--dark);color:white;border-color:var(--dark)">
-    <h3 style="color:var(--gold)" data-i18n="nav.demodagen">DEMO Dag</h3>
+    <h3 style="color:var(--gold)">DEMO DAGEN</h3>
     <p data-i18n="afspraak.demoDagInfo">Elke vrijdag kunt u onze machines live in actie zien en zelf uitproberen. Geen afspraak nodig — gewoon langskomen!</p>
   </div>
 </div>
