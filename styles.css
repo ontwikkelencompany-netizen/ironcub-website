@@ -1075,3 +1075,9 @@ ul{list-style:none}
 #rippaGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media(max-width:1024px){#rippaGrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){#rippaGrid{grid-template-columns:1fr}}
+
+/* ADVIESPRIJS / ACTIEPRIJS */
+.m-price-old{text-decoration:line-through;color:#999;font-weight:400;font-size:.85em;margin-right:6px}
+.gm-price-old{text-decoration:line-through;color:rgba(0,0,0,.35);font-weight:400;font-size:.85em;margin-right:4px}
+.att-price-old{text-decoration:line-through;color:#999;font-weight:400;font-size:.82em;margin-right:4px}
+.att-price-old{text-decoration:line-through;color:#999;font-weight:400;font-size:.82em;margin-right:4px;display:inline}

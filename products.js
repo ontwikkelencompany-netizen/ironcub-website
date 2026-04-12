@@ -5,7 +5,7 @@ const MACHINES = [
     detailUrl: "machines/vth360.html",
     name: "VTH 360",
     subtitle: "Mini Skid Steer Loader",
-    price: 5824,
+    price: 5824, originalPrice: 7165,
     priceDisplay: "€5.824",
     poa: false,
     img: "assets/vth-360.jpg",
@@ -33,7 +33,7 @@ const MACHINES = [
     detailUrl: "machines/vth480w.html",
     name: "VTH 480W",
     subtitle: "Skid Steer Loader (wielen)",
-    price: 7063,
+    price: 7063, originalPrice: 8615,
     priceDisplay: "€7.063",
     poa: false,
     img: "assets/vth-480w.jpg",
@@ -61,7 +61,7 @@ const MACHINES = [
     detailUrl: "machines/vth480wr.html",
     name: "VTH 480W",
     subtitle: "Skid Steer Loader (rupsbanden)",
-    price: 7063,
+    price: 7063, originalPrice: 8900,
     priceDisplay: "€7.063",
     poa: false,
     img: "assets/vth-480w-crawler.jpg",
@@ -89,7 +89,7 @@ const MACHINES = [
     detailUrl: "machines/vth480wd.html",
     name: "VTH 480W KOOP",
     subtitle: "Diesel (wielen)",
-    price: 8923,
+    price: 8923, originalPrice: 11155,
     priceDisplay: "\u20ac8.923",
     poa: false,
     img: "assets/vth-480w.jpg",
@@ -117,7 +117,7 @@ const MACHINES = [
     detailUrl: "machines/vth480k.html",
     name: "VTH 480 Kubota",
     subtitle: "Diesel (rupsbanden)",
-    price: 12595,
+    price: 12595, originalPrice: 15745,
     priceDisplay: "\u20ac12.595",
     poa: false,
     img: "assets/vth-480w-crawler.jpg",
@@ -145,7 +145,7 @@ const MACHINES = [
     detailUrl: "machines/vth140.html",
     name: "VTH 140",
     subtitle: "LOADER (Loncin benzine)",
-    price: 16971,
+    price: 16971, originalPrice: 21045,
     priceDisplay: "\u20ac16.971",
     poa: false,
     img: "assets/vth-140.jpg",
@@ -173,7 +173,7 @@ const MACHINES = [
     detailUrl: "machines/vth200.html",
     name: "VTH 200",
     subtitle: "LOADER (Kubota diesel)",
-    price: 28606,
+    price: 28606, originalPrice: 35185,
     priceDisplay: "\u20ac28.606",
     poa: false,
     img: "assets/vth-200.jpg",
@@ -201,7 +201,7 @@ const MACHINES = [
     detailUrl: "machines/htv1000.html",
     name: "HTV 1000",
     subtitle: "Skid Steer Loader (Kubota)",
-    price: 14185,
+    price: 14185, originalPrice: 18440,
     priceDisplay: "\u20ac14.185",
     poa: false,
     img: "assets/htv1000-product.jpg",
@@ -271,9 +271,12 @@ const FILTERS = {
 };
 
 function renderMachineCard(m) {
+  const fmtPrice = function(v) { return new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',minimumFractionDigits:0,maximumFractionDigits:0}).format(v); };
   const priceHtml = m.poa
     ? '<p class="m-price m-poa">Prijs op aanvraag</p>'
-    : `<p class="m-price">${m.priceDisplay} <small>ex BTW</small></p>`;
+    : (m.originalPrice
+      ? `<p class="m-price"><span class="m-price-old">${fmtPrice(m.originalPrice)}</span> ${m.priceDisplay} <small>ex BTW</small></p>`
+      : `<p class="m-price">${m.priceDisplay} <small>ex BTW</small></p>`);
   return `<div class="machine-card" id="${m.id}" data-fuel="${m.fuel}" data-steering="${m.steering}" data-power="${m.powerKw}" data-speed="${m.speedKmh}" data-pushpull="${m.pushPullKg}" data-breakout="${m.breakoutKg}" data-branches="${m.branches.join(',')}">
     <div class="machine-img"><img src="${m.img}" alt="${m.name}" loading="lazy"><span class="m-badge ${m.badgeClass}">${m.badge}</span></div>
     <div class="machine-body">
@@ -289,7 +292,7 @@ function renderMachineCard(m) {
         <div class="spec-row"><span class="spec-label">Breedte</span><span class="spec-val">${m.widthMm} mm</span></div>
       </div>
       <div class="m-specs">${m.specs.map(s => `<span>${s}</span>`).join('')}</div>
-      <div class="m-actions"><a href="https://myironcub.store/#/?add=${m.id}" class="btn btn-cta btn-sm" target="_blank">Kopen</a><a href="afspraak.html" class="btn btn-outline-dark btn-sm">Huren</a><a href="lease.html" class="btn btn-outline-dark btn-sm">Leasen</a><a href="demodagen.html" class="btn btn-outline-dark btn-sm">Demo</a></div>
+      <div class="m-actions"><a href="checkout.html?product=${m.id}" class="btn btn-cta btn-sm">Kopen</a><a href="lease.html" class="btn btn-outline-dark btn-sm">Leasen</a><a href="afspraak.html" class="btn btn-outline-dark btn-sm">Huren</a><a href="demodagen.html" class="btn btn-outline-dark btn-sm">Demo</a></div>
       ${m.detailUrl ? `<a href="${m.detailUrl}" class="btn-bekijk">Bekijk deze machine <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>` : ''}
     </div>
   </div>`;
@@ -387,7 +390,7 @@ const GRASMAAIERS = [
     id: "mow-196-55l",
     name: "IronCub 196-55L",
     subtitle: "Remote Control Grasmaaier",
-    price: 2050,
+    price: 2050, originalPrice: 2520,
     img: "assets/mow-196-55l.jpg",
     engine_cc: 196,
     hp: 7.5,
@@ -401,7 +404,7 @@ const GRASMAAIERS = [
     id: "mow-224-55l",
     name: "IronCub 224-55L",
     subtitle: "Remote Control Grasmaaier",
-    price: 2400,
+    price: 2400, originalPrice: 3070,
     img: "assets/mow-224-55l.jpg",
     engine_cc: 224,
     hp: 9,
@@ -415,7 +418,7 @@ const GRASMAAIERS = [
     id: "mow-4wd-196",
     name: "IronCub 4WD 196",
     subtitle: "Vierwiel Grasmaaier",
-    price: 2050,
+    price: 2050, originalPrice: 2500,
     img: "assets/mow-4wd-196.jpg",
     engine_cc: 196,
     hp: 7.5,
@@ -429,7 +432,7 @@ const GRASMAAIERS = [
     id: "mow-344-60a",
     name: "IronCub 344-60A",
     subtitle: "Remote Control Grasmaaier",
-    price: 5225,
+    price: 5225, originalPrice: 6375,
     img: "assets/mow-344-60a.jpg",
     engine_cc: 344,
     hp: 12,
@@ -443,7 +446,7 @@ const GRASMAAIERS = [
     id: "mow-452-80a",
     name: "IronCub 452-80A",
     subtitle: "Off-Road Tank Grasmaaier",
-    price: 6125,
+    price: 6125, originalPrice: 7535,
     img: "assets/mow-452-80a.jpg",
     engine_cc: 452,
     hp: 16,
@@ -457,7 +460,7 @@ const GRASMAAIERS = [
     id: "mow-608-90a",
     name: "IronCub 608-90A",
     subtitle: "Off-Road Tank Grasmaaier",
-    price: 8750,
+    price: 8750, originalPrice: 10940,
     img: "assets/mow-608-90a.jpg",
     engine_cc: 608,
     hp: 22,
@@ -471,7 +474,7 @@ const GRASMAAIERS = [
     id: "mow-764-90a",
     name: "IronCub 764-90A",
     subtitle: "Off-Road Tank Grasmaaier",
-    price: 10250,
+    price: 10250, originalPrice: 12810,
     img: "assets/mow-764-90a.jpg",
     engine_cc: 764,
     hp: 25,
@@ -485,7 +488,7 @@ const GRASMAAIERS = [
     id: "mow-1102-70",
     name: "IronCub 1102-70 Multi",
     subtitle: "Multifunctioneel",
-    price: 8000,
+    price: 8000, originalPrice: 10400,
     img: "assets/mow-1102-70.jpg",
     engine_cc: 1102,
     hp: 22,
@@ -627,7 +630,7 @@ const RIPPA = [
     id: "rippa-r06", model: "R06 ECO", subtitle: "Micro Graafmachine 0,75t",
     weight_kg: 747, weight_ton: "0,75t", engine: "Kubota Z482", engine_key: "z482", power_kw: 8.2, power_hp: 11,
     dig_depth_mm: 1001, max_reach_mm: 2565, bucket_m3: 0.014, width_mm: 747,
-    img: "assets/rippa-r06.jpg", poa: true,
+    img: "assets/rippa-r06.jpg", poa: false, price: 3890, originalPrice: 4950,
     specs: ["Kubota Z482", "2-cilinder", "CE/Stage V"],
     desc: "Ultra-compact. Ideaal voor krappe toegang, tuinaanleg en leidingwerk. Slechts 747 mm breed."
   },
@@ -635,7 +638,7 @@ const RIPPA = [
     id: "rippa-r10", model: "R10 ECO", subtitle: "Mini Graafmachine 1,0t",
     weight_kg: 1115, weight_ton: "1,0t", engine: "Kubota Z482", engine_key: "z482", power_kw: 8.2, power_hp: 11,
     dig_depth_mm: 1833, max_reach_mm: 3233, bucket_m3: 0.014, width_mm: 912,
-    img: "assets/rippa-r10.jpg", poa: true,
+    img: "assets/rippa-r10.jpg", poa: false, price: 5938, originalPrice: 7495,
     specs: ["Kubota Z482", "Verstelbaar onderstel", "CE/Stage V"],
     desc: "Compacte 1-tonner met verstelbaar onderstel (900-1200 mm). Graafdiepte 1,8 meter."
   },
@@ -643,7 +646,7 @@ const RIPPA = [
     id: "rippa-r13", model: "R13 PRO", subtitle: "Mini Graafmachine 1,3t",
     weight_kg: 1320, weight_ton: "1,3t", engine: "Kubota D722", engine_key: "d722", power_kw: 10.2, power_hp: 13.7,
     dig_depth_mm: 2044, max_reach_mm: 3456, bucket_m3: 0.014, width_mm: 990,
-    img: "assets/rippa-r13.jpg", poa: true,
+    img: "assets/rippa-r13.jpg", poa: false, price: 10490, originalPrice: 13195,
     specs: ["Kubota D722", "3-cilinder", "CE/Stage V"],
     desc: "Veelzijdige 1,3-tonner. Kubota D722 driecilinder, 2 meter graafdiepte. PRO uitvoering."
   },
@@ -651,7 +654,7 @@ const RIPPA = [
     id: "rippa-r15", model: "R15 ECO", subtitle: "Mini Graafmachine 1,5t",
     weight_kg: 1445, weight_ton: "1,5t", engine: "Kubota D722", engine_key: "d722", power_kw: 10.2, power_hp: 13.7,
     dig_depth_mm: 1807, max_reach_mm: 3274, bucket_m3: 0.018, width_mm: 990,
-    img: "assets/rippa-r15.jpg", poa: true,
+    img: "assets/rippa-r15.jpg", poa: false, price: 9999, originalPrice: 12495,
     specs: ["Kubota D722", "3-cilinder", "CE/Stage V"],
     desc: "Populaire 1,5-tonner voor hoveniers en aannemers. Kubota D722, grotere bak."
   },
@@ -659,7 +662,7 @@ const RIPPA = [
     id: "rippa-r18", model: "R18 PRO", subtitle: "Mini Graafmachine 1,8t",
     weight_kg: 1848, weight_ton: "1,8t", engine: "Kubota D902", engine_key: "d902", power_kw: 11.8, power_hp: 15.8,
     dig_depth_mm: 2420, max_reach_mm: 3975, bucket_m3: 0.045, width_mm: 1100,
-    img: "assets/rippa-r18.jpg", poa: true,
+    img: "assets/rippa-r18.jpg", poa: false, price: 15400, originalPrice: 19495,
     specs: ["Kubota D902", "3-cilinder", "CE/Stage V"],
     desc: "Krachtige 1,8-tonner. Kubota D902, 2,4 meter graafdiepte, grote bak 0,045 m\u00b3."
   },
@@ -667,7 +670,7 @@ const RIPPA = [
     id: "rippa-r22", model: "R22 PRO", subtitle: "Mini Graafmachine 2,4t",
     weight_kg: 2439, weight_ton: "2,4t", engine: "Kubota D1105", engine_key: "d1105", power_kw: 17.1, power_hp: 23,
     dig_depth_mm: 2293, max_reach_mm: 4255, bucket_m3: 0.054, width_mm: 1300,
-    img: "assets/rippa-r22.jpg", poa: true,
+    img: "assets/rippa-r22.jpg", poa: false, price: 19490, originalPrice: 24495,
     specs: ["Kubota D1105", "3-cilinder", "CE/Stage V"],
     desc: "Zware 2,4-tonner voor professioneel grondverzet. Kubota D1105, 17,1 kW."
   },
@@ -675,7 +678,7 @@ const RIPPA = [
     id: "rippa-r32", model: "R32 PRO", subtitle: "Mini Graafmachine 3,4t",
     weight_kg: 3371, weight_ton: "3,4t", engine: "Kubota V1505", engine_key: "v1505", power_kw: 17.1, power_hp: 22.9,
     dig_depth_mm: 2827, max_reach_mm: 4831, bucket_m3: 0.08, width_mm: 1550,
-    img: "assets/rippa-r32.jpg", poa: true,
+    img: "assets/rippa-r32.jpg", poa: false, price: 24770, originalPrice: 31495,
     specs: ["Kubota V1505", "4-cilinder", "CE/Stage V"],
     desc: "Grootste in het assortiment. Kubota V1505 viercilinder, 2,8 meter graafdiepte, 0,08 m\u00b3 bak."
   }
