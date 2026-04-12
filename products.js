@@ -632,7 +632,15 @@ const RIPPA = [
     dig_depth_mm: 1833, max_reach_mm: 3233, bucket_m3: 0.014, width_mm: 912,
     img: "assets/rippa-r10.jpg?v=1775984976", poa: false, price: 5938, originalPrice: 7495,
     specs: ["Kubota Z482", "Verstelbaar onderstel", "CE/Stage V"],
-    desc: "Compacte 1-tonner met verstelbaar onderstel (900-1200 mm). Graafdiepte 1,8 meter."
+    desc: "Compacte 1-tonner met YOUP motor. Verstelbaar onderstel (900-1200 mm), graafdiepte 1,8 meter. Snelwissel + hydraulische duimklem + 30cm bak."
+  },
+  {
+    id: "rippa-r10k", model: "R10 ECO Kubota", subtitle: "Mini Graafmachine 1,0t (Kubota)",
+    weight_kg: 1115, weight_ton: "1,0t", engine: "Kubota Z482", engine_key: "z482", power_kw: 8.2, power_hp: 11,
+    dig_depth_mm: 1833, max_reach_mm: 3233, bucket_m3: 0.014, width_mm: 912,
+    img: "assets/rippa-r10-cab.jpg?v=1775984976", poa: false, price: 6938, originalPrice: 8745,
+    specs: ["Kubota Z482", "Verstelbaar onderstel", "CE/Stage V"],
+    desc: "R10 ECO met Kubota Z482 motor. Verstelbaar onderstel (900-1200 mm), graafdiepte 1,8 meter. Snelwissel + hydraulische duimklem + 30cm bak."
   },
   {
     id: "rippa-r13", model: "R13 PRO", subtitle: "Mini Graafmachine 1,3t",
