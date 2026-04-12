@@ -299,7 +299,7 @@ function renderMachineCard(m) {
 }
 
 function renderFilters() {
-  let html = '<div class="filter-panel" id="filterPanel"><div class="filter-header"><h3>Filters</h3><button class="filter-reset" id="filterReset">Reset filters</button></div>';
+  let html = '<div class="filter-panel" id="filterPanel"><div class="filter-header"><h3 data-i18n="common.filters">Filters</h3><button class="filter-reset" id="filterReset" data-i18n="common.resetFilters">Reset filters</button></div>';
   for (const [key, filter] of Object.entries(FILTERS)) {
     html += `<div class="filter-group"><h4>${filter.label}</h4><div class="filter-options">`;
     filter.options.forEach(opt => {

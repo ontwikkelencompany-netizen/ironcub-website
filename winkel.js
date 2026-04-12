@@ -1218,3 +1218,29 @@
   }
 
 })();
+
+/* ======================================================================
+   i18n integration — update winkel.js dynamic UI strings on language change
+   ====================================================================== */
+document.addEventListener('ic:langchange', function(e) {
+  var lang = e.detail.lang;
+  // Reload BTW toggle labels
+  var btwLabels = document.querySelectorAll('.btw-toggle-label, .btw-btn');
+  btwLabels.forEach(function(el) {
+    // These use fixed labels so only update if they contain Dutch
+    if (el.dataset.btwMode === 'excl') {
+      if (typeof t === 'function') el.textContent = t('common.exBtw', lang);
+    } else if (el.dataset.btwMode === 'incl') {
+      if (typeof t === 'function') el.textContent = t('common.inclBtw', lang);
+    }
+  });
+  // Update paw title
+  document.querySelectorAll('.ic-paw-btn').forEach(function(el) {
+    if (typeof t === 'function') el.title = t('common.verlanglijst', lang);
+  });
+  // Update cart aria-label
+  var cartPanel = document.getElementById('ic-cart-panel');
+  if (cartPanel && typeof t === 'function') {
+    cartPanel.setAttribute('aria-label', t('common.winkelwagen', lang));
+  }
+});

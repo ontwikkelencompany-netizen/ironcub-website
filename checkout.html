@@ -49,80 +49,80 @@
 <div class="checkout-container">
   <div class="checkout-header" id="checkoutHeader">
     <img src="assets/bear-cart-shop.png" alt="Afrekenen">
-    <h1>AFREKENEN</h1>
-    <p>Rond uw bestelling veilig af. Online betalen via iDEAL, Bancontact en creditcard is binnenkort mogelijk.</p>
+    <h1 data-i18n="checkout.title">AFREKENEN</h1>
+    <p data-i18n="checkout.subtitle">Rond uw bestelling veilig af. Online betalen via iDEAL, Bancontact en creditcard is binnenkort mogelijk.</p>
   </div>
 
   <div class="checkout-grid" id="checkoutGrid">
     <!-- Left: Form -->
     <div>
       <div class="checkout-form-card" style="margin-bottom:16px">
-        <h2><span class="step">1</span> Uw gegevens</h2>
+        <h2><span class="step">1</span data-i18n="checkout.stap1"> Uw gegevens</h2>
         <form class="checkout-form" id="checkoutForm">
           <div class="form-row">
-            <div class="form-group"><label>Naam *</label><input type="text" id="coName" required placeholder="Volledige naam"></div>
-            <div class="form-group"><label>E-mail *</label><input type="email" id="coEmail" required placeholder="uw@email.nl"></div>
+            <div class="form-group"><label data-i18n="checkout.naamLabel">Naam *</label><input type="text" id="coName" required placeholder="Volledige naam"></div>
+            <div class="form-group"><label data-i18n="checkout.emailLabel">E-mail *</label><input type="email" id="coEmail" required placeholder="uw@email.nl"></div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label>Telefoon</label><input type="tel" id="coPhone" placeholder="+31 6 ..."></div>
-            <div class="form-group"><label>Bedrijf</label><input type="text" id="coCompany" placeholder="Optioneel"></div>
+            <div class="form-group"><label data-i18n="checkout.telefoonLabel">Telefoon</label><input type="tel" id="coPhone" placeholder="+31 6 ..."></div>
+            <div class="form-group"><label data-i18n="checkout.bedrijfLabel">Bedrijf</label><input type="text" id="coCompany" placeholder="Optioneel"></div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label>KvK-nummer</label><input type="text" id="coKvk" placeholder="Optioneel"></div>
-            <div class="form-group"><label>BTW-nummer</label><input type="text" id="coBtw" placeholder="Optioneel"></div>
+            <div class="form-group"><label data-i18n="checkout.kvkLabel">KvK-nummer</label><input type="text" id="coKvk" placeholder="Optioneel"></div>
+            <div class="form-group"><label data-i18n="checkout.btwLabel">BTW-nummer</label><input type="text" id="coBtw" placeholder="Optioneel"></div>
           </div>
           <div class="form-group" style="margin-top:12px;padding:12px;background:#f9f5f0;border-radius:var(--radius);border:1px solid #e8d5b8">
-            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;margin:0"><input type="checkbox" id="coCreateAccount" style="width:auto;accent-color:#C5941A"> <span style="font-size:.85rem">Account aanmaken (bestelgeschiedenis, verlanglijst, sneller afrekenen)</span></label>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;margin:0"><input type="checkbox" id="coCreateAccount" style="width:auto;accent-color:#C5941A"> <span style="font-size:.85rem" data-i18n="checkout.createAccountLabel">Account aanmaken (bestelgeschiedenis, verlanglijst, sneller afrekenen)</span></label>
             <div id="coPasswordField" style="display:none;margin-top:10px">
-              <label>Wachtwoord *</label><input type="password" id="coPassword" placeholder="Minimaal 8 tekens" minlength="8">
+              <label data-i18n="checkout.wachtwoordLabel">Wachtwoord *</label><input type="password" id="coPassword" placeholder="Minimaal 8 tekens" minlength="8">
             </div>
           </div>
         </form>
       </div>
 
       <div class="checkout-form-card" style="margin-bottom:16px">
-        <h2><span class="step">2</span> Levering</h2>
+        <h2><span class="step">2</span data-i18n="checkout.stap2"> Levering</h2>
         <label class="delivery-option selected" onclick="selectDelivery('ophalen',0,this)">
           <input type="radio" name="delivery" value="ophalen" checked>
-          <div class="delivery-option-head"><span class="delivery-option-name">Afhalen in showroom</span><span class="delivery-option-price">Gratis</span></div>
-          <div class="delivery-option-desc">De Hofjes 44, Middelharnis</div>
+          <div class="delivery-option-head"><span class="delivery-option-name" data-i18n="checkout.afhalen">Afhalen in showroom</span><span class="delivery-option-price" data-i18n="checkout.afhalenGratis">Gratis</span></div>
+          <div class="delivery-option-desc" data-i18n="checkout.afhalenDesc">De Hofjes 44, Middelharnis</div>
         </label>
         <label class="delivery-option" onclick="selectDelivery('regular',14900,this)">
           <input type="radio" name="delivery" value="regular">
-          <div class="delivery-option-head"><span class="delivery-option-name">Regular Levering</span><span class="delivery-option-price">&euro;149</span></div>
-          <div class="delivery-option-desc">Standaard transport naar uw adres</div>
+          <div class="delivery-option-head"><span class="delivery-option-name" data-i18n="checkout.regularLevering">Regular Levering</span><span class="delivery-option-price">&euro;149</span></div>
+          <div class="delivery-option-desc" data-i18n="checkout.regularDesc">Standaard transport naar uw adres</div>
         </label>
         <label class="delivery-option" onclick="selectDelivery('premium',49900,this)">
           <input type="radio" name="delivery" value="premium">
-          <div class="delivery-option-head"><span class="delivery-option-name">Premium Levering</span><span class="delivery-option-price">&euro;499</span></div>
-          <div class="delivery-option-desc">Bezorging + installatie + instructie (1 uur) + eerste servicebeurt</div>
+          <div class="delivery-option-head"><span class="delivery-option-name" data-i18n="checkout.premiumLevering">Premium Levering</span><span class="delivery-option-price">&euro;499</span></div>
+          <div class="delivery-option-desc" data-i18n="checkout.premiumDesc">Bezorging + installatie + instructie (1 uur) + eerste servicebeurt</div>
         </label>
         <div class="address-fields" id="addressFields">
           <div class="form-row" style="margin-bottom:8px">
-            <div class="form-group"><label>Straat + huisnr *</label><input type="text" id="coStraat" placeholder="Hoofdstraat 1"></div>
-            <div class="form-group"><label>Postcode *</label><input type="text" id="coPostcode" placeholder="1234 AB"></div>
+            <div class="form-group"><label data-i18n="checkout.straatLabel">Straat + huisnr *</label><input type="text" id="coStraat" placeholder="Hoofdstraat 1"></div>
+            <div class="form-group"><label data-i18n="checkout.postcodeLabel">Postcode *</label><input type="text" id="coPostcode" placeholder="1234 AB"></div>
           </div>
-          <div class="form-group"><label>Plaats *</label><input type="text" id="coPlaats" placeholder="Amsterdam"></div>
+          <div class="form-group"><label data-i18n="checkout.plaatsLabel">Plaats *</label><input type="text" id="coPlaats" placeholder="Amsterdam"></div>
         </div>
       </div>
 
       <div class="checkout-form-card">
-        <h2><span class="step">3</span> Opmerkingen</h2>
+        <h2><span class="step">3</span data-i18n="checkout.stap3"> Opmerkingen</h2>
         <div class="form-group"><textarea id="coNotes" rows="2" placeholder="Eventuele opmerkingen bij uw bestelling..." style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:var(--radius);font-family:var(--font-body);font-size:.9rem"></textarea></div>
       </div>
     </div>
 
     <!-- Right: Summary -->
     <div class="checkout-summary">
-      <h3>Overzicht</h3>
+      <h3 data-i18n="checkout.overzicht">Overzicht</h3>
       <div class="summary-items" id="summaryItems">
-        <p style="color:var(--gray-400);font-size:.85rem">Je winkelwagen is leeg</p>
+        <p style="color:var(--gray-400);font-size:.85rem" data-i18n="checkout.legeWinkelwagen">Je winkelwagen is leeg</p>
       </div>
       <div id="summaryTotals"></div>
-      <button class="btn btn-cta checkout-pay" id="payBtn" onclick="handleCheckout()">Bestelling plaatsen</button>
+      <button class="btn btn-cta checkout-pay" id="payBtn" onclick="handleCheckout()" data-i18n="checkout.bestellingPlaatsen">Bestelling plaatsen</button>
       <div class="checkout-secure">
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Online betalen (iDEAL, Bancontact, creditcard) binnenkort beschikbaar
+        <span data-i18n="checkout.onlineBetalen">Online betalen (iDEAL, Bancontact, creditcard) binnenkort beschikbaar</span>
       </div>
     </div>
   </div>
@@ -130,13 +130,14 @@
   <!-- Success -->
   <div class="checkout-success" id="checkoutSuccess">
     <img src="assets/bear-afspraak.png" alt="Bestelling bevestigd">
-    <h2>Bedankt voor uw bestelling!</h2>
-    <p id="successMsg">Uw bestelling is ontvangen. U ontvangt een bevestiging per e-mail.</p>
-    <a href="index.html" class="btn btn-cta" style="margin-top:16px">Terug naar home</a>
+    <h2 data-i18n="checkout.successTitle">Bedankt voor uw bestelling!</h2>
+    <p id="successMsg" data-i18n="checkout.successDesc">Uw bestelling is ontvangen. U ontvangt een bevestiging per e-mail.</p>
+    <a href="index.html" class="btn btn-cta" style="margin-top:16px" data-i18n="checkout.terugHome">Terug naar home</a>
   </div>
 </div>
 
 <div id="site-footer"></div>
+<script src="i18n.js"></script>
 <script src="components.js"></script>
 <script src="products.js"></script>
 <script src="main.js"></script>
@@ -169,7 +170,7 @@ function renderSummary() {
   var totalsEl = document.getElementById('summaryTotals');
   
   if (cart.length === 0) {
-    itemsEl.innerHTML = '<p style="color:var(--gray-400);font-size:.85rem">Je winkelwagen is leeg</p>';
+    itemsEl.innerHTML = '<p style="color:var(--gray-400);font-size:.85rem" data-i18n="checkout.legeWinkelwagen">Je winkelwagen is leeg</p>';
     totalsEl.innerHTML = '';
     return;
   }
@@ -191,32 +192,32 @@ function renderSummary() {
   var total = totalExBtw + btw;
 
   var lines = '';
-  lines += '<div class="summary-line"><span>Subtotaal (ex BTW)</span><span>' + formatEur(subtotal) + '</span></div>';
+  lines += '<div class="summary-line"><span>'+(typeof t==='function'?t('checkout.subtotaal'):'Subtotaal (ex BTW)')+'</span><span>' + formatEur(subtotal) + '</span></div>';
   if (deliveryCost > 0) {
-    lines += '<div class="summary-line"><span>Bezorging</span><span>' + formatEur(deliveryCost) + '</span></div>';
+    lines += '<div class="summary-line"><span>'+(typeof t==='function'?t('checkout.bezorging'):'Bezorging')+'</span><span>' + formatEur(deliveryCost) + '</span></div>';
   }
-  lines += '<div class="summary-line"><span>BTW (21%)</span><span>' + formatEur(btw) + '</span></div>';
-  lines += '<div class="summary-total"><span>Totaal</span><span>' + formatEur(total) + '</span></div>';
+  lines += '<div class="summary-line"><span>'+(typeof t==='function'?t('checkout.btw'):'BTW (21%)')+'</span><span>' + formatEur(btw) + '</span></div>';
+  lines += '<div class="summary-total"><span>'+(typeof t==='function'?t('checkout.totaal'):'Totaal')+'</span><span>' + formatEur(total) + '</span></div>';
   totalsEl.innerHTML = lines;
 }
 
 function handleCheckout() {
   var cart = getCart();
-  if (cart.length === 0) { alert('Je winkelwagen is leeg'); return; }
+  if (cart.length === 0) { alert(typeof t==='function'?t('checkout.winkelwagenLeeg'):'Je winkelwagen is leeg'); return; }
   
   var name = document.getElementById('coName').value.trim();
   var email = document.getElementById('coEmail').value.trim();
-  if (!name || !email) { alert('Vul uw naam en e-mail in'); return; }
+  if (!name || !email) { alert(typeof t==='function'?t('checkout.vullNaamEmail'):'Vul uw naam en e-mail in'); return; }
 
   if (deliveryMethod !== 'ophalen') {
     var straat = document.getElementById('coStraat').value.trim();
     var postcode = document.getElementById('coPostcode').value.trim();
     var plaats = document.getElementById('coPlaats').value.trim();
-    if (!straat || !postcode || !plaats) { alert('Vul uw bezorgadres in'); return; }
+    if (!straat || !postcode || !plaats) { alert(typeof t==='function'?t('checkout.vullAdres'):'Vul uw bezorgadres in'); return; }
   }
 
   var btn = document.getElementById('payBtn');
-  btn.textContent = 'Bezig...';
+  btn.textContent = (typeof t==='function'?t('checkout.bezig'):'Bezig...');
   btn.disabled = true;
 
   var body = {
@@ -321,6 +322,12 @@ if (productParam && cart.length === 0) {
       }).catch(function() {});
   }
 }
+
+// Re-render summary on language change
+document.addEventListener('ic:langchange', function() {
+  renderSummary();
+  if (typeof applyLanguage === 'function') applyLanguage();
+});
 
 // Render on load
 renderSummary();

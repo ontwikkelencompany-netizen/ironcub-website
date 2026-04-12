@@ -1094,3 +1094,57 @@ ul{list-style:none}
 .merch-size-btn.selected{background:#C5941A;border-color:#C5941A;color:#1a1a1a}
 .merch-orig{text-decoration:line-through;color:rgba(255,255,255,.35);font-weight:400;margin-right:4px}
 .mow-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+/* ======================================================================
+   LANGUAGE SWITCHER
+   ====================================================================== */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-right: 8px;
+}
+.lang-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--gray-400);
+  font-family: var(--font-head);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition: all .15s;
+  line-height: 1;
+}
+.lang-btn:hover {
+  color: var(--white);
+  border-color: rgba(255,255,255,.25);
+  background: rgba(255,255,255,.08);
+}
+.lang-btn.lang-active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(197,148,26,.1);
+}
+/* Mobile lang row */
+.mobile-lang-row {
+  display: flex;
+  gap: 6px;
+  padding: 12px 20px 4px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  margin-top: 8px;
+}
+.mobile-lang-row .lang-btn {
+  color: rgba(255,255,255,.5);
+  font-size: .8rem;
+  padding: 5px 10px;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.mobile-lang-row .lang-btn:hover,
+.mobile-lang-row .lang-btn.lang-active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(197,148,26,.1);
+}

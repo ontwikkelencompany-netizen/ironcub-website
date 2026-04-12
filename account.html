@@ -58,33 +58,33 @@
     <div class="auth-card">
       <div class="auth-header">
         <img src="assets/bear-account.png" alt="IronCub Account">
-        <h2>Mijn IronCub</h2>
-        <p>Beheer uw bestellingen en verlanglijst</p>
+        <h2 data-i18n="account.title">Mijn IronCub</h2>
+        <p data-i18n="account.subtitle">Beheer uw bestellingen en verlanglijst</p>
       </div>
       <div class="auth-body">
         <div class="auth-tabs">
-          <div class="auth-tab active" onclick="switchAuthTab('login')">INLOGGEN</div>
-          <div class="auth-tab" onclick="switchAuthTab('register')">REGISTREREN</div>
+          <div class="auth-tab active" onclick="switchAuthTab('login')" data-i18n="account.tabLogin">INLOGGEN</div>
+          <div class="auth-tab" onclick="switchAuthTab('register')" data-i18n="account.tabRegister">REGISTREREN</div>
         </div>
 
         <!-- Login -->
         <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
-          <div class="form-group"><label>E-mail</label><input type="email" name="email" required placeholder="uw@email.nl"></div>
-          <div class="form-group"><label>Wachtwoord</label><input type="password" name="password" required placeholder="Minimaal 8 tekens"></div>
-          <button type="submit" class="btn btn-cta">Inloggen</button>
+          <div class="form-group"><label data-i18n="account.emailLabel">E-mail</label><input type="email" name="email" required placeholder="uw@email.nl"></div>
+          <div class="form-group"><label data-i18n="account.wachtwoordLabel">Wachtwoord</label><input type="password" name="password" required placeholder="Minimaal 8 tekens"></div>
+          <button type="submit" class="btn btn-cta" data-i18n="account.loginBtn">Inloggen</button>
         </form>
 
         <!-- Register -->
         <form id="registerForm" class="auth-form" style="display:none" onsubmit="handleRegister(event)">
-          <div class="form-group"><label>Naam *</label><input type="text" name="name" required placeholder="Uw volledige naam"></div>
-          <div class="form-group"><label>E-mail *</label><input type="email" name="email" required placeholder="uw@email.nl"></div>
-          <div class="form-group"><label>Wachtwoord *</label><input type="password" name="password" required placeholder="Minimaal 8 tekens" minlength="8"></div>
-          <div class="form-group"><label>Telefoon</label><input type="tel" name="phone" placeholder="+31 6 ..."></div>
-          <div class="auth-divider">Zakelijk? (optioneel)</div>
-          <div class="form-group"><label>Bedrijfsnaam</label><input type="text" name="company" placeholder="Uw bedrijf"></div>
-          <div class="form-group"><label>KvK-nummer</label><input type="text" name="kvk" placeholder="12345678"></div>
-          <div class="form-group"><label>BTW-nummer</label><input type="text" name="btwNummer" placeholder="NL123456789B01"></div>
-          <button type="submit" class="btn btn-cta">Account aanmaken</button>
+          <div class="form-group"><label data-i18n="account.naamLabel">Naam *</label><input type="text" name="name" required placeholder="Uw volledige naam"></div>
+          <div class="form-group"><label data-i18n="account.emailLabel">E-mail *</label><input type="email" name="email" required placeholder="uw@email.nl"></div>
+          <div class="form-group"><label data-i18n="account.wachtwoordLabel">Wachtwoord *</label><input type="password" name="password" required placeholder="Minimaal 8 tekens" minlength="8"></div>
+          <div class="form-group"><label data-i18n="account.telefoonLabel">Telefoon</label><input type="tel" name="phone" placeholder="+31 6 ..."></div>
+          <div class="auth-divider" data-i18n="account.zakelijkOptional">Zakelijk? (optioneel)</div>
+          <div class="form-group"><label data-i18n="account.bedrijfsnaamLabel">Bedrijfsnaam</label><input type="text" name="company" placeholder="Uw bedrijf"></div>
+          <div class="form-group"><label data-i18n="account.kvkLabel">KvK-nummer</label><input type="text" name="kvk" placeholder="12345678"></div>
+          <div class="form-group"><label data-i18n="account.btwLabel">BTW-nummer</label><input type="text" name="btwNummer" placeholder="NL123456789B01"></div>
+          <button type="submit" class="btn btn-cta" data-i18n="account.accountAanmakenBtn">Account aanmaken</button>
         </form>
       </div>
     </div>
@@ -98,21 +98,21 @@
         <div class="dash-name" id="dashName">—</div>
         <div class="dash-email" id="dashEmail">—</div>
       </div>
-      <button class="btn btn-outline-dark btn-sm" style="margin-left:auto" onclick="handleLogout()">Uitloggen</button>
+      <button class="btn btn-outline-dark btn-sm" style="margin-left:auto" onclick="handleLogout()" data-i18n="account.uitloggen">Uitloggen</button>
     </div>
 
     <div class="dash-tabs">
-      <div class="dash-tab active" onclick="switchDashTab('orders')">Bestellingen</div>
-      <div class="dash-tab" onclick="switchDashTab('wishlist')">Verlanglijst</div>
-      <div class="dash-tab" onclick="switchDashTab('profile')">Mijn gegevens</div>
+      <div class="dash-tab active" onclick="switchDashTab('orders')" data-i18n="account.bestellingen">Bestellingen</div>
+      <div class="dash-tab" onclick="switchDashTab('wishlist')" data-i18n="account.verlanglijst">Verlanglijst</div>
+      <div class="dash-tab" onclick="switchDashTab('profile')" data-i18n="account.mijnGegevens">Mijn gegevens</div>
     </div>
 
     <!-- Orders -->
     <div class="dash-panel active" id="panel-orders">
       <div id="ordersList" class="empty-state">
         <img src="assets/bear-account.png" alt="">
-        <p>Nog geen bestellingen. Tijd om te shoppen!</p>
-        <a href="verkoop.html" class="btn btn-cta btn-sm" style="margin-top:12px">Bekijk producten</a>
+        <p data-i18n="account.leegBestellingen">Nog geen bestellingen. Tijd om te shoppen!</p>
+        <a href="verkoop.html" class="btn btn-cta btn-sm" style="margin-top:12px" data-i18n="account.bekijkProducten">Bekijk producten</a>
       </div>
     </div>
 
@@ -120,8 +120,8 @@
     <div class="dash-panel" id="panel-wishlist">
       <div id="wishlistItems" class="empty-state">
         <img src="assets/bear-heart-wishlist.png" alt="" style="height:80px">
-        <p>Je verlanglijst is leeg. Klik op het beertje met het hartje bij een product!</p>
-        <a href="verkoop.html" class="btn btn-cta btn-sm" style="margin-top:12px">Bekijk producten</a>
+        <p data-i18n="account.leegVerlanglijst">Je verlanglijst is leeg. Klik op het beertje met het hartje bij een product!</p>
+        <a href="verkoop.html" class="btn btn-cta btn-sm" style="margin-top:12px" data-i18n="account.bekijkProducten">Bekijk producten</a>
       </div>
     </div>
 
@@ -133,20 +133,21 @@
           <div class="form-group"><label>E-mail</label><input type="email" name="email" id="profEmail" disabled></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Telefoon</label><input type="tel" name="phone" id="profPhone"></div>
+          <div class="form-group"><label data-i18n="account.telefoonLabel">Telefoon</label><input type="tel" name="phone" id="profPhone"></div>
           <div class="form-group"><label>Bedrijf</label><input type="text" name="company" id="profCompany"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>KvK-nummer</label><input type="text" name="kvk" id="profKvk"></div>
-          <div class="form-group"><label>BTW-nummer</label><input type="text" name="btwNummer" id="profBtw"></div>
+          <div class="form-group"><label data-i18n="account.kvkLabel">KvK-nummer</label><input type="text" name="kvk" id="profKvk"></div>
+          <div class="form-group"><label data-i18n="account.btwLabel">BTW-nummer</label><input type="text" name="btwNummer" id="profBtw"></div>
         </div>
-        <button type="submit" class="btn btn-cta">Opslaan</button>
+        <button type="submit" class="btn btn-cta" data-i18n="account.opslaan">Opslaan</button>
       </form>
     </div>
   </div>
 </div>
 
 <div id="site-footer"></div>
+<script src="i18n.js"></script>
 <script src="components.js"></script>
 <script src="main.js"></script>
 <script src="winkel.js"></script>

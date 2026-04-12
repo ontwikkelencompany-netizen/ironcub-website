@@ -1,100 +1,100 @@
 <!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Afspraak maken | The IronCub Company</title><meta name="description" content="Maak een afspraak voor een demo, bezichtiging of adviesgesprek bij The IronCub Company in Middelharnis."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg"><link rel="stylesheet" href="styles.css"></head><body>
 <div id="announce-bar"></div><div id="site-header"></div>
 
-<section class="page-hero" style="min-height:40vh"><div class="page-hero-bg"><img src="assets/showroom-1.jpg" alt="IronCub Showroom Middelharnis" style="object-position:center 60%"></div><div class="page-hero-overlay"></div><div class="container page-hero-content"><h1>AFSPRAAK MAKEN</h1><p>Plan een bezoek aan onze showroom in Middelharnis</p></div></section>
+<section class="page-hero" style="min-height:40vh"><div class="page-hero-bg"><img src="assets/showroom-1.jpg" alt="IronCub Showroom Middelharnis" style="object-position:center 60%"></div><div class="page-hero-overlay"></div><div class="container page-hero-content"><h1 data-i18n="afspraak.heroTitle">AFSPRAAK MAKEN</h1><p data-i18n="afspraak.heroDesc">Plan een bezoek aan onze showroom in Middelharnis</p></div></section>
 
 <section class="content-section"><div class="container">
 <div class="afspraak-layout">
 
 <!-- Left: Form -->
 <div class="afspraak-form-wrap">
-<h2 style="font-family:var(--font-head);font-size:1.8rem;font-weight:900;margin-bottom:8px">Plan uw bezoek</h2>
-<p style="color:var(--gray-600);margin-bottom:24px">Vul het formulier in en wij nemen binnen 24 uur contact met u op om de afspraak te bevestigen.</p>
+<h2 style="font-family:var(--font-head);font-size:1.8rem;font-weight:900;margin-bottom:8px" data-i18n="afspraak.formTitle">Plan uw bezoek</h2>
+<p style="color:var(--gray-600);margin-bottom:24px" data-i18n="afspraak.formDesc">Vul het formulier in en wij nemen binnen 24 uur contact met u op om de afspraak te bevestigen.</p>
 
 <form id="afspraakForm" class="afspraak-form" onsubmit="handleAfspraak(event)">
   <div class="form-group">
-    <label>Waarvoor wilt u langskomen? *</label>
+    <label data-i18n="afspraak.waarvoor">Waarvoor wilt u langskomen? *</label>
     <div class="radio-group">
-      <label class="radio-option"><input type="radio" name="type" value="demo" checked><span>DEMO Dag (vrijdag)</span></label>
-      <label class="radio-option"><input type="radio" name="type" value="bezichtiging"><span>Showroom bezichtiging</span></label>
-      <label class="radio-option"><input type="radio" name="type" value="advies"><span>Adviesgesprek</span></label>
-      <label class="radio-option"><input type="radio" name="type" value="ophalen"><span>Machine ophalen</span></label>
-      <label class="radio-option"><input type="radio" name="type" value="service"><span>Service / reparatie</span></label>
+      <label class="radio-option"><input type="radio" name="type" value="demo" checked><span data-i18n="afspraak.optDemo">DEMO Dag (vrijdag)</span></label>
+      <label class="radio-option"><input type="radio" name="type" value="bezichtiging"><span data-i18n="afspraak.optBezichtiging">Showroom bezichtiging</span></label>
+      <label class="radio-option"><input type="radio" name="type" value="advies"><span data-i18n="afspraak.optAdvies">Adviesgesprek</span></label>
+      <label class="radio-option"><input type="radio" name="type" value="ophalen"><span data-i18n="afspraak.optOphalen">Machine ophalen</span></label>
+      <label class="radio-option"><input type="radio" name="type" value="service"><span data-i18n="afspraak.optService">Service / reparatie</span></label>
     </div>
   </div>
 
   <div class="form-row">
-    <div class="form-group"><label>Naam *</label><input type="text" name="naam" required placeholder="Uw volledige naam"></div>
-    <div class="form-group"><label>Bedrijf</label><input type="text" name="bedrijf" placeholder="Optioneel"></div>
+    <div class="form-group"><label data-i18n="afspraak.naamLabel">Naam *</label><input type="text" name="naam" required placeholder="Uw volledige naam"></div>
+    <div class="form-group"><label data-i18n="afspraak.bedrijfLabel">Bedrijf</label><input type="text" name="bedrijf" placeholder="Optioneel"></div>
   </div>
 
   <div class="form-row">
-    <div class="form-group"><label>E-mail *</label><input type="email" name="email" required placeholder="uw@email.nl"></div>
-    <div class="form-group"><label>Telefoon *</label><input type="tel" name="telefoon" required placeholder="+31 6 ..."></div>
+    <div class="form-group"><label data-i18n="afspraak.emailLabel">E-mail *</label><input type="email" name="email" required placeholder="uw@email.nl"></div>
+    <div class="form-group"><label data-i18n="afspraak.telefoonLabel">Telefoon *</label><input type="tel" name="telefoon" required placeholder="+31 6 ..."></div>
   </div>
 
   <div class="form-row">
-    <div class="form-group"><label>Voorkeursdatum</label><input type="date" name="datum"></div>
-    <div class="form-group"><label>Voorkeurstijd</label>
+    <div class="form-group"><label data-i18n="afspraak.datumLabel">Voorkeursdatum</label><input type="date" name="datum"></div>
+    <div class="form-group"><label data-i18n="afspraak.tijdLabel">Voorkeurstijd</label>
       <select name="tijd">
-        <option value="">Geen voorkeur</option>
-        <option value="ochtend">Ochtend (9:00 - 12:00)</option>
-        <option value="middag">Middag (12:00 - 17:00)</option>
+        <option value="" data-i18n="afspraak.geenVoorkeur">Geen voorkeur</option>
+        <option value="ochtend" data-i18n="afspraak.ochtend">Ochtend (9:00 - 12:00)</option>
+        <option value="middag" data-i18n="afspraak.middag">Middag (12:00 - 17:00)</option>
       </select>
     </div>
   </div>
 
-  <div class="form-group"><label>Welke machine(s) heeft u interesse in?</label>
+  <div class="form-group"><label data-i18n="afspraak.machineLabel">Welke machine(s) heeft u interesse in?</label>
     <select name="machine">
-      <option value="">Selecteer (optioneel)</option>
+      <option value="" data-i18n="afspraak.machineSelect">Selecteer (optioneel)</option>
       <option value="vth360">VTH 360 — Mini Skid Steer</option>
       <option value="vth480w">VTH 480W — Skid Steer (wielen)</option>
       <option value="vth480wr">VTH 480W — Rupsbanden</option>
       <option value="vth140">VTH 140 — Kniklader</option>
       <option value="vth200">VTH 200 — Kniklader diesel</option>
       <option value="htv1000">HTV 1000 — Kubota loader</option>
-      <option value="grasmaaier">Grasmaaier (afstandsbediend)</option>
-      <option value="aanbouwdelen">Aanbouwdelen</option>
-      <option value="anders">Anders / weet ik nog niet</option>
+      <option value="grasmaaier" data-i18n="afspraak.grasmaaierOpt">Grasmaaier (afstandsbediend)</option>
+      <option value="aanbouwdelen" data-i18n="afspraak.aanbouwdelenOpt">Aanbouwdelen</option>
+      <option value="anders" data-i18n="afspraak.andersOpt">Anders / weet ik nog niet</option>
     </select>
   </div>
 
-  <div class="form-group"><label>Opmerkingen</label><textarea name="opmerkingen" rows="3" placeholder="Vertel ons wat u zoekt of waar we u mee kunnen helpen..."></textarea></div>
+  <div class="form-group"><label data-i18n="afspraak.opmerkingenLabel">Opmerkingen</label><textarea name="opmerkingen" rows="3" placeholder="Vertel ons wat u zoekt of waar we u mee kunnen helpen..."></textarea></div>
 
-  <button type="submit" class="btn btn-cta btn-full" id="submitBtn">Afspraak aanvragen</button>
-  <p style="font-size:12px;color:var(--gray-500);margin-top:8px;text-align:center">Wij nemen binnen 24 uur contact met u op ter bevestiging.</p>
+  <button type="submit" class="btn btn-cta btn-full" id="submitBtn" data-i18n="afspraak.submitBtn">Afspraak aanvragen</button>
+  <p style="font-size:12px;color:var(--gray-500);margin-top:8px;text-align:center" data-i18n="afspraak.submitNote">Wij nemen binnen 24 uur contact met u op ter bevestiging.</p>
 </form>
 
 <div id="afspraakSuccess" style="display:none" class="afspraak-success">
   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-  <h3>Bedankt voor uw aanvraag!</h3>
-  <p>Wij nemen zo snel mogelijk contact met u op om de afspraak te bevestigen.</p>
-  <a href="index.html" class="btn btn-outline-dark" style="margin-top:16px">Terug naar home</a>
+  <h3 data-i18n="afspraak.successTitle">Bedankt voor uw aanvraag!</h3>
+  <p data-i18n="afspraak.successDesc">Wij nemen zo snel mogelijk contact met u op om de afspraak te bevestigen.</p>
+  <a href="index.html" class="btn btn-outline-dark" style="margin-top:16px" data-i18n="afspraak.terugHome">Terug naar home</a>
 </div>
 </div>
 
 <!-- Right: Info -->
 <div class="afspraak-info">
   <div class="info-card">
-    <h3>Showroom</h3>
+    <h3 data-i18n="afspraak.infoShowroom">Showroom</h3>
     <p><strong>De Hofjes 44</strong><br>Middelharnis<br>Zuid-Holland</p>
   </div>
 
   <div class="info-card">
-    <h3>Openingstijden</h3>
+    <h3 data-i18n="afspraak.infoOpeningstijden">Openingstijden</h3>
     <table class="hours-table">
-      <tr><td>Maandag</td><td>Gesloten</td></tr>
-      <tr class="open"><td>Dinsdag</td><td>Open (geen afspraak nodig)</td></tr>
-      <tr><td>Woensdag</td><td>Op afspraak</td></tr>
-      <tr><td>Donderdag</td><td>Op afspraak</td></tr>
-      <tr class="demo"><td>Vrijdag</td><td>DEMO Dag</td></tr>
-      <tr><td>Zaterdag</td><td>Tot 13:00 (op afspraak)</td></tr>
-      <tr><td>Zondag</td><td>Gesloten</td></tr>
+      <tr><td data-i18n="afspraak.maandag">Maandag</td><td data-i18n="afspraak.gesloten">Gesloten</td></tr>
+      <tr class="open"><td data-i18n="afspraak.dinsdag">Dinsdag</td><td data-i18n="afspraak.openZonderAfspraak">Open (geen afspraak nodig)</td></tr>
+      <tr><td data-i18n="afspraak.woensdag">Woensdag</td><td data-i18n="afspraak.opAfspraak">Op afspraak</td></tr>
+      <tr><td data-i18n="afspraak.donderdag">Donderdag</td><td data-i18n="afspraak.opAfspraak">Op afspraak</td></tr>
+      <tr class="demo"><td data-i18n="afspraak.vrijdag">Vrijdag</td><td data-i18n="afspraak.vrijdagDemo">DEMO Dag</td></tr>
+      <tr><td data-i18n="afspraak.zaterdag">Zaterdag</td><td data-i18n="afspraak.zaterdagTijd">Tot 13:00 (op afspraak)</td></tr>
+      <tr><td data-i18n="afspraak.zondag">Zondag</td><td data-i18n="afspraak.gesloten">Gesloten</td></tr>
     </table>
   </div>
 
   <div class="info-card">
-    <h3>Contact</h3>
+    <h3 data-i18n="afspraak.infoContact">Contact</h3>
     <p>
       <a href="mailto:verkoop@ironcub.company">verkoop@ironcub.company</a><br>
       <a href="mailto:service@ironcub.company">service@ironcub.company</a><br>
@@ -103,8 +103,8 @@
   </div>
 
   <div class="info-card" style="background:var(--dark);color:white;border-color:var(--dark)">
-    <h3 style="color:var(--gold)">DEMO Dag</h3>
-    <p>Elke vrijdag kunt u onze machines live in actie zien en zelf uitproberen. Geen afspraak nodig — gewoon langskomen!</p>
+    <h3 style="color:var(--gold)" data-i18n="nav.demodagen">DEMO Dag</h3>
+    <p data-i18n="afspraak.demoDagInfo">Elke vrijdag kunt u onze machines live in actie zien en zelf uitproberen. Geen afspraak nodig — gewoon langskomen!</p>
   </div>
 </div>
 
@@ -112,6 +112,7 @@
 </div></section>
 
 <div id="site-footer"></div>
+<script src="i18n.js"></script>
 <script src="components.js"></script>
 <script src="main.js"></script>
 <script>
@@ -121,7 +122,7 @@ function handleAfspraak(e) {
   var btn = document.getElementById('submitBtn');
   var data = new FormData(form);
   
-  btn.textContent = 'Versturen...';
+  btn.textContent = (typeof t==='function'?t('checkout.bezig'):'Versturen...');
   btn.disabled = true;
   
   // For now, simulate submission (later: connect to Railway API)
