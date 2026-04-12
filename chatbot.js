@@ -140,6 +140,9 @@
     container.id = 'ic-chat-widget';
     container.innerHTML =
       '<div class="ic-chat-fab" id="icChatFab">' +
+        '<span class="ic-thought-dot ic-thought-dot-1"></span>' +
+        '<span class="ic-thought-dot ic-thought-dot-2"></span>' +
+        '<span class="ic-thought-dot ic-thought-dot-3"></span>' +
         '<img src="/assets/bear-afspraak.png" alt="Chat" class="ic-chat-fab-img">' +
         '<span class="ic-chat-fab-badge" id="icChatBadge">1</span>' +
       '</div>' +
@@ -289,6 +292,12 @@
       '.ic-chat-fab.active{transform:scale(0.9)}' +
       '.ic-chat-fab-img{width:48px;height:48px;border-radius:50%;object-fit:cover}' +
       '.ic-chat-fab-badge{position:absolute;top:-4px;right:-4px;background:#E8831A;color:#fff;font-size:11px;font-weight:700;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #1a1a1a}' +
+      '.ic-thought-dot{position:absolute;background:#1a1a1a;border-radius:50%;border:2px solid #E8831A;opacity:.85;transition:opacity .4s,transform .4s}' +
+      '.ic-thought-dot-1{width:14px;height:14px;top:-22px;left:50%;margin-left:-7px;animation:icFloat 2.5s ease-in-out infinite}' +
+      '.ic-thought-dot-2{width:10px;height:10px;top:-42px;left:50%;margin-left:-12px;animation:icFloat 2.5s ease-in-out .3s infinite}' +
+      '.ic-thought-dot-3{width:7px;height:7px;top:-58px;left:50%;margin-left:-16px;animation:icFloat 2.5s ease-in-out .6s infinite}' +
+      '@keyframes icFloat{0%,100%{transform:translateY(0);opacity:.85}50%{transform:translateY(-4px);opacity:1}}' +
+      '.ic-chat-fab.active .ic-thought-dot{opacity:0;transform:scale(0)}' +
       '.ic-chat-panel{position:absolute;bottom:80px;right:0;width:380px;max-height:540px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.2);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(20px) scale(.95);pointer-events:none;transition:opacity .3s,transform .3s}' +
       '.ic-chat-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}' +
       '.ic-chat-header{background:#1a1a1a;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}' +
