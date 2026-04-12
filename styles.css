@@ -1153,3 +1153,29 @@ select,textarea{border:2px solid #d1d5db!important;border-radius:8px!important;p
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus,
 input:focus,select:focus,textarea:focus{border-color:var(--gold)!important;outline:none!important}
 input::placeholder,textarea::placeholder{color:#9ca3af!important}
+
+/* PRODUCT GALLERY */
+.pdp-gallery-wrap{position:relative;border-radius:12px;overflow:hidden;cursor:zoom-in;background:#f5f5f5}
+.pdp-gallery-main-img{width:100%;height:auto;display:block;min-height:300px;object-fit:contain}
+.pdp-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;border:none;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .2s}
+.pdp-arrow:hover{background:rgba(0,0,0,.7)}
+.pdp-arrow-left{left:12px}
+.pdp-arrow-right{right:12px}
+.pdp-gallery-counter{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,.6);color:#fff;font-size:.75rem;padding:3px 10px;border-radius:12px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.pdp-thumbs{display:flex;gap:8px;margin-top:12px;overflow-x:auto;padding-bottom:4px}
+.pdp-thumb{width:72px;height:54px;border-radius:6px;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0;transition:border-color .2s}
+.pdp-thumb.active{border-color:#E8831A}
+.pdp-thumb:hover{border-color:#C5941A}
+.pdp-thumb img{width:100%;height:100%;object-fit:cover}
+
+/* LIGHTBOX */
+.pdp-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:10000;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.pdp-lightbox-inner{position:relative;max-width:90vw;max-height:90vh;display:flex;align-items:center;justify-content:center}
+.pdp-lightbox-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px;cursor:default}
+.pdp-lightbox-close{position:fixed;top:20px;right:24px;background:none;border:none;color:#fff;font-size:2.5rem;cursor:pointer;z-index:10001;line-height:1}
+.pdp-lightbox-close:hover{color:#E8831A}
+.pdp-lightbox-arrow{position:fixed;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;border:none;font-size:2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:10001}
+.pdp-lightbox-arrow:hover{background:rgba(255,255,255,.3)}
+.pdp-lightbox-prev{left:20px}
+.pdp-lightbox-next{right:20px}
+.pdp-lightbox-counter{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:600}
