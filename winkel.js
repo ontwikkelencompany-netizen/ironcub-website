@@ -1104,6 +1104,40 @@
         el.innerHTML = oldHtml2 + formatDutchPrice(exclVal) + (hasSmall ? ' <small>ex BTW</small>' : '');
       }
     });
+
+    /* --- Product Detail Page (PDP) prices --- */
+    var pdpCurrent = document.querySelector('.pdp-price-current');
+    var pdpOld     = document.querySelector('.pdp-price-old');
+    if (pdpCurrent) {
+      if (!pdpCurrent.dataset.priceExcl) {
+        // First run — store original excl BTW value
+        var clone = pdpCurrent.cloneNode(true);
+        var btwLabel = clone.querySelector('.pdp-price-btw');
+        if (btwLabel) btwLabel.remove();
+        pdpCurrent.dataset.priceExcl = parseDutchPrice(clone.textContent).toString();
+      }
+      if (pdpOld && !pdpOld.dataset.priceExcl) {
+        pdpOld.dataset.priceExcl = parseDutchPrice(pdpOld.textContent).toString();
+      }
+
+      var pdpExcl = parseFloat(pdpCurrent.dataset.priceExcl);
+      if (!isNaN(pdpExcl)) {
+        var _t = typeof t === 'function' ? t : function(k) { return k; };
+        if (btwMode === 'incl') {
+          pdpCurrent.innerHTML = formatDutchPrice(pdpExcl * (1 + BTW_RATE)) + '<span class="pdp-price-btw">' + _t('common.inclBtw') + '</span>';
+          if (pdpOld) {
+            var oldExcl = parseFloat(pdpOld.dataset.priceExcl);
+            if (!isNaN(oldExcl)) pdpOld.textContent = formatDutchPrice(oldExcl * (1 + BTW_RATE));
+          }
+        } else {
+          pdpCurrent.innerHTML = formatDutchPrice(pdpExcl) + '<span class="pdp-price-btw">' + _t('common.exBtw') + '</span>';
+          if (pdpOld) {
+            var oldExcl2 = parseFloat(pdpOld.dataset.priceExcl);
+            if (!isNaN(oldExcl2)) pdpOld.textContent = formatDutchPrice(oldExcl2);
+          }
+        }
+      }
+    }
   }
 
   /* =====================================================================
@@ -1237,6 +1271,10 @@
     setTimeout(function () {
       if (btwMode === 'incl') applyBtwToPage();
     }, 300);
+    // PDP pages render later via JS — retry for product detail pages
+    setTimeout(function () {
+      if (btwMode === 'incl' && document.querySelector('.pdp-price-current')) applyBtwToPage();
+    }, 800);
 
     // Inject delivery banner
     injectDeliveryBanner();
