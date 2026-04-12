@@ -1135,7 +1135,14 @@
       var stored = localStorage.getItem('ic_cart');
       if (stored) {
         var parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) cart = parsed;
+        if (Array.isArray(parsed)) {
+        // Fix old cart items that had price * 100 bug
+        parsed.forEach(function(item) {
+          if (item.price > 50000) { item.price = Math.round(item.price / 100); }
+        });
+        cart = parsed;
+        try { localStorage.setItem('ic_cart', JSON.stringify(cart)); } catch(e) {}
+      }
       }
     } catch (e) { /* ignore */ }
 
