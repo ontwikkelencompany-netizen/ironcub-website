@@ -401,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       var pid = this.dataset.id + (selectedSize ? '-' + selectedSize.replace(/[^a-zA-Z0-9]/g,'').toLowerCase() : '');
       var name = this.dataset.name + selectedSize;
-      var price = parseInt(this.dataset.price);
+      var price = parseInt(this.dataset.price) / 100; // merch prices stored in cents, cart expects euros
       var img = this.dataset.img;
       if (typeof addToCart === 'function') {
         addToCart(pid, name, price, img);

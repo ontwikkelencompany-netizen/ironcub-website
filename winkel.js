@@ -1183,6 +1183,10 @@
         // Fix old cart items that had price * 100 bug
         parsed.forEach(function(item) {
           if (item.price > 50000) { item.price = Math.round(item.price / 100); }
+          // Fix merch items stored in cents instead of euros (e.g. 1995 instead of 19.95)
+          if (item.productId && item.productId.indexOf('merch') === 0 && item.price > 100) {
+            item.price = item.price / 100;
+          }
         });
         cart = parsed;
         try { localStorage.setItem('ic_cart', JSON.stringify(cart)); } catch(e) {}
