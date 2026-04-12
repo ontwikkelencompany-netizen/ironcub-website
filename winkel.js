@@ -299,6 +299,9 @@
       '.ic-paw-btn:hover::after{opacity:1}',
       '.machine-img{position:relative}',
       '.att-img{position:relative}',
+      '.mow-img{position:relative}',
+      '.rippa-card-img{position:relative}',
+      '.merch-img{position:relative}',
 
       /* ---- Toast / Confirmation ---- */
       '#ic-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);',
@@ -951,8 +954,8 @@
      WISHLIST PAW ICONS
      ===================================================================== */
   function injectPawIcons() {
-    // Add paw icons to .machine-card and .att-card elements
-    var cards = document.querySelectorAll('.machine-card, .att-card');
+    // Add paw icons to all product cards
+    var cards = document.querySelectorAll('.machine-card, .att-card, .mow-card, .rippa-card, .merch-card');
     cards.forEach(function (card) {
       addPawToCard(card);
     });
@@ -963,10 +966,10 @@
         mutations.forEach(function (m) {
           m.addedNodes.forEach(function (node) {
             if (node.nodeType !== 1) return;
-            if (node.matches && (node.matches('.machine-card') || node.matches('.att-card'))) {
+            if (node.matches && (node.matches('.machine-card') || node.matches('.att-card') || node.matches('.mow-card') || node.matches('.rippa-card') || node.matches('.merch-card'))) {
               addPawToCard(node);
             }
-            var inner = node.querySelectorAll ? node.querySelectorAll('.machine-card, .att-card') : [];
+            var inner = node.querySelectorAll ? node.querySelectorAll('.machine-card, .att-card, .mow-card, .rippa-card, .merch-card') : [];
             inner.forEach(addPawToCard);
           });
         });
@@ -980,7 +983,7 @@
     card.dataset.icPaw = '1';
 
     var productId = card.id || 'product-' + Math.random().toString(36).slice(2, 8);
-    var imgContainer = card.querySelector('.machine-img') || card.querySelector('.att-img');
+    var imgContainer = card.querySelector('.machine-img') || card.querySelector('.att-img') || card.querySelector('.mow-img') || card.querySelector('.rippa-card-img') || card.querySelector('.merch-img');
     if (!imgContainer) return;
 
     var paw = document.createElement('button');
