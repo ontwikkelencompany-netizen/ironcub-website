@@ -599,3 +599,6 @@ ul{list-style:none}
 .hours-table .open td:last-child{color:var(--gold);font-weight:600}
 .hours-table .demo td:last-child{color:var(--gold);font-weight:700}
 @media(max-width:768px){.afspraak-layout{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+@media(max-width:1024px){.mow-grid{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:768px){.mow-grid{grid-template-columns:1fr!important}}
