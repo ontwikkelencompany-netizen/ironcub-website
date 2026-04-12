@@ -318,6 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sizeHtml +
         priceHtml +
         '<button class="btn btn-cta btn-sm merch-btn merch-add-cart" data-id="' + m.id + '" data-name="' + m.name + '" data-price="' + m.price_incl + '" data-img="' + m.img + '" data-needs-size="' + (m.sizes && m.sizes !== 'One Size' && m.type !== 'bundle' ? '1' : '0') + '">In winkelwagen</button>' +
+        (m.type !== 'bundle' ? '<a href="/merch/' + m.id + '.html" class="btn btn-outline-light btn-sm" style="margin-top:6px;width:100%;text-align:center;font-size:.8rem">Bekijk product</a>' : '') +
       '</div>' +
     '</div>';
   }
