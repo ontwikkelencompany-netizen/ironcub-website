@@ -412,14 +412,20 @@ document.addEventListener('DOMContentLoaded', function () {
   var validGroups = ['loaders', 'grasmaaiers', 'merch', 'aanbouwdelen', 'rippa'];
   var hash = window.location.hash.replace('#', '');
 
-  // Check if hash is a product ID (loader machine)
+  // Check if hash is a product ID and open correct tab
   var isMachineId = MACHINES.some(function(m) { return m.id === hash; });
+  var isGrasmaaier = typeof GRASMAAIERS !== 'undefined' && GRASMAAIERS.some(function(g) { return g.id === hash; });
+  var isRippa = typeof RIPPA !== 'undefined' && RIPPA.some(function(r) { return r.id === hash; });
+
   if (isMachineId) {
     activateTab('loaders');
-    setTimeout(function() {
-      var el = document.getElementById(hash);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 300);
+    setTimeout(function() { var el = document.getElementById(hash); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 400);
+  } else if (isGrasmaaier) {
+    activateTab('grasmaaiers');
+    setTimeout(function() { var el = document.getElementById(hash); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 400);
+  } else if (isRippa) {
+    activateTab('rippa');
+    setTimeout(function() { var el = document.getElementById(hash); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 400);
   } else if (validGroups.indexOf(hash) !== -1) {
     activateTab(hash);
   } else {
@@ -445,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '</table>' +
         '<p class="rippa-card-desc">' + r.desc + '</p>' +
         '<div class="rippa-card-footer">' + (r.poa ? '<span class="rippa-card-price">Prijs op aanvraag</span>' : '<span class="rippa-card-price">' + (r.originalPrice ? '<span style="text-decoration:line-through;color:rgba(255,255,255,.35);font-weight:400;font-size:.85em;margin-right:6px">' + fmtEur(r.originalPrice) + '</span>' : '') + fmtEur(r.price) + ' <small style="color:rgba(255,255,255,.4);font-weight:400">ex BTW</small></span>') + '<a href="checkout.html?product=' + r.id + '" class="btn btn-cta btn-sm">Kopen</a><a href="lease.html" class="btn btn-outline-dark btn-sm" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7)">Leasen</a></div>' +
-        '<a href="afspraak.html?machine=' + r.model + '" class="rippa-detail-link">Bekijk dit product <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>' +
+        '<a href="afspraak.html?onderwerp=Rippa+' + encodeURIComponent(r.model) + '" class="rippa-detail-link">Meer info aanvragen <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>' +
         '</div></div>';
     }).join('');
   }

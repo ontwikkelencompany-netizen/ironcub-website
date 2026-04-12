@@ -291,7 +291,12 @@
       'width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;',
       'z-index:2;transition:all .2s;box-shadow:0 1px 4px rgba(0,0,0,.15)}',
       '.ic-paw-btn:hover{background:#fff;transform:scale(1.1)}',
-      '.ic-paw-btn.on svg{fill:' + BLUE + ';stroke:' + BLUE + '}',
+      '.ic-paw-btn svg{fill:#cc0000;stroke:#cc0000}',
+      '.ic-paw-btn.on svg{fill:#cc0000;stroke:#cc0000}',
+      '.ic-paw-btn::after{content:"Verlanglijst";position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);',
+      'background:#1a1a1a;color:#fff;font-size:11px;padding:3px 8px;border-radius:4px;white-space:nowrap;opacity:0;',
+      'pointer-events:none;transition:opacity .2s;font-family:Inter,sans-serif}',
+      '.ic-paw-btn:hover::after{opacity:1}',
       '.machine-img{position:relative}',
       '.att-img{position:relative}',
 
@@ -1013,40 +1018,69 @@
   /* =====================================================================
      BTW TOGGLE — page price recalculation
      ===================================================================== */
+  function parseDutchPrice(text) {
+    // Parse "€5.824" or "€12.595" — dot is thousands separator in Dutch
+    var raw = text.replace(/[^\d.,]/g, '');
+    var cleaned = raw.replace(/\.(?=\d{3}(?!\d))/g, '').replace(',', '.');
+    return parseFloat(cleaned);
+  }
+
+  function formatDutchPrice(val) {
+    return '\u20AC' + Math.round(val).toLocaleString('nl-NL');
+  }
+
   function applyBtwToPage() {
-    // Find all price elements and toggle their display
-    var selectors = '.m-price:not(.m-poa), .att-price, .featured-price';
+    var selectors = '.m-price:not(.m-poa), .att-price, .featured-price, .mow-price, .rippa-card-price';
     var priceEls  = document.querySelectorAll(selectors);
 
     priceEls.forEach(function (el) {
-      // Store original excl BTW value on first run
+      // On first run, store the original excl BTW values
       if (!el.dataset.priceExcl) {
-        // Extract numeric value from text
-        var text = el.textContent;
-        var raw  = text.replace(/[^\d.]/g, '');
-        // Handle dot thousands separator (Dutch format: 5.824)
-        // If the number has a dot followed by exactly 3 digits, it's thousands sep
-        var cleaned = raw.replace(/\.(?=\d{3}(?!\d))/g, '');
-        var val = parseFloat(cleaned);
-        if (!isNaN(val) && val > 0) {
-          el.dataset.priceExcl = val.toString();
+        // Find the OLD (strikethrough) price if present
+        var oldEl = el.querySelector('.m-price-old, .att-price-old, .gm-price-old, [style*="line-through"]');
+        var oldVal = 0;
+        if (oldEl) {
+          oldVal = parseDutchPrice(oldEl.textContent);
+          el.dataset.oldPriceExcl = oldVal.toString();
+          el.dataset.oldPriceHtml = oldEl.outerHTML;
         }
+
+        // Get the actual price — exclude the old price text
+        var clone = el.cloneNode(true);
+        var oldInClone = clone.querySelector('.m-price-old, .att-price-old, .gm-price-old, [style*="line-through"]');
+        if (oldInClone) oldInClone.remove();
+        var smallInClone = clone.querySelector('small');
+        if (smallInClone) smallInClone.remove();
+        var actualVal = parseDutchPrice(clone.textContent);
+        if (!isNaN(actualVal) && actualVal > 0) {
+          el.dataset.priceExcl = actualVal.toString();
+        }
+
+        // Remember if there was a small tag
+        var smallEl = el.querySelector('small');
+        el.dataset.hasSmall = smallEl ? '1' : '0';
       }
 
       var exclVal = parseFloat(el.dataset.priceExcl);
       if (isNaN(exclVal)) return;
 
-      // Find the small tag (suffix)
-      var smallEl   = el.querySelector('small');
-      var smallText = smallEl ? smallEl.textContent : '';
+      var oldPriceHtml = el.dataset.oldPriceHtml || '';
+      var oldPriceExcl = parseFloat(el.dataset.oldPriceExcl || '0');
+      var hasSmall = el.dataset.hasSmall === '1';
 
       if (btwMode === 'incl') {
         var inclVal = exclVal * (1 + BTW_RATE);
-        var formatted = '\u20AC' + Math.round(inclVal).toLocaleString('nl-NL');
-        el.innerHTML = formatted + (smallEl ? ' <small>incl. BTW</small>' : '');
+        var oldHtml = '';
+        if (oldPriceExcl > 0) {
+          var oldIncl = oldPriceExcl * (1 + BTW_RATE);
+          // Recreate the old price span with incl BTW value
+          oldHtml = oldPriceHtml.replace(/[\u20AC€][^<]*/g, formatDutchPrice(oldIncl)) + ' ';
+        }
+        el.innerHTML = oldHtml + formatDutchPrice(inclVal) + (hasSmall ? ' <small>incl. BTW</small>' : '');
       } else {
-        var formatted2 = '\u20AC' + exclVal.toLocaleString('nl-NL');
-        el.innerHTML = formatted2 + (smallEl ? ' <small>ex BTW</small>' : '');
+        // Restore original excl BTW display
+        var oldHtml2 = oldPriceHtml ? oldPriceHtml + ' ' : '';
+        el.innerHTML = oldHtml2 + formatDutchPrice(exclVal) + (hasSmall ? ' <small>ex BTW</small>' : '');
       }
     });
   }

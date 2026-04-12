@@ -138,6 +138,7 @@
 
 <div id="site-footer"></div>
 <script src="components.js"></script>
+<script src="products.js"></script>
 <script src="main.js"></script>
 <script src="winkel.js"></script>
 <script>
@@ -271,11 +272,60 @@ document.getElementById('coCreateAccount').addEventListener('change', function()
   document.getElementById('coPasswordField').style.display = this.checked ? 'block' : 'none';
 });
 
+// Handle ?product= parameter — add product to cart automatically
+var urlParams = new URLSearchParams(window.location.search);
+var productParam = urlParams.get('product');
+if (productParam && cart.length === 0) {
+  // Try to find in local products.js data first, then API
+  var found = false;
+  // Check MACHINES
+  if (typeof MACHINES !== 'undefined') {
+    MACHINES.forEach(function(m) {
+      if (m.id === productParam && !found) {
+        cart.push({ productId: m.id, name: m.name + ' ' + m.subtitle, price: m.price * 100, quantity: 1, imageUrl: m.img });
+        found = true;
+      }
+    });
+  }
+  // Check GRASMAAIERS
+  if (!found && typeof GRASMAAIERS !== 'undefined') {
+    GRASMAAIERS.forEach(function(g) {
+      if (g.id === productParam && !found) {
+        cart.push({ productId: g.id, name: g.name, price: g.price * 100, quantity: 1, imageUrl: g.img });
+        found = true;
+      }
+    });
+  }
+  // Check RIPPA
+  if (!found && typeof RIPPA !== 'undefined') {
+    RIPPA.forEach(function(r) {
+      if (r.id === productParam && !found) {
+        cart.push({ productId: r.id, name: 'Rippa ' + r.model, price: r.price * 100, quantity: 1, imageUrl: r.img });
+        found = true;
+      }
+    });
+  }
+  if (found) {
+    try { localStorage.setItem('ic_cart', JSON.stringify(cart)); } catch(e) {}
+  }
+  // If not found locally, fetch from API
+  if (!found) {
+    fetch(API + '/api/products/' + encodeURIComponent(productParam))
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(p) {
+        if (p) {
+          cart.push({ productId: p.id, name: p.name, price: p.priceExBtw, quantity: 1, imageUrl: p.imageUrl || '' });
+          try { localStorage.setItem('ic_cart', JSON.stringify(cart)); } catch(e) {}
+          renderSummary();
+        }
+      }).catch(function() {});
+  }
+}
+
 // Render on load
 renderSummary();
 
 // Check for success return from Stripe
-var urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get('success') === 'true' || urlParams.get('order')) {
   document.getElementById('checkoutGrid').style.display = 'none';
   document.getElementById('checkoutHeader').style.display = 'none';
