@@ -311,7 +311,7 @@
       '#ic-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}',
 
       /* ---- Delivery Banner ---- */
-      '.ic-delivery-banner{background:linear-gradient(135deg,#1B6B9A 0%,#1a5a87 100%);color:#fff;',
+      '.ic-delivery-banner{background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%);color:#c8a44e;',
       'padding:14px 20px;text-align:center;font-family:Inter,sans-serif;font-size:14px;',
       'display:flex;align-items:center;justify-content:center;gap:10px;margin-top:0}',
       '.ic-delivery-banner svg{flex-shrink:0;opacity:.9}',

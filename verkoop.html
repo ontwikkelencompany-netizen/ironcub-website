@@ -32,6 +32,7 @@
         <h2 class="section-title-left">LOADERS</h2>
         <div class="machines-header-right">
           <span id="machineCount" class="machine-count">8 machines</span>
+          <select class="sort-select" id="loaderSort" onchange="sortProducts('loaders',this.value)"><option value="popular">Populariteit</option><option value="price-asc">Prijs laag → hoog</option><option value="price-desc">Prijs hoog → laag</option><option value="name-asc">Naam A → Z</option><option value="power-desc">Vermogen hoog → laag</option></select>
           <button class="btn btn-outline-dark btn-sm" id="filterToggle">Filters</button>
         </div>
       </div>
@@ -50,6 +51,7 @@
         </div>
         <div class="machines-header-right">
           <span id="mowCount" class="machine-count">8 grasmaaiers</span>
+          <select class="sort-select" id="mowSort" onchange="sortProducts('grasmaaiers',this.value)"><option value="popular">Populariteit</option><option value="price-asc">Prijs laag → hoog</option><option value="price-desc">Prijs hoog → laag</option><option value="name-asc">Naam A → Z</option><option value="power-desc">Vermogen hoog → laag</option></select>
           <button class="btn btn-outline-dark btn-sm" id="mowFilterToggle">Filters</button>
         </div>
       </div>
@@ -68,6 +70,7 @@
         </div>
         <div class="machines-header-right">
           <span id="merchCount" class="machine-count" style="color:rgba(255,255,255,.5)">8 producten</span>
+          <select class="sort-select" id="merchSort" onchange="sortProducts('merch',this.value)"><option value="popular">Populariteit</option><option value="price-asc">Prijs laag → hoog</option><option value="price-desc">Prijs hoog → laag</option><option value="name-asc">Naam A → Z</option></select>
         </div>
       </div>
       <div class="shop-layout">
@@ -111,6 +114,7 @@
       <div class="rippa-header" style="display:flex;align-items:center;gap:16px;margin-bottom:24px">
         <span style="display:inline-flex;align-items:center;background:rgba(255,255,255,.92);border-radius:8px;padding:6px 14px"><img src="assets/rippa-logo.png" alt="Rippa" style="height:28px;width:auto"></span>
         <div><h2 style="color:#fff;font-family:var(--font-head);font-size:1.6rem;margin:0">RIPPA MINIGRAVERS</h2><p style="color:rgba(255,255,255,.5);font-size:13px;margin:4px 0 0">Official Rippa Dealer Europe &mdash; 6 modellen van 1,0 tot 3,4 ton &mdash; alle Kubota motoren</p></div>
+        <select class="sort-select" id="rippaSort" onchange="sortProducts('rippa',this.value)" style="color:#fff;background:#2a2a2a;border-color:#555"><option value="popular">Populariteit</option><option value="price-asc">Prijs laag → hoog</option><option value="price-desc">Prijs hoog → laag</option><option value="name-asc">Naam A → Z</option><option value="power-desc">Vermogen hoog → laag</option></select>
       </div>
       <div class="shop-layout">
         <aside class="filter-sidebar" id="rippaFilterPanel">
@@ -551,6 +555,142 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
+
+/* =====================================================================
+   SORTING — sortProducts(group, sortKey)
+   ===================================================================== */
+function sortProducts(group, sortKey) {
+  var gridId, dataArr, renderFn;
+
+  if (group === 'loaders') {
+    gridId = 'machinesGrid';
+    dataArr = typeof MACHINES !== 'undefined' ? MACHINES.slice() : [];
+    renderFn = typeof renderMachineCard === 'function' ? renderMachineCard : null;
+  } else if (group === 'grasmaaiers') {
+    gridId = 'mowGrid';
+    dataArr = typeof GRASMAAIERS !== 'undefined' ? GRASMAAIERS.slice() : [];
+    renderFn = null; // uses inline renderGrasmaaierCard
+  } else if (group === 'merch') {
+    gridId = 'merchGrid';
+    dataArr = typeof MERCH !== 'undefined' ? MERCH.slice() : [];
+    renderFn = null;
+  } else if (group === 'rippa') {
+    gridId = 'rippaGrid';
+    dataArr = typeof RIPPA !== 'undefined' ? RIPPA.slice() : [];
+    renderFn = null;
+  } else {
+    return;
+  }
+
+  // Sort the data
+  function getPrice(item) {
+    return item.price || item.price_incl || item.priceExcl || 0;
+  }
+  function getPower(item) {
+    return item.powerKw || item.hp || item.engine_cc || 0;
+  }
+
+  switch (sortKey) {
+    case 'price-asc':
+      dataArr.sort(function(a, b) { return getPrice(a) - getPrice(b); });
+      break;
+    case 'price-desc':
+      dataArr.sort(function(a, b) { return getPrice(b) - getPrice(a); });
+      break;
+    case 'name-asc':
+      dataArr.sort(function(a, b) { return (a.name || a.model || '').localeCompare(b.name || b.model || ''); });
+      break;
+    case 'power-desc':
+      dataArr.sort(function(a, b) { return getPower(b) - getPower(a); });
+      break;
+    default: // popular — keep original order
+      break;
+  }
+
+  // Re-render the grid
+  var grid = document.getElementById(gridId);
+  if (!grid) return;
+
+  if (group === 'loaders' && renderFn) {
+    grid.innerHTML = dataArr.map(renderFn).join('');
+    if (typeof initFilters === 'function') initFilters();
+  } else if (group === 'grasmaaiers') {
+    // Re-fire render using sorted data
+    grid.innerHTML = dataArr.map(function(m) {
+      return document.querySelector('#panel-grasmaaiers') ? renderGrasmaaierCardSort(m) : '';
+    }).join('');
+  } else if (group === 'merch') {
+    grid.innerHTML = dataArr.map(function(m) {
+      return renderMerchCardSort(m);
+    }).join('');
+  } else if (group === 'rippa') {
+    grid.innerHTML = dataArr.map(function(r) {
+      return renderRippaCardSort(r);
+    }).join('');
+  }
+
+  // Re-apply BTW if needed + wishlist buttons
+  setTimeout(function() {
+    if (typeof applyBtwToPage === 'function') applyBtwToPage();
+    if (typeof upgradeShopButtons === 'function') upgradeShopButtons();
+  }, 200);
+}
+
+// Helper renderers for sorting (simplified versions that match existing card structure)
+function renderGrasmaaierCardSort(m) {
+  var formatPrice = function(v) { return new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',minimumFractionDigits:0,maximumFractionDigits:0}).format(v); };
+  return '<div class="mow-card" id="' + m.id + '">' +
+    '<div class="mow-img"><img src="' + m.img + '" alt="' + m.name + '" loading="lazy"></div>' +
+    '<div class="mow-body">' +
+      '<h3 class="mow-name">' + m.name + '</h3>' +
+      '<span class="mow-subtitle">' + m.subtitle + '</span>' +
+      '<div class="mow-specs">' +
+        '<div class="mow-spec-row"><span class="mow-spec-label">Motor</span><span class="mow-spec-val">' + m.engine_cc + 'cc &mdash; ' + m.hp + ' HP</span></div>' +
+        '<div class="mow-spec-row"><span class="mow-spec-label">Maaibreedte</span><span class="mow-spec-val">' + m.mowing_width_cm + ' cm</span></div>' +
+        '<div class="mow-spec-row"><span class="mow-spec-label">Aandrijving</span><span class="mow-spec-val">' + m.drive + '</span></div>' +
+        '<div class="mow-spec-row"><span class="mow-spec-label">Klimbereik</span><span class="mow-spec-val">' + m.climb_angle + '&deg;</span></div>' +
+      '</div>' +
+      '<p class="mow-price">' + (m.originalPrice ? '<span class="gm-price-old">' + formatPrice(m.originalPrice) + '</span> ' : '') + formatPrice(m.price) + ' <small>ex BTW</small></p>' +
+      '<p class="mow-desc">' + m.desc + '</p>' +
+      '<div class="mow-actions">' +
+        '<a href="checkout.html?product=' + m.id + '" class="btn btn-cta btn-sm">Kopen</a>' +
+        '<a href="lease.html" class="btn btn-outline-dark btn-sm">Leasen</a>' +
+        '<a href="/grasmaaiers/' + m.id + '.html" class="btn btn-outline-dark btn-sm">Meer info</a>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+function renderMerchCardSort(m) {
+  var fmt = function(v) { return new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(v / 100); };
+  return '<div class="merch-card">' +
+    '<div class="merch-img"><img src="' + m.img + '" alt="' + m.name + '" loading="lazy"></div>' +
+    '<div class="merch-body">' +
+      '<h4>' + m.name + '</h4>' +
+      '<p class="merch-sub">' + m.subtitle + '</p>' +
+      '<p class="merch-price">' + (m.originalPrice ? '<span style="text-decoration:line-through;color:#c0392b;font-size:.85rem;margin-right:6px">' + fmt(m.originalPrice) + '</span>' : '') + fmt(m.price_incl) + ' <small>incl. BTW</small></p>' +
+      '<p class="merch-desc">' + m.desc + '</p>' +
+      (m.sizes ? '<p class="merch-sizes">Maten: ' + m.sizes + '</p>' : '') +
+      '<a href="checkout.html?product=' + m.id + '" class="btn btn-cta btn-sm">Bestellen</a>' +
+    '</div>' +
+  '</div>';
+}
+
+function renderRippaCardSort(r) {
+  var fmt = function(v) { return new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',minimumFractionDigits:0,maximumFractionDigits:0}).format(v); };
+  return '<div class="rippa-card">' +
+    '<div class="rippa-card-img"><img src="' + r.img + '" alt="' + (r.name || r.model) + '" loading="lazy"></div>' +
+    '<div class="rippa-card-body">' +
+      '<h3>' + (r.name || r.model) + '</h3>' +
+      '<span class="rippa-card-sub">' + (r.subtitle || '') + '</span>' +
+      '<p class="rippa-card-price">' + (r.originalPrice ? '<span style="text-decoration:line-through;color:#c0392b;margin-right:6px">' + fmt(r.originalPrice) + '</span>' : '') + fmt(r.price) + ' <small>ex BTW</small></p>' +
+      '<div class="rippa-card-actions">' +
+        '<a href="/rippa/' + r.id + '.html" class="btn btn-cta btn-sm">Bekijk</a>' +
+        '<a href="checkout.html?product=' + r.id + '" class="btn btn-outline-dark btn-sm">Kopen</a>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
 </script>
 <script src="winkel.js"></script>
 </body></html>
