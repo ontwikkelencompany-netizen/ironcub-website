@@ -1,14 +1,284 @@
-<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Verhuur | The IronCub Company</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg"><link rel="stylesheet" href="styles.css"></head><body>
+<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Verhuur — Machines huren | The IronCub Company</title><meta name="description" content="Huur een skid steer loader bij The IronCub Company. Flexibel, inclusief instructie en support. Reserveer direct."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg"><link rel="stylesheet" href="styles.css">
+<style>
+/* Verhuur V2 */
+.v-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:48px 0}
+.v-step{text-align:center;position:relative}
+.v-step-num{width:48px;height:48px;border-radius:50%;background:var(--gold);color:#fff;font-family:var(--font-head);font-weight:900;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.v-step h4{font-family:var(--font-head);font-size:1rem;font-weight:800;margin-bottom:4px}
+.v-step p{font-size:.85rem;color:var(--gray-600);line-height:1.4}
+.v-step::after{content:'';position:absolute;top:24px;left:calc(50% + 32px);width:calc(100% - 64px);height:2px;background:var(--gray-200)}
+.v-step:last-child::after{display:none}
+.v-machines{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin:32px 0}
+.v-machine{border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;transition:all .2s}
+.v-machine:hover{border-color:var(--gold);box-shadow:var(--shadow)}
+.v-machine-img{height:180px;overflow:hidden;background:var(--gray-100)}
+.v-machine-img img{width:100%;height:100%;object-fit:cover}
+.v-machine-body{padding:16px}
+.v-machine-body h3{font-family:var(--font-head);font-size:1.1rem;font-weight:800;margin-bottom:4px}
+.v-machine-body p{font-size:.85rem;color:var(--gray-600);margin-bottom:12px}
+.v-machine-specs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.v-machine-specs span{font-size:.75rem;background:var(--gray-100);padding:3px 8px;border-radius:4px;color:var(--gray-600)}
+.v-reserve{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;margin:48px 0;align-items:start}
+.v-reserve-form{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:28px}
+.v-reserve-form h2{font-family:var(--font-head);font-size:1.5rem;font-weight:900;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.v-reserve-form .form-group{margin-bottom:14px}
+.v-reserve-form label{display:block;font-family:var(--font-head);font-size:.82rem;font-weight:700;margin-bottom:4px;color:var(--dark)}
+.v-reserve-form input,.v-reserve-form select,.v-reserve-form textarea{width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:var(--radius);font-family:var(--font-body);font-size:.9rem}
+.v-reserve-form input:focus,.v-reserve-form select:focus{outline:none;border-color:var(--gold)}
+.v-included{background:var(--dark);color:#fff;border-radius:var(--radius);padding:28px}
+.v-included h3{font-family:var(--font-head);font-size:1.2rem;font-weight:800;color:var(--gold);margin-bottom:16px}
+.v-included-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.v-included-icon{width:24px;height:24px;border-radius:50%;background:rgba(232,131,26,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.v-included-item p{font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.4}
+.v-included-item strong{color:#fff}
+.v-sectors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}
+.v-sector{padding:20px;border:1px solid var(--gray-200);border-radius:var(--radius);text-align:center;transition:all .2s}
+.v-sector:hover{border-color:var(--gold);background:rgba(232,131,26,.02)}
+.v-sector-icon{font-size:2rem;margin-bottom:8px}
+.v-sector h4{font-family:var(--font-head);font-weight:800;font-size:.95rem;margin-bottom:4px}
+.v-sector p{font-size:.8rem;color:var(--gray-500)}
+.v-bear-cta{display:flex;align-items:center;gap:24px;background:var(--dark);border-radius:var(--radius);padding:32px;margin:48px 0}
+.v-bear-cta img{height:120px;flex-shrink:0}
+.v-bear-cta-text h3{font-family:var(--font-head);font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:6px}
+.v-bear-cta-text p{color:rgba(255,255,255,.7);font-size:.9rem;margin-bottom:16px}
+.v-delivery{display:flex;gap:16px;margin:32px 0}
+.v-delivery-item{flex:1;padding:16px;border:1px solid var(--gray-200);border-radius:var(--radius);text-align:center}
+.v-delivery-item strong{font-family:var(--font-head);font-weight:800;display:block;margin-bottom:4px}
+.v-delivery-item p{font-size:.82rem;color:var(--gray-500)}
+.v-success{display:none;text-align:center;padding:48px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius)}
+.v-success img{height:80px;margin-bottom:12px}
+.v-success h3{font-family:var(--font-head);font-size:1.4rem;font-weight:900}
+@media(max-width:768px){.v-steps{grid-template-columns:1fr 1fr;gap:16px}.v-step::after{display:none}.v-reserve{grid-template-columns:1fr}.v-sectors{grid-template-columns:1fr}.v-bear-cta{flex-direction:column;text-align:center}.v-delivery{flex-direction:column}}
+</style>
+</head><body>
 <div id="announce-bar"></div><div id="site-header"></div>
-<section class="page-hero"><div class="page-hero-bg"><img src="assets/hero-verhuur-real.jpg" alt="IronCub Machine in Showroom" style="object-position:center 70%"></div><div class="page-hero-overlay"></div><div class="container page-hero-content"><h1>VERHUUR</h1><p>Flexibel een machine huren. Per dag, week of maand.</p></div></section>
+
+<!-- HERO -->
+<section class="page-hero"><div class="page-hero-bg"><img src="assets/hero-verhuur-real.jpg" alt="IronCub Machine in actie" style="object-position:center 70%"></div><div class="page-hero-overlay"></div><div class="container page-hero-content"><h1>VERHUUR</h1><p>Flexibel een machine huren. Wij leveren, instrueren en ondersteunen.</p></div></section>
+
 <section class="content-section"><div class="container">
-<div class="service-grid">
-<div class="service-card"><div class="service-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Daghuur</h3><p>Ideaal voor korte klussen. Ophalen en terugbrengen op dezelfde dag.</p><a href="contact.html" class="btn btn-outline-dark btn-sm">Tarief opvragen</a></div>
-<div class="service-card"><div class="service-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h3>Weekhuur</h3><p>Scherper dagtarief. Inclusief transport regio Zuid-Holland.</p><a href="contact.html" class="btn btn-outline-dark btn-sm">Tarief opvragen</a></div>
-<div class="service-card"><div class="service-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.2 7C16.2 5.2 14.2 4 12 4c-3.3 0-6 2.7-6 6s2.7 6 6 6c2.2 0 4.2-1.2 5.2-3M7 10h8M7 14h8"/></svg></div><h3>Maandhuur</h3><p>Laagste dagtarief. Maandelijkse facturatie.</p><a href="contact.html" class="btn btn-outline-dark btn-sm">Tarief opvragen</a></div>
+
+<!-- ZO WERKT HUREN -->
+<h2 style="font-family:var(--font-head);font-size:1.8rem;font-weight:900;text-align:center;margin-bottom:8px">ZO WERKT HUREN BIJ IRONCUB</h2>
+<p style="text-align:center;color:var(--gray-500);margin-bottom:0">Van reservering tot aan de slag — in vier stappen</p>
+
+<div class="v-steps">
+  <div class="v-step">
+    <div class="v-step-num">1</div>
+    <h4>Kies uw machine</h4>
+    <p>Selecteer de juiste loader voor uw klus. Twijfelt u? Wij adviseren graag.</p>
+  </div>
+  <div class="v-step">
+    <div class="v-step-num">2</div>
+    <h4>Reserveer uw periode</h4>
+    <p>Kies uw start- en einddatum. Wij bevestigen de beschikbaarheid binnen 24 uur.</p>
+  </div>
+  <div class="v-step">
+    <div class="v-step-num">3</div>
+    <h4>Wij leveren &amp; instrueren</h4>
+    <p>Machine wordt afgeleverd op locatie. Persoonlijke instructie van onze specialist.</p>
+  </div>
+  <div class="v-step">
+    <div class="v-step-num">4</div>
+    <h4>Aan de slag!</h4>
+    <p>Tijdens de huur staan wij klaar voor telefonische support en service.</p>
+  </div>
 </div>
-<div class="info-block"><h3>Wat is inbegrepen?</h3><div class="check-list"><div class="check-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Persoonlijke instructie bij aflevering</span></div><div class="check-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Telefonische support</span></div><div class="check-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Verzekering (WA)</span></div><div class="check-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Aanbouwdelen als bijhuur</span></div></div></div>
-<div class="cta-block"><img src="assets/hero-verhuur.jpg" alt="IronCub Beer overhandigt sleutels" loading="lazy" class="cta-block-img"><div class="cta-block-text"><h3>Beschikbare machines</h3><p>VTH 360, VTH 480W (wielen &amp; rupsbanden). Bel voor actuele beschikbaarheid.</p><a href="contact.html" class="btn btn-cta">Beschikbaarheid checken</a></div></div>
+
+<!-- BESCHIKBARE MACHINES -->
+<h2 style="font-family:var(--font-head);font-size:1.5rem;font-weight:900;margin:48px 0 8px">BESCHIKBARE MACHINES</h2>
+<p style="color:var(--gray-500);margin-bottom:16px">Alle machines zijn inclusief instructie, WA-verzekering en telefonische support.</p>
+
+<div class="v-machines">
+  <div class="v-machine">
+    <div class="v-machine-img"><img src="assets/vth-360.jpg" alt="VTH 360" loading="lazy"></div>
+    <div class="v-machine-body">
+      <h3>VTH 360</h3>
+      <p>Meest compacte loader. Zero-emission, ideaal voor binnenshuis en krappe ruimtes.</p>
+      <div class="v-machine-specs"><span>Elektrisch</span><span>5 kW</span><span>620 kg</span><span>940 mm breed</span></div>
+      <a href="#reserveer" class="btn btn-cta btn-sm" style="width:100%;text-align:center">Reserveren</a>
+    </div>
+  </div>
+  <div class="v-machine">
+    <div class="v-machine-img"><img src="assets/vth-480w.jpg" alt="VTH 480W" loading="lazy"></div>
+    <div class="v-machine-body">
+      <h3>VTH 480W (wielen)</h3>
+      <p>Allrounder op wielen. Krachtig en veelzijdig voor uiteenlopende werkzaamheden.</p>
+      <div class="v-machine-specs"><span>Elektrisch</span><span>5 kW</span><span>680 kg</span><span>1050 mm breed</span></div>
+      <a href="#reserveer" class="btn btn-cta btn-sm" style="width:100%;text-align:center">Reserveren</a>
+    </div>
+  </div>
+  <div class="v-machine">
+    <div class="v-machine-img"><img src="assets/vth-480w-crawler.jpg" alt="VTH 480W Rupsbanden" loading="lazy"></div>
+    <div class="v-machine-body">
+      <h3>VTH 480W (rupsbanden)</h3>
+      <p>Maximale tractie op elk terrein. Perfect voor zachte of ongelijke ondergronden.</p>
+      <div class="v-machine-specs"><span>Elektrisch</span><span>5 kW</span><span>750 kg</span><span>Rupsbanden</span></div>
+      <a href="#reserveer" class="btn btn-cta btn-sm" style="width:100%;text-align:center">Reserveren</a>
+    </div>
+  </div>
+</div>
+
+<!-- SECTOREN -->
+<h2 style="font-family:var(--font-head);font-size:1.5rem;font-weight:900;margin:48px 0 8px">VOOR ELKE SECTOR</h2>
+<div class="v-sectors">
+  <div class="v-sector"><div class="v-sector-icon">&#127793;</div><h4>Hoveniers</h4><p>Tuinaanleg, grondwerk, beplanting</p></div>
+  <div class="v-sector"><div class="v-sector-icon">&#127959;</div><h4>Bouw</h4><p>Funderingen, terreinwerk, sloop</p></div>
+  <div class="v-sector"><div class="v-sector-icon">&#128004;</div><h4>Agrarisch</h4><p>Stallen, erf, voeropslagen</p></div>
+  <div class="v-sector"><div class="v-sector-icon">&#127968;</div><h4>Particulier</h4><p>Tuin, oprit, verbouwing</p></div>
+  <div class="v-sector"><div class="v-sector-icon">&#128663;</div><h4>Evenementen</h4><p>Opbouw, afbraak, terreinbeheer</p></div>
+  <div class="v-sector"><div class="v-sector-icon">&#9971;</div><h4>Sport &amp; recreatie</h4><p>Golfbanen, manege, parken</p></div>
+</div>
+
+<!-- RESERVERINGSFORMULIER -->
+<div id="reserveer"></div>
+<div class="v-reserve">
+  <div class="v-reserve-form" id="reserveForm">
+    <h2><img src="assets/bear-afspraak.png" alt="" style="height:48px"> Machine reserveren</h2>
+
+    <div class="form-row">
+      <div class="form-group"><label>Machine *</label>
+        <select id="vMachine" required>
+          <option value="">Selecteer een machine</option>
+          <option value="VTH 360">VTH 360 — Mini Skid Steer (elektrisch)</option>
+          <option value="VTH 480W wielen">VTH 480W — Skid Steer (wielen)</option>
+          <option value="VTH 480W rupsbanden">VTH 480W — Skid Steer (rupsbanden)</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Aanbouwdeel (optioneel)</label>
+        <select id="vAanbouw">
+          <option value="">Alleen de machine</option>
+          <option value="Graafarm">Graafarm</option>
+          <option value="Veegborstel">Veegborstel</option>
+          <option value="Breekhamer">Breekhamer</option>
+          <option value="Pallet forklift">Pallet forklift</option>
+          <option value="Bulldozer">Bulldozer</option>
+          <option value="Sneeuwblazer">Sneeuwblazer</option>
+          <option value="Anders">Anders (vermeld bij opmerkingen)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group"><label>Startdatum *</label><input type="date" id="vStart" required></div>
+      <div class="form-group"><label>Einddatum *</label><input type="date" id="vEnd" required></div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group"><label>Naam *</label><input type="text" id="vName" required placeholder="Uw volledige naam"></div>
+      <div class="form-group"><label>Bedrijf</label><input type="text" id="vCompany" placeholder="Optioneel"></div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group"><label>E-mail *</label><input type="email" id="vEmail" required placeholder="uw@email.nl"></div>
+      <div class="form-group"><label>Telefoon *</label><input type="tel" id="vPhone" required placeholder="+31 6 ..."></div>
+    </div>
+
+    <div class="form-group"><label>Locatie van de klus</label><input type="text" id="vLocation" placeholder="Adres of plaats waar de machine nodig is"></div>
+
+    <div class="form-group"><label>Opmerkingen</label><textarea id="vNotes" rows="2" placeholder="Beschrijf kort wat u wilt doen..."></textarea></div>
+
+    <button class="btn btn-cta btn-full" onclick="handleReservation()">Reservering aanvragen</button>
+    <p style="font-size:.78rem;color:var(--gray-500);text-align:center;margin-top:6px">Wij bevestigen de beschikbaarheid en het tarief binnen 24 uur.</p>
+  </div>
+
+  <div>
+    <div class="v-included">
+      <h3>Altijd inbegrepen</h3>
+      <div class="v-included-item"><div class="v-included-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8831A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><p><strong>Persoonlijke instructie</strong> bij aflevering door onze specialist</p></div>
+      <div class="v-included-item"><div class="v-included-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8831A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><p><strong>Telefonische support</strong> tijdens de gehele huurperiode</p></div>
+      <div class="v-included-item"><div class="v-included-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8831A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><p><strong>WA-verzekering</strong> inbegrepen</p></div>
+      <div class="v-included-item"><div class="v-included-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8831A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><p><strong>Aanbouwdelen</strong> als bijhuur beschikbaar</p></div>
+      <div class="v-included-item"><div class="v-included-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8831A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div><p><strong>Transport</strong> bezorging en ophalen op locatie (regio Zuid-Holland)</p></div>
+    </div>
+
+    <div class="v-delivery" style="margin-top:16px">
+      <div class="v-delivery-item"><strong>Afhalen</strong><p>Gratis ophalen in Middelharnis</p></div>
+      <div class="v-delivery-item"><strong>Bezorgen</strong><p>Wij brengen en halen op locatie</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="v-success" id="reserveSuccess">
+  <img src="assets/bear-afspraak.png" alt="">
+  <h3>Reservering ontvangen!</h3>
+  <p style="color:var(--gray-500);margin-top:8px">Wij nemen binnen 24 uur contact met u op om de beschikbaarheid en het tarief te bevestigen.</p>
+  <a href="index.html" class="btn btn-outline-dark" style="margin-top:16px">Terug naar home</a>
+</div>
+
+<!-- BEAR CTA -->
+<div class="v-bear-cta">
+  <img src="assets/bear-afspraak.png" alt="IronCub Beer">
+  <div class="v-bear-cta-text">
+    <h3>Niet zeker welke machine u nodig heeft?</h3>
+    <p>Onze specialist komt graag langs op locatie om samen te kijken welke machine het beste past bij uw klus. Vrijblijvend en kosteloos.</p>
+    <a href="afspraak.html" class="btn btn-cta">Projectbezoek aanvragen</a>
+  </div>
+</div>
+
 </div></section>
-<div id="site-footer"></div><script src="components.js"></script><script src="winkel.js"></script>
+
+<div id="site-footer"></div>
+<script src="components.js"></script>
+<script src="main.js"></script>
+<script src="winkel.js"></script>
+<script>
+function handleReservation() {
+  var machine = document.getElementById('vMachine').value;
+  var start = document.getElementById('vStart').value;
+  var end = document.getElementById('vEnd').value;
+  var name = document.getElementById('vName').value;
+  var email = document.getElementById('vEmail').value;
+  var phone = document.getElementById('vPhone').value;
+
+  if (!machine || !start || !end || !name || !email || !phone) {
+    alert('Vul alle verplichte velden in');
+    return;
+  }
+
+  // Collect all data
+  var data = {
+    machine: machine,
+    aanbouwdeel: document.getElementById('vAanbouw').value,
+    startdatum: start,
+    einddatum: end,
+    naam: name,
+    bedrijf: document.getElementById('vCompany').value,
+    email: email,
+    telefoon: phone,
+    locatie: document.getElementById('vLocation').value,
+    opmerkingen: document.getElementById('vNotes').value
+  };
+
+  console.log('Reservering:', data);
+
+  // Show success
+  document.getElementById('reserveForm').style.display = 'none';
+  document.getElementById('reserveSuccess').style.display = 'block';
+}
+
+// Auto-select machine when clicking "Reserveren" on a card
+document.querySelectorAll('.v-machine .btn-cta').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var machineName = this.closest('.v-machine').querySelector('h3').textContent;
+    var select = document.getElementById('vMachine');
+    for (var i = 0; i < select.options.length; i++) {
+      if (select.options[i].text.indexOf(machineName.split(' (')[0]) >= 0) {
+        select.selectedIndex = i;
+        break;
+      }
+    }
+    document.getElementById('reserveer').scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// Set min date to today
+var today = new Date().toISOString().split('T')[0];
+document.getElementById('vStart').setAttribute('min', today);
+document.getElementById('vEnd').setAttribute('min', today);
+document.getElementById('vStart').addEventListener('change', function() {
+  document.getElementById('vEnd').setAttribute('min', this.value);
+});
+</script>
 </body></html>
