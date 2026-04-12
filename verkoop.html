@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '<div class="mow-actions">' +
         '<a href="checkout.html?product=' + m.id + '" class="btn btn-cta btn-sm">Kopen</a>' +
         '<a href="lease.html" class="btn btn-outline-dark btn-sm">Leasen</a>' +
-        '<a href="afspraak.html?onderwerp=grasmaaier-' + m.id + '" class="btn btn-outline-dark btn-sm">Meer info</a>' +
+        '<a href="/grasmaaiers/' + m.id + '.html" class="btn btn-outline-dark btn-sm">Meer info</a>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '</table>' +
         '<p class="rippa-card-desc">' + r.desc + '</p>' +
         '<div class="rippa-card-footer">' + (r.poa ? '<span class="rippa-card-price">Prijs op aanvraag</span>' : '<span class="rippa-card-price">' + (r.originalPrice ? '<span style="text-decoration:line-through;color:#e74c3c;font-weight:600;font-size:1em;margin-right:8px">' + fmtEur(r.originalPrice) + '</span>' : '') + fmtEur(r.price) + ' <small style="color:rgba(255,255,255,.4);font-weight:400">ex BTW</small></span>') + '<a href="checkout.html?product=' + r.id + '" class="btn btn-cta btn-sm">Kopen</a><a href="lease.html" class="btn btn-outline-dark btn-sm" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7)">Leasen</a></div>' +
-        '<a href="afspraak.html?onderwerp=Rippa+' + encodeURIComponent(r.model) + '" class="rippa-detail-link">Meer info aanvragen <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>' +
+        '<a href="/rippa/' + r.id + '.html" class="rippa-detail-link">Bekijk product <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>' +
         '</div></div>';
     }).join('');
   }

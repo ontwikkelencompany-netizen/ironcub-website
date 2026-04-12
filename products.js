@@ -2,7 +2,7 @@
 const MACHINES = [
   {
     id: "vth360",
-    detailUrl: "machines/vth360.html",
+    detailUrl: "/machines/vth360.html",
     name: "VTH 360",
     subtitle: "Mini Skid Steer Loader",
     price: 5824, originalPrice: 7165,
@@ -30,7 +30,7 @@ const MACHINES = [
   },
   {
     id: "vth480w",
-    detailUrl: "machines/vth480w.html",
+    detailUrl: "/machines/vth480w.html",
     name: "VTH 480W",
     subtitle: "Skid Steer Loader (wielen)",
     price: 7063, originalPrice: 8615,
@@ -58,7 +58,7 @@ const MACHINES = [
   },
   {
     id: "vth480wr",
-    detailUrl: "machines/vth480wr.html",
+    detailUrl: "/machines/vth480wr.html",
     name: "VTH 480W",
     subtitle: "Skid Steer Loader (rupsbanden)",
     price: 7063, originalPrice: 8900,
@@ -86,7 +86,7 @@ const MACHINES = [
   },
   {
     id: "vth480wd",
-    detailUrl: "machines/vth480wd.html",
+    detailUrl: "/machines/vth480wd.html",
     name: "VTH 480W KOOP",
     subtitle: "Diesel (wielen)",
     price: 8923, originalPrice: 11155,
@@ -114,7 +114,7 @@ const MACHINES = [
   },
   {
     id: "vth480k",
-    detailUrl: "machines/vth480k.html",
+    detailUrl: "/machines/vth480k.html",
     name: "VTH 480 Kubota",
     subtitle: "Diesel (rupsbanden)",
     price: 12595, originalPrice: 15745,
@@ -142,7 +142,7 @@ const MACHINES = [
   },
   {
     id: "vth140",
-    detailUrl: "machines/vth140.html",
+    detailUrl: "/machines/vth140.html",
     name: "VTH 140",
     subtitle: "LOADER (Loncin benzine)",
     price: 16971, originalPrice: 21045,
@@ -170,7 +170,7 @@ const MACHINES = [
   },
   {
     id: "vth200",
-    detailUrl: "machines/vth200.html",
+    detailUrl: "/machines/vth200.html",
     name: "VTH 200",
     subtitle: "LOADER (Kubota diesel)",
     price: 28606, originalPrice: 35185,
@@ -198,7 +198,7 @@ const MACHINES = [
   },
   {
     id: "htv1000",
-    detailUrl: "machines/htv1000.html",
+    detailUrl: "/machines/htv1000.html",
     name: "HTV 1000",
     subtitle: "Skid Steer Loader (Kubota)",
     price: 14185, originalPrice: 18440,
