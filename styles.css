@@ -1077,10 +1077,9 @@ ul{list-style:none}
 @media(max-width:600px){#rippaGrid{grid-template-columns:1fr}}
 
 /* ADVIESPRIJS / ACTIEPRIJS */
-.m-price-old{text-decoration:line-through;color:#999;font-weight:400;font-size:.85em;margin-right:6px}
-.gm-price-old{text-decoration:line-through;color:rgba(0,0,0,.35);font-weight:400;font-size:.85em;margin-right:4px}
-.att-price-old{text-decoration:line-through;color:#999;font-weight:400;font-size:.82em;margin-right:4px}
-.att-price-old{text-decoration:line-through;color:#999;font-weight:400;font-size:.82em;margin-right:4px;display:inline}
+.m-price-old{text-decoration:line-through;color:#c0392b;font-weight:600;font-size:1em;margin-right:8px}
+.gm-price-old{text-decoration:line-through;color:#c0392b;font-weight:600;font-size:1em;margin-right:8px}
+.att-price-old{text-decoration:line-through;color:#c0392b;font-weight:600;font-size:1em;margin-right:6px;display:inline}
 .rippa-detail-link{display:block;text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.9rem;letter-spacing:.03em;text-decoration:none;transition:color .2s}
 .rippa-detail-link:hover{color:#E8831A}
 .rippa-detail-link svg{vertical-align:middle;margin-left:4px;transition:transform .2s}
@@ -1092,7 +1091,7 @@ ul{list-style:none}
 .merch-size-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);padding:5px 12px;border-radius:4px;font-size:.78rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;cursor:pointer;transition:all .2s}
 .merch-size-btn:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4);color:#fff}
 .merch-size-btn.selected{background:#C5941A;border-color:#C5941A;color:#1a1a1a}
-.merch-orig{text-decoration:line-through;color:rgba(255,255,255,.35);font-weight:400;margin-right:4px}
+.merch-orig{text-decoration:line-through;color:#e74c3c;font-weight:600;font-size:1em;margin-right:8px}
 .mow-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 
 /* ======================================================================
