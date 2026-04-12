@@ -407,6 +407,7 @@ document.addEventListener('DOMContentLoaded', function () {
         addToCart(pid, name, price, img);
         if (typeof updateCartBadge === 'function') updateCartBadge();
         if (typeof showToast === 'function') showToast(name + ' toegevoegd aan winkelwagen');
+        if (typeof openCartPanel === 'function') setTimeout(function() { openCartPanel(); }, 300);
       }
     });
   });

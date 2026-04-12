@@ -1304,6 +1304,7 @@
   window.toggleWishlist = toggleWishlist;
   window.applyBtwToPage = applyBtwToPage;
   window.upgradeShopButtons = upgradeShopButtons;
+  window.openCartPanel = openCartPanel;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
