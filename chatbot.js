@@ -362,3 +362,121 @@
     init();
   });
 })();
+
+/* ================================================================
+   COOKIE CONSENT BANNER
+   ================================================================ */
+(function() {
+  var COOKIE_KEY = 'ic_cookie_consent';
+
+  function getCookie(name) {
+    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  }
+  function setCookie(name, val, days) {
+    var d = new Date(); d.setTime(d.getTime() + days * 86400000);
+    document.cookie = name + '=' + val + ';path=/;expires=' + d.toUTCString() + ';SameSite=Lax';
+  }
+
+  if (getCookie(COOKIE_KEY)) return; // Already consented
+
+  var translations = {
+    nl: {
+      text: 'We gebruiken cookies op onze site om uw gebruikerservaring te verbeteren, gepersonaliseerde inhoud aan te bieden en ons verkeer te analyseren.',
+      privacy: 'Privacybeleid',
+      prefs: 'Voorkeuren',
+      accept: 'Alles accepteren'
+    },
+    en: {
+      text: 'We use cookies on our site to improve your experience, offer personalized content and analyze our traffic.',
+      privacy: 'Privacy Policy',
+      prefs: 'Preferences',
+      accept: 'Accept all'
+    },
+    de: {
+      text: 'Wir verwenden Cookies, um Ihre Erfahrung zu verbessern, personalisierte Inhalte anzubieten und unseren Traffic zu analysieren.',
+      privacy: 'Datenschutz',
+      prefs: 'Einstellungen',
+      accept: 'Alle akzeptieren'
+    },
+    fr: {
+      text: 'Nous utilisons des cookies pour ameliorer votre experience, proposer du contenu personnalise et analyser notre trafic.',
+      privacy: 'Politique de confidentialite',
+      prefs: 'Preferences',
+      accept: 'Tout accepter'
+    },
+    pt: {
+      text: 'Usamos cookies para melhorar sua experiencia, oferecer conteudo personalizado e analisar nosso trafego.',
+      privacy: 'Politica de Privacidade',
+      prefs: 'Preferencias',
+      accept: 'Aceitar tudo'
+    }
+  };
+
+  function getLang() {
+    try { return localStorage.getItem('ic_lang') || 'nl'; } catch(e) { return 'nl'; }
+  }
+  function t(key) {
+    var lang = getLang();
+    return (translations[lang] && translations[lang][key]) || translations.nl[key] || key;
+  }
+
+  function showBanner() {
+    var banner = document.createElement('div');
+    banner.id = 'ic-cookie-banner';
+    banner.innerHTML =
+      '<div class="ic-cookie-inner">' +
+        '<div class="ic-cookie-text">' +
+          '<span>' + t('text') + ' </span>' +
+          '<a href="/privacyverklaring.html">' + t('privacy') + '</a>' +
+        '</div>' +
+        '<div class="ic-cookie-actions">' +
+          '<button class="ic-cookie-btn ic-cookie-prefs" id="icCookiePrefs">' + t('prefs') + '</button>' +
+          '<button class="ic-cookie-btn ic-cookie-accept" id="icCookieAccept">' + t('accept') + '</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(banner);
+
+    document.getElementById('icCookieAccept').addEventListener('click', function() {
+      setCookie(COOKIE_KEY, 'all', 365);
+      banner.classList.add('ic-cookie-hide');
+      setTimeout(function() { banner.remove(); }, 400);
+    });
+
+    document.getElementById('icCookiePrefs').addEventListener('click', function() {
+      setCookie(COOKIE_KEY, 'functional', 365);
+      banner.classList.add('ic-cookie-hide');
+      setTimeout(function() { banner.remove(); }, 400);
+    });
+
+    // Animate in
+    setTimeout(function() { banner.classList.add('ic-cookie-show'); }, 100);
+  }
+
+  function injectCookieStyles() {
+    var style = document.createElement('style');
+    style.textContent =
+      '#ic-cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:10000;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);font-family:"DM Sans",sans-serif}' +
+      '#ic-cookie-banner.ic-cookie-show{transform:translateY(0)}' +
+      '#ic-cookie-banner.ic-cookie-hide{transform:translateY(100%)}' +
+      '.ic-cookie-inner{background:#1a1a1a;border-top:3px solid #E8831A;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}' +
+      '.ic-cookie-text{color:#ccc;font-size:13px;line-height:1.5;flex:1;min-width:280px}' +
+      '.ic-cookie-text a{color:#E8831A;text-decoration:underline;font-weight:500}' +
+      '.ic-cookie-text a:hover{color:#fff}' +
+      '.ic-cookie-actions{display:flex;gap:10px;flex-shrink:0}' +
+      '.ic-cookie-btn{padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;font-family:"Barlow Condensed",sans-serif;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:all .2s;border:none}' +
+      '.ic-cookie-prefs{background:transparent;color:#ccc;border:1px solid #555}' +
+      '.ic-cookie-prefs:hover{border-color:#E8831A;color:#fff}' +
+      '.ic-cookie-accept{background:#E8831A;color:#fff}' +
+      '.ic-cookie-accept:hover{background:#d4740f}' +
+      '@media(max-width:600px){.ic-cookie-inner{flex-direction:column;text-align:center;padding:16px}.ic-cookie-actions{width:100%;justify-content:center}}';
+    document.head.appendChild(style);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { injectCookieStyles(); showBanner(); });
+  } else {
+    injectCookieStyles();
+    showBanner();
+  }
+})();
