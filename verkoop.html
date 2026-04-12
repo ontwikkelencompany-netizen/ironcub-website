@@ -110,7 +110,7 @@
     <div class="tab-panel rippa-panel" id="panel-rippa" role="tabpanel">
       <div class="rippa-header" style="display:flex;align-items:center;gap:16px;margin-bottom:24px">
         <span style="display:inline-flex;align-items:center;background:rgba(255,255,255,.92);border-radius:8px;padding:6px 14px"><img src="assets/rippa-logo.png" alt="Rippa" style="height:28px;width:auto"></span>
-        <div><h2 style="color:#fff;font-family:var(--font-head);font-size:1.6rem;margin:0">RIPPA MINIGRAVERS</h2><p style="color:rgba(255,255,255,.5);font-size:13px;margin:4px 0 0">Official Rippa Dealer Europe &mdash; 7 modellen van 0,75 tot 3,4 ton &mdash; prijs op aanvraag</p></div>
+        <div><h2 style="color:#fff;font-family:var(--font-head);font-size:1.6rem;margin:0">RIPPA MINIGRAVERS</h2><p style="color:rgba(255,255,255,.5);font-size:13px;margin:4px 0 0">Official Rippa Dealer Europe &mdash; 7 modellen van 0,75 tot 3,4 ton &mdash; alle Kubota motoren</p></div>
       </div>
       <div class="shop-layout">
         <aside class="filter-sidebar" id="rippaFilterPanel">
@@ -445,6 +445,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '</table>' +
         '<p class="rippa-card-desc">' + r.desc + '</p>' +
         '<div class="rippa-card-footer">' + (r.poa ? '<span class="rippa-card-price">Prijs op aanvraag</span>' : '<span class="rippa-card-price">' + (r.originalPrice ? '<span style="text-decoration:line-through;color:rgba(255,255,255,.35);font-weight:400;font-size:.85em;margin-right:6px">' + fmtEur(r.originalPrice) + '</span>' : '') + fmtEur(r.price) + ' <small style="color:rgba(255,255,255,.4);font-weight:400">ex BTW</small></span>') + '<a href="checkout.html?product=' + r.id + '" class="btn btn-cta btn-sm">Kopen</a><a href="lease.html" class="btn btn-outline-dark btn-sm" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7)">Leasen</a></div>' +
+        '<a href="afspraak.html?machine=' + r.model + '" class="rippa-detail-link">Bekijk dit product <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>' +
         '</div></div>';
     }).join('');
   }
