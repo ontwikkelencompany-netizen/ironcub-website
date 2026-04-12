@@ -203,10 +203,15 @@ document.addEventListener('DOMContentLoaded', function () {
           '<div class="mow-spec-row"><span class="mow-spec-label">Maaibreedte</span><span class="mow-spec-val">' + m.mowing_width_cm + ' cm</span></div>' +
           '<div class="mow-spec-row"><span class="mow-spec-label">Aandrijving</span><span class="mow-spec-val">' + m.drive + '</span></div>' +
           '<div class="mow-spec-row"><span class="mow-spec-label">Klimbereik</span><span class="mow-spec-val">' + m.climb_angle + '&deg;</span></div>' +
+          '<div class="mow-spec-row"><span class="mow-spec-label">Start</span><span class="mow-spec-val">' + m.start + '</span></div>' +
         '</div>' +
         '<p class="mow-price">' + (m.originalPrice ? '<span class="gm-price-old">' + formatPrice(m.originalPrice) + '</span> ' : '') + formatPrice(m.price) + ' <small>ex BTW</small></p>' +
         '<p class="mow-desc">' + m.desc + '</p>' +
-        '<a href="afspraak.html?onderwerp=grasmaaier-' + m.id + '" class="btn btn-cta btn-sm mow-btn">Offerte aanvragen</a>' +
+        '<div class="mow-actions">' +
+        '<a href="checkout.html?product=' + m.id + '" class="btn btn-cta btn-sm">Kopen</a>' +
+        '<a href="lease.html" class="btn btn-outline-dark btn-sm">Leasen</a>' +
+        '<a href="afspraak.html?onderwerp=grasmaaier-' + m.id + '" class="btn btn-outline-dark btn-sm">Meer info</a>' +
+        '</div>' +
       '</div>' +
     '</div>';
   }
