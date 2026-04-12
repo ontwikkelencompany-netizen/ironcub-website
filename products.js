@@ -627,14 +627,6 @@ const MERCH_FILTERS = {
    ===================================================================== */
 const RIPPA = [
   {
-    id: "rippa-r06", model: "R06 ECO", subtitle: "Micro Graafmachine 0,75t",
-    weight_kg: 747, weight_ton: "0,75t", engine: "Kubota Z482", engine_key: "z482", power_kw: 8.2, power_hp: 11,
-    dig_depth_mm: 1001, max_reach_mm: 2565, bucket_m3: 0.014, width_mm: 747,
-    img: "assets/rippa-r06.jpg?v=1775984976", poa: false, price: 3890, originalPrice: 4950,
-    specs: ["Kubota Z482", "2-cilinder", "CE/Stage V"],
-    desc: "Ultra-compact. Ideaal voor krappe toegang, tuinaanleg en leidingwerk. Slechts 747 mm breed."
-  },
-  {
     id: "rippa-r10", model: "R10 ECO", subtitle: "Mini Graafmachine 1,0t",
     weight_kg: 1115, weight_ton: "1,0t", engine: "Kubota Z482", engine_key: "z482", power_kw: 8.2, power_hp: 11,
     dig_depth_mm: 1833, max_reach_mm: 3233, bucket_m3: 0.014, width_mm: 912,
