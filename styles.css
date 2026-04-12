@@ -495,7 +495,7 @@ ul{list-style:none}
 @media(max-width:768px){.hero-sound-toggle{bottom:80px;right:16px;width:40px;height:40px}.hero-sound-toggle svg{width:20px;height:20px}}
 
 /* IRONCUB BEAR EASTER EGGS */
-.bear-peek-fixed{position:fixed;bottom:-10px;right:20px;z-index:50;width:120px;opacity:0;transform:translateY(60px);transition:all .6s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.bear-peek-fixed{position:fixed;bottom:-10px;left:20px;z-index:50;width:120px;opacity:0;transform:translateY(60px);transition:all .6s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
 .bear-peek-fixed.visible{opacity:1;transform:translateY(0);pointer-events:auto}
 .bear-peek-fixed img{width:100%;cursor:pointer;transition:transform .3s}
 .bear-peek-fixed:hover img{transform:scale(1.1) rotate(-5deg)}
@@ -506,7 +506,7 @@ ul{list-style:none}
 .bear-cta-img:hover{transform:scale(1.1) rotate(-5deg)}
 .bear-side-float{position:absolute;right:-30px;top:20px;width:140px;z-index:5;filter:drop-shadow(0 4px 16px rgba(0,0,0,.3));animation:bearBob 3s ease-in-out infinite}
 @keyframes bearBob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(3deg)}}
-@media(max-width:768px){.bear-peek-fixed{width:80px;right:10px}.bear-wallbreak-img{width:140px;right:-20px}.bear-cta-img{width:100px}.bear-side-float{display:none}}
+@media(max-width:768px){.bear-peek-fixed{width:80px;left:10px}.bear-wallbreak-img{width:140px;right:-20px}.bear-cta-img{width:100px}.bear-side-float{display:none}}
 
 /* BEAR SWING */
 .bear-swing-section{padding:0 0 40px;overflow:visible;position:relative;margin-top:-40px;box-shadow:0 -8px 30px rgba(0,0,0,.2)}
