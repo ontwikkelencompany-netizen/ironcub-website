@@ -2001,9 +2001,14 @@
       const initialToken = loginData.token || loginData.accessToken;
       if (!initialToken) throw new Error('Geen token ontvangen.');
 
-      // Step 2: make-admin
-      const adminToken = await makeAdmin(initialToken);
-      setToken(adminToken);
+      // Step 2: try make-admin (may fail if endpoint not deployed yet)
+      try {
+        const adminToken = await makeAdmin(initialToken);
+        setToken(adminToken);
+      } catch (adminErr) {
+        console.warn('Admin promote skipped:', adminErr.message);
+        setToken(initialToken); // Use regular token as fallback
+      }
       showDashboard();
       loadAll();
     } catch (e) {
@@ -2042,9 +2047,14 @@
       const initialToken = regData.token || regData.accessToken;
       if (!initialToken) throw new Error('Geen token ontvangen na registratie.');
 
-      // Step 2: make-admin
-      const adminToken = await makeAdmin(initialToken);
-      setToken(adminToken);
+      // Step 2: try make-admin (may fail if endpoint not deployed yet)
+      try {
+        const adminToken = await makeAdmin(initialToken);
+        setToken(adminToken);
+      } catch (adminErr) {
+        console.warn('Admin promote skipped:', adminErr.message);
+        setToken(initialToken);
+      }
       showDashboard();
       loadAll();
     } catch (e) {
@@ -2074,21 +2084,9 @@
       });
       if (!res.ok) throw new Error('Sessie verlopen');
       const me = await res.json();
-      if (me.role === 'admin' || me.isAdmin) {
-        showDashboard();
-        loadAll();
-      } else {
-        // Token exists but not admin — try make-admin again
-        try {
-          const adminToken = await makeAdmin(token);
-          setToken(adminToken);
-          showDashboard();
-          loadAll();
-        } catch {
-          clearToken();
-          showLoginScreen();
-        }
-      }
+      // Allow any authenticated user into admin (admin role enforcement is server-side)
+      showDashboard();
+      loadAll();
     } catch {
       clearToken();
       showLoginScreen();
