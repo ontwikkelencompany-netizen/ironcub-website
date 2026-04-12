@@ -1,11 +1,13 @@
 <!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Mijn Account | The IronCub Company</title><meta name="description" content="Beheer uw IronCub account. Bekijk bestellingen, verlanglijst en persoonlijke gegevens."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="icon" type="image/jpeg" href="assets/logo-icon.jpg"><link rel="stylesheet" href="styles.css">
 <style>
 .account-container{max-width:1200px;margin:0 auto;padding:40px 20px}
-.auth-card{max-width:720px;margin:40px auto;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden}
-.auth-header{background:var(--dark);padding:24px 32px;text-align:center}
-.auth-header img{height:80px;margin-bottom:8px}
-.auth-header h2{font-family:var(--font-head);color:#fff;font-size:1.4rem;font-weight:800;margin:0}
-.auth-header p{color:rgba(255,255,255,.6);font-size:.85rem;margin:4px 0 0}
+.auth-card{max-width:720px;margin:80px auto 40px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:visible;position:relative}
+.auth-header{background:var(--dark);padding:48px 32px 40px;text-align:center;position:relative;overflow:visible}
+.auth-header-bear{position:absolute;top:-45px;right:40px;width:140px;height:auto;z-index:10;transform:rotate(8deg);filter:drop-shadow(0 4px 16px rgba(0,0,0,.4));animation:bearPeekAccount 3s ease-in-out infinite;cursor:pointer;transition:transform .3s}
+.auth-header-bear:hover{transform:rotate(-5deg) scale(1.1)}
+@keyframes bearPeekAccount{0%,100%{transform:rotate(8deg) translateY(0)}25%{transform:rotate(5deg) translateY(-6px)}50%{transform:rotate(12deg) translateY(-2px)}75%{transform:rotate(6deg) translateY(-8px)}}
+.auth-header h2{font-family:var(--font-head);color:#fff;font-size:2.2rem;font-weight:900;margin:0;letter-spacing:.02em}
+.auth-header p{color:var(--gold);font-size:1rem;margin:8px 0 0;font-weight:500}
 .auth-body{padding:32px}
 .auth-tabs{display:flex;border-bottom:2px solid var(--gray-200);margin-bottom:24px}
 .auth-tab{flex:1;text-align:center;padding:10px;font-family:var(--font-head);font-weight:700;font-size:.9rem;cursor:pointer;color:var(--gray-500);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
@@ -56,10 +58,10 @@
   <!-- AUTH: Login/Register (shown when not logged in) -->
   <div id="authSection">
     <div class="auth-card">
-      <div class="auth-header">
-        <img src="assets/bear-account.png" alt="IronCub Account">
+      <div class="auth-header" style="border-radius:var(--radius-lg) var(--radius-lg) 0 0">
+        <img src="assets/bear-account.png" alt="IronCub Beer" class="auth-header-bear">
         <h2 data-i18n="account.title">Mijn IronCub</h2>
-        <p data-i18n="account.subtitle">Beheer uw bestellingen en verlanglijst</p>
+        <p data-i18n="account.subtitle">Beheer je bestellingen, verlanglijst en profiel</p>
       </div>
       <div class="auth-body">
         <div class="auth-tabs">
