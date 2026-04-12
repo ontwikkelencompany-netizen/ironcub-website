@@ -148,7 +148,7 @@ const MACHINES = [
     price: 16971,
     priceDisplay: "\u20ac16.971",
     poa: false,
-    img: "assets/product-white.jpg",
+    img: "assets/vth-140.jpg",
     badge: "Benzine",
     badgeClass: "badge-benzine",
     fuel: "benzine",
@@ -172,11 +172,11 @@ const MACHINES = [
     id: "vth200",
     detailUrl: "machines/vth200.html",
     name: "VTH 200",
-    subtitle: "LOADER (Yanmar/Kubota diesel)",
+    subtitle: "LOADER (Kubota diesel)",
     price: 28606,
     priceDisplay: "\u20ac28.606",
     poa: false,
-    img: "assets/product-white.jpg",
+    img: "assets/vth-200.jpg",
     badge: "Diesel",
     badgeClass: "badge-diesel",
     fuel: "diesel",
@@ -194,7 +194,7 @@ const MACHINES = [
     engine: "Yanmar/Kubota 4-cil diesel",
     branches: ["bouw", "agrarisch", "sloop", "wegenbouw", "hoveniers"],
     specs: ["Yanmar/Kubota diesel", "Knikbesturing", "Cabine", "ROPS/TOPS"],
-    desc: "Zware kniklader met 36,5 kW diesel, cabine, 45° knikbesturing. Hefhoogte 2,6 meter, 25 km/h."
+    desc: "Zware kniklader met Yanmar/Kubota 4-cilinder diesel, cabine, 45° knikbesturing. Hefhoogte 2,6 meter, 25 km/h. Laadvermogen 1.200 kg."
   },
   {
     id: "htv1000",
