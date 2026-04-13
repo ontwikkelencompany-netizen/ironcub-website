@@ -125,16 +125,25 @@ function handleAfspraak(e) {
   btn.textContent = (typeof t==='function'?t('checkout.bezig'):'Versturen...');
   btn.disabled = true;
   
-  // For now, simulate submission (later: connect to Railway API)
-  setTimeout(function() {
+  var obj = {};
+  data.forEach(function(v, k) { obj[k] = v; });
+
+  fetch('https://ironcub-shop-production.up.railway.app/api/afspraak', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(obj)
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(result) {
     form.style.display = 'none';
     document.getElementById('afspraakSuccess').style.display = 'block';
-    
-    // Log the data (for development)
-    var obj = {};
-    data.forEach(function(v, k) { obj[k] = v; });
-    console.log('Afspraak aanvraag:', obj);
-  }, 800);
+  })
+  .catch(function(err) {
+    btn.textContent = 'Afspraak aanvragen';
+    btn.disabled = false;
+    alert('Er ging iets mis. Probeer het opnieuw of neem contact op via verkoop@ironcub.company');
+    console.error('Afspraak error:', err);
+  });
 }
 </script>
 <script src="winkel.js"></script>
