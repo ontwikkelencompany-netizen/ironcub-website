@@ -13,7 +13,7 @@ The IronCub Company B.V. sells, rents, and services compact construction and lan
 - [Merch](https://myironcub.com/verkoop.html#merch): IronCub Swing Collection clothing and accessories
 
 ## Services
-- [Sales](https://myironcub.com/verkoop.html): Direct purchase with delivery to NL/BE/DE
+- [Sales](https://myironcub.com/verkoop.html): Direct purchase with delivery to NL/BE/DE/FR/PT
 - [Rental](https://myironcub.com/verhuur.html): Short and long-term machine rental
 - [Lease](https://myironcub.com/lease.html): Operational and financial lease options
 - [Service](https://myironcub.com/service.html): Maintenance, repairs, and parts

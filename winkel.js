@@ -1164,7 +1164,7 @@
     banner.className = 'ic-delivery-banner';
     banner.innerHTML = [
       truckSVG(),
-      '<span><strong>Levering in Nederland, Belgi&euml; &amp; Duitsland</strong> &mdash; Gratis afhalen in Middelharnis</span>'
+      '<span><strong>Levering in Nederland, Belgi&euml;, Duitsland, Frankrijk &amp; Portugal</strong> &mdash; Gratis afhalen in Middelharnis</span>'
     ].join('');
 
     // Insert before shop section
