@@ -134,18 +134,38 @@ function handleAfspraak(e) {
   btn.textContent = (typeof t==='function'?t('checkout.bezig'):'Versturen...');
   btn.disabled = true;
   
-  var obj = {};
-  data.forEach(function(v, k) { obj[k] = v; });
+  var raw = {};
+  data.forEach(function(v, k) { raw[k] = v; });
 
-  obj.formLoadedAt = Number(document.getElementById('afspraakLoadedAt').value) || 0;
+  // Map NL veldnamen -> EN (wat backend verwacht)
+  var obj = {
+    type: raw.type,
+    name: raw.naam,
+    email: raw.email,
+    phone: raw.telefoon,
+    company: raw.bedrijf,
+    date: raw.datum,
+    time: raw.tijd,
+    message: raw.opmerkingen,
+    machine: raw.machine,
+    website: raw.website,
+    formLoadedAt: Number(document.getElementById('afspraakLoadedAt').value) || 0
+  };
 
   fetch('https://ironcub-shop-production.up.railway.app/api/afspraak', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(obj)
   })
-  .then(function(res) { return res.json(); })
+  .then(function(res) { return res.json().then(function(data) { return { ok: res.ok, status: res.status, data: data }; }); })
   .then(function(result) {
+    if (!result.ok) {
+      btn.textContent = 'Afspraak aanvragen';
+      btn.disabled = false;
+      var msg = (result.data && result.data.error) ? result.data.error : 'Er ging iets mis bij het versturen.';
+      alert(msg + '\n\nU kunt ons ook bereiken via verkoop@ironcub.company of +31 6 11534534');
+      return;
+    }
     form.style.display = 'none';
     document.getElementById('afspraakSuccess').style.display = 'block';
   })
