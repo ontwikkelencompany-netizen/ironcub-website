@@ -188,22 +188,11 @@ document.addEventListener('DOMContentLoaded', function() {
   ].join('\n');
   document.head.appendChild(style);
 
-  /* ===== FORM HANDLING ===== */
-  var contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var btn = this.querySelector('button[type="submit"]');
-      var okMsg = document.getElementById('formSuccess');
-      if (btn) btn.textContent = 'Verzonden!';
-      if (okMsg) okMsg.style.display = 'block';
-      setTimeout(function() {
-        if (btn) btn.textContent = 'Verstuur bericht';
-        if (okMsg) okMsg.style.display = 'none';
-        contactForm.reset();
-      }, 3000);
-    });
-  }
+  /* ===== FORM HANDLING =====
+     Contactformulier handler is verplaatst naar contact.html zelf,
+     omdat die de echte POST naar /api/contact doet. Deze stub stond
+     hier als fake 'Verzonden!' en veroorzaakte een race met de echte
+     handler. Bewust verwijderd. */
 
   /* ===== DROPDOWN HOVER (Desktop) ===== */
   var dropdowns = document.querySelectorAll('.has-dropdown');
