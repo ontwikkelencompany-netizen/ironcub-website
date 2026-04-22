@@ -18,6 +18,48 @@
 </div></div></section>
 <div id="site-footer"></div><script src="i18n.js"></script>
 <script src="components.js"></script>
-<script>document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();var b=this.querySelector('button[type="submit"]');b.textContent=(typeof t==='function'?t('contact.verzonden'):'Verzonden!');b.disabled=true;setTimeout(function(){b.textContent=(typeof t==='function'?t('contact.verstuurBtn'):'Verstuur Bericht');b.disabled=false},3000)})</script>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = this;
+  var btn = form.querySelector('button[type="submit"]');
+  var originalLabel = btn.textContent;
+  btn.textContent = (typeof t==='function' ? t('checkout.bezig') : 'Versturen...');
+  btn.disabled = true;
+
+  var payload = {
+    name: (document.getElementById('naam').value || '').trim(),
+    email: (document.getElementById('email').value || '').trim(),
+    phone: (document.getElementById('telefoon').value || '').trim(),
+    company: (document.getElementById('bedrijf').value || '').trim(),
+    interest: (document.getElementById('interesse').value || '').trim(),
+    message: (document.getElementById('bericht').value || '').trim()
+  };
+
+  fetch('https://ironcub-shop-production.up.railway.app/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(res) {
+    if (!res.ok) { return res.json().then(function(j){ throw new Error(j.error || 'Serverfout'); }); }
+    return res.json();
+  })
+  .then(function() {
+    btn.textContent = (typeof t==='function' ? t('contact.verzonden') : 'Verzonden!');
+    form.reset();
+    setTimeout(function() {
+      btn.textContent = originalLabel;
+      btn.disabled = false;
+    }, 4000);
+  })
+  .catch(function(err) {
+    console.error('Contact error:', err);
+    btn.textContent = originalLabel;
+    btn.disabled = false;
+    alert('Er ging iets mis bij het versturen. Probeer het opnieuw of mail direct naar verkoop@ironcub.company');
+  });
+});
+</script>
 <script src="winkel.js"></script>
 </body></html>
