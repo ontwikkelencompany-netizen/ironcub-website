@@ -12,6 +12,10 @@
 <p style="color:var(--gray-600);margin-bottom:24px" data-i18n="afspraak.formDesc">Vul het formulier in en wij nemen binnen 24 uur contact met u op om de afspraak te bevestigen.</p>
 
 <form id="afspraakForm" class="afspraak-form" onsubmit="handleAfspraak(event)">
+  <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+    <label>Website (laat leeg):<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+  </div>
+  <input type="hidden" name="formLoadedAt" id="afspraakLoadedAt" value="">
   <div class="form-group">
     <label data-i18n="afspraak.waarvoor">Waarvoor wilt u langskomen? *</label>
     <div class="radio-group" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
@@ -116,6 +120,11 @@
 <script src="components.js"></script>
 <script src="main.js"></script>
 <script>
+// Zet timestamp meteen na DOM-load voor honeypot timing-check
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('afspraakLoadedAt');
+  if (el) el.value = Date.now().toString();
+});
 function handleAfspraak(e) {
   e.preventDefault();
   var form = document.getElementById('afspraakForm');
@@ -127,6 +136,8 @@ function handleAfspraak(e) {
   
   var obj = {};
   data.forEach(function(v, k) { obj[k] = v; });
+
+  obj.formLoadedAt = Number(document.getElementById('afspraakLoadedAt').value) || 0;
 
   fetch('https://ironcub-shop-production.up.railway.app/api/afspraak', {
     method: 'POST',

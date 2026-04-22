@@ -10,6 +10,8 @@
 <div class="contact-block"><h3 data-i18n="contact.showroom">Showroom</h3><p><strong>De Hofjes 44</strong><br>Middelharnis<br>Zuid-Holland</p></div>
 </div>
 <form class="contact-form" id="contactForm"><h2 data-i18n="contact.formTitle">Stuur ons een bericht</h2><p class="form-sub" data-i18n="contact.formSub">Wij nemen zo snel mogelijk contact met u op.</p>
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label>Website (laat leeg):<input type="text" id="cfWebsite" name="website" tabindex="-1" autocomplete="off"></label></div>
+<input type="hidden" id="cfLoadedAt" value="">
 <div class="form-row"><div class="form-group"><label for="naam" data-i18n="contact.naamLabel">Naam *</label><input type="text" id="naam" required placeholder="Uw naam"></div><div class="form-group"><label for="bedrijf" data-i18n="contact.bedrijfLabel">Bedrijf</label><input type="text" id="bedrijf" placeholder="Bedrijfsnaam"></div></div>
 <div class="form-row"><div class="form-group"><label for="email" data-i18n="contact.emailLabel">E-mail *</label><input type="email" id="email" required placeholder="uw@email.nl"></div><div class="form-group"><label for="telefoon" data-i18n="contact.telefoonLabel">Telefoon</label><input type="tel" id="telefoon" placeholder="06-12345678"></div></div>
 <div class="form-group"><label for="interesse" data-i18n="contact.interesseLabel">Interesse</label><select id="interesse"><option value="" data-i18n="contact.interesseSelect">Selecteer...</option><optgroup label="Verkoop" data-i18n-aria="contact.grVerkoop"><option data-i18n="contact.iMachineKopen">Machine kopen</option><option data-i18n="contact.iAanbouwdeel">Aanbouwdeel kopen</option><option data-i18n="contact.iPremiumLevering">Premium levering</option></optgroup><optgroup label="Diensten" data-i18n-aria="contact.grDiensten"><option data-i18n="contact.iVerhuur">Verhuur</option><option data-i18n="contact.iLease">Lease</option><option data-i18n="contact.iDemo">Demo afspraak</option><option data-i18n="contact.iService">Service / Onderhoud</option><option data-i18n="contact.iOnderdelen">Onderdelen</option></optgroup><optgroup label="Overig" data-i18n-aria="contact.grOverig"><option data-i18n="contact.iDealer">Dealer worden</option><option data-i18n="contact.iAnders">Anders</option></optgroup></select></div>
@@ -19,6 +21,10 @@
 <div id="site-footer"></div><script src="i18n.js"></script>
 <script src="components.js"></script>
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('cfLoadedAt');
+  if (el) el.value = Date.now().toString();
+});
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this;
@@ -33,7 +39,9 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     phone: (document.getElementById('telefoon').value || '').trim(),
     company: (document.getElementById('bedrijf').value || '').trim(),
     interest: (document.getElementById('interesse').value || '').trim(),
-    message: (document.getElementById('bericht').value || '').trim()
+    message: (document.getElementById('bericht').value || '').trim(),
+    website: (document.getElementById('cfWebsite').value || '').trim(),
+    formLoadedAt: Number(document.getElementById('cfLoadedAt').value) || 0
   };
 
   fetch('https://ironcub-shop-production.up.railway.app/api/contact', {
