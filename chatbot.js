@@ -165,7 +165,7 @@
           '<div class="ic-chat-messages" id="icChatMessages"></div>' +
         '</div>' +
         '<div class="ic-chat-contact" id="icChatContact" style="display:none">' +
-          '<a href="https://wa.me/31613606602?text=Hallo%20IronCub!" target="_blank" rel="noopener" class="ic-contact-btn ic-contact-wa">' +
+          '<a href="https://wa.me/31611534534?text=Hallo%20IronCub!" target="_blank" rel="noopener" class="ic-contact-btn ic-contact-wa">' +
             '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.64-.93-2.25-.25-.59-.5-.51-.68-.52h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.09 3.19 5.06 4.47.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.28-.2-.58-.35zm-5.44 7.44h-.02a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98.99-3.65-.24-.38a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.89 9.9-9.89a9.83 9.83 0 017 2.9 9.83 9.83 0 012.9 7c-.01 5.45-4.44 9.89-9.89 9.89zM20.52 3.48A11.81 11.81 0 0012.04 0C5.46 0 .1 5.35.1 11.93a11.9 11.9 0 001.59 5.95L0 24l6.3-1.65a11.9 11.9 0 005.73 1.46h.01c6.57 0 11.93-5.35 11.94-11.93a11.86 11.86 0 00-3.46-8.4z"/></svg>' +
             '<span>' + t('whatsapp') + '</span><span style="color:#888;font-size:12px">24/7</span>' +
           '</a>' +
@@ -173,7 +173,7 @@
             '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>' +
             '<span>' + t('email') + '</span><span style="color:#888;font-size:12px">verkoop@ironcub.company</span>' +
           '</a>' +
-          '<a href="tel:+31613606602" class="ic-contact-btn ic-contact-phone">' +
+          '<a href="tel:+31611534534" class="ic-contact-btn ic-contact-phone">' +
             '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.86 19.86 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.69 2.36a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.72-1.26a2 2 0 012.11-.45c.76.33 1.55.56 2.36.69a2 2 0 011.72 2.03z"/></svg>' +
             '<span>' + t('call') + '</span><span style="color:#888;font-size:12px">Ma-Vr 08:00-17:00</span>' +
           '</a>' +
