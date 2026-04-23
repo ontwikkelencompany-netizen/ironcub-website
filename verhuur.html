@@ -135,6 +135,7 @@
 <div id="reserveer"></div>
 <div class="v-reserve">
   <div class="v-reserve-form" id="reserveForm">
+    <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label>Website (laat leeg):<input type="text" id="vhWebsite" name="website" tabindex="-1" autocomplete="off"></label></div>
     <h2><img src="assets/bear-afspraak.png" alt="" style="height:48px" data-i18n="verhuur.formTitle"> Machine reserveren</h2>
 
     <div class="form-row">
@@ -225,6 +226,8 @@
 <script src="main.js"></script>
 <script src="winkel.js"></script>
 <script>
+var vLoadedAt = Date.now();
+
 function handleReservation() {
   var machine = document.getElementById('vMachine').value;
   var start = document.getElementById('vStart').value;
@@ -238,25 +241,47 @@ function handleReservation() {
     return;
   }
 
-  // Collect all data
-  var data = {
+  var btn = document.querySelector('#reserveForm button.btn-cta');
+  var originalLabel = btn ? btn.textContent : '';
+  if (btn) { btn.textContent = 'Versturen...'; btn.disabled = true; }
+
+  // Backend verwacht EN veldnamen
+  var payload = {
     machine: machine,
     aanbouwdeel: document.getElementById('vAanbouw').value,
     startdatum: start,
     einddatum: end,
-    naam: name,
-    bedrijf: document.getElementById('vCompany').value,
+    name: name,
+    company: document.getElementById('vCompany').value,
     email: email,
-    telefoon: phone,
+    phone: phone,
     locatie: document.getElementById('vLocation').value,
-    opmerkingen: document.getElementById('vNotes').value
+    message: document.getElementById('vNotes').value,
+    website: (document.getElementById('vhWebsite') || {}).value || '',
+    formLoadedAt: vLoadedAt
   };
 
-  console.log('Reservering:', data);
-
-  // Show success
-  document.getElementById('reserveForm').style.display = 'none';
-  document.getElementById('reserveSuccess').style.display = 'block';
+  fetch('https://ironcub-shop-production.up.railway.app/api/verhuur', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(res) { return res.json().then(function(data) { return { ok: res.ok, status: res.status, data: data }; }); })
+  .then(function(result) {
+    if (!result.ok) {
+      if (btn) { btn.textContent = originalLabel; btn.disabled = false; }
+      var msg = (result.data && result.data.error) ? result.data.error : 'Er ging iets mis bij het versturen.';
+      alert(msg + '\n\nU kunt ons ook bereiken via verkoop@ironcub.company of +31 6 11534534');
+      return;
+    }
+    document.getElementById('reserveForm').style.display = 'none';
+    document.getElementById('reserveSuccess').style.display = 'block';
+  })
+  .catch(function(err) {
+    console.error('Verhuur error:', err);
+    if (btn) { btn.textContent = originalLabel; btn.disabled = false; }
+    alert('Er ging iets mis bij het versturen. Probeer het opnieuw of mail direct naar verkoop@ironcub.company');
+  });
 }
 
 // Auto-select machine when clicking "Reserveren" on a card
