@@ -20,6 +20,19 @@
 .legal-content .legal-meta { color: #888; font-size: .85rem; margin-bottom: 32px; }
 .review-cta { background: #fff5e6; border-left: 4px solid #E8831A; padding: 20px 24px; margin: 32px 0; border-radius: 6px; }
 .review-cta a { color: #E8831A; font-weight: 600; }
+.wwk-summary { background: linear-gradient(135deg, #fff5e6 0%, #fffaf2 100%); border: 1px solid #f4d8b0; padding: 24px; border-radius: 10px; margin: 24px 0 16px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.wwk-score { font-size: 3rem; font-weight: 900; font-family: 'Barlow Condensed', sans-serif; color: #E8831A; line-height: 1; }
+.wwk-score-meta { display: flex; flex-direction: column; gap: 4px; }
+.wwk-stars { color: #E8831A; font-size: 1.2rem; letter-spacing: 2px; }
+.wwk-count { color: #555; font-size: .9rem; }
+.wwk-list { display: grid; gap: 16px; margin: 24px 0; }
+.wwk-review { background: #fafafa; border-left: 3px solid #E8831A; padding: 16px 20px; border-radius: 6px; }
+.wwk-review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+.wwk-review-author { font-weight: 600; color: #1a1a1a; font-size: .95rem; }
+.wwk-review-date { color: #888; font-size: .8rem; }
+.wwk-review-rating { color: #E8831A; font-size: 1rem; }
+.wwk-review-text { color: #444; font-size: .92rem; line-height: 1.6; }
+.wwk-loading { color: #888; font-style: italic; padding: 16px 0; }
 </style>
 </head>
 <body>
@@ -31,6 +44,9 @@
 
     <h1>Reviews &amp; Beoordelingen</h1>
     <p class="legal-meta">Echte ervaringen van echte klanten &mdash; onpartijdig beheerd door WebwinkelKeur.</p>
+
+    <div id="wwk-summary" class="wwk-summary"></div>
+    <div id="wwk-list" class="wwk-list"></div>
 
     <h2>Echtheid van onze reviews</h2>
     <p>Wij vinden het belangrijk dat reviews een zo goed mogelijk beeld geven over onze producten en service. Onze beoordelingen worden daarom, onpartijdig, beheerd door <a href="https://www.webwinkelkeur.nl/" target="_blank" rel="noopener">WebwinkelKeur</a>.</p>
@@ -59,5 +75,88 @@
 <div id="site-footer"></div>
 <script src="/i18n.js"></script>
 <script src="/components.js"></script>
+<script>
+(function(){
+  var WEBSHOP_ID = '1225655';
+  var PUBLIC_CODE = '96f11eac72a97a862afa7fe21984b3ff6bd3e84dedf11e8aef7d8ce525fc3711';
+  var BASE = 'https://dashboard.webwinkelkeur.nl/api';
+  var summaryEl = document.getElementById('wwk-summary');
+  var listEl = document.getElementById('wwk-list');
+  if (!summaryEl || !listEl) return;
+
+  summaryEl.innerHTML = '<p class="wwk-loading">Beoordelingen laden...</p>';
+
+  function stars(n) {
+    var rounded = Math.round(n);
+    var s = '';
+    for (var i = 0; i < 5; i++) s += i < rounded ? '★' : '☆';
+    return s;
+  }
+
+  function escapeHtml(str) {
+    return String(str || '').replace(/[&<>"']/g, function(c) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  // Summary
+  fetch(BASE + '/1.0/ratings_summary.json?id=' + WEBSHOP_ID + '&public_code=' + PUBLIC_CODE)
+    .then(function(r) { return r.json(); })
+    .then(function(json) {
+      var d = json && json.data ? json.data : json;
+      var avg = d.average_rating || d.score || 0;
+      var count = d.total || d.ratings || d.number_of_ratings || 0;
+      if (!count) {
+        summaryEl.innerHTML = '<p style="margin:0;color:#555">We zijn net van start — onze eerste reviews verschijnen hier zodra klanten hun ervaring delen via WebwinkelKeur.</p>';
+        return;
+      }
+      summaryEl.innerHTML =
+        '<div class="wwk-score">' + Number(avg).toFixed(1) + '</div>' +
+        '<div class="wwk-score-meta">' +
+          '<div class="wwk-stars">' + stars(avg) + '</div>' +
+          '<div class="wwk-count">Gebaseerd op ' + count + ' beoordeling' + (count === 1 ? '' : 'en') + ' via <a href="https://www.webwinkelkeur.nl/leden/The-IronCub-Company-1220029" target="_blank" rel="noopener" style="color:#E8831A">WebwinkelKeur</a></div>' +
+        '</div>';
+    })
+    .catch(function(err) {
+      summaryEl.innerHTML = '<p style="margin:0;color:#888">Beoordelingen zijn momenteel niet beschikbaar. Bekijk onze reviews rechtstreeks op <a href="https://www.webwinkelkeur.nl/leden/The-IronCub-Company-1220029" target="_blank" rel="noopener" style="color:#E8831A">WebwinkelKeur</a>.</p>';
+    });
+
+  // Recent ratings
+  fetch(BASE + '/1.0/ratings.json?id=' + WEBSHOP_ID + '&public_code=' + PUBLIC_CODE + '&limit=8&language=nl')
+    .then(function(r) { return r.json(); })
+    .then(function(json) {
+      var ratings = (json && json.data) ? json.data : (Array.isArray(json) ? json : (json.ratings || []));
+      if (!Array.isArray(ratings) || ratings.length === 0) {
+        listEl.innerHTML = '';
+        return;
+      }
+      var html = ratings.map(function(r) {
+        var author = r.consumer && r.consumer.name ? r.consumer.name : (r.name || 'Klant');
+        var date = fmtDate(r.created_at || r.date || r.created);
+        var rating = r.rating || r.score || 0;
+        var review = r.review || r.comment || r.text || '';
+        return '<div class="wwk-review">' +
+          '<div class="wwk-review-header">' +
+            '<div>' +
+              '<div class="wwk-review-rating">' + stars(rating) + '</div>' +
+              '<div class="wwk-review-author">' + escapeHtml(author) + '</div>' +
+            '</div>' +
+            (date ? '<div class="wwk-review-date">' + date + '</div>' : '') +
+          '</div>' +
+          (review ? '<p class="wwk-review-text">' + escapeHtml(review) + '</p>' : '') +
+        '</div>';
+      }).join('');
+      listEl.innerHTML = '<h2 style="margin-top:32px">Recente beoordelingen</h2>' + html;
+    })
+    .catch(function() { /* silent fail */ });
+})();
+</script>
 </body>
 </html>
